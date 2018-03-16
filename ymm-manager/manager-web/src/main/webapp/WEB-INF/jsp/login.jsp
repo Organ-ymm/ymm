@@ -32,9 +32,10 @@
 </div>
 
 <script type="text/javascript">
-    layui.use(['form','jquery'], function(){
+    layui.use(['form','jquery','layer'], function(){
         var form = layui.form,
-            $ = layui.jquery;
+            $ = layui.jquery,
+            layer = layui.layer;
         //监听提交
         form.on('submit(login)', function(data){
             $.post(
@@ -42,7 +43,6 @@
                 data.field,
                 function(rec){
                     if(rec=="0"){
-
                         layer.msg("用户名或密码错误");
                     }else{
                         sessionStorage.setItem("login",1);
