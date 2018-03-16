@@ -1,77 +1,77 @@
 package com.ymm.pojo.po;
 
 public class Admin {
-    int id;
-    String username;
-    String password;
+    int ad_id;
+    String ad_username;
+    String ad_password;
     //登录名	手机	邮箱	角色	加入时间	状态
-    String phone;
-    String email;
-    String role;
-    String joinTime;
-    String status;
+    String ad_phone;
+    String ad_email;
+    String ad_role;
+    String ad_joinTime;
+    String ad_status;
 
-    public String getIphone() {
-        return phone;
+    public int getAd_id() {
+        return ad_id;
     }
 
-    public void setIphone(String iphone) {
-        this.phone = iphone;
+    public void setAd_id(int ad_id) {
+        this.ad_id = ad_id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAd_username() {
+        return ad_username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAd_username(String ad_username) {
+        this.ad_username = ad_username;
     }
 
-    public String getRole() {
-        return role;
+    public String getAd_password() {
+        return ad_password;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAd_password(String ad_password) {
+        this.ad_password = ad_password;
     }
 
-    public String getJoinTime() {
-        return joinTime;
+    public String getAd_phone() {
+        return ad_phone;
     }
 
-    public void setJoinTime(String joinTime) {
-        this.joinTime = joinTime;
+    public void setAd_phone(String ad_phone) {
+        this.ad_phone = ad_phone;
     }
 
-    public String getStatus() {
-        return status;
+    public String getAd_email() {
+        return ad_email;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAd_email(String ad_email) {
+        this.ad_email = ad_email;
     }
 
-    public int getId() {
-        return id;
+    public String getAd_role() {
+        return ad_role;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAd_role(String ad_role) {
+        this.ad_role = ad_role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAd_joinTime() {
+        return ad_joinTime;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAd_joinTime(String ad_joinTime) {
+        this.ad_joinTime = ad_joinTime;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAd_status() {
+        return ad_status;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAd_status(String ad_status) {
+        this.ad_status = ad_status;
     }
 }

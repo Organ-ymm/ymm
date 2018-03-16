@@ -92,7 +92,7 @@
                 data: $("#catAddForm").serialize(),
                 dataType: "text",
                 type: "post",
-                url: "${pageContext.request.contextPath}/product/category_add",
+                url: "${pageContext.request.contextPath}/category/category_add",
                 success: function (res) {
                     layer.alert("添加成功", {icon: 6}, function () {
                         // 获得frame索引

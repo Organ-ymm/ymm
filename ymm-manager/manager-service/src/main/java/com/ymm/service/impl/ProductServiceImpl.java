@@ -1,18 +1,18 @@
 package com.ymm.service.impl;
 
-import com.ymm.dao.ProductMapper;
+import com.ymm.dao.CategoryMapper;
 import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.po.Category;
 import com.ymm.pojo.po.Goods;
-import com.ymm.service.ProductService;
+import com.ymm.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements CategoryService {
     @Autowired
-    private ProductMapper productDao;
+    private CategoryMapper productDao;
 
     @Override
     public List<Category> listCategory(Page page) {

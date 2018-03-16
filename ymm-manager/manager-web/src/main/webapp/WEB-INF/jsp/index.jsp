@@ -44,7 +44,7 @@
     </ul>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
-            <a href="javascript:;">${admin.username}</a>
+            <a href="javascript:;">${admin.ad_username}</a>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
@@ -134,13 +134,13 @@
                         </a>
                     </li>
                     <li>
-                        <a _href="./pages/product/category">
+                        <a _href="./pages/category/category">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>分类管理</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="./pages/article/goods">
+                        <a _href="./pages/goods/goods">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>商品管理</cite>
                         </a>

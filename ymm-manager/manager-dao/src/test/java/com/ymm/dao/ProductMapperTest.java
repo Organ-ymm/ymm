@@ -16,7 +16,7 @@ import java.util.List;
 //public class ProductMapperTest {
 //
 //    @Autowired
-//    private ProductMapper productDao;
+//    private CategoryMapper productDao;
 //    //@org.junit.Test
 //    //public void selectAllCategory() throws Exception {
 //    //    List<Category> categoryList = productDao.selectAllCategory();

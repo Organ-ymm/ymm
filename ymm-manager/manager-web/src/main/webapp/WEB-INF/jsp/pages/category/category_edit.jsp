@@ -90,7 +90,7 @@
                 data : $("#editToForm").serialize(),
                 dataType : "text",
                 type : "post",
-                url : "${pageContext.request.contextPath}/product/category_editTo",
+                url : "${pageContext.request.contextPath}/category/category_editTo",
                 success : function(res) {
                     if(res>0){
                         layer.alert("修改成功", {icon: 6},function () {

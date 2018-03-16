@@ -6,7 +6,7 @@ import com.ymm.pojo.po.Goods;
 
 import java.util.List;
 
-public interface ProductService {
+public interface CategoryService {
     List<Category> listCategory(Page page);
 
     List<Goods> listGoods(Page page);

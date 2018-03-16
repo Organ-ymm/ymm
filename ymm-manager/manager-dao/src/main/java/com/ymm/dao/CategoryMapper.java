@@ -7,7 +7,7 @@ import com.ymm.pojo.po.Goods;
 
 import java.util.List;
 
-public interface ProductMapper {
+public interface CategoryMapper {
     List<Category> selectAllCategory(Page page);
 
     List<Goods> selectAllGoods(Page page);

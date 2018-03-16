@@ -80,7 +80,7 @@
                 }]
             ],
             //通过URL进行数据绑定
-            url: '${pageContext.request.contextPath}/product/categorylist',
+            url: '${pageContext.request.contextPath}/category/categorylist',
             //是否开启分页
             page: true,
             limits: [10, 50, 100],
@@ -113,7 +113,7 @@
                     data: {'id': id},
                     dataType: "text",
                     type: "GET",
-                    url: "${pageContext.request.contextPath}/product/category_del",
+                    url: "${pageContext.request.contextPath}/category/category_del",
                     success: function (res) {
                         if (res > 0) {
                             layer.msg('已删除!', {
@@ -140,7 +140,7 @@
 
 //               layer.msg(data.cat_id);
                 var title = "修改分类";
-                var url = "${pageContext.request.contextPath}/product/category_edit?id=" + data.cat_id;
+                var url = "${pageContext.request.contextPath}/category/category_edit?id=" + data.cat_id;
                 var w = ($(window).width() * 0.9);
 
                 var h = ($(window).height() - 50);
