@@ -299,7 +299,7 @@ layui.define(['jquery', 'form', 'layer', 'element'], function(exports) {
 			title = false;
 		};
 		if(url == null || url == '') {
-			url = "404.html";
+			url = "404";
 		};
 		if(w == null || w == '') {
 			w = ($(window).width() * 0.9);
@@ -324,7 +324,7 @@ layui.define(['jquery', 'form', 'layer', 'element'], function(exports) {
 			title = false;
 		};
 		if(url == null || url == '') {
-			url = "404.html";
+			url = "404";
 		};
 		if(w == null || w == '') {
 			w = ($(window).width() * 0.9);

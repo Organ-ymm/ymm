@@ -11,7 +11,9 @@ public interface UsersService {
 
     List<Users> listUsersByPage(Page page, UsersQuery usersQuery);
 
-    int batchUpdateDel(List<Integer> ids);
+    Integer batchUpdateDel(List<Integer> ids);
 
     Integer countUsers(UsersQuery usersQuery);
+
+    Integer addUser(Users user);
 }

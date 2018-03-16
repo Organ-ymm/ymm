@@ -14,4 +14,6 @@ public interface UsersMapper {
     Integer countUsers(@Param("usersQuery") UsersQuery usersQuery);
 
     Integer batchUpdateDel(Users user);
+
+    Integer addUser(Users user);
 }

@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +39,7 @@ public class UsersServiceImpl implements UsersService {
     public List<Users> listUsersByPage(Page page, UsersQuery usersQuery) {
         Map<String ,Object> map=new HashMap<>();
         map.put("page",page);
+        usersQuery.setStatus(1);
         map.put("usersQuery",usersQuery);
         List<Users> usersList=uMapper.listUsersByPage(map);
         return usersList;
@@ -49,10 +52,27 @@ public class UsersServiceImpl implements UsersService {
     }
 
     /**
+     * 添加用户
+    */
+    @Override
+    public Integer addUser(Users user) {
+        int i=0;
+        user.setStatus(1);
+        user.setRank_points(0);
+        user.setRank_id(0);
+        Date date =new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        String reg_time=sdf.format(date);
+        user.setReg_time(reg_time);
+        i=uMapper.addUser(user);
+        return i;
+    }
+
+    /**
      * 批量“删除”用户，修改用户的状态status为0
     */
     @Override
-    public int batchUpdateDel(List<Integer> ids) {
+    public Integer batchUpdateDel(List<Integer> ids) {
         int i=0;
         try {
             for(int j=0;j<ids.size();j++){

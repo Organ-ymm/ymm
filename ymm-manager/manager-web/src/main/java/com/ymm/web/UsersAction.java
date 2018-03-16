@@ -38,6 +38,7 @@ public class UsersAction {
     @RequestMapping(value="/listusers",method= RequestMethod.GET)
     public MessageResult ListUsersToJson(@Param("page")Page page, @Param("usersQuery")UsersQuery usersQuery){
         MessageResult<Users> messageResult=new MessageResult<>();
+        usersQuery.setStatus(1);
         try {
             List<Users> usersList=uService.listUsersByPage(page,usersQuery);
             int count=uService.countUsers(usersQuery);
@@ -63,4 +64,36 @@ public class UsersAction {
         }
         return i;
     }
+
+    @ResponseBody
+    @RequestMapping(value="/addUser", method = RequestMethod.POST)
+    public int addUser(Users user){
+        int i=0;
+        try {
+            i=uService.addUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/showDelPage",method= RequestMethod.GET)
+    public MessageResult showDelPage(@Param("page")Page page, @Param("usersQuery")UsersQuery usersQuery){
+        MessageResult<Users> messageResult=new MessageResult<>();
+        try {
+            usersQuery.setStatus(0);
+            List<Users> usersList=uService.listUsersByPage(page,usersQuery);
+            int count=uService.countUsers(usersQuery);
+            messageResult.setCode(0);
+            messageResult.setCount(count);
+            messageResult.setMsg("success");
+            messageResult.setData(usersList);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return messageResult;
+    }
+
 }

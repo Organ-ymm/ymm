@@ -20,6 +20,8 @@
             <element id="module-output" name="manager-dao" />
           </element>
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: se.jiderhamn.classloader-leak-prevention:classloader-leak-prevention-servlet:2.1.0" />
+          <element id="library" level="project" name="Maven: se.jiderhamn.classloader-leak-prevention:classloader-leak-prevention-core:2.1.0" />
           <element id="archive" name="ymm-commons-1.0-SNAPSHOT.jar">
             <element id="module-output" name="ymm-commons" />
           </element>

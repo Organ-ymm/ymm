@@ -85,7 +85,7 @@
                         </a>
                     </li>
                     <li>
-                        <a _href="./pages/users/del">
+                        <a _href="./pages/users/delPage">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员删除</cite>
 

@@ -1,7 +1,5 @@
 package com.ymm.pojo.po;
 
-import java.util.Date;
-
 public class Users {
     private int user_id;
     private String email;
@@ -9,12 +7,12 @@ public class Users {
     private String password;
     private String alias;
     private Integer sex;
-    private Date birthday;
+    private String birthday;
     private Integer pay_points;
     private Integer rank_points;
     private Integer rank_id;
     private Integer address_id;
-    private Date reg_time;
+    private String reg_time;
     private String mobile_phone;
     private Integer status;
 
@@ -75,11 +73,11 @@ public class Users {
         this.sex = sex;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -115,11 +113,11 @@ public class Users {
         this.address_id = address_id;
     }
 
-    public Date getReg_time() {
+    public String getReg_time() {
         return reg_time;
     }
 
-    public void setReg_time(Date reg_time) {
+    public void setReg_time(String reg_time) {
         this.reg_time = reg_time;
     }
 

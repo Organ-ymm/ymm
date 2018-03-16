@@ -33,7 +33,14 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
+        <dependency>
+            <groupId>se.jiderhamn.classloader-leak-prevention</groupId>
+            <artifactId>classloader-leak-prevention-servlet</artifactId>
+            <version>2.1.0</version>
+        </dependency>
     </dependencies>
+
+
 
     <build>
         <finalName>manager-web</finalName>
@@ -45,7 +52,7 @@
                     <port>8080</port>
                     <path>/ymm/manager</path>
                     <uriEncoding>UTF-8</uriEncoding>
-                    <url>http://101.132.155.91:8080/manager/text</url>
+                    <url>http://47.100.2.34:8080/manager/text</url>
                     <username>root</username>
                     <password>root123</password>
                     <update>true</update>

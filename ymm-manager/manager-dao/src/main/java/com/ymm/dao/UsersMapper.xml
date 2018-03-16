@@ -3,12 +3,12 @@
 <mapper namespace="com.ymm.dao.UsersMapper" >
 
     <sql id="base_column">
-        user_id,email,username,password,alias,sex,birthday,pay_points,
-        rank_points,rank_id,address_id,reg_time,mobile_phone,status
+        user_id,email,username,password,alias,sex,birthday,
+        rank_points,rank_id,reg_time,mobile_phone,status
     </sql>
     <sql id="where_clause">
         <where>
-            status!=0
+            status!=#{usersQuery.status}
             <if test="usersQuery != null and usersQuery.userText != null and usersQuery.userText != ''">
             and username like '%${usersQuery.userText}%'
             </if>
@@ -38,7 +38,46 @@
         <include refid="where_clause"/>
     </select>
 
+    <insert id="addUser" parameterType="com.ymm.pojo.po.Users">
+        insert into users(username,password,rank_points,rank_id,reg_time,status
+            <if test="email != null and email != ''">
+                ,email
+            </if>
+            <if test="alias != null and alias != ''">
+                ,alias
+            </if>
+            <if test="sex != null and sex != ''">
+                ,sex
+            </if>
+            <if test="birthday != null and birthday != ''">
+                ,birthday
+            </if>
+            <if test="mobile_phone != null and mobile_phone != ''">
+                ,mobile_phone
+            </if>
+        )
+        values(#{username},#{password},#{rank_points},#{rank_id},#{reg_time},#{status}
+            <if test="email != null and email != ''">
+                ,#{email}
+            </if>
+            <if test="alias != null and alias != ''">
+                ,#{alias}
+            </if>
+            <if test="sex != null and sex != ''">
+                ,#{sex}
+            </if>
+            <if test="birthday != null and birthday != ''">
+                ,#{birthday}
+            </if>
+            <if test="mobile_phone != null and mobile_phone != ''">
+                ,#{mobile_phone}
+            </if>
+        )
+    </insert>
+
     <update id="batchUpdateDel" parameterType="com.ymm.pojo.po.Users">
         update users set status=#{status} where user_id=#{user_id}
     </update>
+
+
 </mapper>
