@@ -137,13 +137,14 @@
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
             if (layEvent === 'edit') {
-
+                var id = data.cat_id;
 //               layer.msg(data.cat_id);
                 var title = "修改分类";
-                var url = "${pageContext.request.contextPath}/category/category_edit?id=" + data.cat_id;
+                var url = "${pageContext.request.contextPath}/pages/category/category_edit";
                 var w = ($(window).width() * 0.9);
 
                 var h = ($(window).height() - 50);
+
 
                 layer.open({
                     type: 2,
@@ -153,7 +154,20 @@
                     shadeClose: true,
                     shade: 0.4,
                     title: title,
-                    content: url
+                    content: url,
+                    success: function (layero, index) {
+                        //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
+                        var body = layer.getChildFrame('body', index);
+                        //巧妙的地方在这里哦
+                        body.contents().find("#cat_id").val(data.cat_id);
+                        body.contents().find("#cat_name").val(data.cat_name);
+
+                        body.contents().find("#cat_desc").val(data.cat_desc);
+                        body.contents().find("#status").val(data.status);
+                    },
+                    error: function (layero, index) {
+                        alert("aaa");
+                    }
                 });
             }
         });

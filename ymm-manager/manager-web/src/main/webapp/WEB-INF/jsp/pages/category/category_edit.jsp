@@ -35,7 +35,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="cat_id" name="cat_id" required="" lay-verify="required"
-                       autocomplete="off" value="${category.cat_id}" readonly class="layui-input">
+                       autocomplete="off"  readonly class="layui-input">
             </div>
 
         </div>
@@ -45,7 +45,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="cat_name" name="cat_name" required="" lay-verify="required"
-                       autocomplete="off" value="${category.cat_name}" class="layui-input">
+                       autocomplete="off"  class="layui-input">
             </div>
 
         </div>
@@ -54,13 +54,14 @@
                 分类描述
             </label>
             <div class="layui-input-inline">
-                <textarea  id="cat_desc" name="cat_desc" autocomplete="off" class="layui-textarea">${category.cat_desc}</textarea>
+                <textarea  id="cat_desc" name="cat_desc" autocomplete="off" class="layui-textarea"></textarea>
             </div>
 
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">是否上架</label>
             <div class="layui-input-block">
+                <%--<input type="checkbox" id="status" name="status" lay-skin="switch" lay-text="是|否" {{ 1==d.status?'checked':''}}/>--%>
                 <input type="radio" name="status" value="1" title="是" checked>
                 <input type="radio" name="status" value="2" title="否" >
             </div>
@@ -77,10 +78,11 @@
     layui.extend({
         admin: '{/}../../static/js/admin'
     });
-    layui.use(['form','layer','admin'], function(){
+    layui.use(['form','layer','jquery','admin'], function(){
         var form = layui.form,
             admin = layui.admin,
-            layer = layui.layer;
+            layer = layui.layer,
+            $ = layui.jquery;
 
 
 
@@ -90,18 +92,24 @@
                 data : $("#editToForm").serialize(),
                 dataType : "text",
                 type : "post",
-                url : "${pageContext.request.contextPath}/category/category_editTo",
+                url : "${pageContext.request.contextPath}/category/category_edit",
                 success : function(res) {
-                    if(res>0){
-                        layer.alert("修改成功", {icon: 6},function () {
-                            // 获得frame索引
-                            var index = parent.layer.getFrameIndex(window.name);
-                            //关闭当前frame
-                            parent.layer.close(index);
-                        });
-                    }else{
-                        layer.alert("修改失败", {icon: 5});
+                if (res>0) {
+                    layer.alert("修改成功", {icon: 6}, function () {
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前frame
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("修改失败", {icon: 5}, function () {
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前frame
+                        parent.layer.close(index);
+                    });
                     }
+
                 }
             });
             return false;

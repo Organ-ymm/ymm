@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/weadmin.css">
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath}/static/js/goodslist.js" charset="utf-8"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -41,7 +42,7 @@
     <div class="weadmin-block">
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
         <button class="layui-btn" onclick="WeAdminShow('添加商品','./goods_add')"><i class="layui-icon"></i>添加</button>
-        <span class="fr" style="line-height:40px">共有数据：88 条</span>
+        <span class="fr" style="line-height:40px" id="countData"></span>
     </div>
     <table class="layui-hide" id="goodsList"></table>
     <div class="page">
@@ -60,71 +61,10 @@
     <a title="编辑" onclick="WeAdminShow('编辑','./goods_edit')" href="javascript:;">
         <i class="layui-icon">&#xe642;</i>
     </a>
-    <a title="删除" id="cat_del" onclick="cat_del('要删除的id')" href="javascript:;">
+    <a title="删除" id="goods_del" onclick="goods_del('要删除的id')" href="javascript:;">
         <i class="layui-icon">&#xe640;</i>
     </a>
 </script>
-<script type="text/javascript">
-    layui.extend({
-        admin: '{/}../../static/js/admin'
-    });
-    layui.use(['table', 'jquery', 'admin'], function () {
-        var table = layui.table,
-            $ = layui.jquery,
-            admin = layui.admin;
 
-        table.render({
-            elem: '#goodsList', //指定元素
-            cellMinWidth: 80,
-            cols: [
-                [{
-                    type: 'checkbox'
-                }, {
-                    field: 'cat_id',title:'分类编号',sort:true
-                },{
-                    field: 'cat_name',title:'分类名称'
-                },{
-                    field: 'cat_desc',title:'描述'
-                },{
-                    field: 'measure_unit',title:'单位'
-                },{
-                    field: 'operate', title: '操作', toolbar: '#operateTpl', unresize: true
-                }]
-            ],
-            //通过URL进行数据绑定
-            url:'${pageContext.request.contextPath}/product/goodslist'
-        });
-
-        /*分类-删除*/
-        window.cat_del = function (id) {
-            layer.confirm('确认要删除吗？', function (index) {
-                //提交ajax
-                $.ajax({
-                    data: id,
-                    dataType: "text",
-                    type: "GET",
-                    url: "${pageContext.request.contextPath}/product/category_del",
-                    success: function (res) {
-                        if (res == "true") {
-                            layer.msg('已删除!', {
-                                icon: 1,
-                                time: 1000
-                            });
-                        } else {
-                            layer.msg('删除失败!', {
-                                icon: 2,
-                                time: 1000
-                            });
-                        }
-                    }
-                });
-
-            });
-        }
-
-
-    });
-
-</script>
 </body>
 </html>

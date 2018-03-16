@@ -7,22 +7,22 @@ import com.ymm.pojo.po.Goods;
 import java.io.Serializable;
 
 public class GoodsCustom extends Goods implements Serializable {
-    private Category category;
-    private Brand brand;
+   private String cat_name;
+   private String brand_name;
 
-    public Category getCategory() {
-        return category;
+    public String getCat_name() {
+        return cat_name;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCat_name(String cat_name) {
+        this.cat_name = cat_name;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public String getBrand_name() {
+        return brand_name;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setBrand_name(String brand_name) {
+        this.brand_name = brand_name;
     }
 }

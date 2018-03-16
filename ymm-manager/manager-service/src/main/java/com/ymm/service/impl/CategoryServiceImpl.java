@@ -10,42 +10,42 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class ProductServiceImpl implements CategoryService {
+public class CategoryServiceImpl implements CategoryService {
     @Autowired
-    private CategoryMapper productDao;
+    private CategoryMapper categoryDao;
 
     @Override
     public List<Category> listCategory(Page page) {
-        return productDao.selectAllCategory(page);
+        return categoryDao.selectAllCategory(page);
     }
 
     @Override
     public List<Goods> listGoods(Page page) {
-        return productDao.selectAllGoods(page);
+        return categoryDao.selectAllGoods(page);
     }
 
     @Override
     public int cateDelById(Integer id) {
-        return productDao.updateCateStatusById(id);
+        return categoryDao.updateCateStatusById(id);
     }
 
     @Override
     public int countCate() {
-        return productDao.countCate();
+        return categoryDao.countCate();
     }
 
     @Override
     public int cateAdd(Category category) {
-        return productDao.insertCate(category);
+        return categoryDao.insertCate(category);
     }
 
     @Override
     public Category getCateById(int id) {
-        return productDao.selectCateById(id);
+        return categoryDao.selectCateById(id);
     }
 
     @Override
     public int updateCate(Category category) {
-        return productDao.updateCate(category);
+       return  categoryDao.updateCate(category);
     }
 }

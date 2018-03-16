@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymm.dao.GoodsMapper" >
+
+  <!--goods sql块-->
+  <sql id="Goods_Column_List">
+        g.goods_id,g.cat_id,g.goods_sn,g.goods_name,g.click_count,g.brand_id,g.goods_number,g.market_price
+        ,g.shop_price,g.promote_price,g.keywords,g.goods_brief,g.goods_desc,g.goods_img,g.goods_thumb
+        ,g.add_time,g.is_new,g.is_hot,g.give_integral,g.status
+        ,c.cat_name
+        ,b.brand_name
+    </sql>
+
+  <!--查询所有goods-->
+  <select id="selectGoodsByPage" parameterType="com.ymm.pojo.dto.Page" resultType="com.ymm.pojo.vo.GoodsCustom">
+    SELECT
+   <include refid="Goods_Column_List"/>
+    FROM goods g
+    LEFT JOIN category c ON g.cat_id = c.cat_id
+    LEFT JOIN brand b on g.brand_id = b.brand_id
+    limit #{offset},#{limit}
+  </select>
+
+
+
+
+  <resultMap id="resultGoods" type="com.ymm.pojo.vo.GoodsCustom">
+    <id column="goods_id" property="goods_id"/>
+    <association property="category" column="cat_id" javaType="com.ymm.pojo.po.Category" resultMap="categoryResult"/>
+    <association property="brand" column="brand_id" javaType="com.ymm.pojo.po.Brand" resultMap="brandResult"/>
+  </resultMap>
+  <resultMap id="categoryResult" type="com.ymm.pojo.po.Category">
+    <id column="cat_id" property="cat_id"/>
+    <result column="cat_name" property="cat_name"/>
+    <result column="cat_desc" property="cat_desc"/>
+    <result column="measure_unit" property="measure_unit"/>
+  </resultMap>
+  <resultMap id="brandResult" type="com.ymm.pojo.po.Brand">
+    <id column="brand_id" property="brand_id"/>
+    <result column="brand_name" property="brand_name"/>
+    <result column="cat_id" property="cat_id"/>
+  </resultMap>
+  <select id="countItems" resultType="_long">
+    select count(1)
+    from goods g
+    WHERE g.status !=3
+  </select>
+</mapper>

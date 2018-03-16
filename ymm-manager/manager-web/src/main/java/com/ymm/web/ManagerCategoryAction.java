@@ -64,24 +64,9 @@ public class ManagerCategoryAction {
      * @return
      */
     @RequestMapping("/category_edit")
-    public String category_edit(int id, Model model) {
-        Category category = null;
-        try {
-            category = categoryService.getCateById(id);
-            model.addAttribute("category", category);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "forward:/pages/product/category_edit";
-    }
-
-    /**
-     * 分类数据update
-     */
-    @RequestMapping("/category_editTo")
     @ResponseBody
-    public int category_editTo(Category category) {
-        int i = 0;
+    public int category_edit(Category category, Model model) {
+        int i =0;
         try {
             i = categoryService.updateCate(category);
         } catch (Exception e) {
@@ -89,6 +74,7 @@ public class ManagerCategoryAction {
         }
         return i;
     }
+
 
     /**
      * 根据id删除分类
@@ -107,8 +93,6 @@ public class ManagerCategoryAction {
         }
         return i;
     }
-
-
 
 
 }

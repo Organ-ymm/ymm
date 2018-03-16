@@ -19,7 +19,7 @@ public class Goods implements Serializable{
     private String goods_desc;
     private String goods_img;
     private String goods_thumb;
-    private Date add_time;
+    private String add_time;
     private int is_new;
     private int is_hot;
     private int give_integral;
@@ -153,11 +153,11 @@ public class Goods implements Serializable{
         this.goods_thumb = goods_thumb;
     }
 
-    public Date getAdd_time() {
+    public String getAdd_time() {
         return add_time;
     }
 
-    public void setAdd_time(Date add_time) {
+    public void setAdd_time(String add_time) {
         this.add_time = add_time;
     }
 
