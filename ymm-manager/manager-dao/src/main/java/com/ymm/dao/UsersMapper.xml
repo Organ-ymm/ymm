@@ -2,4 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ymm.dao.UsersMapper" >
 
+    <sql id="base_column">
+        user_id,email,username,password,alias,sex,birthday,pay_points,
+        rank_points,rank_id,address_id,reg_time,mobile_phone,status
+    </sql>
+    <sql id="where_clause">
+        <where>
+            status!=0
+            <if test="usersQuery != null and usersQuery.userText != null and usersQuery.userText != ''">
+            and username like '%${usersQuery.userText}%'
+            </if>
+        </where>
+    </sql>
+    <!--<select id="listUsersByPage" parameterType="com.ymm.pojo.dto.Page" resultType="com.ymm.pojo.po.Users">
+
+        select
+        <include refid="base_column"/>
+        from users where status!=0
+        order by user_id asc
+        limit #{offset},#{limit}
+    </select>-->
+    <select id="listUsersByPage" resultType="com.ymm.pojo.po.Users">
+
+        select
+        <include refid="base_column"/>
+        from users
+        <include refid="where_clause"/>
+        order by user_id asc
+        limit #{page.offset},#{page.limit}
+    </select>
+
+    <select id="countUsers" resultType="int">
+        select count(1)
+        from users
+        <include refid="where_clause"/>
+    </select>
+
+    <update id="batchUpdateDel" parameterType="com.ymm.pojo.po.Users">
+        update users set status=#{status} where user_id=#{user_id}
+    </update>
 </mapper>

@@ -47,7 +47,7 @@
                 <input class="layui-input" placeholder="截止日" name="end" id="end">
             </div>
             <div class="layui-inline">
-                <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                <input type="text" name="username" placeholder="请输入关键字" autocomplete="off" class="layui-input">
             </div>
             <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>

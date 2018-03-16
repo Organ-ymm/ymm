@@ -1,26 +1,31 @@
 package com.ymm.pojo.po;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Users implements Serializable{
+public class Users {
     private int user_id;
     private String email;
     private String username;
     private String password;
-    private String question;
-    private String answer;
+    private String alias;
     private Integer sex;
     private Date birthday;
     private Integer pay_points;
     private Integer rank_points;
+    private Integer rank_id;
     private Integer address_id;
     private Date reg_time;
-    private Date last_login;
-    private String alias;
-    private String qq;
     private String mobile_phone;
-    private Integer rank_id;
+    private Integer status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
 
     public int getUser_id() {
         return user_id;
@@ -54,20 +59,12 @@ public class Users implements Serializable{
         this.password = password;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getAlias() {
+        return alias;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 
     public Integer getSex() {
@@ -102,6 +99,14 @@ public class Users implements Serializable{
         this.rank_points = rank_points;
     }
 
+    public Integer getRank_id() {
+        return rank_id;
+    }
+
+    public void setRank_id(Integer rank_id) {
+        this.rank_id = rank_id;
+    }
+
     public Integer getAddress_id() {
         return address_id;
     }
@@ -118,43 +123,11 @@ public class Users implements Serializable{
         this.reg_time = reg_time;
     }
 
-    public Date getLast_login() {
-        return last_login;
-    }
-
-    public void setLast_login(Date last_login) {
-        this.last_login = last_login;
-    }
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
-    }
-
     public String getMobile_phone() {
         return mobile_phone;
     }
 
     public void setMobile_phone(String mobile_phone) {
         this.mobile_phone = mobile_phone;
-    }
-
-    public Integer getRank_id() {
-        return rank_id;
-    }
-
-    public void setRank_id(Integer rank_id) {
-        this.rank_id = rank_id;
     }
 }
