@@ -20,7 +20,7 @@ public class ManagerProductAction {
     private ProductService productService;
 
     /**
-     * 商品类别查询
+     * 商品类别查询 s
      *
      * @param page
      * @return
