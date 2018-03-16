@@ -9,7 +9,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         admin = layui.admin;
 
     table.render({
-        //容器元素
+        //容器元素 t
         elem: '#usersList',
         //最小宽度
         cellMinWidth: 80,
