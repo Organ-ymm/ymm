@@ -28,30 +28,27 @@
         <hr class="hr15">
         <input class="loginin" value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
         <hr class="hr20" >
-        <div>
-            前端静态展示，请随意输入，即可登录。
-        </div>
     </form>
 </div>
 
 <script type="text/javascript">
-
-    layui.extend({
-        admin: '{/}./static/js/admin'
-    });
-    layui.use(['form','admin'], function(){
-        var form = layui.form
-            ,admin = layui.admin;
-        // layer.msg('玩命卖萌中', function(){
-        //   //关闭后的操作
-        //   });
+    layui.use(['form','jquery'], function(){
+        var form = layui.form,
+            $ = layui.jquery;
         //监听提交
         form.on('submit(login)', function(data){
-            // alert(888)
-            layer.msg(JSON.stringify(data.field),function(){
-                location.href='./index'
-            });
-            return false;
+            $.post(
+                 "${pageContext.request.contextPath}/login",
+                data.field,
+                function(rec){
+                    if(rec=="0"){
+
+                        layer.msg("用户名或密码错误");
+                    }else{
+                        sessionStorage.setItem("login",1);
+                        location.href = "${pageContext.request.contextPath}/index"}
+                }
+            );
         });
     });
 </script>

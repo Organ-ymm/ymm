@@ -44,7 +44,7 @@
     </ul>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
-            <a href="javascript:;">Admin</a>
+            <a href="javascript:;">${admin.username}</a>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
@@ -170,7 +170,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="./pages/admin/list">
+                        <a _href="${pageContext.request.contextPath}/pages/admin/list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>管理员列表</cite>
                         </a>
@@ -300,17 +300,16 @@
     layui.use(['jquery','admin'], function(){
         var $ = layui.jquery;
         $(function(){
-            var login = JSON.parse(localStorage.getItem("login"));
-            if(login){
-                if(login=0){
-                    window.location.href='./login';
+            var login = sessionStorage.getItem("login");
+            if(login!=null){
+                if(login==1){
                     return false;
                 }else{
-                    return false;
+                    location.href='./tologin';
                 }
             }else{
-                window.location.href='./login';
-                return false;
+                location.href='./tologin';
+
             }
         });
     });
