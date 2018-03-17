@@ -171,6 +171,46 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         });
     }
 
+    table.on('tool(usersList)', function (obj) {
+        var data = obj.data //获得当前行数据
+            , layEven = obj.even; //获得 lay-even 对应的值
+        if (layEven === 'edit') {
+            var id = data.user_id;
+//               layer.msg(data.cat_id);
+            var title = "修改用户信息";
+            var url = "${pageContext.request.contextPath}/pages/users/editUser";
+            var w = ($(window).width() * 0.9);
+
+            var h = ($(window).height() - 50);
+
+
+            layer.open({
+                type: 2,
+                area: [w + 'px', h + 'px'],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade: 0.4,
+                title: title,
+                content: url,
+                success: function (layero, index) {
+                    //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
+                    var body = layer.getChildFrame('body', index);
+                    //巧妙的地方在这里哦
+                    body.contents().find("#username").val(data.username);
+                    body.contents().find("#alias").val(data.alias);
+                    body.contents().find("#sex").val(data.sex);
+                    body.contents().find("#mobile_phone").val(data.mobile_phone);
+                    body.contents().find("#email").val(data.email);
+                    //body.contents().find("#status").val(data.status);
+                },
+                error: function (layero, index) {
+                    alert("aaa");
+                }
+            });
+        }
+    });
+
 });
 
 function delAll(argument) {

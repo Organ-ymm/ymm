@@ -57,7 +57,10 @@
 
 
     <script type="text/html" id="operateTpl">
-        <a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
+        <%--<a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
+            <i class="layui-icon">&#xe642;</i>
+        </a>--%>
+        <a title="编辑" lay-even="edit" href="javascript:;">
             <i class="layui-icon">&#xe642;</i>
         </a>
         <a title="查看" onclick="WeAdminShow('查看详情','./show',600,400)" href="javascript:;">
