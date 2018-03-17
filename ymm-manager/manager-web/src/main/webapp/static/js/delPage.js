@@ -96,7 +96,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     //debugger;
                     //发出异步的请求去后台
                     //发出异步请求
-                    $.post(
+                    /*$.post(
                         //url
                         '../../user/batchRegain',
                         //data
@@ -109,6 +109,27 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     //提示用户恢复成功
                     layer.msg('恢复成功', {
                         icon: 1
+                    });*/
+                    $.ajax({
+                        data:{"ids[]":ids},
+                        dataType:"text",
+                        type:"POST",
+                        url:"../../user/batchRegain",
+                        success:function (res) {
+                            console.log(res);
+                            if(res>0){
+                                layer.msg("恢复成功",{
+                                    icon:1,
+                                    time:1000
+                                });
+                            }else{
+                                layer.msg("恢复失败",{
+                                    icon:1,
+                                    time:1000
+                                });
+                            }
+                        }
+
                     });
                 });
             } else {
@@ -175,12 +196,12 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                 success:function(res){
                     console.log(res);
                     if(res>0){
-                        layer.msg('已恢复',{
+                        layer.msg('恢复成功',{
                             icon:1,
                             time:1000
                         });
                     }else{
-                        layer.msg('删除失败',{
+                        layer.msg('恢复失败',{
                             icon:2,
                             time:1000
                         });
