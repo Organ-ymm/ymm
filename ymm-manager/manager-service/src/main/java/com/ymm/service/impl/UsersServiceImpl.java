@@ -74,6 +74,22 @@ public class UsersServiceImpl implements UsersService {
     }
 
     /**
+     * 删除用户
+     * */
+    @Override
+    public Integer delUser(Integer id) {
+        Users user=new Users();
+        user.setUser_id(id);
+        int i=0;
+        try{
+            i=uMapper.delUser(user);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
      * 批量“删除”用户，修改用户的状态status为0
     */
     @Override

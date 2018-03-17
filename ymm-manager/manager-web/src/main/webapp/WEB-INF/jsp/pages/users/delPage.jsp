@@ -49,7 +49,7 @@
     </div>
     <div class="weadmin-block demoTable">
         <button class="layui-btn layui-btn-normal" data-type="getCheckData"><i class="layui-icon">&#xe618;</i>批量恢复</button>
-        <%--<button class="layui-btn" onclick="WeAdminShow('添加用户','./add',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>--%>
+        <span class="fr" id="countData" style="line-height:40px"></span>
     </div>
     <table class="layui-hide" id="delPage"></table>
 
@@ -62,7 +62,7 @@
         <%--<a title="查看" onclick="WeAdminShow('查看详情','./show',600,400)" href="javascript:;">
             <i class="layui-icon">&#xe63c;</i>
         </a>--%>
-        <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+        <a title="删除" id="member_del" onclick="member_del(this)" href="javascript:;">
             <i class="layui-icon">&#xe640;</i>
         </a>
     </script>

@@ -20,4 +20,6 @@ public interface UsersService {
     Integer batchRegain(List<Integer> ids);
 
     Integer singleUpdateDel(Integer id);
+
+    Integer delUser(Integer id);
 }

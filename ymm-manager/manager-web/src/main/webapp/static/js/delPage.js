@@ -45,9 +45,10 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         page: true,
         limits: [5, 10, 20, 50, 100],
         done: function (res, curr, count) {
-            // console.log(res);
-            // console.log(curr);
-            // console.log(count);
+            //console.log(res);
+            //console.log(curr);
+            //console.log(count);
+            $("#countData").text("共有数据："+count+" 条");
             $("[data-field='status']").children().each(function () {
                 //每次遍历进来得到的this就是DOM对象
                 if ($(this).text() == '1') {
@@ -91,8 +92,8 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     for (var i = 0; i < data.length; i++) {
                         ids.push(data[i].user_id);
                     }
-                    console.log(ids);
-                    debugger;
+                    //console.log(ids);
+                    //debugger;
                     //发出异步的请求去后台
                     //发出异步请求
                     $.post(
@@ -132,13 +133,32 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     });
 
     /*用户-删除*/
-    window.member_del = function (obj, id) {
-        layer.confirm('确认要删除吗？', function (index) {
+    window.member_del = function (obj) {
+        layer.confirm('确认要从数据库删除吗？', function (index) {
+            var id=$(obj).parents("tr").children("[data-field='user_id']").text();
+            //debugger;
+            //console.log(id);
             //发异步删除数据
             $(obj).parents("tr").remove();
-            layer.msg('已删除!', {
-                icon: 1,
-                time: 1000
+            //提交ajax
+            $.ajax({
+                data:{'id':id},
+                dataType:"text",
+                type:"GET",
+                url:"../../user/delUser",
+                success:function(res){
+                    if(res>0){
+                        layer.msg("已删除",{
+                            icon:1,
+                            time:1000
+                        });
+                    }else{
+                      layer.msg("删除失败",{
+                          icon:2,
+                          time:1000
+                      });
+                    }
+                }
             });
         });
     }

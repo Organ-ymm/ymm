@@ -56,7 +56,7 @@ public class UsersAction {
     }
 
     /**
-     * 会员的批量'删除'
+     * 会员列表页的会员批量'删除'
      * */
     @ResponseBody
     @RequestMapping(value="/batchUpdateDel",method=RequestMethod.POST)
@@ -71,10 +71,10 @@ public class UsersAction {
     }
 
     /**
-     * 会员的单个'删除'
+     * 会员列表页的会员单个'删除'
      * */
-    @RequestMapping(value="/singleUpdateDel",method = RequestMethod.GET)
     @ResponseBody
+    @RequestMapping(value="/singleUpdateDel",method = RequestMethod.GET)
     public int singleUpdateDel(@RequestParam("id")Integer id){
         int i=0;
         try{
@@ -87,7 +87,21 @@ public class UsersAction {
 
 
     /**
-     * 会员的批量恢复
+     * 会员删除页的会员删除
+     * */
+    @ResponseBody
+    @RequestMapping(value="/delUser",method = RequestMethod.GET)
+    public int delUser(@RequestParam("id")Integer id){
+        int i=0;
+        try{
+            i=uService.delUser(id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+    /**
+     * 会员删除页的会员批量恢复
      * */
     @ResponseBody
     @RequestMapping(value="/batchRegain",method=RequestMethod.POST)
