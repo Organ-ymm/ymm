@@ -33,6 +33,10 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
+        <dependency>
+            <groupId>se.jiderhamn.classloader-leak-prevention</groupId>
+            <artifactId>classloader-leak-prevention-servlet</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

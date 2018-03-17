@@ -169,7 +169,7 @@ layui.use(['table','form', 'jquery', 'admin'], function () {
                     layer.msg('删除成功', {
                         icon: 1
                     });
-                    location.reload();
+                    //location.reload();//删除后是否刷新当前页面
                 });
             } else {
                 layer.msg("请先选择需要删除的商品！");
