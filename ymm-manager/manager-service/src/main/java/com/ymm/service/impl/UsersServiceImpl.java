@@ -107,7 +107,7 @@ public class UsersServiceImpl implements UsersService {
                 Users user=new Users();
                 user.setStatus(0);
                 user.setUser_id(ids.get(j));
-                i=uMapper.updateState(user)+1;
+                i+=uMapper.updateState(user);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,7 +127,7 @@ public class UsersServiceImpl implements UsersService {
                 Users user=new Users();
                 user.setStatus(1);
                 user.setUser_id(ids.get(j));
-                i=uMapper.updateState(user)+1;
+                i+=uMapper.updateState(user);
             }
         } catch (Exception e) {
             e.printStackTrace();

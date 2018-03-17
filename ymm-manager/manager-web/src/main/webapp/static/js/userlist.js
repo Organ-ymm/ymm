@@ -92,6 +92,8 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     $(".layui-table-body .layui-form-checked").parents('tr').remove();
                     //形成一个ID的数组
                     var ids = [];
+                    //console.log(ids);
+                    //console.log(data.length);
                     for (var i = 0; i < data.length; i++) {
                         ids.push(data[i].user_id);
                     }
@@ -103,18 +105,20 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                         '../../user/batchUpdateDel',
                         //data
                         {'ids[]': ids},
-                        //success
+                        //success，成功时才会触发的函数
                         function (data) {
-                            console.log(data);
-                            layer.msg('删除成功', {
-                                icon: 1
-                            });
+                            //console.log(data);
+                            if(data>0){
+                                layer.msg('删除成功', {
+                                    icon: 1
+                                });
+                            }else{
+                                layer.msg('删除失败', {
+                                    icon: 2
+                                });
+                            }
                         }
                     );
-                    //提示用户删除成功
-                    /*layer.msg('删除成功', {
-                        icon: 1
-                    });*/
                 });
             } else {
                 layer.msg("请先选择需要删除的用户！");

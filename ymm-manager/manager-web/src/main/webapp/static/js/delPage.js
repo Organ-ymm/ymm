@@ -94,8 +94,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     }
                     //console.log(ids);
                     //debugger;
-                    //发出异步的请求去后台
-                    //发出异步请求
+                    //post方式发出异步的请求去后台
                     /*$.post(
                         //url
                         '../../user/batchRegain',
@@ -110,13 +109,14 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     layer.msg('恢复成功', {
                         icon: 1
                     });*/
+                    //ajax发出异步请求
                     $.ajax({
                         data:{"ids[]":ids},
                         dataType:"text",
                         type:"POST",
                         url:"../../user/batchRegain",
                         success:function (res) {
-                            console.log(res);
+                            //console.log(res);
                             if(res>0){
                                 layer.msg("恢复成功",{
                                     icon:1,
@@ -124,7 +124,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                                 });
                             }else{
                                 layer.msg("恢复失败",{
-                                    icon:1,
+                                    icon:2,
                                     time:1000
                                 });
                             }
