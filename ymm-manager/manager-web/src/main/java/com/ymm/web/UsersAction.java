@@ -19,23 +19,6 @@ public class UsersAction {
     @Autowired
     private UsersService uService;
 
-    /*@ResponseBody
-    @RequestMapping(value="/listusers",method= RequestMethod.GET)
-    public MessageResult ListUsersToJson(Page page){
-        MessageResult<Users> messageResult=new MessageResult<>();
-        try {
-            List<Users> usersList=uService.listUsersByPage(page);
-
-            //int count=uService.countUsers();
-            messageResult.setCode(0);
-            messageResult.setCount(usersList.size());
-            messageResult.setMsg("success");
-            messageResult.setData(usersList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return messageResult;
-    }*/
     @ResponseBody
     @RequestMapping(value="/listusers",method= RequestMethod.GET)
     public MessageResult ListUsersToJson(@Param("page")Page page, @Param("usersQuery")UsersQuery usersQuery){

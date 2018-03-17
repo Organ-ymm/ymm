@@ -19,5 +19,4 @@ public interface UsersMapper {
 
     Integer delUser(Users user);
 
-    //Integer singleUpdate(Users user);
 }

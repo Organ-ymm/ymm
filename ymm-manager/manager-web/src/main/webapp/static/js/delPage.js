@@ -106,7 +106,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                             console.log(data);
                         }
                     );
-                    //提示用户删除成功
+                    //提示用户恢复成功
                     layer.msg('恢复成功', {
                         icon: 1
                     });

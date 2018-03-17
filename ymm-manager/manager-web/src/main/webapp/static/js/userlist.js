@@ -95,8 +95,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     for (var i = 0; i < data.length; i++) {
                         ids.push(data[i].user_id);
                     }
-                    console.log(ids);
-                    debugger;
+                    //console.log(ids);
                     //发出异步的请求去后台
                     //发出异步请求
                     $.post(
@@ -107,12 +106,15 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                         //success
                         function (data) {
                             console.log(data);
+                            layer.msg('删除成功', {
+                                icon: 1
+                            });
                         }
                     );
                     //提示用户删除成功
-                    layer.msg('删除成功', {
+                    /*layer.msg('删除成功', {
                         icon: 1
-                    });
+                    });*/
                 });
             } else {
                 layer.msg("请先选择需要删除的用户！");
@@ -139,7 +141,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     window.user_del = function (obj) {
         layer.confirm('确认要删除吗？', function (index) {
             var id=$(obj).parents("tr").children("[data-field='user_id']").text();
-            console.log(id);
+            //console.log(id);
             //发异步删除数据
             $(obj).parents("tr").remove();
             //提交ajax

@@ -14,14 +14,7 @@
             </if>
         </where>
     </sql>
-    <!--<select id="listUsersByPage" parameterType="com.ymm.pojo.dto.Page" resultType="com.ymm.pojo.po.Users">
 
-        select
-        <include refid="base_column"/>
-        from users where status!=0
-        order by user_id asc
-        limit #{offset},#{limit}
-    </select>-->
     <select id="listUsersByPage" resultType="com.ymm.pojo.po.Users">
 
         select

@@ -59,9 +59,6 @@
         <a title="恢复" onclick="WeAdminEdit('恢复','./edit', 2, 600, 400)" href="javascript:;">
             <i class="layui-icon">&#xe618;</i>
         </a>
-        <%--<a title="查看" onclick="WeAdminShow('查看详情','./show',600,400)" href="javascript:;">
-            <i class="layui-icon">&#xe63c;</i>
-        </a>--%>
         <a title="删除" id="member_del" onclick="member_del(this)" href="javascript:;">
             <i class="layui-icon">&#xe640;</i>
         </a>
