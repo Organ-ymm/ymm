@@ -1,7 +1,10 @@
 package com.ymm.web;
 
+import com.ymm.pojo.dto.MessageResult;
+import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.po.Admin;
 import com.ymm.service.AdminService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +30,7 @@ public class AdminAction {
     @RequestMapping(value = "/login")
     public String  login(HttpSession session, Admin admin) {
         Admin admin1 = adminService.selectAdminByUsername(admin);
-        if(admin1 !=null ){
+        if(admin1 !=null){
             //允许登录
             session.setAttribute("admin", admin1);
             return "1";
@@ -40,10 +43,16 @@ public class AdminAction {
      * 管理员管理列表
      */
     @ResponseBody
-    @RequestMapping(value="/admin/list",method= RequestMethod.GET)
-    public List<Admin> adminList(@PathVariable String page){
-        List<Admin> admins = adminService.selectAllAdmin();
-        return admins;
+    @RequestMapping(value="/adminList",method= RequestMethod.GET)
+    public MessageResult<Admin> adminList(Page page,@Param("adminUserName") String adminQueryName ){
+        MessageResult<Admin> messageResult = new MessageResult<>();
+        int countAdmin = adminService.countAdmin(adminQueryName);
+        List<Admin> admins = adminService.selectAllAdmin(page,adminQueryName);
+        messageResult.setCode(0);
+        messageResult.setCount(countAdmin);
+        messageResult.setMsg("管理员列表");
+        messageResult.setData(admins);
+        return messageResult;
     }
 }
 
