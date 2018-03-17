@@ -138,7 +138,8 @@
             var username = data.field.username;
             //console.log(username);
             //console.log(f.sex);
-            //var sex = $('input:radio[name="sex"]:checked').val();
+            var sex = $('input:radio[name="sex"]:checked').val();
+            console.log(sex);
 
             //提交数据
             $.ajax({
