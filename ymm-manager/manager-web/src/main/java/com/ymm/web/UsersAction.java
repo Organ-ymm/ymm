@@ -53,6 +53,9 @@ public class UsersAction {
         return messageResult;
     }
 
+    /**
+     * 会员的批量'删除'
+     * */
     @ResponseBody
     @RequestMapping(value="/user/batchUpdateDel",method=RequestMethod.POST)
     public int batchUpdateDel(@RequestParam("ids[]") List<Integer> ids){
@@ -65,6 +68,24 @@ public class UsersAction {
         return i;
     }
 
+    /**
+     * 会员的批量恢复
+     * */
+    @ResponseBody
+    @RequestMapping(value="/user/batchRegain",method=RequestMethod.POST)
+    public int batchRegain(@RequestParam("ids[]") List<Integer> ids){
+        int i=0;
+        try{
+            i = uService.batchRegain(ids);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 添加会员
+     * */
     @ResponseBody
     @RequestMapping(value="/addUser", method = RequestMethod.POST)
     public int addUser(Users user){
@@ -77,6 +98,9 @@ public class UsersAction {
         return i;
     }
 
+    /**
+     * 展示会员删除页
+     * */
     @ResponseBody
     @RequestMapping(value="/showDelPage",method= RequestMethod.GET)
     public MessageResult showDelPage(@Param("page")Page page, @Param("usersQuery")UsersQuery usersQuery){

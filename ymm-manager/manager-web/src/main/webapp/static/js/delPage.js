@@ -40,9 +40,6 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             }]
         ],
         //通过URL进行数据绑定
-        //注意：不能写成users，否则会访问：http://localhost:8080/ymm/pages/users/users
-        //因为http://localhost:8080/ymm/pages/users是userlist.jsp，而该js页面嵌在这个jsp中。所以只会在之后加上/users
-        // 也不能写成${pageContext.request.contextPath}/users，否则会访问http://localhost:8080/users。因为这是客户端地址
         url:'../../showDelPage',
         //是否开启分页
         page: true,
@@ -59,7 +56,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     $(this).html('<span class="layui-btn layui-btn-normal layui-btn-xs">正常</span>');
                 } else if ($(this).text() == '0') {
                     //删除
-                    $(this).html('<span class="layui-btn layui-btn-normal layui-btn-xs">已删除</span>');
+                    $(this).html('<span class="layui-btn layui-btn-danger layui-btn-xs">已删除</span>');
                 }
             });
             $("[data-field='sex']").children().each(function () {
@@ -77,17 +74,17 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     var active = {
         reload:function(){
             var userText=$.trim($('#userText').val());
-            table.reload('usersList',{
+            table.reload('delPage',{
                 page:{curr:1},
                 where:{title:userText}
             });
         },
         getCheckData: function () { //获取选中数据
-            var checkStatus = table.checkStatus('usersList'),
+            var checkStatus = table.checkStatus('delPage'),
                 data = checkStatus.data;
             if (data.length > 0) {
-                layer.confirm('确认要删除吗？', function (index) {
-                    //在前台页面把选中数据删除：找到所有被选中的
+                layer.confirm('确认要恢复吗？', function (index) {
+                    //在前台页面把选中数据恢复：找到所有被选中的
                     $(".layui-table-body .layui-form-checked").parents('tr').remove();
                     //形成一个ID的数组
                     var ids = [];
@@ -100,7 +97,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     //发出异步请求
                     $.post(
                         //url
-                        '../../user/batchUpdateDel',
+                        '../../user/batchRegain',
                         //data
                         {'ids[]': ids},
                         //success
@@ -109,12 +106,12 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                         }
                     );
                     //提示用户删除成功
-                    layer.msg('删除成功', {
+                    layer.msg('恢复成功', {
                         icon: 1
                     });
                 });
             } else {
-                layer.msg("请先选择需要删除的用户！");
+                layer.msg("请先选择需要恢复的用户！");
             }
 
         }

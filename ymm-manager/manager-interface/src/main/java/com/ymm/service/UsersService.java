@@ -16,4 +16,6 @@ public interface UsersService {
     Integer countUsers(UsersQuery usersQuery);
 
     Integer addUser(Users user);
+
+    Integer batchRegain(List<Integer> ids);
 }

@@ -48,7 +48,7 @@
         </form>
     </div>
     <div class="weadmin-block demoTable">
-        <button class="layui-btn layui-btn-danger" data-type="getCheckData"><i class="layui-icon">&#xe618;</i>批量恢复</button>
+        <button class="layui-btn layui-btn-normal" data-type="getCheckData"><i class="layui-icon">&#xe618;</i>批量恢复</button>
         <%--<button class="layui-btn" onclick="WeAdminShow('添加用户','./add',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>--%>
     </div>
     <table class="layui-hide" id="delPage"></table>

@@ -8,7 +8,7 @@
     </sql>
     <sql id="where_clause">
         <where>
-            status!=#{usersQuery.status}
+            status=#{usersQuery.status}
             <if test="usersQuery != null and usersQuery.userText != null and usersQuery.userText != ''">
             and username like '%${usersQuery.userText}%'
             </if>
@@ -75,7 +75,7 @@
         )
     </insert>
 
-    <update id="batchUpdateDel" parameterType="com.ymm.pojo.po.Users">
+    <update id="batchUpdate" parameterType="com.ymm.pojo.po.Users">
         update users set status=#{status} where user_id=#{user_id}
     </update>
 

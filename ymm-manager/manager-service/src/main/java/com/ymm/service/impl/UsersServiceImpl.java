@@ -39,7 +39,6 @@ public class UsersServiceImpl implements UsersService {
     public List<Users> listUsersByPage(Page page, UsersQuery usersQuery) {
         Map<String ,Object> map=new HashMap<>();
         map.put("page",page);
-        usersQuery.setStatus(1);
         map.put("usersQuery",usersQuery);
         List<Users> usersList=uMapper.listUsersByPage(map);
         return usersList;
@@ -79,7 +78,27 @@ public class UsersServiceImpl implements UsersService {
                 Users user=new Users();
                 user.setStatus(0);
                 user.setUser_id(ids.get(j));
-                i=uMapper.batchUpdateDel(user)+1;
+                i=uMapper.batchUpdate(user)+1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+
+    /**
+     * 批量恢复用户，修改用户的状态status为1
+     */
+    @Override
+    public Integer batchRegain(List<Integer> ids) {
+        int i=0;
+        try {
+            for(int j=0;j<ids.size();j++){
+                Users user=new Users();
+                user.setStatus(1);
+                user.setUser_id(ids.get(j));
+                i=uMapper.batchUpdate(user)+1;
             }
         } catch (Exception e) {
             e.printStackTrace();
