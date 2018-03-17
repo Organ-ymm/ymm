@@ -22,4 +22,6 @@ public interface UsersService {
     Integer singleUpdateDel(Integer id);
 
     Integer delUser(Integer id);
+
+    Integer singleRegain(Integer id);
 }

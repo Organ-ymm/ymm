@@ -24,6 +24,9 @@ public class UsersServiceImpl implements UsersService {
     @Autowired
     private UsersMapper uMapper;
 
+    /**
+     * 显示所有符合分页和查询条件的用户
+     * */
     @Override
     public List<Users> listUsersByPage(Page page, UsersQuery usersQuery) {
         Map<String ,Object> map=new HashMap<>();
@@ -33,6 +36,9 @@ public class UsersServiceImpl implements UsersService {
         return usersList;
     }
 
+    /**
+     * 计算用户的数量
+     * */
     @Override
     public Integer countUsers(UsersQuery usersQuery) {
         int count=uMapper.countUsers(usersQuery);
@@ -66,8 +72,64 @@ public class UsersServiceImpl implements UsersService {
             Users user=new Users();
             user.setStatus(0);
             user.setUser_id(id);
-            i=uMapper.batchUpdate(user);
+            i=uMapper.updateState(user);
         }catch(Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 单个恢复用户，修改用户的状态status为1
+     * */
+    @Override
+    public Integer singleRegain(Integer id) {
+        int i=0;
+        try{
+            Users user=new Users();
+            user.setUser_id(id);
+            user.setStatus(1);
+            i=uMapper.updateState(user);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 批量“删除”用户，修改用户的状态status为0
+    */
+    @Override
+    public Integer batchUpdateDel(List<Integer> ids) {
+        int i=0;
+        try {
+            for(int j=0;j<ids.size();j++){
+                Users user=new Users();
+                user.setStatus(0);
+                user.setUser_id(ids.get(j));
+                i=uMapper.updateState(user)+1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+
+    /**
+     * 批量恢复用户，修改用户的状态status为1
+     */
+    @Override
+    public Integer batchRegain(List<Integer> ids) {
+        int i=0;
+        try {
+            for(int j=0;j<ids.size();j++){
+                Users user=new Users();
+                user.setStatus(1);
+                user.setUser_id(ids.get(j));
+                i=uMapper.updateState(user)+1;
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return i;
@@ -89,43 +151,5 @@ public class UsersServiceImpl implements UsersService {
         return i;
     }
 
-    /**
-     * 批量“删除”用户，修改用户的状态status为0
-    */
-    @Override
-    public Integer batchUpdateDel(List<Integer> ids) {
-        int i=0;
-        try {
-            for(int j=0;j<ids.size();j++){
-                Users user=new Users();
-                user.setStatus(0);
-                user.setUser_id(ids.get(j));
-                i=uMapper.batchUpdate(user)+1;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return i;
-    }
-
-
-    /**
-     * 批量恢复用户，修改用户的状态status为1
-     */
-    @Override
-    public Integer batchRegain(List<Integer> ids) {
-        int i=0;
-        try {
-            for(int j=0;j<ids.size();j++){
-                Users user=new Users();
-                user.setStatus(1);
-                user.setUser_id(ids.get(j));
-                i=uMapper.batchUpdate(user)+1;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return i;
-    }
 
 }

@@ -68,7 +68,7 @@
         )
     </insert>
 
-    <update id="batchUpdate" parameterType="com.ymm.pojo.po.Users">
+    <update id="updateState" parameterType="com.ymm.pojo.po.Users">
         update users set status=#{status} where user_id=#{user_id}
     </update>
 

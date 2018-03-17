@@ -56,7 +56,8 @@
 
 
     <script type="text/html" id="operateTpl">
-        <a title="恢复" onclick="WeAdminEdit('恢复','./edit', 2, 600, 400)" href="javascript:;">
+        <%--<a title="恢复" onclick="WeAdminEdit('恢复','./edit', 2, 600, 400)" href="javascript:;">--%>
+        <a title="恢复" id="member_regain" onclick="member_regain(this)" href="javascript:;">
             <i class="layui-icon">&#xe618;</i>
         </a>
         <a title="删除" id="member_del" onclick="member_del(this)" href="javascript:;">

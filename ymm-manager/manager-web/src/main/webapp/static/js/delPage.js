@@ -125,7 +125,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
 
     form.on('submit(search)',function(data){
         console.log(data);
-    })
+    });
 
     $('.we-search .layui-btn').on('click',function(){
         var type = $(this).data('type');
@@ -161,6 +161,33 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                 }
             });
         });
+    }
+
+    window.member_regain=function(obj){
+        layer.confirm("确认要恢复吗？",function(index){
+            var id=$(obj).parents("tr").children("[data-field='user_id']").text();
+            $(obj).parents("tr").remove();
+            $.ajax({
+                data:{'id': id},
+                dataType:"text",
+                type:"POST",
+                url:"../../user/singleRegain",
+                success:function(res){
+                    console.log(res);
+                    if(res>0){
+                        layer.msg('已恢复',{
+                            icon:1,
+                            time:1000
+                        });
+                    }else{
+                        layer.msg('删除失败',{
+                            icon:2,
+                            time:1000
+                        });
+                    }
+            }
+            });
+        })
     }
 
 });

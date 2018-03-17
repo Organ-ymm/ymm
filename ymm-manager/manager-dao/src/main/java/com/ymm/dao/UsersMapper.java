@@ -13,7 +13,7 @@ public interface UsersMapper {
 
     Integer countUsers(@Param("usersQuery") UsersQuery usersQuery);
 
-    Integer batchUpdate(Users user);
+    Integer updateState(Users user);
 
     Integer addUser(Users user);
 

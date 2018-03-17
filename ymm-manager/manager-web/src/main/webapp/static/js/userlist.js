@@ -130,7 +130,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
 
     form.on('submit(search)',function(data){
         console.log(data);
-    })
+    });
 
     $('.we-search .layui-btn').on('click',function(){
         var type = $(this).data('type');
@@ -152,12 +152,12 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                 url: "../../user/singleUpdateDel",
                 success:function(res){
                     if(res>0){
-                        layer.msg('已删除!',{
+                        layer.msg('已删除',{
                             icon:1,
                             time:1000
                         });
                     }else{
-                        layer.msg('删除失败!',{
+                        layer.msg('删除失败',{
                             icon:2,
                             time:1000
                         });

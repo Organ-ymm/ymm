@@ -83,6 +83,22 @@ public class UsersAction {
         }
         return i;
     }
+
+    /**
+     * 会员删除页的会员单个恢复
+     * */
+    @ResponseBody
+    @RequestMapping(value="/singleRegain",method=RequestMethod.POST)
+    public int singleRegain(@RequestParam("id")Integer id){
+        int i=0;
+        try{
+            i=uService.singleRegain(id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+
     /**
      * 会员删除页的会员批量恢复
      * */
