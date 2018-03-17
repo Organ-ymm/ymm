@@ -76,7 +76,7 @@
                 <input type="password" id="L_pass" name="password" lay-verify="required|password" autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
-                6到16个字符
+                2到12个字符
             </div>
         </div>
         <div class="layui-form-item">
