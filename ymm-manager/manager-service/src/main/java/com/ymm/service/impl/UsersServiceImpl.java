@@ -46,6 +46,17 @@ public class UsersServiceImpl implements UsersService {
     }
 
     /**
+     * 添加用户时，用户名的验证
+     * */
+    @Override
+    public Users verifyUsername(String username) {
+        Users users=new Users();
+        users.setUsername(username);
+        Users user=uMapper.verifyUsername(users);
+        return user;
+    }
+
+    /**
      * 添加用户
     */
     @Override

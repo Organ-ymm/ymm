@@ -115,6 +115,20 @@ public class UsersAction {
     }
 
     /**
+     * 添加会员时的登录名验证
+     * */
+    @ResponseBody
+    @RequestMapping(value="/verifyUsername",method = RequestMethod.POST)
+    public int verifyUsername(@Param("username") String username){
+        Users user=uService.verifyUsername(username);
+        if(user!=null){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    /**
      * 添加会员
      * */
     @ResponseBody

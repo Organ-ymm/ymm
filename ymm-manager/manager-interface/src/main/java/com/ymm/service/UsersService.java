@@ -24,4 +24,6 @@ public interface UsersService {
     Integer delUser(Integer id);
 
     Integer singleRegain(Integer id);
+
+    Users verifyUsername(String username);
 }

@@ -29,7 +29,7 @@
                 <input type="text" id="username" name="username" lay-verify="required|nikename" autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
-                请设置至少5个字符，将会成为您唯一的登录名
+                请设置至少2个字符，将会成为您唯一的登录名
             </div>
         </div>
 
@@ -111,6 +111,7 @@
                 if(value.length < 2) {
                     return '登录名至少得2个字符';
                 }
+
             },
             password: [/(.+){2,12}$/, '密码必须2到12位'],
             repass: function(value) {
@@ -119,10 +120,12 @@
                 }
             }
         });
+
         //失去焦点时判断值为空不验证，一旦填写必须验证
         $('input[name="email"]').blur(function(){
             //这里是失去焦点时的事件
             if($('input[name="email"]').val()){
+                //console.log($('input[name="email"]').val());
                 $('input[name="email"]').attr('lay-verify','email');
             }else{
                 $('input[name="email"]').removeAttr('lay-verify');
@@ -131,25 +134,42 @@
 
         //监听提交
         form.on('submit(add)', function(data) {
-            console.log(data.field);
-            var f = data.field;
-            console.log(f.username);
-            console.log(f.sex);
-            var sex = $('input:radio[name="sex"]:checked').val();
-
+            //console.log(data.field);
+            var username = data.field.username;
+            //console.log(username);
+            //console.log(f.sex);
+            //var sex = $('input:radio[name="sex"]:checked').val();
 
             //提交数据
             $.ajax({
-                data:$("#userAddForm").serialize(),
+                data:{"username":username},
                 dataType:"text",
                 type:"post",
-                url:"${pageContext.request.contextPath}/user/addUser",
+                url:"${pageContext.request.contextPath}/user/verifyUsername",
                 success:function(res){
-                    layer.alert("添加成功", {icon: 6}, function (){
-                        var index=parent.layer.getFrameIndex(window.name);
-                        parent.layer.close(index);
+                    if(res==0){
+                        layer.alert("添加成功", {icon: 6}, function (){
+                            var index=parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            $.ajax({
+                                data:$("#userAddForm").serialize(),
+                                dataType:"text",
+                                type:"post",
+                                url:"${pageContext.request.contextPath}/user/addUser",
+                                success:function (res) {
 
-                    });
+
+                                }
+                            });
+                            //return false;
+
+                        });
+                    }else{
+                        layer.msg('登录名不可用',{
+                            icon:2,
+                            time:1000
+                        });
+                    }
                 }
             });
 

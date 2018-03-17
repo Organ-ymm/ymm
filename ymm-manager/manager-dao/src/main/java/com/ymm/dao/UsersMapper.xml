@@ -31,6 +31,12 @@
         <include refid="where_clause"/>
     </select>
 
+    <select id="verifyUsername" parameterType="com.ymm.pojo.po.Users" resultType="com.ymm.pojo.po.Users">
+        select
+        <include refid="base_column"/>
+        from users where username=#{username}
+    </select>
+
     <insert id="addUser" parameterType="com.ymm.pojo.po.Users">
         insert into users(username,password,rank_points,rank_id,reg_time,status
             <if test="email != null and email != ''">
