@@ -79,5 +79,4 @@
         update users set status=#{status} where user_id=#{user_id}
     </update>
 
-
 </mapper>

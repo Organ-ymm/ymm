@@ -16,4 +16,6 @@ public interface UsersMapper {
     Integer batchUpdate(Users user);
 
     Integer addUser(Users user);
+
+    //Integer singleUpdate(Users user);
 }

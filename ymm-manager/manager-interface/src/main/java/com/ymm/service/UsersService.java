@@ -18,4 +18,6 @@ public interface UsersService {
     Integer addUser(Users user);
 
     Integer batchRegain(List<Integer> ids);
+
+    Integer singleUpdateDel(Integer id);
 }

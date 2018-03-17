@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/user")
 public class UsersAction {
+
     @Autowired
     private UsersService uService;
 
@@ -57,7 +59,7 @@ public class UsersAction {
      * 会员的批量'删除'
      * */
     @ResponseBody
-    @RequestMapping(value="/user/batchUpdateDel",method=RequestMethod.POST)
+    @RequestMapping(value="/batchUpdateDel",method=RequestMethod.POST)
     public int batchUpdateDel(@RequestParam("ids[]") List<Integer> ids){
         int i=0;
         try{
@@ -69,10 +71,26 @@ public class UsersAction {
     }
 
     /**
+     * 会员的单个'删除'
+     * */
+    @RequestMapping(value="/singleUpdateDel",method = RequestMethod.GET)
+    @ResponseBody
+    public int singleUpdateDel(@RequestParam("id")Integer id){
+        int i=0;
+        try{
+            i=uService.singleUpdateDel(id);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+
+    /**
      * 会员的批量恢复
      * */
     @ResponseBody
-    @RequestMapping(value="/user/batchRegain",method=RequestMethod.POST)
+    @RequestMapping(value="/batchRegain",method=RequestMethod.POST)
     public int batchRegain(@RequestParam("ids[]") List<Integer> ids){
         int i=0;
         try{

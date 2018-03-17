@@ -43,7 +43,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         //注意：不能写成users，否则会访问：http://localhost:8080/ymm/pages/users/users
         //因为http://localhost:8080/ymm/pages/users是userlist.jsp，而该js页面嵌在这个jsp中。所以只会在之后加上/users
         // 也不能写成${pageContext.request.contextPath}/users，否则会访问http://localhost:8080/users。因为这是客户端地址
-        url:'../../listusers',
+        url:'../../user/listusers',
         //是否开启分页
         page: true,
         limits: [5, 10, 20, 50, 100],
@@ -51,6 +51,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             // console.log(res);
             // console.log(curr);
             // console.log(count);
+            $("#countData").text("共有数据："+count+" 条");
             $("[data-field='status']").children().each(function () {
                 //每次遍历进来得到的this就是DOM对象
                 if ($(this).text() == '1') {
@@ -135,13 +136,31 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     });
 
     /*用户-删除*/
-    window.member_del = function (obj, id) {
+    window.user_del = function (obj) {
         layer.confirm('确认要删除吗？', function (index) {
+            var id=$(obj).parents("tr").children("[data-field='user_id']").text();
+            console.log(id);
             //发异步删除数据
             $(obj).parents("tr").remove();
-            layer.msg('已删除!', {
-                icon: 1,
-                time: 1000
+            //提交ajax
+            $.ajax({
+                data:{'id':id},
+                dataType:"text",
+                type:"GET",
+                url: "../../user/singleUpdateDel",
+                success:function(res){
+                    if(res>0){
+                        layer.msg('已删除!',{
+                            icon:1,
+                            time:1000
+                        });
+                    }else{
+                        layer.msg('删除失败!',{
+                            icon:2,
+                            time:1000
+                        });
+                    }
+                }
             });
         });
     }

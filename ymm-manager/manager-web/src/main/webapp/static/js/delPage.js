@@ -40,7 +40,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             }]
         ],
         //通过URL进行数据绑定
-        url:'../../showDelPage',
+        url:'../../user/showDelPage',
         //是否开启分页
         page: true,
         limits: [5, 10, 20, 50, 100],

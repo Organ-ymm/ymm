@@ -62,7 +62,7 @@
         <a title="查看" onclick="WeAdminShow('查看详情','./show',600,400)" href="javascript:;">
             <i class="layui-icon">&#xe63c;</i>
         </a>
-        <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+        <a title="删除" id="user_del" onclick="user_del(this)" href="javascript:;">
             <i class="layui-icon">&#xe640;</i>
         </a>
     </script>

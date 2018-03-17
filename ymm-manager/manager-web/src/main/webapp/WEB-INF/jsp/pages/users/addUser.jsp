@@ -143,7 +143,7 @@
                 data:$("userAddForm").serialize(),
                 dataType:"text",
                 type:"post",
-                url:"${pageContext.request.contextPath}/addUser",
+                url:"${pageContext.request.contextPath}/user/addUser",
                 success:function(res){
                     layer.alert("添加成功", {icon: 6}, function (){
                         var index=parent.layer.getFrameIndex(window.name);

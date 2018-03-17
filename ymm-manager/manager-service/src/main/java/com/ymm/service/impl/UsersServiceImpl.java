@@ -24,17 +24,6 @@ public class UsersServiceImpl implements UsersService {
     @Autowired
     private UsersMapper uMapper;
 
-    /*@Override
-    public List<Users> listUsersByPage(Page page) {
-        List<Users> usersList=null;
-        try {
-            usersList=uMapper.listUsersByPage(page);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return usersList;
-    }*/
-
     @Override
     public List<Users> listUsersByPage(Page page, UsersQuery usersQuery) {
         Map<String ,Object> map=new HashMap<>();
@@ -64,6 +53,23 @@ public class UsersServiceImpl implements UsersService {
         String reg_time=sdf.format(date);
         user.setReg_time(reg_time);
         i=uMapper.addUser(user);
+        return i;
+    }
+
+    /**
+     * 单个“删除”用户，修改用户的状态status为0
+     * */
+    @Override
+    public Integer singleUpdateDel(Integer id) {
+        int i=0;
+        try{
+            Users user=new Users();
+            user.setStatus(0);
+            user.setUser_id(id);
+            i=uMapper.batchUpdate(user);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return i;
     }
 
