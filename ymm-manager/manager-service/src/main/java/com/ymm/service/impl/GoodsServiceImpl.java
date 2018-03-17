@@ -13,17 +13,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GoodsServiceImpl implements GoodsService{
+public class GoodsServiceImpl implements GoodsService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private GoodsMapper goodsdao;
+
     @Override
     public List<GoodsCustom> listGoods(Page page) {
         List<GoodsCustom> goodsCustomList = null;
         try {
             goodsCustomList = goodsdao.selectGoodsByPage(page);
-        }catch (Exception e){
-            logger.debug(e.getMessage(),e);
+        } catch (Exception e) {
+            logger.debug(e.getMessage(), e);
         }
         return goodsCustomList;
     }
@@ -31,5 +32,20 @@ public class GoodsServiceImpl implements GoodsService{
     @Override
     public Long countItems() {
         return goodsdao.countItems();
+    }
+
+    @Override
+    public int goodsDelById(Integer id) {
+        return goodsdao.updateGoodsById(id);
+    }
+
+    @Override
+    public int batchUpdate(List<Integer> ids) {
+        int i = 0;
+        for (Integer id :
+                ids) {
+           i += goodsdao.updateGoodsById(id);
+        }
+        return i;
     }
 }

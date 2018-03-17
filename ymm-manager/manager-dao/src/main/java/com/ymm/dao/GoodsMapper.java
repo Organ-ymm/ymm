@@ -9,4 +9,6 @@ public interface GoodsMapper {
     List<GoodsCustom> selectGoodsByPage(Page page);
 
     Long countItems();
+
+    int updateGoodsById(Integer id);
 }
