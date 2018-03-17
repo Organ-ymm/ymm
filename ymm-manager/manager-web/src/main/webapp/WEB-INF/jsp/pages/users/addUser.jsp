@@ -173,10 +173,9 @@
                     }
                 }
             });
-
             return false;
         });
-
+        form.render(); // 更新全部
     });
 </script>
 </body>
