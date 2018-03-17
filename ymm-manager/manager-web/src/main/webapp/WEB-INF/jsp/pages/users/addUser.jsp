@@ -140,7 +140,7 @@
 
             //提交数据
             $.ajax({
-                data:$("userAddForm").serialize(),
+                data:$("#userAddForm").serialize(),
                 dataType:"text",
                 type:"post",
                 url:"${pageContext.request.contextPath}/user/addUser",

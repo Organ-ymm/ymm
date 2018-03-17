@@ -18,23 +18,23 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             [{
                 type: 'checkbox'
             }, {
-                field: 'user_id', title: '用户ID'/*, sort: true*/
+                field: 'user_id', title: '用户ID',width:80/*, sort: true*/
             },{
-                field: 'username', title: '用户名'
+                field: 'username', title: '用户名',width:80
             },{
-                field: 'alias', title: '昵称'
+                field: 'alias', title: '昵称',width:80
             },{
-                field: 'sex', title: '性别'
+                field: 'sex', title: '性别',width:60
             },/*{
-                field: 'rank_id', title: '用户等级'
+                field: 'rank_id', title: '用户等级',width:80
             },*/{
-                field: 'email', title: '邮箱'
+                field: 'email', title: '邮箱',width:120
             }, {
                 field: 'mobile_phone', title: '电话'
             },{
                 field: 'reg_time', title: '注册时间'
             },{
-                field: 'status', title: '状态'
+                field: 'status', title: '状态',width:70
             },{
                 field: 'operate', title: '操作', toolbar: '#operateTpl', unresize: true
             }]

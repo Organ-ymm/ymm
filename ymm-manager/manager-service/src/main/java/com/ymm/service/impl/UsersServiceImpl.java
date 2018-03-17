@@ -55,7 +55,7 @@ public class UsersServiceImpl implements UsersService {
         user.setRank_points(0);
         user.setRank_id(0);
         Date date =new Date();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String reg_time=sdf.format(date);
         user.setReg_time(reg_time);
         i=uMapper.addUser(user);
