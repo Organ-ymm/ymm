@@ -48,16 +48,7 @@
         <%--<button class="layui-btn" data-type="Recommend"><i class="layui-icon">&#xe6c6;</i>推荐</button>--%>
     </div>
     <table class="layui-hide" id="goodsList" lay-filter="goodsList"></table>
-    <div class="page">
-        <div>
-            <a class="prev" href="">&lt;&lt;</a>
-            <a class="num" href="">1</a>
-            <span class="current">2</span>
-            <a class="num" href="">3</a>
-            <a class="num" href="">489</a>
-            <a class="next" href="">&gt;&gt;</a>
-        </div>
-    </div>
+
 
 </div>
 <script type="text/html" id="operateTpl">
