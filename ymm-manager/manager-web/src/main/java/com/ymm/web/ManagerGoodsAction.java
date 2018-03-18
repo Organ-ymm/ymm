@@ -7,6 +7,8 @@ import com.ymm.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -33,5 +35,42 @@ public class ManagerGoodsAction {
             e.printStackTrace();
         }
         return messageResult;
+    }
+
+    /**
+     * 根据id删除商品
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/goods_del")
+    @ResponseBody
+    public int goodsDelById(@RequestParam(value = "id") Integer id) {
+        int i = 0;
+        try {
+            i = goodsService.goodsDelById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/batch",method = RequestMethod.POST)
+    public int batchUpdate(@RequestParam("ids[]") List<Integer> ids){
+        int i = 0;
+        try {
+            //调用业务逻辑层方法
+            i = goodsService.batchUpdate(ids);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("i======"+i);
+        return i;
     }
 }

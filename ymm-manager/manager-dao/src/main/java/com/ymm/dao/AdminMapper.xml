@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-       <!-- int id;
-        String username;
-        String password;
-        //登录名	手机	邮箱	角色	加入时间	状态
-        String phone;
-        String email;
-        String role;
-        String joinTime;
-        String status;-->
+
 <mapper namespace="com.ymm.dao.AdminMapper" >
+    <!--sql语句块-->
     <sql id="Admin_column">
-      a.ad_username,a.ad_password,a.ad_phone,a.ad_email,a.ad_role,a.ad_joinTime,a.ad_status
+     a.ad_id,a.ad_username,a.ad_password,a.ad_phone,a.ad_email,a.ad_rank,a.ad_addTime,a.ad_status
     </sql>
+    <sql id="where_adminQuery">
+        <where>
+            ad_status!=0
+            <if test="adminQueryName != null and adminQueryName != ''">
+                and ad_username like '%${adminQueryName}%'
+            </if>
+        </where>
+    </sql>
+    <!--按分页和模糊查询查询所有admin-->
     <select id="selectAllAdmin" resultType="com.ymm.pojo.po.Admin">
-        SELECT * from admin
+        SELECT
+        <include refid="Admin_column"/>
+        from admin a
+        <include refid="where_adminQuery"/>
+        ORDER BY ad_id ASC
+        limit #{page.offset},#{page.limit}
     </select>
+
+    <select id="countAdmin" resultType="int" parameterType="String" >
+        SELECT COUNT(1) FROM admin
+        <include refid="where_adminQuery"/>
+    </select>
+
     <select id="selectAdminByUsername" parameterType="com.ymm.pojo.po.Admin" resultType="com.ymm.pojo.po.Admin">
-      SELECT * FROM admin WHERE ad_username = #{ad_username} AND ad_password = #{ad_password}
+      SELECT * FROM admin WHERE ad_username = #{ad_username} AND ad_PASSWORD = #{ad_password}
     </select>
+
     <select id="selectAdminById"  resultType="com.ymm.pojo.po.Admin" >
         SELECT
       <include refid="Admin_column"/>
-        FROM admin a WHERE ad_id = #{ad_id}
+        FROM admin a WHERE ad_id = #{id}
     </select>
+
 </mapper>

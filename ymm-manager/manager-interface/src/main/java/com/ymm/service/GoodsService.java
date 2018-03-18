@@ -9,4 +9,8 @@ public interface GoodsService {
     List<GoodsCustom> listGoods(Page page);
 
     Long countItems();
+
+    int goodsDelById(Integer id);
+
+    int batchUpdate(List<Integer> ids);
 }

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <%--原：<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />--%>
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/weadmin.css">
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
@@ -32,21 +32,24 @@
 </div>
 
 <script type="text/javascript">
-    layui.use(['form','jquery'], function(){
+    layui.use(['form','jquery','layer'], function(){
         var form = layui.form,
-            $ = layui.jquery;
+            $ = layui.jquery,
+            layer = layui.layer;
         //监听提交
         form.on('submit(login)', function(data){
             $.post(
-                 "${pageContext.request.contextPath}/login",
+                "${pageContext.request.contextPath}/login",
                 data.field,
                 function(rec){
+                    if(rec=="1"){
+                        sessionStorage.setItem("login",1);
+                        location.href = "${pageContext.request.contextPath}/index"
+                    }
                     if(rec=="0"){
 
-                        layer.msg("用户名或密码错误");
-                    }else{
-                        sessionStorage.setItem("login",1);
-                        location.href = "${pageContext.request.contextPath}/index"}
+                        alert("用户名或密码错误")
+                        }
                 }
             );
         });

@@ -16,6 +16,7 @@
 
     <!--版本号的统一管理-->
     <properties>
+        <classloader-leak-prevention-servlet>2.1.0</classloader-leak-prevention-servlet>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>4.12</junit.version>
         <spring.version>4.3.8.RELEASE</spring.version>
@@ -57,6 +58,12 @@
     <!--依赖的统一管理声明-->
     <dependencyManagement>
         <dependencies>
+            <!--解决发布到服务器内存泄露-->
+            <dependency>
+                <groupId>se.jiderhamn.classloader-leak-prevention</groupId>
+                <artifactId>classloader-leak-prevention-servlet</artifactId>
+                <version>${classloader-leak-prevention-servlet}</version>
+            </dependency>
             <!--JSP相关jar-->
             <dependency>
                 <groupId>javax.servlet</groupId>
