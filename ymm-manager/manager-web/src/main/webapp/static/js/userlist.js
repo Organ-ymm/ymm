@@ -18,18 +18,18 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             [{
                 type: 'checkbox'
             }, {
-                field: 'user_id', title: '用户ID',width:80/*, sort: true*/
+                field: 'user_id', title: '用户ID'/*,width:80*//*, sort: true*/
             },{
-                field: 'username', title: '用户名',width:80
-            },{
-                field: 'alias', title: '昵称',width:80
-            },{
-                field: 'sex', title: '性别',width:60
+                field: 'username', title: '用户名'/*,width:80*/
+            },/*{
+                field: 'alias', title: '昵称'/!*,width:80*!/
+            },*/{
+                field: 'sex', title: '性别'/*,width:60*/
             },/*{
                 field: 'rank_id', title: '用户等级',width:80
-            },*/{
-                field: 'email', title: '邮箱',width:120
-            }, {
+            },*//*{
+                field: 'email', title: '邮箱'/!*,width:120*!/
+            }, */{
                 field: 'mobile_phone', title: '电话'
             },{
                 field: 'reg_time', title: '注册时间'
@@ -133,7 +133,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     });
 
     form.on('submit(search)',function(data){
-        console.log(data);
+        console.log(data);//，模糊查询 TODO
     });
 
     $('.we-search .layui-btn').on('click',function(){
@@ -171,14 +171,16 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         });
     }
 
+    //table模块/数据表格文档
     table.on('tool(usersList)', function (obj) {
         var data = obj.data //获得当前行数据
-            , layEven = obj.even; //获得 lay-even 对应的值
-        if (layEven === 'edit') {
+            ,layEvent = obj.event; //获得 lay-event 对应的值
+        console.log(data);
+        if (layEvent === 'edit') {
             var id = data.user_id;
-//               layer.msg(data.cat_id);
+            layer.msg(id);
             var title = "修改用户信息";
-            var url = "${pageContext.request.contextPath}/pages/users/editUser";
+            var url = "../../pages/users/editUser";
             var w = ($(window).width() * 0.9);
 
             var h = ($(window).height() - 50);
@@ -195,14 +197,18 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                 content: url,
                 success: function (layero, index) {
                     //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
+                    // console.log(layero);
+                    // console.log(index);
+                    //会员信息的回显
                     var body = layer.getChildFrame('body', index);
-                    //巧妙的地方在这里哦
-                    body.contents().find("#username").val(data.username);
-                    body.contents().find("#alias").val(data.alias);
-                    body.contents().find("#sex").val(data.sex);
-                    body.contents().find("#mobile_phone").val(data.mobile_phone);
-                    body.contents().find("#email").val(data.email);
-                    //body.contents().find("#status").val(data.status);
+                    body.contents().find("#L_id").val(data.user_id);
+                    body.contents().find("#L_username").val(data.username);
+                    body.contents().find("#L_alias").val(data.alias);
+                    body.contents().find("#L_sex").val(data.sex);
+                    body.contents().find("#L_phone").val(data.mobile_phone);
+                    body.contents().find("#L_email").val(data.email);
+                    body.contents().find("#L_password").val(data.password);
+                    body.contents().find("#L_repass").val(data.password);
                 },
                 error: function (layero, index) {
                     alert("aaa");

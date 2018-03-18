@@ -38,7 +38,7 @@
     </select>
 
     <insert id="addUser" parameterType="com.ymm.pojo.po.Users">
-        insert into users(username,password,rank_points,rank_id,reg_time,status
+        insert into users(username,password,mobile_phone,rank_points,rank_id,reg_time,status
             <if test="email != null and email != ''">
                 ,email
             </if>
@@ -51,11 +51,8 @@
             <if test="birthday != null and birthday != ''">
                 ,birthday
             </if>
-            <if test="mobile_phone != null and mobile_phone != ''">
-                ,mobile_phone
-            </if>
         )
-        values(#{username},#{password},#{rank_points},#{rank_id},#{reg_time},#{status}
+        values(#{username},#{password},#{mobile_phone},#{rank_points},#{rank_id},#{reg_time},#{status}
             <if test="email != null and email != ''">
                 ,#{email}
             </if>
@@ -68,14 +65,31 @@
             <if test="birthday != null and birthday != ''">
                 ,#{birthday}
             </if>
-            <if test="mobile_phone != null and mobile_phone != ''">
-                ,#{mobile_phone}
-            </if>
         )
     </insert>
 
     <update id="updateState" parameterType="com.ymm.pojo.po.Users">
         update users set status=#{status} where user_id=#{user_id}
+    </update>
+
+    <update id="updateUser" parameterType="com.ymm.pojo.po.Users">
+        update users set mobile_phone=#{mobile_phone}
+        <if test="alias != null and alias != ''">
+            ,alias=#{alias}
+        </if>
+        <if test="sex != null and sex != ''">
+            ,sex=#{sex}
+        </if>
+        <if test="email != null and email != ''">
+            ,email=#{email}
+        </if>
+        <if test="birthday != null and birthday != ''">
+            ,birthday=#{birthday}
+        </if>
+        <if test="status != null and status != ''">
+            ,status=#{status}
+        </if>
+        where user_id=#{user_id}
     </update>
 
     <delete id="delUser" parameterType="com.ymm.pojo.po.Users">

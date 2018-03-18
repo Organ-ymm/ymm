@@ -26,4 +26,6 @@ public interface UsersService {
     Integer singleRegain(Integer id);
 
     Users verifyUsername(String username);
+
+    Integer updateUser(Users user);
 }

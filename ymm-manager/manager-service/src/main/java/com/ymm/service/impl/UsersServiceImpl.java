@@ -162,5 +162,14 @@ public class UsersServiceImpl implements UsersService {
         return i;
     }
 
-
+    @Override
+    public Integer updateUser(Users user) {
+        int i=0;
+        try {
+            i=uMapper.updateUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
 }

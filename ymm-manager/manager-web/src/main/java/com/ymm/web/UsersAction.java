@@ -165,4 +165,19 @@ public class UsersAction {
         return messageResult;
     }
 
+    /**
+     * 修改会员信息
+     * */
+    @ResponseBody
+    @RequestMapping(value="/editUser")//,method = RequestMethod.POST
+    public int editUser(Users user){
+        int i=0;
+        try {
+            i=uService.updateUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
 }

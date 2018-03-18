@@ -20,4 +20,6 @@ public interface UsersMapper {
     Integer delUser(Users user);
 
     Users verifyUsername(Users users);
+
+    Integer updateUser(Users user);
 }

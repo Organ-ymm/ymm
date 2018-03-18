@@ -52,15 +52,16 @@
         <button class="layui-btn" onclick="WeAdminShow('添加用户','./addUser',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>
         <span class="fr" id="countData" style="line-height: 40px"/>
     </div>
-    <table class="layui-hide" id="usersList"></table>
+    <table class="layui-hide" id="usersList" lay-filter="usersList"></table>
 
 
 
     <script type="text/html" id="operateTpl">
+
         <%--<a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
             <i class="layui-icon">&#xe642;</i>
         </a>--%>
-        <a title="编辑" lay-even="edit" href="javascript:;">
+        <a title="编辑" lay-event="edit" href="javascript:;">
             <i class="layui-icon">&#xe642;</i>
         </a>
         <a title="查看" onclick="WeAdminShow('查看详情','./show',600,400)" href="javascript:;">
