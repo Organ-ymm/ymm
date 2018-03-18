@@ -175,16 +175,54 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     table.on('tool(usersList)', function (obj) {
         var data = obj.data //获得当前行数据
             ,layEvent = obj.event; //获得 lay-event 对应的值
-        console.log(data);
+        //console.log(data);
+        //会员信息的修改
         if (layEvent === 'edit') {
             var id = data.user_id;
-            layer.msg(id);
+            //layer.msg(id);
             var title = "修改用户信息";
             var url = "../../pages/users/editUser";
             var w = ($(window).width() * 0.9);
-
             var h = ($(window).height() - 50);
 
+            layer.open({
+                type: 2,
+                area: [w + 'px', h + 'px'],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade: 0.4,
+                title: title,
+                content: url,
+                success: function (layero, index) {
+                    //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
+                    // console.log(layero);
+                    // console.log(index);
+                    //会员信息的回显
+                    var body = layer.getChildFrame('body', index);
+                    body.contents().find("#user_id").text(data.user_id);
+                    body.contents().find("#L_username").val(data.username);
+                    body.contents().find("#L_alias").val(data.alias);
+                    body.contents().find("#L_sex").val(data.sex);
+                    body.contents().find("#L_phone").val(data.mobile_phone);
+                    body.contents().find("#L_email").val(data.email);
+                    body.contents().find("#L_password").val(data.password);
+                    body.contents().find("#L_repass").val(data.password);
+                },
+                error: function (layero, index) {
+                    alert("aaa");
+                }
+            });
+        }
+
+        //会员信息的查看
+        if (layEvent === 'show') {
+            var id = data.user_id;
+            //layer.msg(id);
+            var title = "修改用户信息";
+            var url = "../../pages/users/showUser";
+            var w = ($(window).width() * 0.9);
+            var h = ($(window).height() - 50);
 
             layer.open({
                 type: 2,
@@ -218,14 +256,3 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     });
 
 });
-
-function delAll(argument) {
-    var data = tableCheck.getData();
-    layer.confirm('确认要删除吗？' + data, function (index) {
-        //捉到所有被选中的，发异步进行删除
-        layer.msg('删除成功', {
-            icon: 1
-        });
-        $(".layui-form-checked").not('.header').parents('tr').remove();
-    });
-}

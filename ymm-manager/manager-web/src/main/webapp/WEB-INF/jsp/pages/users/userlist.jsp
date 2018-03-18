@@ -64,7 +64,7 @@
         <a title="编辑" lay-event="edit" href="javascript:;">
             <i class="layui-icon">&#xe642;</i>
         </a>
-        <a title="查看" onclick="WeAdminShow('查看详情','./show',600,400)" href="javascript:;">
+        <a title="查看" lay-event="show" href="javascript:;">
             <i class="layui-icon">&#xe63c;</i>
         </a>
         <a title="删除" id="user_del" onclick="user_del(this)" href="javascript:;">
