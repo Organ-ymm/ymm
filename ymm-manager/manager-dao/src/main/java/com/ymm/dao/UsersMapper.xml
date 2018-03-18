@@ -45,7 +45,7 @@
             <if test="alias != null and alias != ''">
                 ,alias
             </if>
-            <if test="sex != null and sex != ''">
+            <if test="sex != null">
                 ,sex
             </if>
             <if test="birthday != null and birthday != ''">
@@ -59,7 +59,7 @@
             <if test="alias != null and alias != ''">
                 ,#{alias}
             </if>
-            <if test="sex != null and sex != ''">
+            <if test="sex != null">
                 ,#{sex}
             </if>
             <if test="birthday != null and birthday != ''">
@@ -77,7 +77,7 @@
         <if test="alias != null and alias != ''">
             ,alias=#{alias}
         </if>
-        <if test="sex != null and sex != ''">
+        <if test="sex != null">
             ,sex=#{sex}
         </if>
         <if test="email != null and email != ''">

@@ -26,7 +26,7 @@
                 <span class="we-red">*</span>登录名
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="username" name="username" lay-verify="required|nikename" autocomplete="off" class="layui-input">
+                <input type="text" id="username" name="username" lay-verify="required|username" autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
                 请设置至少2个字符，将会成为您唯一的登录名
@@ -35,7 +35,7 @@
 
         <div class="layui-form-item">
             <label for="L_alias" class="layui-form-label">
-                <span class="we-red">*</span>昵称
+                昵称
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_alias" name="alias" autocomplete="" class="layui-input">
@@ -47,12 +47,12 @@
             <div class="layui-input-block" id="L_sex">
                 <input type="radio" name="sex" value="0" title="男" checked>
                 <input type="radio" name="sex" value="1" title="女">
-                <input type="radio" name="sex" value="" title="保密">
+                <input type="radio" name="sex" value=" " title="保密">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label for="L_email" class="layui-form-label">
+            <label for="L_phone" class="layui-form-label">
                 <span class="we-red">*</span>手机
             </label>
             <div class="layui-input-inline">
@@ -61,7 +61,7 @@
         </div>
         <div class="layui-form-item">
             <label for="L_email" class="layui-form-label">
-                <span class="we-red">*</span>邮箱
+                邮箱
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_email" name="email" autocomplete="off" class="layui-input">
@@ -107,7 +107,7 @@
 
         //自定义验证规则
         form.verify({
-            nikename: function(value) {
+            username: function(value) {
                 if(value.length < 2) {
                     return '登录名至少得2个字符';
                 }
@@ -139,7 +139,7 @@
             //console.log(username);
             //console.log(f.sex);
             var sex = $('input:radio[name="sex"]:checked').val();
-            console.log(sex);
+            console.log(sex);//性别只有“女”能够提交上 TODO
 
             //提交数据
             $.ajax({
@@ -150,7 +150,9 @@
                 success:function(res){
                     if(res==0){
                         layer.alert("添加成功", {icon: 6}, function (){
+                            // 获得frame索引
                             var index=parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
                             parent.layer.close(index);
                             $.ajax({
                                 data:$("#userAddForm").serialize(),

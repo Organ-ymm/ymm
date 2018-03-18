@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +24,7 @@
     <form class="layui-form" id="editForm" >
         <div class="layui-form-item">
             <label for="L_id" class="layui-form-label">
-                <span class="we-red">*</span>用户ID：
+                用户ID：
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_id" name="user_id" readonly class="layui-input">
@@ -32,7 +32,7 @@
         </div>
         <div class="layui-form-item">
             <label for="L_username" class="layui-form-label">
-                <span class="we-red">*</span>登录名：
+                登录名：
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_username" name="username" readonly class="layui-input">
@@ -50,6 +50,10 @@
         <div class="layui-form-item">
             <label for="L_sex" class="layui-form-label">性别：</label>
             <div class="layui-input-block" id="L_sex">
+                <%--<input type="text" id="sex" name="sex" readonly class="layui-input">
+                <c:if test="">
+
+                </c:if>--%>
                 <%--<input type="checkbox" id="status" name="status" lay-skin="switch" lay-text="是|否" {{ 1==d.status?'checked':''}}/>--%>
                 <input type="radio" name="sex" value="0" title="男" checked>
                 <input type="radio" name="sex" value="1" title="女" >
@@ -58,7 +62,7 @@
         </div>
         <div class="layui-form-item">
             <label for="L_phone" class="layui-form-label">
-                <span class="we-red">*</span>手机：
+                手机：
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_phone" name="mobile_phone" readonly class="layui-input">

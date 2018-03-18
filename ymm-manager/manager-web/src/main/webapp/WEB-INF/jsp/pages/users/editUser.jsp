@@ -55,7 +55,7 @@
                 <%--<input type="checkbox" id="status" name="status" lay-skin="switch" lay-text="是|否" {{ 1==d.status?'checked':''}}/>--%>
                 <input type="radio" name="sex" value="0" title="男" checked>
                 <input type="radio" name="sex" value="1" title="女" >
-                <input type="radio" name="sex" value="" title="保密">
+                <input type="radio" name="sex" value=" " title="保密">
             </div>
         </div>
         <div class="layui-form-item">
@@ -133,6 +133,8 @@
         //监听提交
         form.on('submit(edit)', function(data){
             console.log(data);
+            var sex = $('input:radio[name="sex"]:checked').val();
+            console.log(sex);
             $.ajax({
                 data : $("#editForm").serialize(),
                 dataType : "text",
