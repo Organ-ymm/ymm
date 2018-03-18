@@ -42,9 +42,9 @@
         <form class="layui-form layui-col-md12 we-search">
             会员搜索：
             <div class="layui-inline">
-                <input type="text" name="userText" placeholder="请输入用户名关键字" autocomplete="off" class="layui-input">
+                <input type="text" id="userText" name="userText" placeholder="请输入用户名关键字" autocomplete="off" class="layui-input">
             </div>
-            <button class="layui-btn" lay-submit="" lay-filter="sreach" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
+            <button class="layui-btn" lay-submit="" lay-filter="search" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
     <div class="weadmin-block demoTable">

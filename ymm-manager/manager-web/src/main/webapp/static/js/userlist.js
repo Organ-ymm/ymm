@@ -66,11 +66,11 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             $("[data-field='sex']").children().each(function () {
                 //每次遍历进来得到的this就是DOM对象
                 if ($(this).text() == '1') {
-                    //正常
                     $(this).text('女');
                 } else if ($(this).text() == '0') {
-                    //删除
                     $(this).text('男');
+                }else if ($(this).text() == ''){
+                    $(this).text('保密');
                 }
             });
         }
@@ -78,9 +78,10 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     var active = {
         reload:function(){
             var userText=$.trim($('#userText').val());
-            table.reload('usersList',{
+            console.log(userText);
+            table.reload('usersList',{//重新从第 1 页开始
                 page:{curr:1},
-                where:{title:userText}
+                where:{userText:userText}//设定异步数据接口的额外参数，任意设
             });
         },
         getCheckData: function () { //获取选中数据
@@ -134,10 +135,12 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
 
     form.on('submit(search)',function(data){
         console.log(data);//，模糊查询 TODO
+        return false;
     });
 
     $('.we-search .layui-btn').on('click',function(){
         var type = $(this).data('type');
+        console.log(type);//reload
         active[type] ? active[type].call(this) : '';
     });
 
@@ -176,6 +179,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         var data = obj.data //获得当前行数据
             ,layEvent = obj.event; //获得 lay-event 对应的值
         //console.log(data);
+
         //会员信息的修改
         if (layEvent === 'edit') {
             var id = data.user_id;
@@ -200,7 +204,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     // console.log(index);
                     //会员信息的回显
                     var body = layer.getChildFrame('body', index);
-                    body.contents().find("#user_id").text(data.user_id);
+                    body.contents().find("#L_id").val(data.user_id);
                     body.contents().find("#L_username").val(data.username);
                     body.contents().find("#L_alias").val(data.alias);
                     body.contents().find("#L_sex").val(data.sex);
@@ -219,7 +223,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         if (layEvent === 'show') {
             var id = data.user_id;
             //layer.msg(id);
-            var title = "修改用户信息";
+            var title = "查看会员信息";
             var url = "../../pages/users/showUser";
             var w = ($(window).width() * 0.9);
             var h = ($(window).height() - 50);

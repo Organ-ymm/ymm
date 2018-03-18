@@ -21,7 +21,7 @@ public class UsersAction {
 
     @ResponseBody
     @RequestMapping(value="/listusers",method= RequestMethod.GET)
-    public MessageResult ListUsersToJson(@Param("page")Page page, @Param("usersQuery")UsersQuery usersQuery){
+    public MessageResult ListUsersToJson(Page page, UsersQuery usersQuery){
         MessageResult<Users> messageResult=new MessageResult<>();
         usersQuery.setStatus(1);
         try {
