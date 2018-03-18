@@ -19,6 +19,9 @@ public class UsersAction {
     @Autowired
     private UsersService uService;
 
+    /**
+     * 会员列表页的展示
+     * */
     @ResponseBody
     @RequestMapping(value="/listusers",method= RequestMethod.GET)
     public MessageResult ListUsersToJson(Page page, UsersQuery usersQuery){
@@ -144,7 +147,7 @@ public class UsersAction {
     }
 
     /**
-     * 展示会员删除页
+     * 会员删除页的展示
      * */
     @ResponseBody
     @RequestMapping(value="/showDelPage",method= RequestMethod.GET)

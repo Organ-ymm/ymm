@@ -78,7 +78,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     var active = {
         reload:function(){
             var userText=$.trim($('#userText').val());
-            console.log(userText);
+            //console.log(userText);
             table.reload('usersList',{//重新从第 1 页开始
                 page:{curr:1},
                 where:{userText:userText}//设定异步数据接口的额外参数，任意设
@@ -133,14 +133,14 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         active[type] ? active[type].call(this) : '';
     });
 
-    form.on('submit(search)',function(data){
-        console.log(data);//，模糊查询 TODO
+    /*form.on('submit(search)',function(data){
+        console.log(data);//模糊查询
         return false;
-    });
+    });*/
 
     $('.we-search .layui-btn').on('click',function(){
         var type = $(this).data('type');
-        console.log(type);//reload
+        //console.log(type);//reload
         active[type] ? active[type].call(this) : '';
     });
 
