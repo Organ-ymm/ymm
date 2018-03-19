@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+       <!--
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL COMMENT '订单编号',
+  `user_id` int(11) DEFAULT NULL COMMENT '下单会员id',
+  `receiver_name` varchar(20) DEFAULT NULL COMMENT '收货人姓名',
+  `receiver_address` varchar(200) DEFAULT NULL COMMENT '收货地址',
+  `receiver_phone` int(11) DEFAULT NULL COMMENT '收件人电话',
+  `order_time` date DEFAULT NULL COMMENT '下单时间',
+  `order_money` double(10,2) DEFAULT NULL COMMENT '订单总金额',
+  `order_status` int(1) DEFAULT NULL COMMENT '订单状态：0待确认，1已确认',
+  `pay_status` int(1) DEFAULT NULL COMMENT '支付状态：-1待发货,0待收货，1已完成',
+  `deliver_status` int(1) DEFAULT NULL COMMENT '发货状态：-1支付失败，0未付款,1支付成功',
+  PRIMARY KEY (`order_id`)-->
+<mapper namespace="com.ymm.dao.OrdersMapper" >
+
+    <sql id="Orders_column">
+        order_id,user_id,receiver_name,receiver_address,receiver_phone,
+        order_time,order_money,order_status,pay_status,deliver_status
+    </sql>
+    <select id="selectAllOrders" resultType="com.ymm.pojo.po.Orders">
+        SELECT
+        <include refid="Orders_column"/>
+        from orders
+        ORDER BY order_id DESC
+        limit #{offset},#{limit}
+    </select>
+    <select id="countOrders" resultType="int">
+        SELECT count(0)
+        FROM orders
+        WHERE pay_status IN (-1,0.1)
+    </select>
+</mapper>
