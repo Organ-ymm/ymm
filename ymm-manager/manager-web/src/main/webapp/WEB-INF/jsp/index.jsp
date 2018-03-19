@@ -136,7 +136,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="./pages/article/brand">
+                        <a _href="./pages/brand/brand">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>品牌管理</cite>
                         </a>
