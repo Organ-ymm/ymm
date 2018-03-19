@@ -1,5 +1,6 @@
-layui.use(['table','jquery'], function(){
+layui.use(['form','table','jquery'], function(){
     var table = layui.table,
+        form = layui.form,
         jquery = layui.jquery;
     table.render({
         elem: '#adminList'
@@ -8,7 +9,8 @@ layui.use(['table','jquery'], function(){
         ,url:'../../adminList'
         ,page: true //开启分页
         ,cols: [[ //表头
-            {field: 'ad_id', title: 'ID', width:80, sort: true, fixed: 'left'}
+            {type:'checkbox'}
+            ,{field: 'ad_id', title: 'ID', width:80, sort: true}
             ,{field: 'ad_username', title: '登陆名', width:80}
             ,{field: 'ad_phone', title: '手机', width:80}
             ,{field: 'ad_email', title: '邮箱', width:80}
@@ -19,20 +21,30 @@ layui.use(['table','jquery'], function(){
         ]],
         limit:5,
         limits: [5, 10, 20, 50, 100]
-
-    });
-    $('.demoTable .layui-btn').on('click', function () {
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
     });
 
-    form.on('submit(search)',function(data){
-        console.log(data);
-    })
+    //模糊查询
+    /*form.on('submit(search)', function(data){
+        table.reload('adminList', {
+            page:{ curr:1 },
+            where: {adminQueryName:data.field} //设定异步数据接口的额外参数
+        });
+    });*/
 
-    $('.we-search .layui-btn').on('click',function(){
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
+    var active = {
+        reload: function () {
+            //val() text() html()
+            var adQueryName = $('#adQueryName').val();
+            table.reload('adminList', {
+                page: {curr: 1},
+                where: {adQueryName: adQueryName}
+            });
+        }
+    }
+    $('.we-search .layui-btn').on('click', function () {
+        var type = $(this).data('type');//reload
+        active[type] ? active[type].call(this) : '';//调用active中reload方法
     });
+
 
 });

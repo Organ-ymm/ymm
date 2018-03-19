@@ -9,8 +9,8 @@
     <sql id="where_adminQuery">
         <where>
             ad_status!=0
-            <if test="adminQueryName != null and adminQueryName != ''">
-                and ad_username like '%${adminQueryName}%'
+            <if test="query != null and query.adQueryName != null ">
+                and ad_username like '%${query.adQueryName}%'
             </if>
         </where>
     </sql>
@@ -24,7 +24,7 @@
         limit #{page.offset},#{page.limit}
     </select>
 
-    <select id="countAdmin" resultType="int" parameterType="String" >
+    <select id="countAdmin" resultType="int" >
         SELECT COUNT(1) FROM admin
         <include refid="where_adminQuery"/>
     </select>
