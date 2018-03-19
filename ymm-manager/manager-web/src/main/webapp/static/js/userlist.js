@@ -18,18 +18,18 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             [{
                 type: 'checkbox'
             }, {
-                field: 'user_id', title: '用户ID',width:80/*, sort: true*/
+                field: 'user_id', title: '用户ID'/*,width:80*//*, sort: true*/
             },{
-                field: 'username', title: '用户名',width:80
-            },{
-                field: 'alias', title: '昵称',width:80
-            },{
-                field: 'sex', title: '性别',width:60
+                field: 'username', title: '用户名'/*,width:80*/
+            },/*{
+                field: 'alias', title: '昵称'/!*,width:80*!/
+            },*/{
+                field: 'sex', title: '性别'/*,width:60*/
             },/*{
                 field: 'rank_id', title: '用户等级',width:80
-            },*/{
-                field: 'email', title: '邮箱',width:120
-            }, {
+            },*//*{
+                field: 'email', title: '邮箱'/!*,width:120*!/
+            }, */{
                 field: 'mobile_phone', title: '电话'
             },{
                 field: 'reg_time', title: '注册时间'
@@ -66,11 +66,11 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             $("[data-field='sex']").children().each(function () {
                 //每次遍历进来得到的this就是DOM对象
                 if ($(this).text() == '1') {
-                    //正常
                     $(this).text('女');
                 } else if ($(this).text() == '0') {
-                    //删除
                     $(this).text('男');
+                }else if ($(this).text() == ''){
+                    $(this).text('保密');
                 }
             });
         }
@@ -78,9 +78,10 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     var active = {
         reload:function(){
             var userText=$.trim($('#userText').val());
-            table.reload('usersList',{
+            //console.log(userText);
+            table.reload('usersList',{//重新从第 1 页开始
                 page:{curr:1},
-                where:{title:userText}
+                where:{userText:userText}//设定异步数据接口的额外参数，任意设
             });
         },
         getCheckData: function () { //获取选中数据
@@ -132,12 +133,14 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         active[type] ? active[type].call(this) : '';
     });
 
-    form.on('submit(search)',function(data){
-        console.log(data);
-    });
+    /*form.on('submit(search)',function(data){
+        console.log(data);//模糊查询
+        return false;
+    });*/
 
     $('.we-search .layui-btn').on('click',function(){
         var type = $(this).data('type');
+        //console.log(type);//reload
         active[type] ? active[type].call(this) : '';
     });
 
@@ -171,18 +174,20 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         });
     }
 
+    //table模块/数据表格文档
     table.on('tool(usersList)', function (obj) {
         var data = obj.data //获得当前行数据
-            , layEven = obj.even; //获得 lay-even 对应的值
-        if (layEven === 'edit') {
+            ,layEvent = obj.event; //获得 lay-event 对应的值
+        //console.log(data);
+
+        //会员信息的修改
+        if (layEvent === 'edit') {
             var id = data.user_id;
-//               layer.msg(data.cat_id);
+            //layer.msg(id);
             var title = "修改用户信息";
-            var url = "${pageContext.request.contextPath}/pages/users/editUser";
+            var url = "../../pages/users/editUser";
             var w = ($(window).width() * 0.9);
-
             var h = ($(window).height() - 50);
-
 
             layer.open({
                 type: 2,
@@ -195,14 +200,57 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                 content: url,
                 success: function (layero, index) {
                     //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
+                    // console.log(layero);
+                    // console.log(index);
+                    //会员信息的回显
                     var body = layer.getChildFrame('body', index);
-                    //巧妙的地方在这里哦
-                    body.contents().find("#username").val(data.username);
-                    body.contents().find("#alias").val(data.alias);
-                    body.contents().find("#sex").val(data.sex);
-                    body.contents().find("#mobile_phone").val(data.mobile_phone);
-                    body.contents().find("#email").val(data.email);
-                    //body.contents().find("#status").val(data.status);
+                    body.contents().find("#L_id").val(data.user_id);
+                    body.contents().find("#L_username").val(data.username);
+                    body.contents().find("#L_alias").val(data.alias);
+                    body.contents().find("#L_sex").val(data.sex);
+                    body.contents().find("#L_phone").val(data.mobile_phone);
+                    body.contents().find("#L_email").val(data.email);
+                    body.contents().find("#L_password").val(data.password);
+                    body.contents().find("#L_repass").val(data.password);
+                },
+                error: function (layero, index) {
+                    alert("aaa");
+                }
+            });
+        }
+
+        //会员信息的查看
+        if (layEvent === 'show') {
+            var id = data.user_id;
+            //layer.msg(id);
+            var title = "查看会员信息";
+            var url = "../../pages/users/showUser";
+            var w = ($(window).width() * 0.9);
+            var h = ($(window).height() - 50);
+
+            layer.open({
+                type: 2,
+                area: [w + 'px', h + 'px'],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade: 0.4,
+                title: title,
+                content: url,
+                success: function (layero, index) {
+                    //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
+                    // console.log(layero);
+                    // console.log(index);
+                    //会员信息的回显
+                    var body = layer.getChildFrame('body', index);
+                    body.contents().find("#L_id").val(data.user_id);
+                    body.contents().find("#L_username").val(data.username);
+                    body.contents().find("#L_alias").val(data.alias);
+                    body.contents().find("#L_sex").val(data.sex);
+                    body.contents().find("#L_phone").val(data.mobile_phone);
+                    body.contents().find("#L_email").val(data.email);
+                    body.contents().find("#L_password").val(data.password);
+                    body.contents().find("#L_repass").val(data.password);
                 },
                 error: function (layero, index) {
                     alert("aaa");
@@ -212,14 +260,3 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     });
 
 });
-
-function delAll(argument) {
-    var data = tableCheck.getData();
-    layer.confirm('确认要删除吗？' + data, function (index) {
-        //捉到所有被选中的，发异步进行删除
-        layer.msg('删除成功', {
-            icon: 1
-        });
-        $(".layui-form-checked").not('.header').parents('tr').remove();
-    });
-}

@@ -76,8 +76,8 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         reload:function(){
             var userText=$.trim($('#userText').val());
             table.reload('delPage',{
-                page:{curr:1},
-                where:{title:userText}
+                page:{curr:1},//重新从第 1 页开始
+                where:{userText:userText}//设定异步数据接口的额外参数，任意设
             });
         },
         getCheckData: function () { //获取选中数据
@@ -141,15 +141,18 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
 
     $('.demoTable .layui-btn').on('click', function () {
         var type = $(this).data('type');
+        console.log(type);
         active[type] ? active[type].call(this) : '';
     });
 
-    form.on('submit(search)',function(data){
+    /*form.on('submit(search)',function(data){
         console.log(data);
-    });
+        return false;
+    });*/
 
     $('.we-search .layui-btn').on('click',function(){
         var type = $(this).data('type');
+        //console.log(type);
         active[type] ? active[type].call(this) : '';
     });
 

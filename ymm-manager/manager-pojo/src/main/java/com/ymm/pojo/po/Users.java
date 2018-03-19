@@ -13,7 +13,7 @@ public class Users {
     private Integer rank_id;
     private Integer address_id;
     private String reg_time;
-    private String mobile_phone;
+    private Long mobile_phone;
     private Integer status;
 
     public Integer getStatus() {
@@ -81,14 +81,6 @@ public class Users {
         this.birthday = birthday;
     }
 
-    public Integer getPay_points() {
-        return pay_points;
-    }
-
-    public void setPay_points(Integer pay_points) {
-        this.pay_points = pay_points;
-    }
-
     public Integer getRank_points() {
         return rank_points;
     }
@@ -121,11 +113,11 @@ public class Users {
         this.reg_time = reg_time;
     }
 
-    public String getMobile_phone() {
+    public Long getMobile_phone() {
         return mobile_phone;
     }
 
-    public void setMobile_phone(String mobile_phone) {
+    public void setMobile_phone(Long mobile_phone) {
         this.mobile_phone = mobile_phone;
     }
 }

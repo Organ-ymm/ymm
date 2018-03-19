@@ -23,53 +23,78 @@
 <div class="weadmin-body">
     <form class="layui-form" id="editForm" >
         <div class="layui-form-item">
-            <label for="username" class="layui-form-label">
+            <label for="L_id" class="layui-form-label">
+                <span class="we-red">*</span>用户ID
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_id" name="user_id" lay-verify="required"
+                       autocomplete="off"  readonly class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
                 <span class="we-red">*</span>登录名
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="username" name="username" required="" lay-verify="required"
+                <input type="text" id="L_username" name="username" lay-verify="required"
                        autocomplete="off"  readonly class="layui-input">
             </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_alias" class="layui-form-label">
+                昵称
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_alias" name="alias"  autocomplete="off"  class="layui-input">
+            </div>
 
         </div>
         <div class="layui-form-item">
-            <label for="alias" class="layui-form-label">
-                <span class="we-red">*</span>昵称
+            <label for="L_sex" class="layui-form-label">性别</label>
+            <div class="layui-input-block" id="L_sex">
+                <%--<input type="checkbox" id="status" name="status" lay-skin="switch" lay-text="是|否" {{ 1==d.status?'checked':''}}/>--%>
+                <input type="radio" name="sex" value="0" title="男" checked>
+                <input type="radio" name="sex" value="1" title="女" >
+                <input type="radio" name="sex" value=" " title="保密">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_phone" class="layui-form-label">
+                <span class="we-red">*</span>手机
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="alias" name="alias" required="" lay-verify="required"
+                <input type="text" id="L_phone" name="mobile_phone" lay-verify="required|phone"
                        autocomplete="off"  class="layui-input">
             </div>
-
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">性别</label>
-            <div class="layui-input-block">
-                <%--<input type="checkbox" id="status" name="status" lay-skin="switch" lay-text="是|否" {{ 1==d.status?'checked':''}}/>--%>
-                <input type="radio" name="sex" value="1" title="是" checked>
-                <input type="radio" name="sex" value="2" title="否" >
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label for="mobile_phone" class="layui-form-label">
-                手机
-            </label>
-            <div class="layui-input-inline">
-                <textarea  id="mobile_phone" name="mobile_phone" autocomplete="off" class="layui-input"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label for="email" class="layui-form-label">
+            <label for="L_email" class="layui-form-label">
                 邮箱
             </label>
             <div class="layui-input-inline">
-                <textarea  id="email" name="email" autocomplete="off" class="layui-input"></textarea>
+                <input type="text" id="L_email" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_password" class="layui-form-label">
+                <span class="we-red">*</span>密码
+            </label>
+            <div class="layui-input-inline">
+                <input type="password"   id="L_password" name="password" lay-verify="required|password" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+                <span class="we-red">*</span>确认密码
+            </label>
+            <div class="layui-input-inline">
+                <input type="password"   id="L_repass" name="repass" lay-verify="required|repass" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <button  class="layui-btn" lay-filter="update" lay-submit="">
-                修改
+            <button  class="layui-btn" lay-filter="edit" lay-submit="">
+                确认修改
             </button>
         </div>
     </form>
@@ -84,10 +109,32 @@
             layer = layui.layer,
             $ = layui.jquery;
 
+        ////自定义验证规则
+        form.verify({
+            password: [/(.+){2,12}$/, '密码必须2到12位'],
+            repass: function(value) {
+                if($('#L_password').val() != $('#L_repass').val()) {
+                    return '两次密码不一致';
+                }
+            }
+        });
 
+        //邮箱验证：失去焦点时判断值为空不验证，一旦填写必须验证
+        $('input[name="email"]').blur(function(){
+            //这里是失去焦点时的事件
+            if($('input[name="email"]').val()){
+                //console.log($('input[name="email"]').val());
+                $('input[name="email"]').attr('lay-verify','email');
+            }else{
+                $('input[name="email"]').removeAttr('lay-verify');
+            }
+        });
 
         //监听提交
-        form.on('submit(update)', function(data){
+        form.on('submit(edit)', function(data){
+            console.log(data);
+            var sex = $('input:radio[name="sex"]:checked').val();
+            console.log(sex);
             $.ajax({
                 data : $("#editForm").serialize(),
                 dataType : "text",
@@ -95,14 +142,14 @@
                 url : "${pageContext.request.contextPath}/user/editUser",
                 success : function(res) {
                 if (res>0) {
-                    layer.alert("修改成功", {icon: 6}, function () {
+                    layer.alert("修改会员信息成功", {icon: 6}, function () {
                         // 获得frame索引
                         var index = parent.layer.getFrameIndex(window.name);
                         //关闭当前frame
                         parent.layer.close(index);
                     });
                 }else{
-                    layer.alert("修改失败", {icon: 5}, function () {
+                    layer.alert("修改会员信息失败", {icon: 5}, function () {
                         // 获得frame索引
                         var index = parent.layer.getFrameIndex(window.name);
                         //关闭当前frame

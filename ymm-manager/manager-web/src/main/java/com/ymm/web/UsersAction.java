@@ -19,9 +19,12 @@ public class UsersAction {
     @Autowired
     private UsersService uService;
 
+    /**
+     * 会员列表页的展示
+     * */
     @ResponseBody
     @RequestMapping(value="/listusers",method= RequestMethod.GET)
-    public MessageResult ListUsersToJson(@Param("page")Page page, @Param("usersQuery")UsersQuery usersQuery){
+    public MessageResult ListUsersToJson(Page page, UsersQuery usersQuery){
         MessageResult<Users> messageResult=new MessageResult<>();
         usersQuery.setStatus(1);
         try {
@@ -144,7 +147,7 @@ public class UsersAction {
     }
 
     /**
-     * 展示会员删除页
+     * 会员删除页的展示
      * */
     @ResponseBody
     @RequestMapping(value="/showDelPage",method= RequestMethod.GET)
@@ -163,6 +166,21 @@ public class UsersAction {
             e.printStackTrace();
         }
         return messageResult;
+    }
+
+    /**
+     * 修改会员信息
+     * */
+    @ResponseBody
+    @RequestMapping(value="/editUser")//,method = RequestMethod.POST
+    public int editUser(Users user){
+        int i=0;
+        try {
+            i=uService.updateUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
     }
 
 }

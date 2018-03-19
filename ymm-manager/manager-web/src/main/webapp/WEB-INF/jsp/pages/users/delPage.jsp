@@ -39,19 +39,19 @@
 </div>
 <div class="weadmin-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 we-search">
+        <div class="layui-form layui-col-md12 we-search">
             会员搜索：
             <div class="layui-inline">
-                <input type="text" name="userText" placeholder="请输入用户名关键字" autocomplete="off" class="layui-input">
+                <input type="text" id="userText" name="userText" placeholder="请输入用户名关键字" autocomplete="off" class="layui-input">
             </div>
-            <button class="layui-btn" lay-submit="" lay-filter="sreach" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
-        </form>
+            <button class="layui-btn" lay-submit="" lay-filter="search" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
+        </div>
     </div>
     <div class="weadmin-block demoTable">
         <button class="layui-btn layui-btn-normal" data-type="getCheckData"><i class="layui-icon">&#xe618;</i>批量恢复</button>
-        <span class="fr" id="countData" style="line-height:40px"></span>
+        <span class="fr" id="countData" style="line-height:40px"/>
     </div>
-    <table class="layui-hide" id="delPage"></table>
+    <table class="layui-hide" id="delPage" lay-filter="delPage"></table>
 
 
 

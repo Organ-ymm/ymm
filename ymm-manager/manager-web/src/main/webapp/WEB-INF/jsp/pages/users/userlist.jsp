@@ -39,31 +39,32 @@
 </div>
 <div class="weadmin-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 we-search">
+        <div class="layui-form layui-col-md12 we-search">
             会员搜索：
             <div class="layui-inline">
-                <input type="text" name="userText" placeholder="请输入用户名关键字" autocomplete="off" class="layui-input">
+                <input type="text" name="userText" id="userText" placeholder="请输入用户名关键字" autocomplete="off" class="layui-input">
             </div>
-            <button class="layui-btn" lay-submit="" lay-filter="sreach" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
-        </form>
+            <button class="layui-btn" lay-submit="" lay-filter="search" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
+        </div>
     </div>
     <div class="weadmin-block demoTable">
         <button class="layui-btn layui-btn-danger" data-type="getCheckData"><i class="layui-icon">&#xe640;</i>批量删除</button>
         <button class="layui-btn" onclick="WeAdminShow('添加用户','./addUser',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>
         <span class="fr" id="countData" style="line-height: 40px"/>
     </div>
-    <table class="layui-hide" id="usersList"></table>
+    <table class="layui-hide" id="usersList" lay-filter="usersList"></table>
 
 
 
     <script type="text/html" id="operateTpl">
+
         <%--<a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
             <i class="layui-icon">&#xe642;</i>
         </a>--%>
-        <a title="编辑" lay-even="edit" href="javascript:;">
+        <a title="编辑" lay-event="edit" href="javascript:;">
             <i class="layui-icon">&#xe642;</i>
         </a>
-        <a title="查看" onclick="WeAdminShow('查看详情','./show',600,400)" href="javascript:;">
+        <a title="查看" lay-event="show" href="javascript:;">
             <i class="layui-icon">&#xe63c;</i>
         </a>
         <a title="删除" id="user_del" onclick="user_del(this)" href="javascript:;">
