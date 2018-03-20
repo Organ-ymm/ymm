@@ -12,4 +12,8 @@ public interface BrandService {
     Long countBrands(BrandQuery query);
 
     int brandDelById(Integer id);
+
+    int addBrand(Brand brand);
+
+    int editBrand(Brand brand);
 }

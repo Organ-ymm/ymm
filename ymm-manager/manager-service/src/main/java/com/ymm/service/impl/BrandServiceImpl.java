@@ -51,4 +51,26 @@ public class BrandServiceImpl implements BrandService{
         }
         return i;
     }
+
+    @Override
+    public int addBrand(Brand brand) {
+        int i = 0;
+        try {
+            i = brandMapper.addBrand(brand);
+        }catch (Exception e){
+            logger.debug(e.getMessage(),e);
+        }
+        return i;
+    }
+
+    @Override
+    public int editBrand(Brand brand) {
+        int i = 0;
+        try {
+            i = brandMapper.editBrand(brand);
+        }catch (Exception e){
+            logger.debug(e.getMessage(),e);
+        }
+        return i;
+    }
 }

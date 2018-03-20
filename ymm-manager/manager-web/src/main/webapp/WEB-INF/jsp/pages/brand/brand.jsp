@@ -44,16 +44,15 @@
         <button class="layui-btn" onclick="WeAdminShow('添加用户','./brand_add',600,400)"><i class="layui-icon"></i>添加品牌</button>
     </div>
 
-    <table class="layui-hide" id="brandList"></table>
+    <table class="layui-hide" id="brandList" lay-filter="brandList"></table>
 
 
     <script type="text/html" id="operateTpl">
-        <a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
+
+        <a title="编辑" lay-event="edit" href="javascript:;">
             <i class="layui-icon">&#xe642;</i>
         </a>
-        <a title="查看" onclick="WeAdminShow('查看文章','./show',600,400)" href="javascript:;">
-            <i class="layui-icon">&#xe63c;</i>
-        </a>
+
         <a title="删除" onclick="brand_del(this)" href="javascript:;">
             <i class="layui-icon">&#xe640;</i>
         </a>

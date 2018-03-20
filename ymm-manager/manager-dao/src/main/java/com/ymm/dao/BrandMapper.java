@@ -13,4 +13,8 @@ public interface BrandMapper {
     long countBrands(@Param("query")BrandQuery query);
 
     int brandDelById(Integer id);
+
+    int addBrand(Brand brand);
+
+    int editBrand(Brand brand);
 }

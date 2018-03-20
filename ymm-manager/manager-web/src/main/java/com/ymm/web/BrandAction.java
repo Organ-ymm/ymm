@@ -45,4 +45,26 @@ public class BrandAction {
         }
         return i;
     }
+    @ResponseBody
+    @RequestMapping(value = "/brand_add")
+    public int addBrand(Brand brand){
+        int i = 0;
+        try {
+            i = brandService.addBrand(brand);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/brand_edit")
+    public int editBrand(Brand brand){
+        int i = 0;
+        try {
+            i = brandService.editBrand(brand);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
 }

@@ -2,8 +2,9 @@ layui.extend({
     admin: '{/}../../static/js/admin'
 });
 
-layui.use(['table', 'jquery', 'admin'],function(){
-    var table = layui.table,
+layui.use(['table', 'jquery', 'admin','form'],function(){
+    var form = layui.form,
+        table = layui.table,
         $ = layui.jquery,
         admin = layui.admin;
     table.render({
@@ -78,6 +79,50 @@ layui.use(['table', 'jquery', 'admin'],function(){
             });
         });
     }
+
+    table.on('tool(brandList)', function (obj) {
+        var data = obj.data //获得当前行数据
+            ,layEvent = obj.event; //获得 lay-event 对应的值
+        //console.log(data);
+
+        //会员信息的修改
+        if (layEvent === 'edit') {
+            var id = data.brand_id;
+            //layer.msg(id);
+            var title = "修改用户信息";
+            var url = "../../pages/brand/brand_edit";
+            var w = ($(window).width() * 0.9);
+            var h = ($(window).height() - 50);
+
+            layer.open({
+                type: 2,
+                area: [w + 'px', h + 'px'],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade: 0.4,
+                title: title,
+                content: url,
+                success: function (layero, index) {
+                    //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
+                    // console.log(layero);
+                    // console.log(index);
+                    //会员信息的回显
+                    var body = layer.getChildFrame('body', index);
+                    body.contents().find("#brand_id").val(data.brand_id);
+                    body.contents().find("#brand_name").val(data.brand_name);
+                    body.contents().find("#cat_id").val(data.cat_id);
+                    body.contents().find("#add_time").val(data.add_time);
+                    body.contents().find("#country").val(data.country);
+                    body.contents().find("#brand_desc").val(data.brand_desc);
+                    body.contents().find("#status").val(data.status);
+                },
+                error: function (layero, index) {
+                    alert("aaa");
+                }
+            });
+        }
+    });
     //魔符查询
     $('.we-search .layui-btn').on('click',function (){
         var type = $(this).data('type');

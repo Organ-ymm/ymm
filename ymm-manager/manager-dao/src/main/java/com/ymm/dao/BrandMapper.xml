@@ -32,4 +32,26 @@
         SET status = 3
         WHERE brand_id = #{id}
     </update>
+    <insert id="addBrand" parameterType="com.ymm.pojo.po.Brand">
+        INSERT INTO brand(brand_id,brand_name,cat_id,add_time,country,brand_desc,status)
+        VALUES(#{brand_id},#{brand_name},#{cat_id},#{add_time},#{country},#{brand_desc},#{status})
+    </insert>
+
+    <update id="editBrand" parameterType="com.ymm.pojo.po.Brand">
+        UPDATE brand SET 1=1
+        <if test="brand_id != null and brand_id != ''"/>
+          ,brand_id=#{brand_id}
+        <if test="brand_name != null and brand_name != ''"/>
+          ,brand_name=#{brand_name}
+        <if test="cat_id != null and cat_id != ''"/>
+          ,cat_id = #{cat_id}
+        <if test="add_time != null and add_time != ''"/>
+          ,add_time = #{add_time}
+        <if test="country != null and country != ''"/>
+          ,country= = #{country}
+        <if test="brand_desc != null and brand_desc != ''"/>
+          ,brand_desc = #{brand_desc}
+        <if test="status != null and status != ''"/>
+          ,status = #{status}
+    </update>
 </mapper>
