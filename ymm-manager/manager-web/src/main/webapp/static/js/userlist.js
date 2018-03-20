@@ -18,19 +18,19 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             [{
                 type: 'checkbox'
             }, {
-                field: 'user_id', title: '用户ID'/*,width:80*//*, sort: true*/
+                field: 'user_id', title: '用户ID',width:80/*, sort: true*/
             },{
-                field: 'username', title: '用户名'/*,width:80*/
-            },/*{
-                field: 'alias', title: '昵称'/!*,width:80*!/
-            },*/{
-                field: 'sex', title: '性别'/*,width:60*/
+                field: 'username', title: '用户名',width:100
+            },{
+                field: 'alias', title: '昵称',width:100
+            },{
+                field: 'sex', title: '性别',width:60
             },/*{
                 field: 'rank_id', title: '用户等级',width:80
-            },*//*{
-                field: 'email', title: '邮箱'/!*,width:120*!/
-            }, */{
-                field: 'mobile_phone', title: '电话'
+            },*/{
+                field: 'email', title: '邮箱'/*,width:120*/
+            },{
+                field: 'mobile_phone', title: '电话',width:120
             },{
                 field: 'reg_time', title: '注册时间'
             },{
@@ -71,6 +71,18 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     $(this).text('男');
                 }else if ($(this).text() == ''){
                     $(this).text('保密');
+                }
+            });
+            $("[data-field='email']").children().each(function () {
+                //每次遍历进来得到的this就是DOM对象
+                if ($(this).text() == "") {
+                    $(this).text('（未填写）');
+                }
+            });
+            $("[data-field='alias']").children().each(function () {
+                //每次遍历进来得到的this就是DOM对象
+                if ($(this).text() == '') {
+                    $(this).text('（未填写）');
                 }
             });
         }
@@ -208,6 +220,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     body.contents().find("#L_username").val(data.username);
                     body.contents().find("#L_alias").val(data.alias);
                     body.contents().find("#L_sex").val(data.sex);
+                    //console.log(data.sex);
                     body.contents().find("#L_phone").val(data.mobile_phone);
                     body.contents().find("#L_email").val(data.email);
                     body.contents().find("#L_password").val(data.password);
@@ -245,10 +258,28 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     var body = layer.getChildFrame('body', index);
                     body.contents().find("#L_id").val(data.user_id);
                     body.contents().find("#L_username").val(data.username);
-                    body.contents().find("#L_alias").val(data.alias);
-                    body.contents().find("#L_sex").val(data.sex);
+                    //body.contents().find("#L_alias").val(data.alias);
+                    if(data.email!=null){
+                        body.contents().find("#L_alias").val(data.alias);
+                    }else{
+                        body.contents().find("#L_alias").val("（未填写）");
+                    }
+                    //body.contents().find("#L_sex").val(data.sex);
+                    //console.log(data.sex);
+                    if(data.sex==0){
+                        body.contents().find("#L_sex").val("男");
+                    }else if(data.sex==1){
+                        body.contents().find("#L_sex").val("女");
+                    }else if(data.sex==null){
+                        body.contents().find("#L_sex").val("保密");
+                    }
                     body.contents().find("#L_phone").val(data.mobile_phone);
-                    body.contents().find("#L_email").val(data.email);
+                    //body.contents().find("#L_email").val(data.email);
+                    if(data.email!=null){
+                        body.contents().find("#L_email").val(data.email);
+                    }else{
+                        body.contents().find("#L_email").val("（未填写）");
+                    }
                     body.contents().find("#L_password").val(data.password);
                     body.contents().find("#L_repass").val(data.password);
                 },

@@ -76,7 +76,7 @@
                 <input type="password" id="L_pass" name="password" lay-verify="required|password" autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
-                2到12个字符
+                2到12个字符,且不能出现空格
             </div>
         </div>
         <div class="layui-form-item">
@@ -111,9 +111,12 @@
                 if(value.length < 2) {
                     return '登录名至少得2个字符';
                 }
+                if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                    return '用户名不能有特殊字符';
+                }
 
             },
-            password: [/(.+){2,12}$/, '密码必须2到12位'],
+            password: [/^[\S]{2,12}$/, '密码必须2到12位,且不能出现空格'],/*/(.+){2,12}$/*/
             repass: function(value) {
                 if($('#L_pass').val() != $('#L_repass').val()) {
                     return '两次密码不一致';
@@ -168,7 +171,7 @@
 
                         });
                     }else{
-                        layer.msg('登录名不可用',{
+                        layer.msg('登录名已被注册',{
                             icon:2,
                             time:1000
                         });
