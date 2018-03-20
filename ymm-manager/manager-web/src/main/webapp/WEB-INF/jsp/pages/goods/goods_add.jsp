@@ -30,12 +30,23 @@
 <div class="weadmin-body">
     <form class="layui-form" id="catAddForm">
         <div class="layui-form-item">
-            <label for="cat_name" class="layui-form-label">
+            <label for="goods_name" class="layui-form-label">
                 <span class="we-red">*</span>商品名称
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="cat_name" name="cat_name" required="" lay-verify="required"
+                <input type="text" id="goods_name" name="goods_name" required="" lay-verify="required"
                        autocomplete="off" placeholder="商品名称..." class="layui-input">
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <label for="goods_sn" class="layui-form-label">
+                <span class="we-red">*</span>商品货号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="goods_sn" name="goods_sn" required="" lay-verify="required"
+                       autocomplete="off" placeholder="商品唯一货号..." class="layui-input">
             </div>
 
         </div>
@@ -52,6 +63,147 @@
                 </select>
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">品牌</label>
+            <div class="layui-input-block">
+                <select name="brand" lay-filter="aihao">
+                    <option value=""></option>
+                    <option value="0">写作</option>
+                    <option value="1" selected="">阅读</option>
+                    <option value="2">游戏</option>
+                    <option value="3">音乐</option>
+                    <option value="4">旅行</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="goods_number" class="layui-form-label">
+                <span class="we-red">*</span>库存量
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="goods_number" name="goods_number" required="" lay-verify="required"
+                       autocomplete="off" placeholder="库存量..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="market_price" class="layui-form-label">
+                <span class="we-red">*</span>市场售价
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="market_price" name="market_price" required="" lay-verify="required"
+                       autocomplete="off" placeholder="市场售价..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="shop_price" class="layui-form-label">
+                <span class="we-red">*</span>本店售价
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="shop_price" name="shop_price" required="" lay-verify="required"
+                       autocomplete="off" placeholder="本店售价..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="promote_price" class="layui-form-label">
+                <span class="we-red">*</span>促销价格
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="promote_price" name="promote_price" required="" lay-verify="required"
+                       autocomplete="off" placeholder="促销价格..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="keywords" class="layui-form-label">
+                <span class="we-red">*</span>关键字
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="keywords" name="keywords" required="" lay-verify="required"
+                       autocomplete="off" placeholder="关键字..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="goods_brief" class="layui-form-label">
+                <span class="we-red">*</span>简短描述
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="goods_brief" name="goods_brief" required="" lay-verify="required"
+                       autocomplete="off" placeholder="简短描述..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="goods_desc" class="layui-form-label">
+                <span class="we-red">*</span>详细描述
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="goods_desc" name="goods_desc" required="" lay-verify="required"
+                       autocomplete="off" placeholder="详细描述..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="goods_img" class="layui-form-label">
+                <span class="we-red">*</span>图片
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="goods_img" name="goods_img" required="" lay-verify="required"
+                       autocomplete="off" placeholder="图片..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="goods_thumb" class="layui-form-label">
+                <span class="we-red">*</span>微缩图片
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="goods_thumb" name="goods_thumb" required="" lay-verify="required"
+                       autocomplete="off" placeholder="微缩图片..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="is_new" class="layui-form-label">
+                <span class="we-red">*</span>是否新品
+            </label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="is_new" id="is_new" lay-skin="switch" lay-text="是|否">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="is_hot" class="layui-form-label">
+                <span class="we-red">*</span>是否热销
+            </label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="is_hot" id="is_hot" lay-skin="switch" lay-text="是|否">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="give_integral" class="layui-form-label">
+                <span class="we-red">*</span>积分
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="give_integral" name="give_integral" required="" lay-verify="required"
+                       autocomplete="off" placeholder="积分..." class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="status" class="layui-form-label">
+                <span class="we-red">*</span>是否上架
+            </label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="status" id="status" lay-skin="switch" lay-text="是|否">
+            </div>
+
+        </div>
+
         <div class="layui-form-item">
             <label for="cat_desc" class="layui-form-label">
                 分类描述

@@ -51,7 +51,7 @@
         </div>
         <div class="layui-form-item">
             <label for="L_sex" class="layui-form-label">性别</label>
-            <div class="layui-input-block" id="L_sex">
+            <div class="layui-input-block" id="L_sex" name="L_sex">
                 <%--<input type="checkbox" id="status" name="status" lay-skin="switch" lay-text="是|否" {{ 1==d.status?'checked':''}}/>--%>
                 <input type="radio" name="sex" value="0" title="男" checked>
                 <input type="radio" name="sex" value="1" title="女" >

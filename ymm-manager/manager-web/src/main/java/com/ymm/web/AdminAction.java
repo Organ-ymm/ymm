@@ -3,6 +3,7 @@ package com.ymm.web;
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.po.Admin;
+import com.ymm.pojo.vo.AdminQuery;
 import com.ymm.service.AdminService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,8 @@ public class AdminAction {
     /**
      * 登陆
      */
-    @RequestMapping(value = "/tologin")
-    public String toLogin() {
-        return "login";
-    }
     @ResponseBody
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/loginConfirm")
     public String  login(HttpSession session, Admin admin) {
         Admin admin1 = adminService.selectAdminByUsername(admin);
         if(admin1 !=null){
@@ -44,10 +41,11 @@ public class AdminAction {
      */
     @ResponseBody
     @RequestMapping(value="/adminList",method= RequestMethod.GET)
-    public MessageResult<Admin> adminList(Page page,@Param("adminUserName") String adminQueryName ){
+    public MessageResult<Admin> adminList(Page page,AdminQuery query ){
+        System.out.println(query);
         MessageResult<Admin> messageResult = new MessageResult<>();
-        int countAdmin = adminService.countAdmin(adminQueryName);
-        List<Admin> admins = adminService.selectAllAdmin(page,adminQueryName);
+        int countAdmin = adminService.countAdmin(query);
+        List<Admin> admins = adminService.selectAllAdmin(page,query);
         messageResult.setCode(0);
         messageResult.setCount(countAdmin);
         messageResult.setMsg("管理员列表");
