@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymm.dao.RankMapper" >
+
+    <sql id="base_column">
+        rank_id,rank_name,points,discount
+    </sql>
+    <select id="listRank" resultType="com.ymm.pojo.po.Rank" parameterType="com.ymm.pojo.po.Rank">
+        select
+        <include refid="base_column"/>
+        from rank
+        order by rank_id
+    </select>
+
+    <select id="countRank" resultType="int">
+        select count(1)
+        from rank
+        order by rank_id
+    </select>
+
+    <insert id="addRank" parameterType="com.ymm.pojo.po.Rank">
+        insert into rank(
+        <include refid="base_column"/>
+        ) values(#{rank_id},#{rank_name},#{points},#{discount})
+    </insert>
+    <!--<sql id="base_column">
+        user_id,email,username,password,alias,sex,birthday,
+        rank_points,rank_id,reg_time,mobile_phone,status
+    </sql>
+    <sql id="where_clause">
+        <where>
+            status=#{usersQuery.status}
+            <if test="usersQuery != null and usersQuery.userText != null and usersQuery.userText != ''">
+            and username like '%${usersQuery.userText}%'
+            </if>
+        </where>
+    </sql>
+
+    <select id="listUsersByPage" resultType="com.ymm.pojo.po.Users">
+
+        select
+        <include refid="base_column"/>
+        from users
+        <include refid="where_clause"/>
+        order by user_id asc
+        limit #{page.offset},#{page.limit}
+    </select>
+
+    <select id="countUsers" resultType="int">
+        select count(1)
+        from users
+        <include refid="where_clause"/>
+    </select>
+
+    <select id="verifyUsername" parameterType="com.ymm.pojo.po.Users" resultType="com.ymm.pojo.po.Users">
+        select
+        <include refid="base_column"/>
+        from users where username=#{username}
+    </select>
+
+    <insert id="addUser" parameterType="com.ymm.pojo.po.Users">
+        insert into users(username,password,mobile_phone,rank_points,rank_id,reg_time,status
+            <if test="email != null and email != ''">
+                ,email
+            </if>
+            <if test="alias != null and alias != ''">
+                ,alias
+            </if>
+            <if test="sex != null">
+                ,sex
+            </if>
+            <if test="birthday != null and birthday != ''">
+                ,birthday
+            </if>
+        )
+        values(#{username},#{password},#{mobile_phone},#{rank_points},#{rank_id},#{reg_time},#{status}
+            <if test="email != null and email != ''">
+                ,#{email}
+            </if>
+            <if test="alias != null and alias != ''">
+                ,#{alias}
+            </if>
+            <if test="sex != null">
+                ,#{sex}
+            </if>
+            <if test="birthday != null and birthday != ''">
+                ,#{birthday}
+            </if>
+        )
+    </insert>
+
+    <update id="updateState" parameterType="com.ymm.pojo.po.Users">
+        update users set status=#{status} where user_id=#{user_id}
+    </update>
+
+    <update id="updateUser" parameterType="com.ymm.pojo.po.Users">
+        update users set mobile_phone=#{mobile_phone}
+        <if test="alias != null and alias != ''">
+            ,alias=#{alias}
+        </if>
+        <if test="sex != null">
+            ,sex=#{sex}
+        </if>
+        <if test="email != null and email != ''">
+            ,email=#{email}
+        </if>
+        <if test="birthday != null and birthday != ''">
+            ,birthday=#{birthday}
+        </if>
+        <if test="status != null and status != ''">
+            ,status=#{status}
+        </if>
+        where user_id=#{user_id}
+    </update>
+
+    <delete id="delUser" parameterType="com.ymm.pojo.po.Users">
+        delete from users where user_id=#{user_id}
+    </delete>-->
+
+</mapper>

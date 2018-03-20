@@ -92,8 +92,7 @@
                         </a>
                     </li>
                     <li>
-                        <%--<a _href="./pages/users/rank">--%>
-                            <a _href="./pages/404">
+                        <a _href="./pages/rank/ranklist">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>等级管理</cite>
 
