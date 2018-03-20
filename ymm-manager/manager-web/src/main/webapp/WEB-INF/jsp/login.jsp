@@ -21,7 +21,7 @@
     <div class="message"><img src="${pageContext.request.contextPath}/images/ymm_logo.png"></div>
     <div id="darkbannerwrap"></div>
 
-    <form method="post" class="layui-form" >
+    <form class="layui-form" >
         <input name="ad_username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
         <hr class="hr15">
         <input name="ad_password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
