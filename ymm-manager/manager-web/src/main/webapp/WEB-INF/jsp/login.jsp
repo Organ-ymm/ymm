@@ -39,7 +39,7 @@
         //监听提交
         form.on('submit(login)', function(data){
             $.post(
-                "${pageContext.request.contextPath}/login",
+                "${pageContext.request.contextPath}/loginConfirm",
                 data.field,
                 function(rec){
                     if(rec=="1"){

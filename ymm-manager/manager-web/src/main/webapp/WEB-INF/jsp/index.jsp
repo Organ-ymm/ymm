@@ -313,10 +313,10 @@
                 if(login==1){
                     return false;
                 }else{
-                    location.href='./tologin';
+                    location.href='./login';
                 }
             }else{
-                location.href='./tologin';
+                location.href='./login';
 
             }
         });
