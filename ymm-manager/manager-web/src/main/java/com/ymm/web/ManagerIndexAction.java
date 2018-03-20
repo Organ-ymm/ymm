@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ManagerIndexAction {
-    @RequestMapping(value="/{page}",method= RequestMethod.GET)
+    @RequestMapping(value="/{page}")
     public String index(@PathVariable String page){
         return page;
     }

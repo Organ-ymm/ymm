@@ -85,13 +85,21 @@
                         </a>
                     </li>
                     <li>
-                        <a _href="./pages/users/delPage">
+                        <a _href="./pages/users/del">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员删除</cite>
 
                         </a>
                     </li>
                     <li>
+                        <%--<a _href="./pages/users/rank">--%>
+                            <a _href="./pages/404">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>等级管理</cite>
+
+                        </a>
+                    </li>
+                    <%--<li>
                         <a href="javascript:;">
                             <i class="iconfont">&#xe70b;</i>
                             <cite>会员管理</cite>
@@ -99,15 +107,9 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a _href="./pages/users/addInput">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>输入框操作</cite>
-                                </a>
-                            </li>
-                            <li>
                                 <a _href="./pages/404">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员删除</cite>
+                                    <cite>等级添加</cite>
                                 </a>
                             </li>
                             <li>
@@ -116,8 +118,14 @@
                                     <cite>等级管理</cite>
                                 </a>
                             </li>
+                            <li>
+                                <a _href="./pages/users/addInput">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>。。。</cite>
+                                </a>
+                            </li>
                         </ul>
-                    </li>
+                    </li>--%>
                 </ul>
             </li>
             <li>
@@ -305,10 +313,10 @@
                 if(login==1){
                     return false;
                 }else{
-                    location.href='./tologin';
+                    location.href='./login';
                 }
             }else{
-                location.href='./tologin';
+                location.href='./login';
 
             }
         });

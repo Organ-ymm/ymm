@@ -28,40 +28,38 @@
 </div>
 <div class="weadmin-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 we-search">
+        <div class="layui-form layui-col-md12 we-search">
             <div class="layui-inline">
-                <input class="layui-input" placeholder="开始日" name="start" id="start">
+                <input type="text" id="adQueryName" name="adQueryName" placeholder="请输入用户名" autocomplete="off" class="layui-input">
             </div>
-            <div class="layui-inline">
-                <input class="layui-input" placeholder="截止日" name="end" id="end">
-            </div>
-            <div class="layui-inline">
-                <input type="text" name="adminUserName" placeholder="请输入用户名" autocomplete="off" class="layui-input">
-            </div>
-            <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
+            <button class="layui-btn" lay-submit="" lay-filter="search" data-type="reload">
+                <i class="layui-icon">&#xe615;</i></button>
+        </div>
     </div>
     <div class="weadmin-block">
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="WeAdminShow('添加用户','./add.html')"><i class="layui-icon"></i>添加</button>1
+        <button class="layui-btn" onclick="WeAdminShow('添加用户','./add.html')"><i class="layui-icon"></i>添加</button>
     </div>
-    <table class="layui-table" id="adminList">
+    <table class="layui-table" id="adminList" >
 
     </table>
 
 </div>
 <script type="text/html" id="operateTpl">
-    <a title="编辑" onclick="WeAdminEdit('编辑','./edit', 2, 600, 400)" href="javascript:;">
+    <a onclick="admin_stop(this,'10001')" href="javascript:;" title="启用">
+        <i class="layui-icon">&#xe601;</i>
+    </a>
+    <a title="编辑" onclick="WeAdminEdit('编辑','./edit.html', 2, 600, 400)" href="javascript:;">
         <i class="layui-icon">&#xe642;</i>
     </a>
-    <a title="查看" onclick="WeAdminShow('查看详情','./show',600,400)" href="javascript:;">
-        <i class="layui-icon">&#xe63c;</i>
+    <a onclick="WeAdminShow('修改密码','./password.html',600,400)" title="修改密码" href="javascript:;">
+        <i class="layui-icon">&#xe631;</i>
     </a>
-    <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+    <a title="删除" onclick="admin_del(this,'要删除的id')" href="javascript:;">
         <i class="layui-icon">&#xe640;</i>
     </a>
 </script>
-<script type="text/javascript">
+<%--<script type="text/javascript">
     layui.extend({
         admin: '{/}../../static/js/admin'
     });
@@ -140,7 +138,7 @@
 
     });
 
-</script>
+</script>--%>
 </body>
 
 </html>
