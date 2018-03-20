@@ -5,17 +5,26 @@
     <sql id="Brand_column">
         brand_id,brand_name,logo,add_time,country,brand_desc,status
     </sql>
+
+    <sql id="where_clause">
+        <where>
+            status != 3
+            <if test="query != null and query.name != null and query.name != ''">
+                and brand_name like '%${query.name}%'
+            </if>
+        </where>
+    </sql>
     <select id="selectBrandByPage" parameterType="com.ymm.pojo.dto.Page" resultType="com.ymm.pojo.po.Brand">
         SELECT
         <include refid="Brand_column"/>
         from brand
-        WHERE status IN (1,2)
-        limit #{offset},#{limit}
+        <include refid="where_clause"/>
+        limit #{page.offset},#{page.limit}
     </select>
     <select id="countBrands" resultType="_long">
         select count(1)
         from brand
-        WHERE status IN (1,2)
+        <include refid="where_clause"/>
     </select>
     <update id="brandDelById" parameterType="_int">
         UPDATE

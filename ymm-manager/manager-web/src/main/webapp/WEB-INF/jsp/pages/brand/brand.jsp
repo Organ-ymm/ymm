@@ -30,9 +30,18 @@
         <i class="layui-icon" style="line-height:30px">&#x1002;</i></a>
 </div>
 <div class="weadmin-body">
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 we-search" onsubmit="return false;">
+            品牌搜索：
+            <div class="layui-inline">
+                <input type="text" name="name" id="name" placeholder="请输入品牌关键字" autocomplete="off" class="layui-input">
+            </div>
+            <button class="layui-btn" lay-submit="" lay-filter="search" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+    </div>
 
     <div class="weadmin-block">
-        <button class="layui-btn" onclick="WeAdminShow('添加用户','./add')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="WeAdminShow('添加用户','./brand_add',600,400)"><i class="layui-icon"></i>添加品牌</button>
     </div>
 
     <table class="layui-hide" id="brandList"></table>

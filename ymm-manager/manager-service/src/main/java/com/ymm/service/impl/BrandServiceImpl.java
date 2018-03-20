@@ -3,6 +3,7 @@ package com.ymm.service.impl;
 import com.ymm.dao.BrandMapper;
 import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.po.Brand;
+import com.ymm.pojo.vo.BrandQuery;
 import com.ymm.service.BrandService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +19,10 @@ public class BrandServiceImpl implements BrandService{
     @Autowired
     private BrandMapper brandMapper;
     @Override
-    public List<Brand> listBrandsByPage(Page page) {
+    public List<Brand> listBrandsByPage(Page page,BrandQuery query) {
         List<Brand> brands = null;
         try {
-            brands = brandMapper.selectBrandByPage(page);
+            brands = brandMapper.selectBrandByPage(page,query);
         }catch (Exception e){
             logger.debug(e.getMessage(),e);
         }
@@ -30,10 +31,10 @@ public class BrandServiceImpl implements BrandService{
     }
 
     @Override
-    public Long countBrands() {
+    public Long countBrands(BrandQuery query) {
         long count = 0;
         try {
-            count = brandMapper.countBrands();
+            count = brandMapper.countBrands(query);
         }catch (Exception e){
             logger.debug(e.getMessage(),e);
         }

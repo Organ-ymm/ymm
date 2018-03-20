@@ -40,11 +40,20 @@ layui.use(['table', 'jquery', 'admin'],function(){
         }
 
     });
+    var active = {
+        reload: function () {
+            var name = $('#name').val();
+            table.reload('brandList',{
+                page:{curr:1},
+                where:{name:name}
+            });
+        }
+    }
     /*用户-删除*/
     window.brand_del = function (obj) {
         layer.confirm('确认要删除吗？', function (index) {
 
-            var id = $(obj).parents("tr").children("[data-field='brand_id']").text();
+            var id = $(obj).parents("tr").childrens("[data-field='brand_id']").text();
             //发异步删除数据
             $(obj).parents("tr").remove();
 
@@ -69,5 +78,12 @@ layui.use(['table', 'jquery', 'admin'],function(){
             });
         });
     }
+    //魔符查询
+    $('.we-search .layui-btn').on('click',function (){
+        var type = $(this).data('type');
+        active[type]? active[type].call(this):'';
+    }
+        
+    )
 
 })

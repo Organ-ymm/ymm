@@ -3,6 +3,7 @@ package com.ymm.web;
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.po.Brand;
+import com.ymm.pojo.vo.BrandQuery;
 import com.ymm.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +20,11 @@ public class BrandAction {
     private BrandService brandService;
     @ResponseBody
     @RequestMapping(value = "/brand")
-    public MessageResult<Brand> listBrandsToJsonByPage(Page page){
+    public MessageResult<Brand> listBrandsToJsonByPage(Page page, BrandQuery query){
         MessageResult<Brand> messageResult = new MessageResult<>();
         try {
-            List<Brand> brands = brandService.listBrandsByPage(page);
-            long count = brandService.countBrands();
+            List<Brand> brands = brandService.listBrandsByPage(page,query);
+            long count = brandService.countBrands(query);
             messageResult.setCode(0);
             messageResult.setCount(count);
             messageResult.setMsg("ymmSuccess");
