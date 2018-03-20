@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>用户列表-后台管理系统-Admin 1.0</title>
+    <title>等级列表-后台管理系统-Admin 1.0</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -49,7 +49,7 @@
     </div>--%>
     <div class="weadmin-block demoTable">
         <%--<button class="layui-btn layui-btn-danger" data-type="getCheckData"><i class="layui-icon">&#xe640;</i>批量删除</button>--%>
-        <button class="layui-btn" onclick="WeAdminShow('添加用户','./addRank',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>
+        <button class="layui-btn" onclick="WeAdminShow('添加等级','./addRank',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>
         <span class="fr" id="countData" style="line-height: 40px"/>
     </div>
     <table class="layui-hide" id="rankList" lay-filter="rankList"></table>
@@ -64,9 +64,9 @@
         <a title="查看" lay-event="show" href="javascript:;">
             <i class="layui-icon">&#xe63c;</i>
         </a>
-        <a title="删除" id="user_del" onclick="user_del(this)" href="javascript:;">
+        <%--<a title="删除" id="user_del" onclick="user_del(this)" href="javascript:;">
             <i class="layui-icon">&#xe640;</i>
-        </a>
+        </a>--%>
     </script>
 
 </div>

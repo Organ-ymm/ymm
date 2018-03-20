@@ -11,4 +11,6 @@ public interface RankMapper {
     Integer countRank();
 
     Integer addRank(Rank rank);
+
+    Integer editRank(Rank rank);
 }

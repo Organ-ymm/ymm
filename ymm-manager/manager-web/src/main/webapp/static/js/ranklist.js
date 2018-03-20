@@ -41,58 +41,58 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             $("#countData").text("共有："+count+" 个等级");
         }
     });
-    // var active = {
-    //     reload:function(){
-    //         var userText=$.trim($('#userText').val());
-    //         //console.log(userText);
-    //         table.reload('rankList',{//重新从第 1 页开始
-    //             page:{curr:1},
-    //             where:{userText:userText}//设定异步数据接口的额外参数，任意设
-    //         });
-    //     },
-    //     getCheckData: function () { //获取选中数据
-    //         var checkStatus = table.checkStatus('rankList'),
-    //             data = checkStatus.data;
-    //         if (data.length > 0) {
-    //             layer.confirm('确认要删除吗？', function (index) {
-    //                 //在前台页面把选中数据删除：找到所有被选中的
-    //                 $(".layui-table-body .layui-form-checked").parents('tr').remove();
-    //                 //形成一个ID的数组
-    //                 var ids = [];
-    //                 //console.log(ids);
-    //                 //console.log(data.length);
-    //                 for (var i = 0; i < data.length; i++) {
-    //                     ids.push(data[i].user_id);
-    //                 }
-    //                 //console.log(ids);
-    //                 //发出异步的请求去后台
-    //                 //发出异步请求
-    //                 $.post(
-    //                     //url
-    //                     '../../user/batchUpdateDel',
-    //                     //data
-    //                     {'ids[]': ids},
-    //                     //success，成功时才会触发的函数
-    //                     function (data) {
-    //                         //console.log(data);
-    //                         if(data>0){
-    //                             layer.msg('删除成功', {
-    //                                 icon: 1
-    //                             });
-    //                         }else{
-    //                             layer.msg('删除失败', {
-    //                                 icon: 2
-    //                             });
-    //                         }
-    //                     }
-    //                 );
-    //             });
-    //         } else {
-    //             layer.msg("请先选择需要删除的用户！");
-    //         }
-    //
-    //     }
-    // };
+    var active = {
+        /*reload:function(){
+            var userText=$.trim($('#userText').val());
+            //console.log(userText);
+            table.reload('rankList',{//重新从第 1 页开始
+                page:{curr:1},
+                where:{userText:userText}//设定异步数据接口的额外参数，任意设
+            });
+        },*/
+        /*getCheckData: function () { //获取选中数据
+            var checkStatus = table.checkStatus('rankList'),
+                data = checkStatus.data;
+            if (data.length > 0) {
+                layer.confirm('确认要删除吗？', function (index) {
+                    //在前台页面把选中数据删除：找到所有被选中的
+                    $(".layui-table-body .layui-form-checked").parents('tr').remove();
+                    //形成一个ID的数组
+                    var ids = [];
+                    //console.log(ids);
+                    //console.log(data.length);
+                    for (var i = 0; i < data.length; i++) {
+                        ids.push(data[i].user_id);
+                    }
+                    //console.log(ids);
+                    //发出异步的请求去后台
+                    //发出异步请求
+                    $.post(
+                        //url
+                        '../../user/batchUpdateDel',
+                        //data
+                        {'ids[]': ids},
+                        //success，成功时才会触发的函数
+                        function (data) {
+                            //console.log(data);
+                            if(data>0){
+                                layer.msg('删除成功', {
+                                    icon: 1
+                                });
+                            }else{
+                                layer.msg('删除失败', {
+                                    icon: 2
+                                });
+                            }
+                        }
+                    );
+                });
+            } else {
+                layer.msg("请先选择需要删除的用户！");
+            }
+
+        }*/
+    };
 
     $('.demoTable .layui-btn').on('click', function () {
         var type = $(this).data('type');
@@ -111,7 +111,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     });
 
     /*用户-删除*/
-    window.user_del = function (obj) {
+    /*window.user_del = function (obj) {
         layer.confirm('确认要删除吗？', function (index) {
             var id=$(obj).parents("tr").children("[data-field='user_id']").text();
             //console.log(id);
@@ -138,7 +138,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                 }
             });
         });
-    }
+    }*/
 
     //table模块/数据表格文档
     table.on('tool(rankList)', function (obj) {
@@ -150,8 +150,8 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         if (layEvent === 'edit') {
             var id = data.user_id;
             //layer.msg(id);
-            var title = "修改用户信息";
-            var url = "../../pages/users/editUser";
+            var title = "修改等级信息";
+            var url = "../../pages/rank/editRank";
             var w = ($(window).width() * 0.9);
             var h = ($(window).height() - 50);
 
@@ -170,15 +170,10 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     // console.log(index);
                     //会员信息的回显
                     var body = layer.getChildFrame('body', index);
-                    body.contents().find("#L_id").val(data.user_id);
-                    body.contents().find("#L_username").val(data.username);
-                    body.contents().find("#L_alias").val(data.alias);
-                    body.contents().find("#L_sex").val(data.sex);
-                    //console.log(data.sex);
-                    body.contents().find("#L_phone").val(data.mobile_phone);
-                    body.contents().find("#L_email").val(data.email);
-                    body.contents().find("#L_password").val(data.password);
-                    body.contents().find("#L_repass").val(data.password);
+                    body.contents().find("#rank_id").val(data.rank_id);
+                    body.contents().find("#rank_name").val(data.rank_name);
+                    body.contents().find("#points").val(data.points);
+                    body.contents().find("#discount").val(data.discount);
                 },
                 error: function (layero, index) {
                     alert("aaa");

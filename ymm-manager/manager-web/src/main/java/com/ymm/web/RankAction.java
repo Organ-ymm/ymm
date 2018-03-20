@@ -47,4 +47,19 @@ public class RankAction {
         return i;
     }
 
+    /**
+     * 修改等级信息
+     * */
+    @ResponseBody
+    @RequestMapping(value="/editRank",method=RequestMethod.POST)
+    public int editRank(Rank rank){
+        int i=0;
+        try {
+            i=rService.editRank(rank);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
 }

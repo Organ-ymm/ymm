@@ -40,11 +40,28 @@ public class RankServiceImpl implements RankService {
         return count;
     }
 
+    /**
+     * 添加等级
+     * */
     @Override
     public Integer addRank(Rank rank) {
         int i=0;
         try {
             i=rMapper.addRank(rank);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 修改等级信息
+     * */
+    @Override
+    public Integer editRank(Rank rank) {
+        int i=0;
+        try {
+            i=rMapper.editRank(rank);
         } catch (Exception e) {
             e.printStackTrace();
         }
