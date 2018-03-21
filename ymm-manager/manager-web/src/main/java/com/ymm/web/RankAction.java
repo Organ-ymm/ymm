@@ -2,6 +2,7 @@ package com.ymm.web;
 
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.po.Rank;
+import com.ymm.pojo.vo.UserCustom;
 import com.ymm.service.RankService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,6 +121,22 @@ public class RankAction {
         }else{
             return 0;//不能删除
         }
+    }
+
+    /**
+     * 列出所有的等级
+     * */
+    @ResponseBody
+    @RequestMapping(value="/ListRankSum",method = RequestMethod.GET)
+    public MessageResult ListRankSum(){
+        MessageResult<UserCustom> messageResult=new MessageResult<>();
+        List<UserCustom> rankSumList=rService.ListRankSum();
+        int count = rService.countRank();
+        messageResult.setCode(0);
+        messageResult.setMsg("success");
+        messageResult.setData(rankSumList);
+        messageResult.setCount(count);
+        return messageResult;
     }
 
 }

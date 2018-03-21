@@ -3,6 +3,7 @@ package com.ymm.service.impl;
 import com.ymm.dao.RankMapper;
 import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.po.Rank;
+import com.ymm.pojo.vo.UserCustom;
 import com.ymm.service.RankService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -112,4 +113,19 @@ public class RankServiceImpl implements RankService {
         return i;
     }
 
+    /**
+     *
+     * @return 返回带有等级id，等级名字和等级人数的list
+     */
+
+    @Override
+    public List<UserCustom> ListRankSum() {
+        List<UserCustom> rankSumList=null;
+        try {
+            rankSumList=rMapper.ListRankSum();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rankSumList;
+    }
 }
