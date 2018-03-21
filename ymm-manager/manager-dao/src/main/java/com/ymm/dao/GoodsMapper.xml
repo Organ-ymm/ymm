@@ -2,19 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ymm.dao.GoodsMapper">
 
-    <!--goods sql块-->
-    <sql id="Goods_Column_List">
+    <!--GoodsCustom sql块-->
+    <sql id="GoodsCustom_Column_List">
         g.goods_id,g.cat_id,g.goods_sn,g.goods_name,g.click_count,g.brand_id,g.goods_number,g.market_price
         ,g.shop_price,g.promote_price,g.keywords,g.goods_brief,g.goods_desc,g.goods_img,g.goods_thumb
         ,g.add_time,g.is_new,g.is_hot,g.give_integral,g.status
         ,c.cat_name
         ,b.brand_name
     </sql>
+    <!--Goods sql块(少goods_desc)-->
+    <sql id="Goods_Column_List">
+        g.goods_id,g.cat_id,g.goods_sn,g.goods_name,g.click_count,g.brand_id,g.goods_number,g.market_price
+        ,g.shop_price,g.promote_price,g.keywords,g.goods_brief,g.goods_desc,g.goods_img,g.goods_thumb
+        ,g.add_time,g.is_new,g.is_hot,g.give_integral,g.status
+    </sql>
 
     <!--查询所有goods-->
     <select id="selectGoodsByPage" parameterType="com.ymm.pojo.dto.Page" resultType="com.ymm.pojo.vo.GoodsCustom">
         SELECT
-        <include refid="Goods_Column_List"/>
+        <include refid="GoodsCustom_Column_List"/>
         FROM goods g
         LEFT JOIN category c ON g.cat_id = c.cat_id
         LEFT JOIN brand b on g.brand_id = b.brand_id
@@ -27,7 +33,135 @@
         SET status = 3
         WHERE goods_id = #{id};
     </update>
+    <insert id="insertGoods" parameterType="com.ymm.pojo.po.Goods">
+        INSERT INTO goods
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="goods_id != null">
+                goods_id,
+            </if>
+            <if test="cat_id != null">
+                cat_id,
+            </if>
+            <if test="goods_sn != null">
+                goods_sn,
+            </if>
+            <if test="goods_name != null">
+                goods_name,
+            </if>
+            <if test="click_count != null">
+                click_count,
+            </if>
+            <if test="brand_id != null">
+                brand_id,
+            </if>
+            <if test="goods_number != null">
+                goods_number,
+            </if>
+            <if test="market_price != null">
+                market_price,
+            </if>
+            <if test="shop_price != null">
+                shop_price,
+            </if>
+            <if test="promote_price != null">
+                promote_price,
+            </if>
+            <if test="keywords != null">
+                keywords,
+            </if>
+            <if test="goods_brief != null">
+                goods_brief,
+            </if>
+            <if test="goods_desc != null">
+                goods_desc,
+            </if>
+            <if test="goods_img != null">
+                goods_img,
+            </if>
+            <if test="goods_thumb != null">
+                goods_thumb,
+            </if>
+            <if test="add_time != null">
+                add_time,
+            </if>
+            <if test="is_new != null">
+                is_new,
+            </if>
+            <if test="is_hot != null">
+                is_hot,
+            </if>
+            <if test="give_integral != null">
+                give_integral,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="goods_id != null">
+                #{goods_id},
+            </if>
+            <if test="cat_id != null">
+                #{cat_id},
+            </if>
+            <if test="goods_sn != null">
+                #{goods_sn},
+            </if>
+            <if test="goods_name != null">
+                #{goods_name},
+            </if>
+            <if test="click_count != null">
+                #{click_count},
+            </if>
+            <if test="brand_id != null">
+                #{brand_id},
+            </if>
+            <if test="goods_number != null">
+                #{goods_number},
+            </if>
+            <if test="market_price != null">
+                #{market_price},
+            </if>
+            <if test="shop_price != null">
+                #{shop_price},
+            </if>
+            <if test="promote_price != null">
+                #{promote_price},
+            </if>
+            <if test="keywords != null">
+                #{keywords},
+            </if>
+            <if test="goods_brief != null">
+                #{goods_brief},
+            </if>
+            <if test="goods_desc != null">
+                #{goods_desc},
+            </if>
+            <if test="goods_img != null">
+                #{goods_img},
+            </if>
+            <if test="goods_thumb != null">
+                #{goods_thumb},
+            </if>
+            <if test="add_time != null">
+                #{add_time},
+            </if>
+            <if test="is_new != null">
+                #{is_new},
+            </if>
+            <if test="is_hot != null">
+                #{is_hot},
+            </if>
+            <if test="give_integral != null">
+                #{give_integral},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+        </trim>
 
+
+    </insert>
 
     <resultMap id="resultGoods" type="com.ymm.pojo.vo.GoodsCustom">
         <id column="goods_id" property="goods_id"/>

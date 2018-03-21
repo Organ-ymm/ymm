@@ -2,6 +2,7 @@ package com.ymm.web;
 
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.dto.Page;
+import com.ymm.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +71,23 @@ public class ManagerGoodsAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("i======"+i);
+        return i;
+    }
+
+    /**
+     * 新增商品
+     * @param goods
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/goods_add",method = RequestMethod.POST)
+    public int goods_add(Goods goods){
+        int i = 0;
+        try {
+            i = goodsService.addGoods(goods);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return i;
     }
 }

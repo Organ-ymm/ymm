@@ -48,4 +48,9 @@ public class CategoryServiceImpl implements CategoryService {
     public int updateCate(Category category) {
        return  categoryDao.updateCate(category);
     }
+
+    @Override
+    public List<Category> categorySelect() {
+        return categoryDao.categorySelect();
+    }
 }
