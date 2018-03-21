@@ -31,6 +31,19 @@
         where
         rank_id=#{rank_id}
     </update>
+
+    <select id="findMaxRankId" resultType="int">
+        select
+        max(rank_id)
+        from rank
+    </select>
+
+    <delete id="delRank" parameterType="com.ymm.pojo.po.Rank">
+        delete from
+        rank
+        where
+        rank_id=#{rank_id}
+    </delete>
     <!--<sql id="base_column">
         user_id,email,username,password,alias,sex,birthday,
         rank_points,rank_id,reg_time,mobile_phone,status

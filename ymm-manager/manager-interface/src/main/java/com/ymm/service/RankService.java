@@ -13,4 +13,8 @@ public interface RankService {
     Integer addRank(Rank rank);
 
     Integer editRank(Rank rank);
+
+    Integer findMaxRankId();
+
+    Integer delRank(Integer rank_id);
 }

@@ -3,6 +3,7 @@ package com.ymm.web;
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.po.Rank;
 import com.ymm.service.RankService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,6 +61,49 @@ public class RankAction {
             e.printStackTrace();
         }
         return i;
+    }
+
+    /**
+     * 删除等级前，验证是否可以删除
+     */
+    @ResponseBody
+    @RequestMapping(value="/verifyRankId",method = RequestMethod.GET)
+    public int verifyRankId(@Param("rank_id") int rank_id){
+        int maxRankId=rService.findMaxRankId();
+        if (rank_id==maxRankId){
+            return 1;//可以删除
+        }else{
+            return 0;//不能删除
+        }
+    }
+
+    /**
+     * 删除等级
+     */
+    @ResponseBody
+    @RequestMapping(value="/delRank",method = RequestMethod.GET)
+    public int delRank(@Param("rank_id") int rank_id){
+        int i =0;
+        try{
+            i =rService.delRank(rank_id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 统计各个等级的用户总数
+     */
+    @ResponseBody
+    @RequestMapping(value="/",method = RequestMethod.GET)
+    public int count(@Param("rank_id") Integer rank_id){
+        int maxRankId=rService.findMaxRankId();
+        if (rank_id==maxRankId){
+            return 1;//可以删除
+        }else{
+            return 0;//不能删除
+        }
     }
 
 }

@@ -53,7 +53,7 @@
                 <span class="we-red">*</span>等级最低积分
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="points" name="points" lay-verify="required|discount" lay-verify="required|number" autocomplete="off"  class="layui-input">
+                <input type="text" id="points" name="points" lay-verify="required|points" lay-verify="required|number" autocomplete="off"  class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
                 只能为数字

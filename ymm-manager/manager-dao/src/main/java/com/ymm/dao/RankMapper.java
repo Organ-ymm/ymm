@@ -13,4 +13,8 @@ public interface RankMapper {
     Integer addRank(Rank rank);
 
     Integer editRank(Rank rank);
+
+    Integer findMaxRankId();
+
+    Integer delRank(Rank rank);
 }

@@ -68,7 +68,35 @@ public class RankServiceImpl implements RankService {
         return i;
     }
 
-//    /**
+    /**
+     *
+     * @param rank_id：等级ID
+     * @return：数据库中最大的等级ID
+     */
+    @Override
+    public Integer findMaxRankId() {
+        int maxRankId=rMapper.findMaxRankId();
+        return maxRankId;
+    }
+
+    /**
+     *
+     * @param rank_id：等级ID
+     * @return：删除后影响的行数
+     */
+    @Override
+    public Integer delRank(Integer rank_id) {
+        int i=0;
+        try {
+            Rank rank=new Rank();
+            rank.setRank_id(rank_id);
+            i=rMapper.delRank(rank);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+    //    /**
 //     * 显示所有符合分页和查询条件的用户
 //     * */
 //    @Override

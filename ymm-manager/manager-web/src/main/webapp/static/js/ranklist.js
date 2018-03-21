@@ -111,26 +111,35 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
     });
 
     /*用户-删除*/
-    /*window.user_del = function (obj) {
+    window.del = function (obj) {
         layer.confirm('确认要删除吗？', function (index) {
-            var id=$(obj).parents("tr").children("[data-field='user_id']").text();
-            //console.log(id);
-            //发异步删除数据
-            $(obj).parents("tr").remove();
+            var rank_id=$(obj).parents("tr").children("[data-field='rank_id']").text();
+            //console.log(rank_id);
             //提交ajax
             $.ajax({
-                data:{'id':id},
+                data:{'rank_id':rank_id},
                 dataType:"text",
                 type:"GET",
-                url: "../../user/singleUpdateDel",
+                url: "../../rank/verifyRankId",
                 success:function(res){
-                    if(res>0){
-                        layer.msg('已删除',{
-                            icon:1,
-                            time:1000
+                    if(res==1){
+                        $.ajax({
+                            data:{'rank_id':rank_id},
+                            dataType:"text",
+                            type:"get",
+                            url:"../../rank/delRank",
+                            success:function (res) {
+                                //发异步删除数据
+                                $(obj).parents("tr").remove();
+                                layer.msg('已删除',{
+                                    icon:1,
+                                    time:1000
+                                });
+                            }
                         });
+
                     }else{
-                        layer.msg('删除失败',{
+                        layer.msg('删除失败！只能删除最后一项',{
                             icon:2,
                             time:1000
                         });
@@ -138,7 +147,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                 }
             });
         });
-    }*/
+    }
 
     //table模块/数据表格文档
     table.on('tool(rankList)', function (obj) {
