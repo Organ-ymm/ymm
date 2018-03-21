@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -28,7 +29,17 @@
 
 <body>
 <div class="weadmin-body">
-    <form class="layui-form" id="goodsAddForm">
+    <form class="layui-form" id="editToForm">
+        <div class="layui-form-item">
+            <label for="goods_id" class="layui-form-label">
+                <span class="we-red">*</span>商品编号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="goods_id" name="goods_id" required="" lay-verify="required"
+                       autocomplete="off" readonly class="layui-input">
+            </div>
+
+        </div>
         <div class="layui-form-item">
             <label for="goods_name" class="layui-form-label">
                 <span class="we-red">*</span>商品名称
@@ -55,8 +66,8 @@
             <div class="layui-input-block">
                 <select name="cat_id" id="category" required="" lay-verify="required" lay-filter="category">
                     <option value="">请选择</option>
-
                 </select>
+                <input type="text" hidden id="cat_name">
             </div>
         </div>
         <div class="layui-form-item">
@@ -64,8 +75,8 @@
             <div class="layui-input-block">
                 <select name="brand_id" required="" lay-verify="required" id="brand" lay-filter="brand">
                     <option value="">请选择</option>
-
                 </select>
+                <input type="text" hidden id="brand_name">
             </div>
         </div>
         <div class="layui-form-item">
@@ -158,16 +169,16 @@
             </div>
 
         </div>
-        <div class="layui-form-item">
+        <%--<div class="layui-form-item">
             <label for="is_new" class="layui-form-label">
                 <span class="we-red">*</span>是否新品
             </label>
             <div class="layui-input-block">
-                <input type="checkbox" name="is_new" id="is_new" lay-skin="switch" value="1" lay-text="是|否">
+                <input type="checkbox" name="is_new" id="is_new" lay-skin="switch" value="1"  lay-text="是|否">
             </div>
 
-        </div>
-        <div class="layui-form-item">
+        </div>--%>
+        <%--<div class="layui-form-item">
             <label for="is_hot" class="layui-form-label">
                 <span class="we-red">*</span>是否热销
             </label>
@@ -175,7 +186,7 @@
                 <input type="checkbox" name="is_hot" id="is_hot" lay-skin="switch" value="1" lay-text="是|否">
             </div>
 
-        </div>
+        </div>--%>
         <div class="layui-form-item">
             <label for="give_integral" class="layui-form-label">
                 <span class="we-red">*</span>积分
@@ -188,18 +199,18 @@
         </div>
 
 
-        <div class="layui-form-item">
+        <%--<div class="layui-form-item">
             <label for="status" class="layui-form-label">
                 <span class="we-red">*</span>是否上架
             </label>
             <div class="layui-input-block">
-                <input type="checkbox" name="status" id="status" lay-skin="switch" value="1" lay-text="是|否">
+                <input type="checkbox" name="status" id="status" lay-skin="switch" value="1" lay-text="是|否" {{1==d.status?'checked':''}}>
             </div>
 
-        </div>
+        </div>--%>
         <div class="layui-form-item">
-            <button class="layui-btn" lay-filter="add" lay-submit="">
-                添加
+            <button class="layui-btn" lay-filter="update" lay-submit="">
+                修改
             </button>
         </div>
     </form>
@@ -208,39 +219,43 @@
     layui.extend({
         admin: '{/}../../static/js/admin'
     });
-    //设定全局变量,function中要使用该变量
     var form;
     var $;
-    layui.use(['form', 'jquery', 'layer', 'admin'], function () {
-        form = layui.form;
-        $ = layui.jquery;
+    layui.use(['form', 'layer', 'jquery', 'admin'], function () {
         var admin = layui.admin,
             layer = layui.layer;
-        //下拉选项的回显
+        $ = layui.jquery;
+        form = layui.form;
+
         loadCategory();
         loadBrand();
 
-
         //监听提交
-        form.on('submit(add)', function (data) {
-
-            //提交Ajax
+        form.on('submit(update)', function (data) {
             $.ajax({
-                data: $("#goodsAddForm").serialize(),
+                data: $("#editToForm").serialize(),
                 dataType: "text",
                 type: "post",
-                url: "${pageContext.request.contextPath}/goods/goods_add",
+                url: "${pageContext.request.contextPath}/goods/goods_edit",
                 success: function (res) {
-                    layer.alert("添加成功", {icon: 6}, function () {
-                        // 获得frame索引
-                        var index = parent.layer.getFrameIndex(window.name);
-                        //关闭当前frame
-                        parent.layer.close(index);
-                    });
+                    if (res > 0) {
+                        layer.alert("修改成功", {icon: 6}, function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
+                        });
+                    } else {
+                        layer.alert("修改失败", {icon: 5}, function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
+                        });
+                    }
 
                 }
             });
-
             return false;
         });
 
@@ -262,15 +277,21 @@
                     var option = document.createElement("option");
                     option.setAttribute("value", data[i].cat_id);
                     option.innerText = data[i].cat_name;
+
                     category.appendChild(option);
                     form.render('select');
+                    //判断当前的cat_name(写了个隐藏的input标签)
+                    if (data[i].cat_name == $("#cat_name").val()) {
+                        //将该option改为selected状态
+                        document.getElementById("category")[data[i].cat_id].selected = true;
+                    }
                 }
             }
         });
     }
 
     function loadBrand() {
-        //去后台查询所有的分类信息
+        //去后台查询所有的品牌信息
         $.ajax({
 
             type: "GET",
@@ -283,9 +304,18 @@
                     var option = document.createElement("option");
                     option.setAttribute("value", data[i].brand_id);
                     option.innerText = data[i].brand_name;
+
                     brand.appendChild(option);
+
                     form.render('select');
+
+                    if (data[i].brand_name == $("#brand_name").val()) {
+                        document.getElementById("brand")[data[i].brand_id].selected = true;
+                    }
+
                 }
+                //$("#brand").attr("value","4");
+
             }
         });
     }

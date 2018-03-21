@@ -4,6 +4,7 @@ import com.ymm.dao.GoodsMapper;
 import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
+import com.ymm.pojo.vo.GoodsQuery;
 import com.ymm.service.GoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +22,10 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsMapper goodsdao;
 
     @Override
-    public List<GoodsCustom> listGoods(Page page) {
+    public List<GoodsCustom> listGoods(Page page, GoodsQuery query) {
         List<GoodsCustom> goodsCustomList = null;
         try {
-            goodsCustomList = goodsdao.selectGoodsByPage(page);
+            goodsCustomList = goodsdao.selectGoodsByPage(page,query);
         } catch (Exception e) {
             logger.debug(e.getMessage(), e);
         }

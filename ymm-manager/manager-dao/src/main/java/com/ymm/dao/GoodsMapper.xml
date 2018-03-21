@@ -17,15 +17,24 @@
         ,g.add_time,g.is_new,g.is_hot,g.give_integral,g.status
     </sql>
 
+    <sql id="Where_Clause">
+        <where>
+            g.status != 3
+            <if test="query != null and query.title != null and query.title != '' ">
+                and g.keywords like '%${query.title}%'
+            </if>
+        </where>
+    </sql>
     <!--查询所有goods-->
-    <select id="selectGoodsByPage" parameterType="com.ymm.pojo.dto.Page" resultType="com.ymm.pojo.vo.GoodsCustom">
+    <select id="selectGoodsByPage" resultType="com.ymm.pojo.vo.GoodsCustom">
         SELECT
         <include refid="GoodsCustom_Column_List"/>
         FROM goods g
         LEFT JOIN category c ON g.cat_id = c.cat_id
         LEFT JOIN brand b on g.brand_id = b.brand_id
-        WHERE g.status !=3
-        limit #{offset},#{limit}
+        <include refid="Where_Clause"/>
+        ORDER BY g.goods_id
+        limit #{page.offset},#{page.limit}
     </select>
     <!--根据id删除商品(将商品status改为3)-->
     <update id="updateGoodsById" parameterType="int">
@@ -183,6 +192,6 @@
     <select id="countItems" resultType="_long">
     select count(1)
     from goods g
-    WHERE g.status !=3
+    <include refid="Where_Clause"/>
   </select>
 </mapper>
