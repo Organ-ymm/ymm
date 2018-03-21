@@ -192,7 +192,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
             ,layEvent = obj.event; //获得 lay-event 对应的值
         //console.log(data);
 
-        //会员信息的修改
+        //会员信息的编辑修改
         if (layEvent === 'edit') {
             var id = data.user_id;
             //layer.msg(id);

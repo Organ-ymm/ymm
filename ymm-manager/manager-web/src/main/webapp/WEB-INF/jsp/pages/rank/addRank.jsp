@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>添加会员-后台管理系统-Admin 1.0</title>
+    <title>添加等级-后台管理系统-Admin 1.0</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -26,11 +26,11 @@
                 <span class="we-red">*</span>等级ID
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="rank_id" name="rank_id" lay-verify="required|number" autocomplete="off" class="layui-input">
+                <input type="text" id="rank_id" name="rank_id" lay-verify="required" readonly autocomplete="off" class="layui-input">
             </div>
-            <div class="layui-form-mid layui-word-aux">
+            <%--<div class="layui-form-mid layui-word-aux">
                 只能为数字
-            </div>
+            </div>--%>
         </div>
 
         <div class="layui-form-item">
@@ -116,7 +116,6 @@
             //console.log(data.field);
             var rank_name = data.field.rank_name;
             //console.log(rank_name);
-            var sex = $('input:radio[name="sex"]:checked').val();
 
             //提交数据
             $.ajax({

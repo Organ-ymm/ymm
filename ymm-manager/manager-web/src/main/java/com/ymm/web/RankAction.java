@@ -33,6 +33,22 @@ public class RankAction {
         messageResult.setCount(count);
         return messageResult;
     }
+
+    /**
+     * 添加等级前等级ID的自动填写
+     * */
+    @ResponseBody
+    @RequestMapping(value="/getRankId",method = RequestMethod.GET)
+    public int getRankId(){
+        int i=0;
+        try {
+            i=rService.findMaxRankId()+1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
     /**
      * 添加等级
      * */

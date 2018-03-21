@@ -49,7 +49,8 @@
     </div>--%>
     <div class="weadmin-block demoTable">
         <%--<button class="layui-btn layui-btn-danger" data-type="getCheckData"><i class="layui-icon">&#xe640;</i>批量删除</button>--%>
-        <button class="layui-btn" onclick="WeAdminShow('添加等级','./addRank',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>
+        <%--<button class="layui-btn" onclick="WeAdminShow('添加等级','./addRank',600,400)"><i class="layui-icon">&#xe61f;</i>添加</button>--%>
+        <button class="layui-btn" onclick="add(this)"><i class="layui-icon">&#xe61f;</i>添加</button>
         <span class="fr" id="countData" style="line-height: 40px"/>
     </div>
     <table class="layui-hide" id="rankList" lay-filter="rankList"></table>
