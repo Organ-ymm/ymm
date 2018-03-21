@@ -24,6 +24,7 @@ public class ManagerGoodsAction {
     @RequestMapping("/goodslist")
     @ResponseBody
     public MessageResult<GoodsCustom> listGoodsToJson(Page page, GoodsQuery query){
+        //System.out.println(query);
         //从后台把所有商品的数据查询到List，把List封装MessageResult
         MessageResult<GoodsCustom> messageResult = new MessageResult<>();
         try {
