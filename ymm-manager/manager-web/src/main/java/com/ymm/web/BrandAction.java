@@ -67,4 +67,15 @@ public class BrandAction {
         }
         return i;
     }
+    @ResponseBody
+    @RequestMapping(value = "/brandSelect",method = RequestMethod.GET)
+    public List<Brand> brandSelectAll(){
+        List<Brand> brandList = null;
+        try {
+            brandList = brandService.brandSelectAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return brandList;
+    }
 }

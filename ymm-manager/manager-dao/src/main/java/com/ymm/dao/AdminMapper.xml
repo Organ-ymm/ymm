@@ -39,4 +39,10 @@
         FROM admin a WHERE ad_id = #{id}
     </select>
 
+    <!--添加管理员-->
+    <insert id="addAdmin" useGeneratedKeys="true" keyProperty="ad_id" parameterType="com.ymm.pojo.po.Admin">
+        INSERT INTO
+         admin(ad_username,ad_password,ad_phone,ad_email,ad_rank,ad_addTime,ad_status)
+          VALUES (#{ad_username},#{ad_password},#{ad_phone},#{ad_email},#{ad_rank},#{ad_addTime},#{ad_status})
+    </insert>
 </mapper>

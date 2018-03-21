@@ -73,4 +73,16 @@ public class BrandServiceImpl implements BrandService{
         }
         return i;
     }
+
+    @Override
+    public List<Brand> brandSelectAll() {
+        List<Brand> brandList = null;
+        try {
+
+            brandList = brandMapper.brandSelectAll();
+        }catch (Exception e){
+            logger.debug(e.getMessage(),e);
+        }
+        return brandList;
+    }
 }

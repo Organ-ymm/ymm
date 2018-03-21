@@ -54,4 +54,11 @@
         <if test="status != null and status != ''"/>
           ,status = #{status}
     </update>
+    <!--分类-->
+    <select id="brandSelectAll" resultType="com.ymm.pojo.po.Brand" >
+        SELECT
+        <include refid="Brand_column"/>
+        FROM brand
+        WHERE status != 3
+    </select>
 </mapper>

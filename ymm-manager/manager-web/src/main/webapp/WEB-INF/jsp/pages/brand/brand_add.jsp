@@ -60,7 +60,7 @@
                 <span class="we-red">*</span>添加时间
             </label>
             <div class="layui-input-inline">
-                <input type="date" id="add_time" name="add_time" required="" lay-verify="phone" autocomplete="off" class="layui-input">
+                <input type="date" id="add_time" name="add_time" required="" lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">

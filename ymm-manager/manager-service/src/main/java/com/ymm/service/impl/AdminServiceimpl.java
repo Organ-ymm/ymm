@@ -43,4 +43,9 @@ public class AdminServiceimpl implements AdminService {
         int count = adminMapper.countAdmin(query);
         return count;
     }
+
+    @Override
+    public void addAdmin(Admin admin) {
+        adminMapper.addAdmin(admin);
+    }
 }
