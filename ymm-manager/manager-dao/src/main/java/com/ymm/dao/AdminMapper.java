@@ -11,6 +11,8 @@ import java.util.Map;
 public interface AdminMapper {
     Admin selectAdminByUsername(Admin admin);
     Admin selectAdminById(int id);
-    List<Admin> selectAllAdmin(Map<String,Object> map);
+    List<Admin> selectAllAdmin(@Param("page")Page page, @Param("query")AdminQuery query);
     int countAdmin(@Param("query")AdminQuery query);
+
+    void addAdmin(Admin admin);
 }

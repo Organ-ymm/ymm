@@ -2,7 +2,7 @@ layui.use(['form','table','jquery'], function(){
     var table = layui.table,
         form = layui.form,
         jquery = layui.jquery;
-    table.render({
+    var tableIns = table.render({
         elem: '#adminList'
         ,cellMinWidth: 80
         //数据接口
@@ -24,27 +24,38 @@ layui.use(['form','table','jquery'], function(){
     });
 
     //模糊查询
-    /*form.on('submit(search)', function(data){
-        table.reload('adminList', {
-            page:{ curr:1 },
-            where: {adminQueryName:data.field} //设定异步数据接口的额外参数
+  /*  form.on('submit(search)', function(data){
+        var adminQueryName=$.trim($('#adminQueryName').val());
+        tableIns.reload('adminList', {
+            where: {
+                adminQueryName:adminQueryName,
+                "adminQueryName":data.field
+            }, //设定异步数据接口的额外参数
+            page:{ curr:1 }
         });
     });*/
-
-    var active = {
-        reload: function () {
-            //val() text() html()
-            var adQueryName = $('#adQueryName').val();
-            table.reload('adminList', {
-                page: {curr: 1},
-                where: {adQueryName: adQueryName}
-            });
-        }
+    window.WeAdminShow = function(title, url, w, h) {
+        if(title == null || title == '') {
+            title = false;
+        };
+        if(url == null || url == '') {
+            url = "404";
+        };
+        if(w == null || w == '') {
+            w = ($(window).width() * 0.9);
+        };
+        if(h == null || h == '') {
+            h = ($(window).height() - 50);
+        };
+        var layerOpen = layer.open({
+            type: 2,
+            area: [w + 'px', h + 'px'],
+            fix: false, //不固定
+            maxmin: true,
+            shadeClose: true,
+            shade: 0.4,
+            title: title,
+            content: url
+        });
     }
-    $('.we-search .layui-btn').on('click', function () {
-        var type = $(this).data('type');//reload
-        active[type] ? active[type].call(this) : '';//调用active中reload方法
-    });
-
-
 });

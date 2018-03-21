@@ -11,4 +11,6 @@ public interface AdminService {
     Admin selectAdminById(int id);
     List<Admin> selectAllAdmin(Page page,AdminQuery query);
     int countAdmin(AdminQuery query);
+
+    void addAdmin(Admin admin);
 }

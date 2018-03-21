@@ -3,11 +3,11 @@ package com.ymm.pojo.vo;
 public class AdminQuery {
     private String adQueryName;
 
-    public String getTitle() {
+    public String getAdQueryName() {
         return adQueryName;
     }
 
-    public void setTitle(String title) {
+    public void setAdQueryName(String adQueryName) {
         this.adQueryName = adQueryName;
     }
 }

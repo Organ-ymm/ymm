@@ -31,10 +31,10 @@ public class AdminServiceimpl implements AdminService {
 
     @Override
     public List<Admin> selectAllAdmin(Page page, AdminQuery query) {
-        Map<String,Object> map = new HashMap<>();
+        /*Map<String,Object> map = new HashMap<>();
         map.put("page",page);
-        map.put("query",query);
-        List<Admin> admins = adminMapper.selectAllAdmin(map);
+        map.put("query",query);*/
+        List<Admin> admins = adminMapper.selectAllAdmin(page,query);
         return admins;
     }
 
@@ -42,5 +42,10 @@ public class AdminServiceimpl implements AdminService {
     public int countAdmin(AdminQuery query) {
         int count = adminMapper.countAdmin(query);
         return count;
+    }
+
+    @Override
+    public void addAdmin(Admin admin) {
+        adminMapper.addAdmin(admin);
     }
 }

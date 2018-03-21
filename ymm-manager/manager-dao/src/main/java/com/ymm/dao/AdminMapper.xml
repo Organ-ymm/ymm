@@ -9,8 +9,8 @@
     <sql id="where_adminQuery">
         <where>
             ad_status!=0
-            <if test="query != null and query.adQueryName != null ">
-                and ad_username like '%${query.adQueryName}%'
+            <if test="query != null and query.adQueryName != null and query.adQueryName != '' ">
+                and a.ad_username like '%${query.adQueryName}%'
             </if>
         </where>
     </sql>
@@ -20,7 +20,7 @@
         <include refid="Admin_column"/>
         from admin a
         <include refid="where_adminQuery"/>
-        ORDER BY ad_id ASC
+        ORDER BY a.ad_id ASC
         limit #{page.offset},#{page.limit}
     </select>
 
@@ -39,4 +39,10 @@
         FROM admin a WHERE ad_id = #{id}
     </select>
 
+    <!--添加管理员-->
+    <insert id="addAdmin" useGeneratedKeys="true" keyProperty="ad_id" parameterType="com.ymm.pojo.po.Admin">
+        INSERT INTO
+         admin(ad_username,ad_password,ad_phone,ad_email,ad_rank,ad_addTime,ad_status)
+          VALUES (#{ad_username},#{ad_password},#{ad_phone},#{ad_email},#{ad_rank},#{ad_addTime},#{ad_status})
+    </insert>
 </mapper>
