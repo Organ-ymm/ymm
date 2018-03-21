@@ -16,4 +16,6 @@ public interface BrandService {
     int addBrand(Brand brand);
 
     int editBrand(Brand brand);
+
+    List<Brand> brandSelectAll();
 }
