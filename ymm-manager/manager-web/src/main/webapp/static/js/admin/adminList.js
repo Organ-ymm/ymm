@@ -10,15 +10,19 @@ layui.use(['form','table','jquery'], function(){
         ,page: true //开启分页
         ,cols: [[ //表头
             {type:'checkbox'}
-            ,{field: 'ad_id', title: 'ID', width:80, sort: true}
-            ,{field: 'ad_username', title: '登陆名', width:80}
-            ,{field: 'ad_phone', title: '手机', width:80}
-            ,{field: 'ad_email', title: '邮箱', width:80}
-            ,{field: 'ad_rank', title: '角色', width: 80}
-            ,{field: 'ad_addTime', title: '加入时间', width: 150, sort: true}
+            ,{field: 'ad_id', title: 'ID', width:40, sort: true}
+            ,{field: 'ad_username', title: '登陆名', width:120}
+            ,{field: 'ad_phone', title: '手机', width:120}
+            ,{field: 'ad_email', title: '邮箱', width:120}
+            ,{field: 'ad_rank', title: '角色', width: 100}
+            ,{field: 'ad_addTime', title: '加入时间', width: 100, sort: true}
             ,{field: 'ad_status', title: '状态', width: 80}
-            ,{field: 'classify', title: '操作', width: 150,toolbar: '#operateTpl', unresize: true}
+            ,{field: 'classify', title: '操作', width: 130,toolbar: '#operateTpl', }
         ]],
+        done: function(res, curr, count){
+            //res你接口返回的信息, curr得到当前页码, count得到数据总量
+
+        },
         limit:5,
         limits: [5, 10, 20, 50, 100]
     });
