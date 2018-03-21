@@ -28,7 +28,7 @@
 
 <body>
 <div class="weadmin-body">
-    <form class="layui-form" id="catAddForm">
+    <form class="layui-form" id="goodsAddForm">
         <div class="layui-form-item">
             <label for="goods_name" class="layui-form-label">
                 <span class="we-red">*</span>商品名称
@@ -51,25 +51,21 @@
 
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">分类</label>
+            <label class="layui-form-label"><span class="we-red">*</span>分类</label>
             <div class="layui-input-block">
-                <select name="category" lay-filter="aihao">
-                    <option value=""></option>
-                    <option value="0">写作</option>
-                    <option value="1" selected="">阅读</option>
-                    <option value="2">游戏</option>
-                    <option value="3">音乐</option>
-                    <option value="4">旅行</option>
+                <select name="cat_id" id="category" required="" lay-verify="required" lay-filter="category">
+                    <option value="">请选择</option>
+
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">品牌</label>
+            <label class="layui-form-label"><span class="we-red">*</span>品牌</label>
             <div class="layui-input-block">
-                <select name="brand" lay-filter="aihao">
-                    <option value=""></option>
+                <select name="brand_id" required="" lay-verify="required" id="brand" lay-filter="brand">
+                    <option value="">请选择</option>
                     <option value="0">写作</option>
-                    <option value="1" selected="">阅读</option>
+                    <option value="1">阅读</option>
                     <option value="2">游戏</option>
                     <option value="3">音乐</option>
                     <option value="4">旅行</option>
@@ -81,7 +77,7 @@
                 <span class="we-red">*</span>库存量
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="goods_number" name="goods_number" required="" lay-verify="required"
+                <input type="text" id="goods_number" name="goods_number" required="" lay-verify="required|number"
                        autocomplete="off" placeholder="库存量..." class="layui-input">
             </div>
 
@@ -91,7 +87,7 @@
                 <span class="we-red">*</span>市场售价
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="market_price" name="market_price" required="" lay-verify="required"
+                <input type="text" id="market_price" name="market_price" required="" lay-verify="required|number"
                        autocomplete="off" placeholder="市场售价..." class="layui-input">
             </div>
 
@@ -101,7 +97,7 @@
                 <span class="we-red">*</span>本店售价
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="shop_price" name="shop_price" required="" lay-verify="required"
+                <input type="text" id="shop_price" name="shop_price" required="" lay-verify="required|number"
                        autocomplete="off" placeholder="本店售价..." class="layui-input">
             </div>
 
@@ -111,7 +107,7 @@
                 <span class="we-red">*</span>促销价格
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="promote_price" name="promote_price" required="" lay-verify="required"
+                <input type="text" id="promote_price" name="promote_price" required="" lay-verify="required|number"
                        autocomplete="off" placeholder="促销价格..." class="layui-input">
             </div>
 
@@ -171,7 +167,7 @@
                 <span class="we-red">*</span>是否新品
             </label>
             <div class="layui-input-block">
-                <input type="checkbox" name="is_new" id="is_new" lay-skin="switch" lay-text="是|否">
+                <input type="checkbox" name="is_new" id="is_new" lay-skin="switch" value="1"  lay-text="是|否">
             </div>
 
         </div>
@@ -180,7 +176,7 @@
                 <span class="we-red">*</span>是否热销
             </label>
             <div class="layui-input-block">
-                <input type="checkbox" name="is_hot" id="is_hot" lay-skin="switch" lay-text="是|否">
+                <input type="checkbox" name="is_hot" id="is_hot" lay-skin="switch" value="1" lay-text="是|否">
             </div>
 
         </div>
@@ -189,20 +185,12 @@
                 <span class="we-red">*</span>积分
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="give_integral" name="give_integral" required="" lay-verify="required"
+                <input type="text" id="give_integral" name="give_integral" required="" lay-verify="required|number"
                        autocomplete="off" placeholder="积分..." class="layui-input">
             </div>
 
         </div>
-        <div class="layui-form-item">
-            <label for="status" class="layui-form-label">
-                <span class="we-red">*</span>是否上架
-            </label>
-            <div class="layui-input-block">
-                <input type="checkbox" name="status" id="status" lay-skin="switch" lay-text="是|否">
-            </div>
 
-        </div>
 
         <div class="layui-form-item">
             <label for="cat_desc" class="layui-form-label">
@@ -215,11 +203,13 @@
 
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">是否上架</label>
+            <label for="status" class="layui-form-label">
+                <span class="we-red">*</span>是否上架
+            </label>
             <div class="layui-input-block">
-                <input type="radio" name="status" value="1" title="是">
-                <input type="radio" name="status" value="2" title="否" checked>
+                <input type="checkbox" name="status" id="status" lay-skin="switch" value="1" lay-text="是|否">
             </div>
+
         </div>
         <div class="layui-form-item">
             <button class="layui-btn" lay-filter="add" lay-submit="">
@@ -232,29 +222,24 @@
     layui.extend({
         admin: '{/}../../static/js/admin'
     });
+    //设定全局变量,function中要使用该变量
+    var form;
+    var $;
     layui.use(['form', 'jquery', 'layer', 'admin'], function () {
-        var form = layui.form,
-            $ = layui.jquery,
-            admin = layui.admin,
+        form = layui.form;
+        $ = layui.jquery;
+        var admin = layui.admin,
             layer = layui.layer;
-        //开关监听
-//        form.on('switch(switchTest)', function (data) {
-//        //layer.msg(this.checked?"是":"否");
-//            if (this.checked) {
-//                $(this).val(1);
-//            } else {
-//                $(this).val(2);
-//            }
-//        layer.msg($(this).attr("value"));
-//
-//        });
+        //下拉选项的回显
+        loadCategory();
+
 
         //监听提交
         form.on('submit(add)', function (data) {
 
             //提交Ajax
             $.ajax({
-                data: $("#catAddForm").serialize(),
+                data: $("#goodsAddForm").serialize(),
                 dataType: "text",
                 type: "post",
                 url: "${pageContext.request.contextPath}/goods/goods_add",
@@ -273,6 +258,30 @@
         });
 
     });
+
+//下拉选项的回显
+    function loadCategory() {
+        //去后台查询所有的分类信息
+        $.ajax({
+            data: {'value': 12},
+            dataType: "json",
+            type: "GET",
+            url: "${pageContext.request.contextPath}/category/categorySelect",
+            success: function (data) {
+
+                var category = document.getElementById("category");
+                for (var i = 0; i < data.length; i++) {
+                    //将后台返回的json格式的分类信息,逐个添加到select中option
+                    var option = document.createElement("option");
+                    option.setAttribute("value", data[i].cat_id);
+                    option.innerText = data[i].cat_name;
+                    category.appendChild(option);
+                    form.render('select');
+                }
+            }
+        });
+    }
+
 </script>
 </body>
 

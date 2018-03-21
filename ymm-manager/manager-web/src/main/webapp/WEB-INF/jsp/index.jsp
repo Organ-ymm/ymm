@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/weadmin.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
@@ -85,13 +85,21 @@
                         </a>
                     </li>
                     <li>
-                        <a _href="./pages/users/delPage">
+                        <a _href="./pages/users/del">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员删除</cite>
 
                         </a>
                     </li>
                     <li>
+                        <%--<a _href="./pages/users/rank">--%>
+                            <a _href="./pages/404">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>等级管理</cite>
+
+                        </a>
+                    </li>
+                    <%--<li>
                         <a href="javascript:;">
                             <i class="iconfont">&#xe70b;</i>
                             <cite>会员管理</cite>
@@ -99,15 +107,9 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a _href="./pages/users/addInput">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>输入框操作</cite>
-                                </a>
-                            </li>
-                            <li>
                                 <a _href="./pages/404">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员删除</cite>
+                                    <cite>等级添加</cite>
                                 </a>
                             </li>
                             <li>
@@ -116,8 +118,14 @@
                                     <cite>等级管理</cite>
                                 </a>
                             </li>
+                            <li>
+                                <a _href="./pages/users/addInput">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>。。。</cite>
+                                </a>
+                            </li>
                         </ul>
-                    </li>
+                    </li>--%>
                 </ul>
             </li>
             <li>
@@ -128,7 +136,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="./pages/article/brand">
+                        <a _href="./pages/brand/brand">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>品牌管理</cite>
                         </a>
@@ -305,10 +313,10 @@
                 if(login==1){
                     return false;
                 }else{
-                    location.href='./tologin';
+                    location.href='./login';
                 }
             }else{
-                location.href='./tologin';
+                location.href='./login';
 
             }
         });

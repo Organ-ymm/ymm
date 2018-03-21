@@ -15,6 +15,11 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!-- 缓存服务器Redis客户端-Jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
         <!-- Json处理工具包，Jackson  @ResponseBody mvc:annotation-driven-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -94,6 +99,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
         </dependency>
         <!--Spring Test的依赖 -->
         <dependency>
