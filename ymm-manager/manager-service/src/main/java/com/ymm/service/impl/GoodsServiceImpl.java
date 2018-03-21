@@ -2,6 +2,7 @@ package com.ymm.service.impl;
 
 import com.ymm.dao.GoodsMapper;
 import com.ymm.pojo.dto.Page;
+import com.ymm.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.service.GoodsService;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service
@@ -47,5 +49,24 @@ public class GoodsServiceImpl implements GoodsService {
            i += goodsdao.updateGoodsById(id);
         }
         return i;
+    }
+
+    @Override
+    public int addGoods(Goods goods) {
+        //添加时间
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        final String time = sdf.format(System.currentTimeMillis());
+        goods.setAdd_time(time);
+        //判断开关状态(由于layui中switch关闭状态不传值,所以只能重新判断手动传值)
+        if (goods.getIs_hot()==0){
+            goods.setIs_hot(2);
+        }
+        if (goods.getIs_new()==0){
+            goods.setIs_new(2);
+        }
+        if (goods.getStatus()==0){
+            goods.setStatus(2);
+        }
+        return goodsdao.insertGoods(goods);
     }
 }

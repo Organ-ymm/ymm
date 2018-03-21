@@ -9,8 +9,8 @@
     <sql id="where_clause">
         <where>
             status != 3
-            <if test="query != null and query.name != null and query.name != ''">
-                and brand_name like '%${query.name}%'
+            <if test="query != null and query.brand_name != null and query.brand_name != ''">
+                and brand_name like '%${query.brand_name}%'
             </if>
         </where>
     </sql>

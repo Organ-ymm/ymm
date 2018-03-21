@@ -44,6 +44,8 @@
                 <input type="text" id="brand_name" name="brand_name" required="" lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
+
+
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="we-red">*</span>分类</label>
             <div class="layui-input-block">
@@ -99,12 +101,14 @@
     layui.extend({
         admin: '{/}../../static/js/admin'
     });
+    var $;
+    var form;
     layui.use(['form', 'admin', 'jquery', 'table', 'layer'], function() {
-        var form = layui.form,
-            admin = layui.admin,
-            $ = layui.jquery,
+        var   admin = layui.admin,
             table = layui.table,
             layer = layui.layer;
+        form = layui.form;
+        $ = layui.jquery;
         loadCategory();
         //失去焦点时判断值为空不验证，一旦填写必须验证
         $('input[name="brand_name"]').blur(function(){

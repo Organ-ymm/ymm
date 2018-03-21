@@ -83,8 +83,8 @@
                 商品状态
             </label>
             <div class="layui-input-inline" id="status">
-                <input type="radio" name="status" value="1" title="上架">
-                <input type="radio" name="status" value="2" title="下架" checked>
+                <input type="radio" name="status" value="1" title="上架" checked>
+                <input type="radio" name="status" value="2" title="下架" >
             </div>
         </div>
 
