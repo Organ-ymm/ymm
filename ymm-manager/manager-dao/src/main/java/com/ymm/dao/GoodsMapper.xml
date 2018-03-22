@@ -42,7 +42,7 @@
         SET status = 3
         WHERE goods_id = #{id};
     </update>
-    <!--根据id修改is_new-->
+	    <!--根据id修改is_new-->
     <update id="updateGoodsNew">
         UPDATE goods
         SET is_new = #{switchStatus}

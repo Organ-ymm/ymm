@@ -71,8 +71,8 @@ public class GoodsServiceImpl implements GoodsService {
         }
         return goodsdao.insertGoods(goods);
     }
-
-    @Override
+	
+	@Override
     public int goodsIsNew(SwitchCheck switchCheck) {
         return goodsdao.updateGoodsNew(switchCheck);
     }
@@ -86,4 +86,5 @@ public class GoodsServiceImpl implements GoodsService {
     public int goodsStatus(SwitchCheck switchCheck) {
         return goodsdao.updateGoodsStatus(switchCheck);
     }
+
 }

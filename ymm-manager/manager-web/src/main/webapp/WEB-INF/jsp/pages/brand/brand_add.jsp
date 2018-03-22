@@ -55,14 +55,6 @@
             </div>
         </div>
 
-        <%--<div class="layui-form-item">--%>
-            <%--<label for="add_time" class="layui-form-label">--%>
-                <%--<span class="we-red">*</span>添加时间--%>
-            <%--</label>--%>
-            <%--<div class="layui-input-inline">--%>
-                <%--<input type="date" id="add_time" name="add_time" required="" lay-verify="required" autocomplete="off" class="layui-input">--%>
-            <%--</div>--%>
-        <%--</div>--%>
         <div class="layui-form-item">
             <label for="country" class="layui-form-label">
                 <span class="we-red">*</span>品牌归属地
@@ -89,8 +81,9 @@
                 <input type="radio" name="status" value="2" title="下架" checked>
             </div>
         </div>
-        <%--添加品牌按钮--%>
+
         <div class="layui-form-item">
+
             <button class="layui-btn" lay-filter="add" lay-submit="">添加</button>
         </div>
 
@@ -144,24 +137,24 @@
         //监听提交
         form.on('submit(add)', function(data) {
 
-                            $.ajax({
-                                data:$("#addBrand").serialize(),
-                                dataType:"text",
-                                type:"post",
-                                url:"${pageContext.request.contextPath}/brand_add",
-                                success:function (res) {
-                                    layer.alert("添加成功", {icon: 6}, function () {
-                                        // 获得frame索引
-                                        var index = parent.layer.getFrameIndex(window.name);
-                                        //关闭当前frame
-                                        parent.layer.close(index);
+            $.ajax({
+                data:$("#addBrand").serialize(),
+                dataType:"text",
+                type:"post",
+                url:"${pageContext.request.contextPath}/brand_add",
+                success:function (res) {
+                    layer.alert("添加成功", {icon: 6}, function () {
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前frame
+                        parent.layer.close(index);
 
-                                    });
-                                }
-                            });
-                            return false;
+                    });
+                }
+            });
+            return false;
 
-                        });
+        });
 
     });
 </script>

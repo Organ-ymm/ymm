@@ -93,8 +93,7 @@ public class ManagerGoodsAction {
         }
         return i;
     }
-
-    /**
+ /**
      * 根据前端switch状态来改变goods_is_new
      * @param switchCheck
      * @return
