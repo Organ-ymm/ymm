@@ -9,5 +9,11 @@
     <file url="file://$PROJECT_DIR$/ymm-manager/manager-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ymm-manager/manager-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ymm-parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ymm-portal" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ymm-portal/portal-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ymm-portal/portal-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ymm-portal/portal-pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ymm-portal/portal-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ymm-portal/portal-web" charset="UTF-8" />
   </component>
 </project>

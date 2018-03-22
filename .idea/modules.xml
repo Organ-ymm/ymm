@@ -7,9 +7,15 @@
       <module fileurl="file://$PROJECT_DIR$/ymm-manager/manager-pojo/manager-pojo.iml" filepath="$PROJECT_DIR$/ymm-manager/manager-pojo/manager-pojo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-manager/manager-service/manager-service.iml" filepath="$PROJECT_DIR$/ymm-manager/manager-service/manager-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-manager/manager-web/manager-web.iml" filepath="$PROJECT_DIR$/ymm-manager/manager-web/manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-portal/portal-dao/portal-dao.iml" filepath="$PROJECT_DIR$/ymm-portal/portal-dao/portal-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-portal/portal-interface/portal-interface.iml" filepath="$PROJECT_DIR$/ymm-portal/portal-interface/portal-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-portal/portal-pojo/portal-pojo.iml" filepath="$PROJECT_DIR$/ymm-portal/portal-pojo/portal-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-portal/portal-service/portal-service.iml" filepath="$PROJECT_DIR$/ymm-portal/portal-service/portal-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-portal/portal-web/portal-web.iml" filepath="$PROJECT_DIR$/ymm-portal/portal-web/portal-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-commons/ymm-commons.iml" filepath="$PROJECT_DIR$/ymm-commons/ymm-commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-manager/ymm-manager.iml" filepath="$PROJECT_DIR$/ymm-manager/ymm-manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-parent/ymm-parent.iml" filepath="$PROJECT_DIR$/ymm-parent/ymm-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-portal/ymm-portal.iml" filepath="$PROJECT_DIR$/ymm-portal/ymm-portal.iml" />
     </modules>
   </component>
 </project>
