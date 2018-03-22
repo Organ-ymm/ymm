@@ -33,12 +33,12 @@
 </div>
 <div class="weadmin-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 we-search">
+        <form class="layui-form layui-col-md12 we-search" onsubmit="return false;">
 
             <div class="layui-inline">
-                <input type="text" name="username" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+                <input type="text" id="title" name="title" placeholder="请输入关键字" autocomplete="off" class="layui-input">
             </div>
-            <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            <button class="layui-btn" lay-submit="" lay-filter="sreach" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
     <div class="weadmin-block">
@@ -68,6 +68,9 @@
     <input type="checkbox" name="is_hot" lay-event="is_hot" lay-skin="switch" lay-text="是|否"
            {{1==d.is_hot?'checked':''}}>
 </script>
-
+<script type="text/html" id="statusTpl">
+    <input type="checkbox" name="status" lay-event="status" lay-skin="switch" lay-text="是|否"
+           {{1==d.status?'checked':''}}>
+</script>
 </body>
 </html>

@@ -2,7 +2,9 @@ package com.ymm.web;
 
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.dto.Page;
+import com.ymm.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
+import com.ymm.pojo.vo.GoodsQuery;
 import com.ymm.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +23,13 @@ public class ManagerGoodsAction {
 
     @RequestMapping("/goodslist")
     @ResponseBody
-    public MessageResult<GoodsCustom> listGoodsToJson(Page page){
+    public MessageResult<GoodsCustom> listGoodsToJson(Page page, GoodsQuery query){
+        //System.out.println(query);
         //从后台把所有商品的数据查询到List，把List封装MessageResult
         MessageResult<GoodsCustom> messageResult = new MessageResult<>();
         try {
             Long count = goodsService.countItems();
-            List<GoodsCustom> goodsCustomList = goodsService.listGoods(page);
+            List<GoodsCustom> goodsCustomList = goodsService.listGoods(page, query);
             messageResult.setCode(0);
             messageResult.setCount(count);
             messageResult.setData(goodsCustomList);
@@ -70,7 +73,23 @@ public class ManagerGoodsAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("i======"+i);
+        return i;
+    }
+
+    /**
+     * 新增商品
+     * @param goods
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/goods_add",method = RequestMethod.POST)
+    public int goods_add(Goods goods){
+        int i = 0;
+        try {
+            i = goodsService.addGoods(goods);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return i;
     }
 }

@@ -1,49 +1,47 @@
-//package com.ymm.commons.jedis;
-//
-//import org.junit.Test;
-//import redis.clients.jedis.HostAndPort;
-//import redis.clients.jedis.Jedis;
-//import redis.clients.jedis.JedisCluster;
-//import redis.clients.jedis.JedisPool;
-//
-//import java.util.HashSet;
-//import java.util.Set;
-//
+package com.ymm.commons.jedis;
+
+import org.junit.Test;
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.JedisPool;
+
+import java.util.HashSet;
+import java.util.Set;
+
 //public class JedisTest {
-//
-//
-//    //单机版
 //    @Test
 //    public void testJedis1(){
-//        Jedis jedis=new Jedis("47.100.2.34",6379);
-//        jedis.set("answer","yes");
-//        System.out.println(jedis.get("answer"));
+//        Jedis jedis = new Jedis("101.132.119.119",6379);
+//        jedis.set("key","wtt");
+//
 //        jedis.close();
 //    }
-//    //连接池版
 //    @Test
 //    public void testJedis2(){
-//        JedisPool jedisPool=new JedisPool("47.100.2.34",6379);
-//        Jedis jedis =jedisPool.getResource();
-//        jedis.lpush("mylist",new String[]{"qq","ww","ee"});
-//        System.out.println(jedis.lrange("mylist",0,-1));
+//        Jedis jedis = new Jedis("101.132.119.119",6379);
+//        System.out.println(jedis.get("key"));
 //        jedis.close();
 //    }
-//
-//    //集群版本
 //    @Test
-//    public void testJedis3(){
-//        Set<HostAndPort> nodes=new HashSet<>();
-//        nodes.add(new HostAndPort("47.100.2.34",9001));
-//        nodes.add(new HostAndPort("47.100.2.34",9002));
-//        nodes.add(new HostAndPort("47.100.2.34",9003));
-//        nodes.add(new HostAndPort("47.100.2.34",9004));
-//        nodes.add(new HostAndPort("47.100.2.34",9005));
-//        nodes.add(new HostAndPort("47.100.2.34",9006));
-//        JedisCluster jedisCluster=new JedisCluster(nodes);
-//        jedisCluster.set("hello", "100");
-//        String result = jedisCluster.get("hello");
-//        System.out.println(result);
+//    public void testJedisPool(){
+//        JedisPool jedisPool = new JedisPool("101.132.119.119",6379);
+//        Jedis jedis = jedisPool.getResource();
+//        jedis.hset("hset1","name","wza");
+//        jedis.close();
+//        jedisPool.close();
+//    }
+//    @Test
+//    public void testJedisCluster(){
+//        Set<HostAndPort> nodes = new HashSet<>();
+//        nodes.add(new HostAndPort("101.132.119.119",9001));
+//        nodes.add(new HostAndPort("101.132.119.119",9002));
+//        nodes.add(new HostAndPort("101.132.119.119",9003));
+//        nodes.add(new HostAndPort("101.132.119.119",9004));
+//        nodes.add(new HostAndPort("101.132.119.119",9005));
+//        nodes.add(new HostAndPort("101.132.119.119",9006));
+//        JedisCluster jedisCluster = new JedisCluster(nodes);
+//
 //        jedisCluster.close();
 //    }
 //}

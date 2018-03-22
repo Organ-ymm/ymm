@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -24,7 +26,7 @@ public class AdminAction {
      * 登陆
      */
     @ResponseBody
-    @RequestMapping(value = "/loginConfirm")
+    @RequestMapping(value = "/loginConfirm" ,method = RequestMethod.POST)
     public String  login(HttpSession session, Admin admin) {
         Admin admin1 = adminService.selectAdminByUsername(admin);
         if(admin1 !=null){
@@ -51,6 +53,22 @@ public class AdminAction {
         messageResult.setMsg("管理员列表");
         messageResult.setData(admins);
         return messageResult;
+    }
+    @ResponseBody
+    @RequestMapping(value="/addAdmin",method= RequestMethod.POST)
+    public String addAdmin(Admin admin){
+        try{
+            Date date = new Date();
+            SimpleDateFormat simpleDate = new SimpleDateFormat();
+            simpleDate.format(date);
+            admin.setAd_addTime(date);
+            admin.setAd_status(1);
+            adminService.addAdmin(admin);
+            return "1";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "0";
     }
 }
 

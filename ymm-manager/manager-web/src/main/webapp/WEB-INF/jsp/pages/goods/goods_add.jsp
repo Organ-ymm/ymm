@@ -64,11 +64,7 @@
             <div class="layui-input-block">
                 <select name="brand_id" required="" lay-verify="required" id="brand" lay-filter="brand">
                     <option value="">请选择</option>
-                    <option value="0">写作</option>
-                    <option value="1">阅读</option>
-                    <option value="2">游戏</option>
-                    <option value="3">音乐</option>
-                    <option value="4">旅行</option>
+
                 </select>
             </div>
         </div>
@@ -167,7 +163,7 @@
                 <span class="we-red">*</span>是否新品
             </label>
             <div class="layui-input-block">
-                <input type="checkbox" name="is_new" id="is_new" lay-skin="switch" value="1"  lay-text="是|否">
+                <input type="checkbox" name="is_new" id="is_new" lay-skin="switch" value="1" lay-text="是|否">
             </div>
 
         </div>
@@ -192,16 +188,6 @@
         </div>
 
 
-        <div class="layui-form-item">
-            <label for="cat_desc" class="layui-form-label">
-                分类描述
-            </label>
-            <div class="layui-input-inline">
-                <textarea id="cat_desc" name="cat_desc" autocomplete="off" class="layui-textarea"
-                          placeholder="描述..."></textarea>
-            </div>
-
-        </div>
         <div class="layui-form-item">
             <label for="status" class="layui-form-label">
                 <span class="we-red">*</span>是否上架
@@ -232,6 +218,7 @@
             layer = layui.layer;
         //下拉选项的回显
         loadCategory();
+        loadBrand();
 
 
         //监听提交
@@ -259,7 +246,7 @@
 
     });
 
-//下拉选项的回显
+    //下拉选项的回显
     function loadCategory() {
         //去后台查询所有的分类信息
         $.ajax({
@@ -282,6 +269,26 @@
         });
     }
 
+    function loadBrand() {
+        //去后台查询所有的分类信息
+        $.ajax({
+
+            type: "GET",
+            url: "${pageContext.request.contextPath}/brandSelect",
+            success: function (data) {
+
+                var brand = document.getElementById("brand");
+                for (var i = 0; i < data.length; i++) {
+                    //将后台返回的json格式的分类信息,逐个添加到select中option
+                    var option = document.createElement("option");
+                    option.setAttribute("value", data[i].brand_id);
+                    option.innerText = data[i].brand_name;
+                    brand.appendChild(option);
+                    form.render('select');
+                }
+            }
+        });
+    }
 </script>
 </body>
 

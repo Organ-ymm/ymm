@@ -15,6 +15,13 @@
         ORDER BY cat_id DESC
         limit #{offset},#{limit}
     </select>
+    <!--查询所有status不为3的category(select回显,不分页)-->
+    <select id="categorySelect" resultType="com.ymm.pojo.po.Category">
+        SELECT
+        <include refid="Category_Column_List"/>
+        FROM category
+        WHERE status !=3
+    </select>
     <!--查询所有status不为3的category的条数-->
     <select id="countCate" resultType="int">
         SELECT count(1)

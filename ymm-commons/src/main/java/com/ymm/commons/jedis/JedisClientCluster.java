@@ -5,8 +5,7 @@ import redis.clients.jedis.JedisCluster;
 import java.util.List;
 
 public class JedisClientCluster implements JedisClient {
-
-   private JedisCluster jedisCluster;
+    private JedisCluster jedisCluster;
 
     public JedisCluster getJedisCluster() {
         return jedisCluster;
@@ -47,28 +46,28 @@ public class JedisClientCluster implements JedisClient {
     }
 
     @Override
-    public Long del(String key) {
+    public long del(String key) {
         return jedisCluster.del(key);
     }
 
     @Override
     public Long hset(String key, String field, String value) {
-        return jedisCluster.hset(key,field,value);
+        return jedisCluster.hset(key, field, value);
     }
 
     @Override
     public String hget(String key, String field) {
-        return jedisCluster.hget(key,field);
+        return jedisCluster.hget(key, field);
     }
 
     @Override
     public Long hdel(String key, String... field) {
-        return jedisCluster.hdel(key,field);
+        return jedisCluster.hdel(key, field);
     }
 
     @Override
     public Boolean hexists(String key, String field) {
-        return jedisCluster.hexists(key,field);
+        return jedisCluster.hexists(key, field);
     }
 
     @Override

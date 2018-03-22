@@ -10,6 +10,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <%--原：<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />--%>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui/css/layui.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/weadmin.css">
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
@@ -21,7 +22,7 @@
     <div class="message"><img src="${pageContext.request.contextPath}/images/ymm_logo.png"></div>
     <div id="darkbannerwrap"></div>
 
-    <form class="layui-form" >
+    <form method="post" class="layui-form" >
         <input name="ad_username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
         <hr class="hr15">
         <input name="ad_password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
@@ -38,20 +39,23 @@
             layer = layui.layer;
         //监听提交
         form.on('submit(login)', function(data){
-            $.post(
-                "${pageContext.request.contextPath}/loginConfirm",
-                data.field,
-                function(rec){
+            $.ajax({
+                type:'post',
+                url:'${pageContext.request.contextPath}/loginConfirm',
+                data: data.field,
+                dataType:'text',
+                success:function(rec){
                     if(rec=="1"){
                         sessionStorage.setItem("login",1);
                         location.href = "${pageContext.request.contextPath}/index"
+                    }else{
+                        layer.msg("用户名或密码错误");
                     }
-                    if(rec=="0"){
-
-                        alert("用户名或密码错误")
-                        }
+                },error:function(data){
+                    layer.msg("登录失败");
                 }
-            );
+            });
+            return false;
         });
     });
 </script>

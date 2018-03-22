@@ -21,4 +21,6 @@ public interface CategoryMapper {
     Category selectCateById(int id);
 
     int updateCate(Category category);
+
+    List<Category> categorySelect();
 }

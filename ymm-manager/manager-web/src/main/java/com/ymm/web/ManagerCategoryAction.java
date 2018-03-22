@@ -40,6 +40,20 @@ public class ManagerCategoryAction {
         }
         return messageResult;
     }
+    /**
+     * 所有分类
+     */
+    @RequestMapping("/categorySelect")
+    @ResponseBody
+    public List<Category> categorySelect(@RequestParam(value = "value") Integer value){
+        List<Category> categoryList = null;
+        try {
+            categoryList = categoryService.categorySelect();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return categoryList;
+    }
 
     /**
      * 添加分类 s f

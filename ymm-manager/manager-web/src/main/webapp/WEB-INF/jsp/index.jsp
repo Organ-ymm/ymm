@@ -92,14 +92,6 @@
                         </a>
                     </li>
                     <li>
-                        <%--<a _href="./pages/users/rank">--%>
-                            <a _href="./pages/404">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>等级管理</cite>
-
-                        </a>
-                    </li>
-                    <%--<li>
                         <a href="javascript:;">
                             <i class="iconfont">&#xe70b;</i>
                             <cite>会员管理</cite>
@@ -107,25 +99,21 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a _href="./pages/404">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>等级添加</cite>
-                                </a>
-                            </li>
-                            <li>
-                                <a _href="./pages/404">
+                                <a _href="./pages/rank/ranklist">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>等级管理</cite>
+
                                 </a>
                             </li>
                             <li>
-                                <a _href="./pages/users/addInput">
+                                <a _href="./pages/rank/ranktable">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>。。。</cite>
+                                    <cite>等级统计</cite>
+
                                 </a>
                             </li>
                         </ul>
-                    </li>--%>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -136,7 +124,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="./pages/article/brand">
+                        <a _href="./pages/brand/brand">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>品牌管理</cite>
                         </a>

@@ -20,4 +20,6 @@ public interface CategoryService {
     Category getCateById(int id);
 
     int updateCate(Category category);
+
+    List<Category> categorySelect();
 }
