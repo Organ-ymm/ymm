@@ -134,9 +134,7 @@
         form.on('submit(edit)', function(data){
             console.log(data);
             var sex = $('input:radio[name="sex"]:checked').val();
-            var L_sex=document.getElementById("L_sex");
             console.log(sex);
-            console.log(L_sex);
             $.ajax({
                 data : $("#editForm").serialize(),
                 dataType : "text",

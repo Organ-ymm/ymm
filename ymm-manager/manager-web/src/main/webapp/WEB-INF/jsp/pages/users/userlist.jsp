@@ -39,13 +39,13 @@
 </div>
 <div class="weadmin-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 we-search" onsubmit="return false;">
+        <div class="layui-form layui-col-md12 we-search">
             会员搜索：
             <div class="layui-inline">
                 <input type="text" name="userText" id="userText" placeholder="请输入用户名关键字" autocomplete="off" class="layui-input">
             </div>
             <button class="layui-btn" lay-submit="" lay-filter="search" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
-        </form>
+        </div>
     </div>
     <div class="weadmin-block demoTable">
         <button class="layui-btn layui-btn-danger" data-type="getCheckData"><i class="layui-icon">&#xe640;</i>批量删除</button>

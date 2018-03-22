@@ -73,7 +73,7 @@
     </update>
 
     <update id="updateUser" parameterType="com.ymm.pojo.po.Users">
-        update users set mobile_phone=#{mobile_phone},password=#{password}
+        update users set mobile_phone=#{mobile_phone}
         <if test="alias != null and alias != ''">
             ,alias=#{alias}
         </if>
