@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.springframework:spring-context:4.3.8.RELEASE">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://D:/apache-maven-3.5.2-bin/apache-maven-3.5.2/repo/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE.jar!/" />
+      <root url="jar://D:/apache-maven-3.3.9/repo/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://D:/apache-maven-3.5.2-bin/apache-maven-3.5.2/repo/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE-javadoc.jar!/" />
+      <root url="jar://D:/apache-maven-3.3.9/repo/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://D:/apache-maven-3.5.2-bin/apache-maven-3.5.2/repo/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE-sources.jar!/" />
-=======
-      <root url="jar://D:/apache-maven-3.3.9-bin/apache-maven-3.3.9/repo/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://D:/apache-maven-3.3.9-bin/apache-maven-3.3.9/repo/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://D:/apache-maven-3.3.9-bin/apache-maven-3.3.9/repo/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE-sources.jar!/" />
->>>>>>> origin/master
+      <root url="jar://D:/apache-maven-3.3.9/repo/org/springframework/spring-context/4.3.8.RELEASE/spring-context-4.3.8.RELEASE-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
