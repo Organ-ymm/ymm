@@ -53,14 +53,6 @@
             </div>
             <div class="layui-input-inline">
                 <select name="contrller">
-                    <option>支付方式</option>
-                    <option>支付宝</option>
-                    <option>微信</option>
-                    <option>货到付款</option>
-                </select>
-            </div>
-            <div class="layui-input-inline">
-                <select name="contrller">
                     <option value="">订单状态</option>
                     <option value="0">待发货</option>
                     <option value="1">待收货</option>
