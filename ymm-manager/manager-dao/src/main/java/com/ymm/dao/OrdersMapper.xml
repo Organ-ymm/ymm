@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+       <!--
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL COMMENT '订单编号',
+  `user_id` int(11) DEFAULT NULL COMMENT '下单会员id',
+  `receiver_name` varchar(20) DEFAULT NULL COMMENT '收货人姓名',
+  `receiver_address` varchar(200) DEFAULT NULL COMMENT '收货地址',
+  `receiver_phone` int(11) DEFAULT NULL COMMENT '收件人电话',
+  `order_time` date DEFAULT NULL COMMENT '下单时间',
+  `order_money` double(10,2) DEFAULT NULL COMMENT '订单总金额',
+  `pay_status` int(1) DEFAULT NULL COMMENT '发货状态：0未付款,已支付',
+  `deliver_status` int(1) DEFAULT NULL COMMENT '-1待发货,0待收货'
+  PRIMARY KEY (`order_id`)-->
+<mapper namespace="com.ymm.dao.OrdersMapper" >
+
+    <sql id="Orders_column">
+        order_id,user_id,receiver_name,receiver_address,receiver_phone,
+        order_time,order_money,pay_status,deliver_status
+    </sql>
+    <select id="selectAllOrders" resultType="com.ymm.pojo.po.Orders">
+        SELECT
+        <include refid="Orders_column"/>
+        from orders
+        WHERE deliver_status in (0,1)
+        ORDER BY order_id DESC
+        limit #{offset},#{limit}
+    </select>
+    <select id="countOrders" resultType="int">
+        SELECT count(1)
+        FROM orders
+        WHERE pay_status IN (0,1)
+    </select>
+    <update id="updateOrdersDelstuById" parameterType="int">
+        UPDATE orders
+        SET deliver_status = 2
+        WHERE order_id = #{id};
+    </update>
+    <update id="updateOrders" parameterType="com.ymm.pojo.po.Orders">
+        UPDATE
+
+        orders
+        SET
+          deliver_status = #{deliver_status}
+        WHERE order_id = #{order_id}
+    </update>
+</mapper>
