@@ -45,19 +45,19 @@
 
 </div>
 <script type="text/html" id="operateTpl">
-    <a onclick="admin_stop(this,'10001')" href="javascript:;" title="启用">
-        <i class="layui-icon">&#xe601;</i>
+    <a  href="javascript:;" lay-event="start" title="启用">
+        <i class="layui-icon">&#xe616;</i>
     </a>
-    <a onclick="admin_stop(this,'10001')" href="javascript:;" title="停用">
-        <i class="layui-icon">&#xe601;</i>
+    <a  href="javascript:;" lay-event="stop" title="停用">
+        <i class="layui-icon">&#x1007;</i>
     </a>
-    <a title="编辑" onclick="WeAdminEdit('编辑','./edit.html', 2, 600, 400)" href="javascript:;">
+    <a title="编辑"  lay-event="edit" href="javascript:;">
         <i class="layui-icon">&#xe642;</i>
     </a>
-    <a onclick="WeAdminShow('修改密码','./password.html',600,400)" title="修改密码" href="javascript:;">
+    <a onclick="WeAdminShow('修改密码','./password.html',600,400)" title="修改密码" lay-event="update" href="javascript:;">
         <i class="layui-icon">&#xe631;</i>
     </a>
-    <a title="删除" onclick="admin_del(this,'要删除的id')" href="javascript:;">
+    <a title="删除" onclick="admin_del(this,'要删除的id')" lay-event="del" href="javascript:;">
         <i class="layui-icon">&#xe640;</i>
     </a>
 </script>

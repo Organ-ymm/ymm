@@ -8,6 +8,7 @@ import com.ymm.service.AdminService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,7 +45,6 @@ public class AdminAction {
     @ResponseBody
     @RequestMapping(value="/adminList",method= RequestMethod.GET)
     public MessageResult<Admin> adminList(Page page,AdminQuery query ){
-        System.out.println(query);
         MessageResult<Admin> messageResult = new MessageResult<>();
         int countAdmin = adminService.countAdmin(query);
         List<Admin> admins = adminService.selectAllAdmin(page,query);
@@ -70,5 +70,53 @@ public class AdminAction {
         }
         return "0";
     }
+    //修改状态
+    @ResponseBody
+    @RequestMapping(value="/changeStatus",method= RequestMethod.POST)
+    public String stopAdmin(Admin admin){
+        int status = admin.getAd_status();
+        try{
+            if (status==1){
+                admin.setAd_status(0);
+            }else{
+                admin.setAd_status(1);
+            }
+            adminService.changeStatus(admin);
+            return "1";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "0";
+    }
+    //保存编辑
+    @ResponseBody
+    @RequestMapping(value="/saveEditAdmin",method= RequestMethod.POST)
+    public String saveEdit(Admin admin){
+        try {
+            adminService.saveEdit(admin);
+            return "1";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "0";
+        }
+    }
+    //删除admin
+    @ResponseBody
+    @RequestMapping(value="/delAdmin",method= RequestMethod.POST)
+    public int delAdmin(Admin admin){
+        try {
+        adminService.delAdmin(admin);
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    /*//修改状态
+    @ResponseBody
+    @RequestMapping(value="/saveEditAdmin",method= RequestMethod.POST)
+    public String editAdmin(Admin admin){
+        return"";
+    }*/
 }
 

@@ -8,7 +8,7 @@
     </sql>
     <sql id="where_adminQuery">
         <where>
-            ad_status!=0
+
             <if test="query != null and query.adQueryName != null and query.adQueryName != '' ">
                 and a.ad_username like '%${query.adQueryName}%'
             </if>
@@ -45,4 +45,36 @@
          admin(ad_username,ad_password,ad_phone,ad_email,ad_rank,ad_addTime,ad_status)
           VALUES (#{ad_username},#{ad_password},#{ad_phone},#{ad_email},#{ad_rank},#{ad_addTime},#{ad_status})
     </insert>
+
+    <!--更新管理员状态-->
+    <update id="changeStatus" parameterType="com.ymm.pojo.po.Admin">
+        UPDATE admin SET ad_status = #{ad_status} WHERE ad_id = #{ad_id}
+    </update>
+
+    <!--保存信息更新-->
+    <update id="saveEdit" parameterType="com.ymm.pojo.po.Admin" >
+        UPDATE admin SET
+        <if test="ad_username != null and ad_username != null">
+            ad_username = #{ad_username}
+        </if>
+        <if test="ad_password != null and ad_password != null">
+            ,ad_password = #{ad_password}
+        </if>
+        <if test="ad_phone != null and ad_phone != null">
+            ,ad_phone = #{ad_phone}
+        </if>
+        <if test="ad_email != null and ad_email != null">
+            ,ad_email = #{ad_email}
+        </if>
+        <if test="ad_rank != null and ad_rank != null">
+            ,ad_rank = #{ad_rank}
+        </if>
+        WHERE ad_id = #{ad_id}
+
+    </update>
+
+    <!--删除-->
+    <delete id="delAdmin" parameterType="com.ymm.pojo.po.Admin">
+        DELETE FROM admin WHERE ad_id = #{ad_id}
+    </delete>
 </mapper>
