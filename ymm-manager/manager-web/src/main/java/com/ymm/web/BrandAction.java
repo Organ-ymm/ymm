@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -46,10 +48,15 @@ public class BrandAction {
         return i;
     }
     @ResponseBody
-    @RequestMapping(value = "/brand_add")
+    @RequestMapping(value = "/brand_add",method = RequestMethod.POST)
     public int addBrand(Brand brand){
         int i = 0;
         try {
+            Brand brand1 = new Brand();
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+            String format = simpleDateFormat.format(date);
+            brand1.setAdd_time(format);
             i = brandService.addBrand(brand);
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,7 +64,7 @@ public class BrandAction {
         return i;
     }
     @ResponseBody
-    @RequestMapping(value = "/brand_edit")
+    @RequestMapping(value = "/brand_edit",method = RequestMethod.POST)
     public int editBrand(Brand brand){
         int i = 0;
         try {

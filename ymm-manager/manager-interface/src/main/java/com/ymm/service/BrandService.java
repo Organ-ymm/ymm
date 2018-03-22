@@ -7,7 +7,7 @@ import com.ymm.pojo.vo.BrandQuery;
 import java.util.List;
 
 public interface BrandService {
-    List<Brand> listBrandsByPage(Page page,BrandQuery query);
+    List<Brand> listBrandsByPage(Page page, BrandQuery query);
 
     Long countBrands(BrandQuery query);
 
