@@ -1,6 +1,7 @@
 package com.ymm.pojo.dto;
 
 public class SwitchCheck {
+    //开关状态
     private int id;
     private int switchStatus;
 
