@@ -18,8 +18,8 @@ public interface GoodsService {
     int batchUpdate(List<Integer> ids);
 
     int addGoods(Goods goods);
-
-    int goodsIsNew(SwitchCheck switchCheck);
+	
+	    int goodsIsNew(SwitchCheck switchCheck);
 
     int goodsIsHot(SwitchCheck switchCheck);
 

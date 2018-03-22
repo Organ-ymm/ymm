@@ -10,14 +10,14 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface GoodsMapper {
-    List<GoodsCustom> selectGoodsByPage(@Param("page") Page page,@Param("query") GoodsQuery query);
+    List<GoodsCustom> selectGoodsByPage(@Param("page") Page page, @Param("query") GoodsQuery query);
 
     Long countItems();
 
     int updateGoodsById(Integer id);
 
     int insertGoods(Goods goods);
-
+	
     int updateGoodsNew(SwitchCheck switchCheck);
 
     int updateGoodsHot(SwitchCheck switchCheck);

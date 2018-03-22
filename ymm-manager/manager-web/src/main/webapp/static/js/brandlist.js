@@ -43,10 +43,10 @@ layui.use(['table', 'jquery', 'admin','form'],function(){
     });
     var active = {
         reload: function () {
-            var name = $('#name').val();
+            var brand_name = $('#name').val();
             table.reload('brandList',{
                 page:{curr:1},
-                where:{name:name}
+                where:{brand_name:brand_name}
             });
         }
     }

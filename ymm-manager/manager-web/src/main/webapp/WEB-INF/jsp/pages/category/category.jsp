@@ -83,6 +83,7 @@
             url: '${pageContext.request.contextPath}/category/categorylist',
             //是否开启分页
             page: true,
+            limit:5,
             limits: [10, 50, 100],
             done: function (res, curr, count) {
                 $("#countData").text("共有数据：" + count + " 条");

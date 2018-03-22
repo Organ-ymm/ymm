@@ -27,7 +27,7 @@
 
 <body>
 <div class="weadmin-body">
-    <form class="layui-form" id="editbrand">
+    <form class="layui-form" id="addBrand">
         <div class="layui-form-item">
             <label for="brand_id" class="layui-form-label">
                 <span class="we-red">*</span>品牌编号
@@ -53,14 +53,7 @@
             </div>
         </div>
 
-        <%--<div class="layui-form-item">--%>
-            <%--<label for="add_time" class="layui-form-label">--%>
-                <%--<span class="we-red">*</span>添加时间--%>
-            <%--</label>--%>
-            <%--<div class="layui-input-inline">--%>
-                <%--<input type="date" id="add_time" name="add_time" required="" lay-verify="required" autocomplete="off" class="layui-input">--%>
-            <%--</div>--%>
-        <%--</div>--%>
+
         <div class="layui-form-item">
             <label for="country" class="layui-form-label">
                 <span class="we-red">*</span>品牌归属地
@@ -90,7 +83,7 @@
 
         <div class="layui-form-item">
 
-            <button class="layui-btn" lay-filter="edit" lay-submit="">修改</button>
+            <button class="layui-btn" lay-filter="edit" lay-submit="">确定</button>
         </div>
 
     </form>
@@ -138,35 +131,36 @@
             });
         }
 
+
         //监听提交
         form.on('submit(edit)', function(data) {
-                            $.ajax({
-                                data:$("#editbrand").serialize(),
-                                dataType:"text",
-                                type:"post",
-                                url:"${pageContext.request.contextPath}/brand_edit",
-                                success:function (res) {
-                                    if (res>0) {
-                                        layer.alert("修改成功", {icon: 6}, function () {
-                                            // 获得frame索引
-                                            var index = parent.layer.getFrameIndex(window.name);
-                                            //关闭当前frame
-                                            parent.layer.close(index);
-                                        });
-                                    }else{
-                                        layer.alert("修改失败", {icon: 5}, function () {
-                                            // 获得frame索引
-                                            var index = parent.layer.getFrameIndex(window.name);
-                                            //关闭当前frame
-                                            parent.layer.close(index);
-                                        });
-                                    }
-
-                                }
-                            });
-                            return false;
-
+            $.ajax({
+                data:$("#editbrand").serialize(),
+                dataType:"text",
+                type:"post",
+                url:"${pageContext.request.contextPath}/brand_edit",
+                success:function (res) {
+                    if (res>0) {
+                        layer.alert("修改成功", {icon: 6}, function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
                         });
+                    }else{
+                        layer.alert("修改失败", {icon: 5}, function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
+                        });
+                    }
+
+                }
+            });
+            return false;
+
+        });
 
     });
 </script>

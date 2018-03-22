@@ -61,6 +61,7 @@ layui.use(['table', 'form', 'jquery', 'admin'], function () {
         url: '../../goods/goodslist',
         //是否开启分页
         page: true,
+        limit:5,
         limits: [10, 50, 100],
         done: function (res, curr, count) {
             $("#countData").text("共有数据：" + count + " 条");
@@ -102,19 +103,8 @@ layui.use(['table', 'form', 'jquery', 'admin'], function () {
             // });
         }
     });
-    /*监听switch事件*/
-    // table.on('switch(is_new)', function (obj) {
-    //     var data = obj.data //获得当前行数据
-    //         , layEvent = obj.event; //获得 lay-event 对应的值
-    //     layer.msg('test new ');
-    //     if (layEvent === 'is_new') {
-    //         layer.msg('test new ');
-    //     } else if (layEvent === 'edit') {
-    //         layer.msg('test edit ');
-    //     }
-    // });
-
-    form.on('switch(is_new)', function (obj) {
+	
+form.on('switch(is_new)', function (obj) {
 
         //layer.msg(data.goods_id);
         if (obj.elem.checked) {
