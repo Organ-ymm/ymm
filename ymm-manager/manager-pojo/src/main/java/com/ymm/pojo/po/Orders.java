@@ -13,7 +13,6 @@ public class Orders implements Serializable {
      `receiver_phone` int(11) DEFAULT NULL COMMENT '收件人电话',
      `order_time` date DEFAULT NULL COMMENT '下单时间',
      `order_money` double(10,2) DEFAULT NULL COMMENT '订单总金额',
-     `order_status` int(1) DEFAULT NULL COMMENT '订单状态：0待确认，1已确认',
      `pay_status` int(1) DEFAULT NULL COMMENT '支付状态：-1待发货,0待收货，1已完成',
      `deliver_status` int(1) DEFAULT NULL COMMENT '发货状态：-1支付失败，0未付款,1支付成功',
      PRIMARY KEY (`order_id`)
@@ -24,9 +23,8 @@ public class Orders implements Serializable {
     private String receiver_name;
     private String receiver_address;
     private Integer receiver_phone;
-    private Date order_time;
+    private String order_time;
     private Double order_money;
-    private Integer order_status;
     private Integer pay_status;
     private Integer deliver_status;
 
@@ -70,11 +68,11 @@ public class Orders implements Serializable {
         this.receiver_phone = receiver_phone;
     }
 
-    public Date getOrder_time() {
+    public String getOrder_time() {
         return order_time;
     }
 
-    public void setOrder_time(Date order_time) {
+    public void setOrder_time(String order_time) {
         this.order_time = order_time;
     }
 
@@ -84,14 +82,6 @@ public class Orders implements Serializable {
 
     public void setOrder_money(Double order_money) {
         this.order_money = order_money;
-    }
-
-    public Integer getOrder_status() {
-        return order_status;
-    }
-
-    public void setOrder_status(Integer order_status) {
-        this.order_status = order_status;
     }
 
     public Integer getPay_status() {

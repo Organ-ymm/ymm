@@ -8,4 +8,6 @@ import java.util.List;
 public interface OrdersService {
     List<Orders> selectAllOrders(Page page);
     int countOrders();
+    int updateOrdersDelstuById(Integer id);
+    int updateOrders(Orders orders);
 }

@@ -33,23 +33,62 @@
        href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
+
+
 <div class="weadmin-body">
     <div class="layui-row">
-
+        <form class="layui-form layui-col-md12 we-search">
+            <div class="layui-inline">
+                <input class="layui-input" placeholder="开始日" name="start" id="start">
+            </div>
+            <div class="layui-inline">
+                <input class="layui-input" placeholder="截止日" name="end" id="end">
+            </div>
+            <div class="layui-input-inline">
+                <select name="contrller">
+                    <option>支付状态</option>
+                    <option>未支付</option>
+                    <option>已支付</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="contrller">
+                    <option>支付方式</option>
+                    <option>支付宝</option>
+                    <option>微信</option>
+                    <option>货到付款</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="contrller">
+                    <option value="">订单状态</option>
+                    <option value="0">待发货</option>
+                    <option value="1">待收货</option>
+                </select>
+            </div>
+            <div class="layui-inline">
+                <input type="text" name="username" placeholder="请输入订单号" autocomplete="off" class="layui-input">
+            </div>
+            <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </form>
     </div>
-    <div class="weadmin-block">
-        <button class="layui-btn" onclick="WeAdminShow('添加分类','./category_add')"><i class="layui-icon"></i>添加</button>
+<div class="weadmin-body">
+    <div class="layui-row">
+    </div>
+   <%-- <div class="weadmin-block">
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <button class="layui-btn" onclick="WeAdminShow('添加分类','./orders_add')"><i class="layui-icon"></i>添加</button>
         <span class="fr" id="countData" style="line-height:40px"></span>
-    </div>
-    <table class="layui-hide" id="categoryList" lay-filter="categoryList"></table>
+    </div>--%>
+    <table class="layui-hide" id="ordersList" lay-filter="ordersList"></table>
 
 </div>
 
 <script type="text/html" id="operateTpl">
-    <a title="编辑" lay-event="edit" href="javascript:;">
+    <a title="编辑" lay-event="update" href="javascript:;">
         <i class="layui-icon">&#xe642;</i>
     </a>
-    <a title="删除" id="cat_del" onclick="cat_del(this)" href="javascript:;">
+    <a title="删除" id="orders_del" onclick="orders_del(this)" href="javascript:;">
         <i class="layui-icon">&#xe640;</i>
     </a>
 </script>
@@ -62,24 +101,8 @@
         var table = layui.table,
             $ = layui.jquery,
             admin = layui.admin;
-
-/*        CREATE TABLE `orders` (
-            `order_id` int(11) NOT NULL COMMENT '订单编号',
-            `user_id` int(11) DEFAULT NULL COMMENT '下单会员id',
-            `receiver_name` varchar(20) DEFAULT NULL COMMENT '收货人姓名',
-            `receiver_address` varchar(200) DEFAULT NULL COMMENT '收货地址',
-            `receiver_phone` int(11) DEFAULT NULL COMMENT '收件人电话',
-            `order_time` date DEFAULT NULL COMMENT '下单时间',
-            `order_money` double(10,2) DEFAULT NULL COMMENT '订单总金额',
-            `order_status` int(1) DEFAULT NULL COMMENT '订单状态：0待确认，1已确认',
-            `pay_status` int(1) DEFAULT NULL COMMENT '支付状态：-1待发货,0待收货，1已完成',
-            `deliver_status` int(1) DEFAULT NULL COMMENT '发货状态：-1支付失败，0未付款,1支付成功',
-            PRIMARY KEY (`order_id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;*/
-
-
         table.render({
-            elem: '#categoryList', //指定元素
+            elem: '#ordersList', //指定元素
             cellMinWidth: 80,
             cols: [
                 [{
@@ -97,8 +120,6 @@
                 },{
                     field: 'order_money', title: '订单总金额'
                 },{
-                    field: 'order_status', title: '订单状态'
-                },{
                     field: 'pay_status', title: '支付状态'
                 },{
                     field: 'deliver_status', title: '发货状态'
@@ -106,20 +127,6 @@
                     field: 'operate', title: '操作', toolbar: '#operateTpl', unresize: true
                 }]
             ],
-
-         /*   CREATE TABLE `orders` (
-                `order_id` int(11) NOT NULL COMMENT '订单编号',
-            `user_id` int(11) DEFAULT NULL COMMENT '下单会员id',
-            `receiver_name` varchar(20) DEFAULT NULL COMMENT '收货人姓名',
-            `receiver_address` varchar(200) DEFAULT NULL COMMENT '收货地址',
-            `receiver_phone` int(11) DEFAULT NULL COMMENT '收件人电话',
-            `order_time` date DEFAULT NULL COMMENT '下单时间',
-            `order_money` double(10,2) DEFAULT NULL COMMENT '订单总金额',
-            `order_status` int(1) DEFAULT NULL COMMENT '订单状态：0待确认，1已确认',
-            `pay_status` int(1) DEFAULT NULL COMMENT '支付状态：-1待发货,0待收货，1已完成',
-            `deliver_status` int(1) DEFAULT NULL COMMENT '发货状态：-1支付失败，0未付款,1支付成功',
-            PRIMARY KEY (`order_id`) */
-
             //通过URL进行数据绑定
             url: '${pageContext.request.contextPath}/order/list',
             //是否开启分页
@@ -134,26 +141,16 @@
                     if ($(this).text() == '0') {
                         $(this).text('未支付');
                     } else if ($(this).text() == '1') {
-                        $(this).text('已完成');
-                    } else if ($(this).text() == '-1') {
-                        $(this).text('待支付');
-                    }
-                });
-                $("[data-field='order_status']").children().each(function () {
-                    if ($(this).text() == '0') {
-                        $(this).text('待确认');
-                    } else if ($(this).text() == '1') {
-                        $(this).text('已确认');
+                        $(this).text('已支付');
                     }
                 });
 
                 $("[data-field='deliver_status']").children().each(function () {
+
                     if ($(this).text() == '0') {
-                        $(this).text('未支付');
-                    } else if ($(this).text() == '1') {
-                        $(this).text('支付成功');
-                    } else if ($(this).text() == '-1') {
-                        $(this).text('支付失败');
+                        $(this).text('待发货');
+                    }else if ($(this).text() == '1') {
+                        $(this).text('待收货');
                     }
                 });
 
@@ -162,17 +159,17 @@
         });
 
         /*订单删除*/
-        window.cat_del = function (obj) {
+        window.orders_del = function (obj) {
             layer.confirm('确认要删除吗？', function (index) {
-                var id = $(obj).parents("tr").children("[data-field='cat_id']").text();
-                //console.log(id);
+                var id = $(obj).parents("tr").children("[data-field='order_id']").text();
+                console.log(id);
                 $(obj).parents("tr").remove();
                 //提交ajax
                 $.ajax({
                     data: {'id': id},
                     dataType: "text",
                     type: "GET",
-                    url: "${pageContext.request.contextPath}/category/category_del",
+                    url: "${pageContext.request.contextPath}/order/orders_delete",
                     success: function (res) {
                         if (res > 0) {
                             layer.msg('已删除!', {
@@ -192,17 +189,18 @@
         }
 
 
-        table.on('tool(categoryList)', function (obj) {
+        table.on('tool(ordersList)', function (obj) {
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
-            if (layEvent === 'edit') {
-
-//               layer.msg(data.cat_id);
-                var title = "修改分类";
-                var url = "${pageContext.request.contextPath}/category/category_edit?id=" + data.cat_id;
+            if (layEvent === 'update') {
+                var id = data.order_id;
+//               layer.msg(data.order_id);
+                var title = "修改订单";
+                var url = "${pageContext.request.contextPath}/pages/order/orders_update";
                 var w = ($(window).width() * 0.9);
 
                 var h = ($(window).height() - 50);
+
 
                 layer.open({
                     type: 2,
@@ -212,12 +210,23 @@
                     shadeClose: true,
                     shade: 0.4,
                     title: title,
-                    content: url
+                    content: url,
+                    success: function (layero, index) {
+                        //向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
+                        var body = layer.getChildFrame('body', index);
+                        //巧妙的地方在这里哦
+                        body.contents().find("#order_id").val(data.order_id);
+                        body.contents().find("#deliver_status").val(data.deliver_status);
+                    },
+                    error: function (layero, index) {
+                        alert("aaa");
+                    }
                 });
             }
         });
 
     });
+
 
 </script>
 </body>

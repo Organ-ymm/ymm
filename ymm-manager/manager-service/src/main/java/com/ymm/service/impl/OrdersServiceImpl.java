@@ -18,8 +18,19 @@ public class OrdersServiceImpl implements OrdersService {
     OrdersMapper ordersMapper;
 
     @Override
+    public int updateOrdersDelstuById(Integer id) {
+        System.out.println("*******************************************************ssbbb");
+        return ordersMapper.updateOrdersDelstuById(id);
+    }
+
+    @Override
+    public int updateOrders(Orders orders) {
+        return ordersMapper.updateOrders(orders);
+    }
+
+    @Override
     public List<Orders> selectAllOrders(Page page) {
-       // System.out.println("******************我们的爱情到这刚刚好**************");
+
         return ordersMapper.selectAllOrders(page);
     }
 
