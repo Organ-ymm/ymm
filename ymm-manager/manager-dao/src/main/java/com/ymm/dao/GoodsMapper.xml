@@ -42,6 +42,24 @@
         SET status = 3
         WHERE goods_id = #{id};
     </update>
+	    <!--根据id修改is_new-->
+    <update id="updateGoodsNew">
+        UPDATE goods
+        SET is_new = #{switchStatus}
+        WHERE goods_id = #{id};
+    </update>
+    <!--根据id修改is_hot-->
+    <update id="updateGoodsHot">
+        UPDATE goods
+        SET is_hot = #{switchStatus}
+        WHERE goods_id = #{id};
+    </update>
+    <!--根据id修改status-->
+    <update id="updateGoodsStatus">
+        UPDATE goods
+        SET status = #{switchStatus}
+        WHERE goods_id = #{id};
+    </update>
     <insert id="insertGoods" parameterType="com.ymm.pojo.po.Goods">
         INSERT INTO goods
         <trim prefix="(" suffix=")" suffixOverrides=",">

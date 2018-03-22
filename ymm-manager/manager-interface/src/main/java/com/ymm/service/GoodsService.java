@@ -1,6 +1,7 @@
 package com.ymm.service;
 
 import com.ymm.pojo.dto.Page;
+import com.ymm.pojo.dto.SwitchCheck;
 import com.ymm.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.pojo.vo.GoodsQuery;
@@ -17,4 +18,10 @@ public interface GoodsService {
     int batchUpdate(List<Integer> ids);
 
     int addGoods(Goods goods);
+	
+	    int goodsIsNew(SwitchCheck switchCheck);
+
+    int goodsIsHot(SwitchCheck switchCheck);
+
+    int goodsStatus(SwitchCheck switchCheck);
 }

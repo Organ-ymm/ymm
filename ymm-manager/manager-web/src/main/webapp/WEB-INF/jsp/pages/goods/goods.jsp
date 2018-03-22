@@ -61,15 +61,15 @@
     </a>
 </script>
 <script type="text/html" id="newTpl">
-    <input type="checkbox" name="is_new" lay-event="is_new" lay-skin="switch" lay-text="是|否"
+    <input type="checkbox" name="is_new" id="is_new" value="{{d.goods_id}}" lay-filter="is_new" lay-skin="switch" lay-text="是|否"
            {{1==d.is_new?'checked':''}}>
 </script>
 <script type="text/html" id="hotTpl">
-    <input type="checkbox" name="is_hot" lay-event="is_hot" lay-skin="switch" lay-text="是|否"
+    <input type="checkbox" name="is_hot" value="{{d.goods_id}}" lay-filter="is_hot" lay-skin="switch" lay-text="是|否"
            {{1==d.is_hot?'checked':''}}>
 </script>
 <script type="text/html" id="statusTpl">
-    <input type="checkbox" name="status" lay-event="status" lay-skin="switch" lay-text="是|否"
+    <input type="checkbox" name="status" value="{{d.goods_id}}" lay-filter="status" lay-skin="switch" lay-text="上架|下架"
            {{1==d.status?'checked':''}}>
 </script>
 </body>

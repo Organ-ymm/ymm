@@ -102,20 +102,81 @@ layui.use(['table', 'form', 'jquery', 'admin'], function () {
             // });
         }
     });
-    /*监听switch事件*/
-    // table.on('templet(goodsList)', function (obj) {
-    //     var data = obj.data //获得当前行数据
-    //         , layEvent = obj.event; //获得 lay-event 对应的值
-    //     if (layEvent === 'is_new') {
-    //         layer.msg('test new ');
-    //     } else if (layEvent === 'edit') {
-    //         layer.msg('test edit ');
-    //     }
-    // });
+	
+form.on('switch(is_new)', function (obj) {
 
-    // form.on('switch(switch_new)', function (data) {
-    //     layer.mag();
-    // });
+        //layer.msg(data.goods_id);
+        if (obj.elem.checked) {
+            //当开关状态为true时,执行该段代码
+            $.ajax({
+                data: {"id": this.value,"switchStatus": 1},
+                type: 'GET',
+                url: "../../goods/goods_is_new",
+                success: function (res) {
+                    layer.msg("是");
+                }
+            });
+        } else {
+            //当开关状态为false时,执行该段代码
+            $.ajax({
+                data: {"id": this.value,"switchStatus": 2},
+                type: 'GET',
+                url: "../../goods/goods_is_new",
+                success: function (res) {
+                    layer.msg("否");
+                }
+            });
+        }
+
+
+        //layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+    });
+    form.on('switch(is_hot)', function (obj) {
+        if (obj.elem.checked) {
+            //当开关状态为true时,执行该段代码
+            $.ajax({
+                data: {"id": this.value,"switchStatus": 1},
+                type: 'GET',
+                url: "../../goods/goods_is_hot",
+                success: function (res) {
+                    layer.msg("是");
+                }
+            });
+        } else {
+            //当开关状态为false时,执行该段代码
+            $.ajax({
+                data: {"id": this.value,"switchStatus": 2},
+                type: 'GET',
+                url: "../../goods/goods_is_hot",
+                success: function (res) {
+                    layer.msg("否");
+                }
+            });
+        }
+    });
+    form.on('switch(status)', function (obj) {
+        if (obj.elem.checked) {
+            //当开关状态为true时,执行该段代码
+            $.ajax({
+                data: {"id": this.value,"switchStatus": 1},
+                type: 'GET',
+                url: "../../goods/goods_status",
+                success: function (res) {
+                    layer.msg("上架");
+                }
+            });
+        } else {
+            //当开关状态为false时,执行该段代码
+            $.ajax({
+                data: {"id": this.value,"switchStatus": 2},
+                type: 'GET',
+                url: "../../goods/goods_status",
+                success: function (res) {
+                    layer.msg("下架");
+                }
+            });
+        }
+    });
 
     var active = {
         is_new: function () {

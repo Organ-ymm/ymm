@@ -171,24 +171,7 @@
                             <cite>管理员列表</cite>
                         </a>
                     </li>
-                    <li>
-                        <a _href="./pages/admin/role">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>角色管理</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="./pages/admin/cate">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限分类</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="./pages/admin/rule">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限管理</cite>
-                        </a>
-                    </li>
+
                 </ul>
             </li>
             <li>
