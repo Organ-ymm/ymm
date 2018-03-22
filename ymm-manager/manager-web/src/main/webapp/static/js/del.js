@@ -43,6 +43,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         url:'../../user/showDelPage',
         //是否开启分页
         page: true,
+        limit:5,
         limits: [5, 10, 20, 50, 100],
         done: function (res, curr, count) {
             //console.log(res);
