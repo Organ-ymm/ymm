@@ -29,12 +29,12 @@
 </div>
 <div class="weadmin-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 we-search">
+        <div class="layui-form layui-col-md12 we-search">
             <div class="layui-inline">
                 <input type="text" name="adQueryName" id="adQueryName" placeholder="请输入用户名关键字" autocomplete="off" class="layui-input">
             </div>
             <button class="layui-btn" lay-submit="" lay-filter="search" data-type="reload"><i class="layui-icon">&#xe615;</i></button>
-        </form>
+        </div>
     </div>
     <div class="weadmin-block">
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>

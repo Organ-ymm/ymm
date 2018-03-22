@@ -10,7 +10,7 @@
         <where>
 
             <if test="query != null and query.adQueryName != null and query.adQueryName != '' ">
-                and a.ad_username like '%${query.adQueryName}%'
+               AND a.ad_username like '%${query.adQueryName}%'
             </if>
         </where>
     </sql>
@@ -25,7 +25,7 @@
     </select>
 
     <select id="countAdmin" resultType="int" >
-        SELECT COUNT(1) FROM admin
+        SELECT COUNT(1) FROM admin a
         <include refid="where_adminQuery"/>
     </select>
 

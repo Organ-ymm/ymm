@@ -148,11 +148,11 @@ layui.use(['form','table','jquery','layer'], function(){
     //模糊查询
     var active = {
         reload: function () {
-            var userText = $.trim($('#adminList').val());
+            var adQueryName = $.trim($('#adQueryName').val());
             //console.log(userText);
-            table.reload('usersList', {//重新从第 1 页开始
+            table.reload('adminList', {//重新从第 1 页开始
                 page: {curr: 1},
-                where: {userText: userText}//设定异步数据接口的额外参数，任意设
+                where: {adQueryName: adQueryName}//设定异步数据接口的额外参数，任意设
             });
         },
     };
