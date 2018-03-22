@@ -2,6 +2,7 @@ package com.ymm.service.impl;
 
 import com.ymm.dao.GoodsMapper;
 import com.ymm.pojo.dto.Page;
+import com.ymm.pojo.dto.SwitchCheck;
 import com.ymm.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.pojo.vo.GoodsQuery;
@@ -69,5 +70,20 @@ public class GoodsServiceImpl implements GoodsService {
             goods.setStatus(2);
         }
         return goodsdao.insertGoods(goods);
+    }
+
+    @Override
+    public int goodsIsNew(SwitchCheck switchCheck) {
+        return goodsdao.updateGoodsNew(switchCheck);
+    }
+
+    @Override
+    public int goodsIsHot(SwitchCheck switchCheck) {
+        return goodsdao.updateGoodsHot(switchCheck);
+    }
+
+    @Override
+    public int goodsStatus(SwitchCheck switchCheck) {
+        return goodsdao.updateGoodsStatus(switchCheck);
     }
 }

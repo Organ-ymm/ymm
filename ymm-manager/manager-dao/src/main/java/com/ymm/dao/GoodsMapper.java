@@ -1,6 +1,7 @@
 package com.ymm.dao;
 
 import com.ymm.pojo.dto.Page;
+import com.ymm.pojo.dto.SwitchCheck;
 import com.ymm.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.pojo.vo.GoodsQuery;
@@ -16,4 +17,10 @@ public interface GoodsMapper {
     int updateGoodsById(Integer id);
 
     int insertGoods(Goods goods);
+
+    int updateGoodsNew(SwitchCheck switchCheck);
+
+    int updateGoodsHot(SwitchCheck switchCheck);
+
+    int updateGoodsStatus(SwitchCheck switchCheck);
 }

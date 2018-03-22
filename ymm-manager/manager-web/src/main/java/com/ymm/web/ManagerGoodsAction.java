@@ -2,6 +2,7 @@ package com.ymm.web;
 
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.dto.Page;
+import com.ymm.pojo.dto.SwitchCheck;
 import com.ymm.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.pojo.vo.GoodsQuery;
@@ -88,6 +89,58 @@ public class ManagerGoodsAction {
         try {
             i = goodsService.addGoods(goods);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 根据前端switch状态来改变goods_is_new
+     * @param switchCheck
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/goods_is_new", method = RequestMethod.GET)
+    public int goods_is_new(SwitchCheck switchCheck){
+
+        int i= 0 ;
+        try {
+            i = goodsService.goodsIsNew(switchCheck);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 根据前端switch状态来改变goods_is_hot
+     * @param switchCheck
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/goods_is_hot", method = RequestMethod.GET)
+    public int goods_is_hot(SwitchCheck switchCheck){
+        int i= 0 ;
+        try {
+            i = goodsService.goodsIsHot(switchCheck);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 根据前端switch状态来改变goods_status
+     * @param switchCheck
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/goods_status", method = RequestMethod.GET)
+    public int goods_status(SwitchCheck switchCheck){
+        int i= 0 ;
+        try {
+            i = goodsService.goodsStatus(switchCheck);
+        }catch (Exception e){
             e.printStackTrace();
         }
         return i;
