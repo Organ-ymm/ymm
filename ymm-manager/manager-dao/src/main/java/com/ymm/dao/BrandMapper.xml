@@ -14,7 +14,7 @@
             </if>
         </where>
     </sql>
-    <select id="selectBrandByPage" parameterType="com.ymm.pojo.dto.Page" resultType="com.ymm.pojo.po.Brand">
+    <select id="selectBrandByPage"  resultType="com.ymm.pojo.po.Brand">
         SELECT
         <include refid="Brand_column"/>
         from brand

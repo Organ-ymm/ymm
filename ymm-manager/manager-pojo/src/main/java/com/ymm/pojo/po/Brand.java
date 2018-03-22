@@ -8,7 +8,7 @@ public class Brand implements Serializable {
     private String brand_name;//品牌名称
     private int cat_id;
     private String logo;//图片信息
-    private Date add_time;//加入时间
+    private String add_time;//加入时间
     private String country;//所属国家
     private String brand_desc;//品牌描述
     private int status;//状态
@@ -21,11 +21,11 @@ public class Brand implements Serializable {
         this.logo = logo;
     }
 
-    public Date getAdd_time() {
+    public String getAdd_time() {
         return add_time;
     }
 
-    public void setAdd_time(Date add_time) {
+    public void setAdd_time(String add_time) {
         this.add_time = add_time;
     }
 

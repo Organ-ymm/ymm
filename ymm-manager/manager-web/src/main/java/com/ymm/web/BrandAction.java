@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
@@ -50,6 +51,12 @@ public class BrandAction {
     public int addBrand(Brand brand){
         int i = 0;
         try {
+            Brand brand1 = new Brand();
+           
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String format = simpleDateFormat.format(System.currentTimeMillis());
+
+            brand1.setAdd_time(format);
             i = brandService.addBrand(brand);
         } catch (Exception e) {
             e.printStackTrace();
