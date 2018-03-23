@@ -23,4 +23,6 @@ public interface GoodsMapper {
     int updateGoodsHot(SwitchCheck switchCheck);
 
     int updateGoodsStatus(SwitchCheck switchCheck);
+
+    int updateGoods(Goods goods);
 }

@@ -24,7 +24,7 @@ public class ManagerGoodsAction {
 
     @RequestMapping("/goodslist")
     @ResponseBody
-    public MessageResult<GoodsCustom> listGoodsToJson(Page page, GoodsQuery query){
+    public MessageResult<GoodsCustom> listGoodsToJson(Page page, GoodsQuery query) {
         //System.out.println(query);
         //从后台把所有商品的数据查询到List，把List封装MessageResult
         MessageResult<GoodsCustom> messageResult = new MessageResult<>();
@@ -35,7 +35,7 @@ public class ManagerGoodsAction {
             messageResult.setCount(count);
             messageResult.setData(goodsCustomList);
             messageResult.setMsg("success");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return messageResult;
@@ -61,12 +61,13 @@ public class ManagerGoodsAction {
 
     /**
      * 批量删除
+     *
      * @param ids
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/batch",method = RequestMethod.POST)
-    public int batchUpdate(@RequestParam("ids[]") List<Integer> ids){
+    @RequestMapping(value = "/batch", method = RequestMethod.POST)
+    public int batchUpdate(@RequestParam("ids[]") List<Integer> ids) {
         int i = 0;
         try {
             //调用业务逻辑层方法
@@ -79,12 +80,13 @@ public class ManagerGoodsAction {
 
     /**
      * 新增商品
+     *
      * @param goods
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/goods_add",method = RequestMethod.POST)
-    public int goods_add(Goods goods){
+    @RequestMapping(value = "/goods_add", method = RequestMethod.POST)
+    public int goods_add(Goods goods) {
         int i = 0;
         try {
             i = goodsService.addGoods(goods);
@@ -93,19 +95,31 @@ public class ManagerGoodsAction {
         }
         return i;
     }
- /**
+    @ResponseBody
+    @RequestMapping(value = "/goods_edit",method = RequestMethod.POST)
+    public int goods_edit(Goods goods){
+        int i = 0;
+        try {
+            i = goodsService.editGoods(goods);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+    /**
      * 根据前端switch状态来改变goods_is_new
+     *
      * @param switchCheck
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/goods_is_new", method = RequestMethod.GET)
-    public int goods_is_new(SwitchCheck switchCheck){
+    public int goods_is_new(SwitchCheck switchCheck) {
 
-        int i= 0 ;
+        int i = 0;
         try {
             i = goodsService.goodsIsNew(switchCheck);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return i;
@@ -113,16 +127,17 @@ public class ManagerGoodsAction {
 
     /**
      * 根据前端switch状态来改变goods_is_hot
+     *
      * @param switchCheck
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/goods_is_hot", method = RequestMethod.GET)
-    public int goods_is_hot(SwitchCheck switchCheck){
-        int i= 0 ;
+    public int goods_is_hot(SwitchCheck switchCheck) {
+        int i = 0;
         try {
             i = goodsService.goodsIsHot(switchCheck);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return i;
@@ -130,16 +145,17 @@ public class ManagerGoodsAction {
 
     /**
      * 根据前端switch状态来改变goods_status
+     *
      * @param switchCheck
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/goods_status", method = RequestMethod.GET)
-    public int goods_status(SwitchCheck switchCheck){
-        int i= 0 ;
+    public int goods_status(SwitchCheck switchCheck) {
+        int i = 0;
         try {
             i = goodsService.goodsStatus(switchCheck);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return i;

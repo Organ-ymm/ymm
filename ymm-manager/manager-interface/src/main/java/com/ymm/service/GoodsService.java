@@ -24,4 +24,6 @@ public interface GoodsService {
     int goodsIsHot(SwitchCheck switchCheck);
 
     int goodsStatus(SwitchCheck switchCheck);
+
+    int editGoods(Goods goods);
 }

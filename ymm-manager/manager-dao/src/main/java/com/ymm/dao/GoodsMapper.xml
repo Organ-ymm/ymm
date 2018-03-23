@@ -42,6 +42,74 @@
         SET status = 3
         WHERE goods_id = #{id};
     </update>
+    <update id="updateGoods" >
+        UPDATE
+        goods
+        SET
+        <trim suffixOverrides="," >
+            <if test="goods_id != null">
+                goods_id=#{goods_id},
+            </if>
+            <if test="cat_id != null">
+                cat_id=#{cat_id},
+            </if>
+            <if test="goods_sn != null">
+                goods_sn=#{goods_sn},
+            </if>
+            <if test="goods_name != null">
+                goods_name=#{goods_name},
+            </if>
+            <if test="click_count != null">
+                click_count=#{click_count},
+            </if>
+            <if test="brand_id != null">
+                brand_id=#{brand_id},
+            </if>
+            <if test="goods_number != null">
+                goods_number=#{goods_number},
+            </if>
+            <if test="market_price != null">
+                market_price=#{market_price},
+            </if>
+            <if test="shop_price != null">
+                shop_price=#{shop_price},
+            </if>
+            <if test="promote_price != null">
+                promote_price=#{promote_price},
+            </if>
+            <if test="keywords != null">
+                keywords=#{keywords},
+            </if>
+            <if test="goods_brief != null">
+                goods_brief=#{goods_brief},
+            </if>
+            <if test="goods_desc != null">
+                goods_desc=#{goods_desc},
+            </if>
+            <if test="goods_img != null">
+                goods_img=#{goods_img},
+            </if>
+            <if test="goods_thumb != null">
+                goods_thumb=#{goods_thumb},
+            </if>
+            <if test="add_time != null">
+                add_time=#{add_time},
+            </if>
+            <if test="is_new != null">
+                is_new=#{is_new},
+            </if>
+            <if test="is_hot != null">
+                is_hot=#{is_hot},
+            </if>
+            <if test="give_integral != null">
+                give_integral=#{give_integral},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+        </trim>
+        WHERE goods_id = #{goods_id}
+    </update>
 	    <!--根据id修改is_new-->
     <update id="updateGoodsNew">
         UPDATE goods
