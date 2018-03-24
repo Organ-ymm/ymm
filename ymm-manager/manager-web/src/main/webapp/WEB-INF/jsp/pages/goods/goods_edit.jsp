@@ -310,7 +310,7 @@
                     form.render('select');
 
                     if (data[i].brand_name == $("#brand_name").val()) {
-                        document.getElementById("brand")[data[i].brand_id].selected = true;
+                        document.getElementById("brand")[i+1].selected = true;
                     }
 
                 }
