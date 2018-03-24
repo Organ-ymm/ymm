@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymm.dao.RankMapper" >
+
+    <sql id="base_column">
+        user_id,good_id,amount,add_time
+    </sql>
+
+    <!--<select id="listRank" resultType="com.ymm.pojo.po.Rank" parameterType="com.ymm.pojo.po.Rank">
+        select
+        <include refid="base_column"/>
+        from rank
+        order by rank_id
+    </select>
+
+    <select id="countRank" resultType="int">
+        select count(1)
+        from rank
+        order by rank_id
+    </select>
+
+    <insert id="addRank" parameterType="com.ymm.pojo.po.Rank">
+        insert into rank(
+        <include refid="base_column"/>
+        ) values(#{rank_id},#{rank_name},#{points},#{discount})
+    </insert>
+
+    <update id="editRank" parameterType="com.ymm.pojo.po.Rank">
+        update rank
+        set
+        rank_name=#{rank_name},points=#{points},discount=#{discount}
+        where
+        rank_id=#{rank_id}
+    </update>
+
+    <select id="findMaxRankId" resultType="int">
+        select
+        max(rank_id)
+        from rank
+    </select>
+
+    <delete id="delRank" parameterType="com.ymm.pojo.po.Rank">
+        delete from
+        rank
+        where
+        rank_id=#{rank_id}
+    </delete>
+    <select id="ListRankSum" resultType="com.ymm.pojo.vo.UserCustom">
+        select u.rank_id,r.rank_name,COUNT(u.rank_id) as rankSum
+        from users u left join rank r
+        on r.rank_id=u.rank_id
+        group by u.rank_id
+    </select>-->
+
+</mapper>
