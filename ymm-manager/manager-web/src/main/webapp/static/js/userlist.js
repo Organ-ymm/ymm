@@ -46,7 +46,7 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
         url:'../../user/listusers',
         //是否开启分页
         page: true,
-        limit:5,
+        limit: 5,
         limits: [5, 10, 20, 50, 100],
         done: function (res, curr, count) {
             // console.log(res);
@@ -221,7 +221,6 @@ layui.use(['form', 'table', 'jquery', 'admin'], function () {
                     body.contents().find("#L_username").val(data.username);
                     body.contents().find("#L_alias").val(data.alias);
                     body.contents().find("#L_sex").val(data.sex);
-                    //console.log(data.sex);
                     body.contents().find("#L_phone").val(data.mobile_phone);
                     body.contents().find("#L_email").val(data.email);
                     body.contents().find("#L_password").val(data.password);

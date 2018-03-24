@@ -49,15 +49,23 @@
             </div>
 
         </div>
+        <%--单选框--%>
         <div class="layui-form-item">
             <label for="L_sex" class="layui-form-label">性别</label>
-            <div class="layui-input-block" id="L_sex" name="L_sex">
-                <%--<input type="checkbox" id="status" name="status" lay-skin="switch" lay-text="是|否" {{ 1==d.status?'checked':''}}/>--%>
-                <input type="radio" name="sex" value="0" title="男" checked>
-                <input type="radio" name="sex" value="1" title="女" >
-                <input type="radio" name="sex" value=" " title="保密">
-            </div>
+                <div class="layui-input-block" id="L_sex" lay-filter="L_sex">
+                    <input type="radio" name="sex" value=" " title="保密" checked>
+                </div>
         </div>
+        <%--下拉选项--%>
+       <%-- <div class="layui-form-item" type="hidden">
+            <label for="L_sex" class="layui-form-label">性别</label>
+            <div class="layui-input-inline" id="L_sex">
+                <select name="sex" id="sex" lay-filter="sex">
+                    <option value=" ">保密</option>
+                </select>
+            </div>
+        </div>--%>
+
         <div class="layui-form-item">
             <label for="L_phone" class="layui-form-label">
                 <span class="we-red">*</span>手机
@@ -109,6 +117,8 @@
             layer = layui.layer,
             $ = layui.jquery;
 
+        loadSex();
+
         ////自定义验证规则
         form.verify({
             password: [/(.+){2,12}$/, '密码必须2到12位'],
@@ -132,9 +142,8 @@
 
         //监听提交
         form.on('submit(edit)', function(data){
-            console.log(data);
             var sex = $('input:radio[name="sex"]:checked').val();
-            console.log(sex);
+            //console.log(sex);
             $.ajax({
                 data : $("#editForm").serialize(),
                 dataType : "text",
@@ -161,6 +170,57 @@
             });
             return false;
         });
+
+        //性别单选框的回显
+        function loadSex(){
+            //console.log($("#L_sex").val());
+            var L_sex=document.getElementById("L_sex");
+            var input=document.createElement("input");
+            input.setAttribute("type","radio");
+            input.setAttribute("name","sex");
+            input.setAttribute("value","0");
+            input.setAttribute("title","男");
+            L_sex.appendChild(input);
+            var input2=document.createElement("input");
+            input2.setAttribute("type","radio");
+            input2.setAttribute("name","sex");
+            input2.setAttribute("value","1");
+            input2.setAttribute("title","女");
+            L_sex.appendChild(input2);
+            form.render('radio');
+            console.log(L_sex);
+            var sex=document.getElementsByName("sex");
+            for(var i=0;i<sex.length;i++){
+                if($("#L_sex").val() == sex[i].value){
+                    sex[i].checked=true;
+                    form.render('radio');
+                }
+            }
+
+
+            //性别下拉框的回显
+            /*var sex=document.getElementById("sex");
+            var option=document.createElement("option");
+            option.setAttribute("value", "0");
+            option.innerText = "男";
+            sex.appendChild(option);
+            var option=document.createElement("option");
+            option.setAttribute("value", "1");
+            option.innerText = "女";
+            sex.appendChild(option);
+            form.render('select');
+            var options=document.getElementsByTagName("option");
+            //console.log(options.length+":length");
+            for(var i=0;i<options.length;i++){
+                //console.log(options[i].value+":options[i].value");
+                if($("#L_sex").val() == options[i].value ){
+                    //console.log(options[i].value);
+                    options[i].selected=true;
+                    form.render('select');
+                }
+
+            }*/
+        }
 
     });
 </script>
