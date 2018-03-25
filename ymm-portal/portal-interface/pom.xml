@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ymm</groupId>
-            <artifactId>manager-pojo</artifactId>
+            <artifactId>portal-pojo</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

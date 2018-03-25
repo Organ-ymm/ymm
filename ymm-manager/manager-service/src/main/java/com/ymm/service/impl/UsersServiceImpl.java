@@ -1,8 +1,8 @@
 package com.ymm.service.impl;
 
+import com.ymm.commons.pojo.po.Users;
 import com.ymm.dao.UsersMapper;
 import com.ymm.pojo.dto.Page;
-import com.ymm.pojo.po.Users;
 import com.ymm.pojo.vo.UsersQuery;
 import com.ymm.service.UsersService;
 import org.slf4j.Logger;

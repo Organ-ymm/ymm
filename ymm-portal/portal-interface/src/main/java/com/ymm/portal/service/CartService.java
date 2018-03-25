@@ -1,5 +1,8 @@
 package com.ymm.portal.service;
 
+import java.util.List;
+
+import com.ymm.portal.pojo.vo.CartCustom;
 /**
  * Description:
  * Author: zy
@@ -7,11 +10,7 @@ package com.ymm.portal.service;
  * Version:1.0
  */
 public interface CartService {
-    /**
-     * 获取购物车的商品集合（List<CartCustom>）
-     * @param
-     * @return
-     */
 
 
+    List<CartCustom> listCustomCart(int user_id);
 }

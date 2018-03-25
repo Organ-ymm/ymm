@@ -1,4 +1,4 @@
-package com.ymm.pojo.po;
+package com.ymm.commons.pojo.po;
 
 public class Users {
     private int user_id;

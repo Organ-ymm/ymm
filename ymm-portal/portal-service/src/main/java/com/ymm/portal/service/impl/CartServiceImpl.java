@@ -1,11 +1,14 @@
 package com.ymm.portal.service.impl;
 
 import com.ymm.portal.dao.CartMapper;
+import com.ymm.portal.pojo.vo.CartCustom;
 import com.ymm.portal.service.CartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Description:
@@ -22,4 +25,8 @@ public class CartServiceImpl implements CartService{
     private CartMapper cartMapper;
 
 
+    @Override
+    public List<CartCustom> listCustomCart(int user_id) {
+        return null;
+    }
 }

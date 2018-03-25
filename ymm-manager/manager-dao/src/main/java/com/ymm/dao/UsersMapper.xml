@@ -15,7 +15,7 @@
         </where>
     </sql>
 
-    <select id="listUsersByPage" resultType="com.ymm.pojo.po.Users">
+    <select id="listUsersByPage" resultType="com.ymm.commons.pojo.po.Users">
 
         select
         <include refid="base_column"/>
@@ -31,13 +31,13 @@
         <include refid="where_clause"/>
     </select>
 
-    <select id="verifyUsername" parameterType="com.ymm.pojo.po.Users" resultType="com.ymm.pojo.po.Users">
+    <select id="verifyUsername" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Users">
         select
         <include refid="base_column"/>
         from users where username=#{username}
     </select>
 
-    <insert id="addUser" parameterType="com.ymm.pojo.po.Users">
+    <insert id="addUser" parameterType="com.ymm.commons.pojo.po.Users">
         insert into users(username,password,mobile_phone,rank_points,rank_id,reg_time,status
             <if test="email != null and email != ''">
                 ,email
@@ -68,11 +68,11 @@
         )
     </insert>
 
-    <update id="updateState" parameterType="com.ymm.pojo.po.Users">
+    <update id="updateState" parameterType="com.ymm.commons.pojo.po.Users">
         update users set status=#{status} where user_id=#{user_id}
     </update>
 
-    <update id="updateUser" parameterType="com.ymm.pojo.po.Users">
+    <update id="updateUser" parameterType="com.ymm.commons.pojo.po.Users">
         update users set mobile_phone=#{mobile_phone},password=#{password}
         <if test="alias != null and alias != ''">
             ,alias=#{alias}
@@ -92,7 +92,7 @@
         where user_id=#{user_id}
     </update>
 
-    <delete id="delUser" parameterType="com.ymm.pojo.po.Users">
+    <delete id="delUser" parameterType="com.ymm.commons.pojo.po.Users">
         delete from users where user_id=#{user_id}
     </delete>
 

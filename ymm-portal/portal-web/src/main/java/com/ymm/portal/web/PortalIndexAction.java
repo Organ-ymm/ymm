@@ -26,7 +26,7 @@ public class PortalIndexAction {
         //1、注入service
         //2、调用方法
         //3、创建service实现类（三步：先去redis集群中查询，若有，直接返回，若没有，先去mysql查，存入redis缓存）
-        return "index";
+        return "index1";
     }
 
     @RequestMapping(value="/login",method= RequestMethod.GET)

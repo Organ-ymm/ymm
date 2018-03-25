@@ -1,6 +1,6 @@
 package com.ymm.pojo.vo;
 
-import com.ymm.pojo.po.Users;
+import com.ymm.commons.pojo.po.Users;
 
 /**
  * Created by zy on 2018/3/21.
