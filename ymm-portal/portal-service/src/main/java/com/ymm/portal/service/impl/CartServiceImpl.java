@@ -1,6 +1,7 @@
 package com.ymm.portal.service.impl;
 
 import com.ymm.portal.dao.CartMapper;
+import com.ymm.portal.pojo.po.Cart;
 import com.ymm.portal.pojo.vo.CartCustom;
 import com.ymm.portal.service.CartService;
 import org.slf4j.Logger;
@@ -27,6 +28,30 @@ public class CartServiceImpl implements CartService{
 
     @Override
     public List<CartCustom> listCustomCart(int user_id) {
-        return null;
+        List<CartCustom> customCartList= null;
+        try {
+            customCartList = cartMapper.listCustomCart(user_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return customCartList;
+    }
+
+    @Override
+    public int delCart(int[] goods_id,int user_id) {
+        int sum=0;
+        int i=0;
+        for(int id : goods_id){
+            Cart cart=new Cart();
+            cart.setGoods_id(id);
+            cart.setUser_id(user_id);
+            try {
+                i=cartMapper.delCart(cart);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            sum+=i;
+        }
+        return sum;
     }
 }

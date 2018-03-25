@@ -1,5 +1,11 @@
 package com.ymm.portal.dao;
 
+import com.ymm.commons.pojo.po.Users;
+import com.ymm.portal.pojo.po.Cart;
+import com.ymm.portal.pojo.vo.CartCustom;
+
+import java.util.List;
+
 /**
  * Description:
  * Author: zy
@@ -7,4 +13,7 @@ package com.ymm.portal.dao;
  * Version:1.0
  */
 public interface CartMapper {
+    List<CartCustom> listCustomCart(int user_id);
+
+    int delCart(Cart cart);
 }

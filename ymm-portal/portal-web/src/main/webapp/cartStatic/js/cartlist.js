@@ -1,8 +1,18 @@
 /**
  * Created by Administrator on 2018/3/24.
  */
-
 $(function () {
+
+    /*$.ajax({
+        data:{"user_id":user_id},
+        dataType:"json",
+        type:"get",
+        url:"../../cart/listCustomCart",
+        success:function(data){
+
+        }
+
+    });*/
 
     //全局的checkbox选中和未选中的样式
     var $allCheckbox = $('input[type="checkbox"]'),     //全局的全部checkbox
@@ -177,13 +187,31 @@ $(function () {
 
     //======================================移除商品========================================
 
+
     var $order_lists = null;
     var $order_content = '';
     $('.delBtn').click(function () {
         $order_lists = $(this).parents('.order_lists');
+        var id=$order_lists.children("[name='goods_id']").val();
+        //alert(id);
         $order_content = $order_lists.parents('.order_content');
         $('.model_bg').fadeIn(300);
         $('.my_model').fadeIn(300);
+        /*$.ajax({
+            type:"POST",
+            data:$.param({id:v}),
+            url:"/action/post/dele", //后台提供的删除接口
+            dataType:'json',
+            success:function(data){
+                var html = '';
+                if(data.status == 1){
+                    alert('删除成功');
+                    window.location.reload();
+                } else {
+                    alert('删除失败，请稍后重试'); return false;
+                }
+            }
+        });*/
     });
 
     //关闭模态框

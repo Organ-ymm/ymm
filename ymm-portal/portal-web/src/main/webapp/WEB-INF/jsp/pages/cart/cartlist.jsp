@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,123 +27,66 @@
                 <input type="checkbox" id="all" class="whole_check">
                 <label for="all"></label>
                 全选
+                <!--删除所选商品-->
+                <%--<div><input type="button" onclick="delSome()" value="删除所选商品"/></div>--%>
             </li>
             <li class="list_con">商品信息</li>
             <li class="list_info">商品参数</li>
             <li class="list_price">单价</li>
             <li class="list_amount">数量</li>
-            <li class="list_sum">金额</li>
+            <li class="list_sum">小计</li>
+            <%--<li class="list_store">库存状态</li>--%>
             <li class="list_op">操作</li>
         </ul>
     </div>
 
     <div class="cartBox">
-        <%--<div class="shop_info">
-            <div class="all_check">
-                <!--店铺全选-->
-                <input type="checkbox" id="shop_a" class="shopChoice">
-                <label for="shop_a" class="shop"></label>
-            </div>
-            <div class="shop_name">
-                店铺：<a href="javascript:;">搜猎人艺术生活</a>
-            </div>
-        </div>--%>
         <div class="order_content">
-            <ul class="order_lists">
-                <li class="list_chk">
-                    <input type="checkbox" id="checkbox_2" class="son_check">
-                    <label for="checkbox_2"></label>
-                </li>
-                <li class="list_con">
-                    <div class="list_img"><a href="javascript:;"><img src="images/1.png" alt=""></a></div>
-                    <div class="list_text"><a href="javascript:;">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a></div>
-                </li>
-                <li class="list_info">
-                    <p>规格：默认</p>
-                    <p>尺寸：16*16*3(cm)</p>
-                </li>
-                <li class="list_price">
-                    <p class="price">￥980</p>
-                </li>
-                <li class="list_amount">
-                    <div class="amount_box">
-                        <a href="javascript:;" class="reduce reSty">-</a>
-                        <input type="text" value="1" class="sum">
-                        <a href="javascript:;" class="plus">+</a>
-                    </div>
-                </li>
-                <li class="list_sum">
-                    <p class="sum_price">￥980</p>
-                </li>
-                <li class="list_op">
-                    <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
-                </li>
-            </ul>
-            <ul class="order_lists">
-                <li class="list_chk">
-                    <input type="checkbox" id="checkbox_3" class="son_check">
-                    <label for="checkbox_3"></label>
-                </li>
-                <li class="list_con">
-                    <div class="list_img"><a href="javascript:;"><img src="images/2.png" alt=""></a></div>
-                    <div class="list_text"><a href="javascript:;">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a></div>
-                </li>
-                <li class="list_info">
-                    <p>规格：默认</p>
-                    <p>尺寸：16*16*3(cm)</p>
-                </li>
-                <li class="list_price">
-                    <p class="price">￥780</p>
-                </li>
-                <li class="list_amount">
-                    <div class="amount_box">
-                        <a href="javascript:;" class="reduce reSty">-</a>
-                        <input type="text" value="1" class="sum">
-                        <a href="javascript:;" class="plus">+</a>
-                    </div>
-                </li>
-                <li class="list_sum">
-                    <p class="sum_price">￥780</p>
-                </li>
-                <li class="list_op">
-                    <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
-                </li>
-            </ul>
-            <ul class="order_lists">
-                <li class="list_chk">
-                    <input type="checkbox" id="checkbox_6" class="son_check">
-                    <label for="checkbox_6"></label>
-                </li>
-                <li class="list_con">
-                    <div class="list_img"><a href="javascript:;"><img src="images/3.png" alt=""></a></div>
-                    <div class="list_text"><a href="javascript:;">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a></div>
-                </li>
-                <li class="list_info">
-                    <p>规格：默认</p>
-                    <p>尺寸：16*16*3(cm)</p>
-                </li>
-                <li class="list_price">
-                    <p class="price">￥180</p>
-                </li>
-                <li class="list_amount">
-                    <div class="amount_box">
-                        <a href="javascript:;" class="reduce reSty">-</a>
-                        <input type="text" value="1" class="sum">
-                        <a href="javascript:;" class="plus">+</a>
-                    </div>
-                </li>
-                <li class="list_sum">
-                    <p class="sum_price">￥180</p>
-                </li>
-                <li class="list_op">
-                    <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
-                </li>
-            </ul>
+            <c:forEach items="${customCartList}" var="good">
+                <ul class="order_lists">
+                    <input type="hidden" name="goods_id" value="${good.goods_id}">
+                    <li class="list_chk">
+                        <input type="checkbox" id="${good.goods_id}" class="son_check">
+                        <label for="${good.goods_id}"></label>
+                    </li>
+                    <li class="list_con">
+                        <div class="list_img"><a href="javascript:;"><img src="${good.goods_thumb}" alt=""></a></div>
+                        <div class="list_text"><a href="javascript:;">"${good.goods_brief}"</a></div>
+                    </li>
+                    <li class="list_info">
+                        <p>${good.goods_sn}</p>
+                    </li>
+                    <li class="list_price">
+                        <p class="price">${good.shop_price}</p>
+                    </li>
+                    <li class="list_amount">
+                        <div class="amount_box">
+                            <a href="javascript:;" class="reduce reSty">-</a>
+                            <input type="text" value="${good.amount}" class="sum">
+                            <a href="javascript:;" class="plus">+</a>
+                        </div>
+                    </li>
+                    <%--<li class="list_store">
+                        <c:if test="${good.goods_number>=10}">
+                            <p class="price">有货</p>
+                        </c:if>
+                        <c:if test="${good.goods_number<10}">
+                            <p class="price">库存紧张</p>
+                        </c:if>
+                    </li>--%>
+                    <li class="list_sum">
+                        <p class="sum_price">${good.subTotal}</p>
+                    </li>
+                    <li class="list_op">
+                        <p class="del"><a href="javascript:;" class="delBtn" onclick="del(this)">移除商品</a></p>
+                    </li>
+                </ul>
+            </c:forEach>
         </div>
     </div>
 
-    <div class="cartBox">
-        <%--<div class="shop_info">
+    <%--<div class="cartBox">
+        <div class="shop_info">
             <div class="all_check">
                 <!--店铺全选-->
                 <input type="checkbox" id="shop_b" class="shopChoice">
@@ -152,7 +96,7 @@
                 店铺：<a href="javascript:;">卷卷旗舰店</a>
             </div>
         </div>--%>
-        <div class="order_content">
+        <%--<div class="order_content">
             <ul class="order_lists">
                 <li class="list_chk">
                     <input type="checkbox" id="checkbox_4" class="son_check">
@@ -183,113 +127,8 @@
                     <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
                 </li>
             </ul>
-            <ul class="order_lists">
-                <li class="list_chk">
-                    <input type="checkbox" id="checkbox_5" class="son_check">
-                    <label for="checkbox_5"></label>
-                </li>
-                <li class="list_con">
-                    <div class="list_img"><a href="javascript:;"><img src="images/5.png" alt=""></a></div>
-                    <div class="list_text"><a href="javascript:;">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a></div>
-                </li>
-                <li class="list_info">
-                    <p>规格：默认</p>
-                    <p>尺寸：16*16*3(cm)</p>
-                </li>
-                <li class="list_price">
-                    <p class="price">￥480</p>
-                </li>
-                <li class="list_amount">
-                    <div class="amount_box">
-                        <a href="javascript:;" class="reduce reSty">-</a>
-                        <input type="text" value="1" class="sum">
-                        <a href="javascript:;" class="plus">+</a>
-                    </div>
-                </li>
-                <li class="list_sum">
-                    <p class="sum_price">￥480</p>
-                </li>
-                <li class="list_op">
-                    <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
-                </li>
-            </ul>
         </div>
-    </div>
-
-    <div class="cartBox">
-        <%--<div class="shop_info">
-            <div class="all_check">
-                <!--店铺全选-->
-                <input type="checkbox" id="shop_c" class="shopChoice">
-                <label for="shop_c" class="shop"></label>
-            </div>
-            <div class="shop_name">
-                店铺：<a href="javascript:;">卷卷旗舰店</a>
-            </div>
-        </div>--%>
-        <div class="order_content">
-            <ul class="order_lists">
-                <li class="list_chk">
-                    <input type="checkbox" id="checkbox_8" class="son_check">
-                    <label for="checkbox_8"></label>
-                </li>
-                <li class="list_con">
-                    <div class="list_img"><a href="javascript:;"><img src="images/1.png" alt=""></a></div>
-                    <div class="list_text"><a href="javascript:;">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a></div>
-                </li>
-                <li class="list_info">
-                    <p>规格：默认</p>
-                    <p>尺寸：16*16*3(cm)</p>
-                </li>
-                <li class="list_price">
-                    <p class="price">￥1980</p>
-                </li>
-                <li class="list_amount">
-                    <div class="amount_box">
-                        <a href="javascript:;" class="reduce reSty">-</a>
-                        <input type="text" value="1" class="sum">
-                        <a href="javascript:;" class="plus">+</a>
-                    </div>
-                </li>
-                <li class="list_sum">
-                    <p class="sum_price">￥1980</p>
-                </li>
-                <li class="list_op">
-                    <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
-                </li>
-            </ul>
-            <ul class="order_lists">
-                <li class="list_chk">
-                    <input type="checkbox" id="checkbox_9" class="son_check">
-                    <label for="checkbox_9"></label>
-                </li>
-                <li class="list_con">
-                    <div class="list_img"><a href="javascript:;"><img src="images/1.png" alt=""></a></div>
-                    <div class="list_text"><a href="javascript:;">夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男</a></div>
-                </li>
-                <li class="list_info">
-                    <p>规格：默认</p>
-                    <p>尺寸：16*16*3(cm)</p>
-                </li>
-                <li class="list_price">
-                    <p class="price">￥480</p>
-                </li>
-                <li class="list_amount">
-                    <div class="amount_box">
-                        <a href="javascript:;" class="reduce reSty">-</a>
-                        <input type="text" value="1" class="sum">
-                        <a href="javascript:;" class="plus">+</a>
-                    </div>
-                </li>
-                <li class="list_sum">
-                    <p class="sum_price">￥480</p>
-                </li>
-                <li class="list_op">
-                    <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
-                </li>
-            </ul>
-        </div>
-    </div>
+    </div>--%>
     <!--底部-->
     <div class="bar-wrapper">
         <div class="bar-right">
@@ -308,6 +147,5 @@
 
 <script src="${pageContext.request.contextPath}/cartStatic/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/cartStatic/js/cartlist.js"></script>
-
 </body>
 </html>

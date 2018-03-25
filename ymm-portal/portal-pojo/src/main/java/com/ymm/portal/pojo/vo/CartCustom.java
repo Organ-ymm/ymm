@@ -11,6 +11,7 @@ import java.io.Serializable;
  * Version:1.0
  */
 public class CartCustom extends Cart implements Serializable {
+    private Double subTotal;
     private String goods_sn;
     private String goods_name;
     private Integer goods_number;
@@ -21,6 +22,14 @@ public class CartCustom extends Cart implements Serializable {
     private String goods_thumb;
     private Integer is_hot;
     private Integer give_integral;
+
+    public Double getSubTotal() {
+        return getAmount() * shop_price;
+    }
+
+    /*public void setSubTotal(Double subTotal) {
+        this.subTotal = subTotal;
+    }*/
 
     public String getGoods_sn() {
         return goods_sn;

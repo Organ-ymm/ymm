@@ -3,8 +3,10 @@ package com.ymm.portal.web;
 import com.ymm.commons.pojo.po.Users;
 import com.ymm.portal.pojo.vo.CartCustom;
 import com.ymm.portal.service.CartService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,16 +27,33 @@ public class CartAction {
     private CartService cartService;
 
     /**
-     * 展示列表信息
+     * 展示购物车信息
      * return 购物车详情
      */
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping(value="/listCustomCart",method= RequestMethod.GET)
-    public List<CartCustom> listCustomCart(HttpSession session){
+    public String listCustomCart(HttpSession session,Model model){
+        Users user1=new Users();
+        user1.setUser_id(1);
+        session.setAttribute("user",user1);
+
         Users user= (Users) session.getAttribute("user");
         List<CartCustom> customCartList = cartService.listCustomCart(user.getUser_id());
-
-        return customCartList;
+        model.addAttribute("customCartList",customCartList);
+        return "pages/cart/cartlist";
+    }
+    @ResponseBody
+    @RequestMapping(value="/delCart",method= RequestMethod.GET)
+    public int delCart(@Param("goods_id")int goods_id,HttpSession session){
+        int i= 0;
+        int[] ids={goods_id};
+        Users user= (Users) session.getAttribute("user");
+        try {
+            i = cartService.delCart(ids,user.getUser_id());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
     }
 
 }
