@@ -1,8 +1,6 @@
 package com.ymm.pojo.vo;
 
-import com.ymm.pojo.po.Brand;
-import com.ymm.pojo.po.Category;
-import com.ymm.pojo.po.Goods;
+import com.ymm.commons.pojo.po.Goods;
 
 import java.io.Serializable;
 

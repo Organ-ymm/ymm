@@ -3,7 +3,7 @@ package com.ymm.web;
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.dto.SwitchCheck;
-import com.ymm.pojo.po.Goods;
+import com.ymm.commons.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.pojo.vo.GoodsQuery;
 import com.ymm.service.GoodsService;

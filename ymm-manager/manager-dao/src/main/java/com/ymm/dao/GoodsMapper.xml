@@ -128,7 +128,7 @@
         SET status = #{switchStatus}
         WHERE goods_id = #{id};
     </update>
-    <insert id="insertGoods" parameterType="com.ymm.pojo.po.Goods">
+    <insert id="insertGoods" parameterType="com.ymm.commons.pojo.po.Goods">
         INSERT INTO goods
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="goods_id != null">

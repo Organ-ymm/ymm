@@ -2,7 +2,7 @@ package com.ymm.service;
 
 import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.dto.SwitchCheck;
-import com.ymm.pojo.po.Goods;
+import com.ymm.commons.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.pojo.vo.GoodsQuery;
 
