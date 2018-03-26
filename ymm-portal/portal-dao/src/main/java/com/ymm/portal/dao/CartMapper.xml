@@ -3,6 +3,9 @@
 <mapper namespace="com.ymm.portal.dao.CartMapper" >
 
     <sql id="base_column">
+        user_id,goods_id,amount,add_time
+    </sql>
+    <sql id="union_column">
         c.user_id,c.goods_id,c.amount,c.add_time,
         g.goods_sn,g.goods_name,g.goods_number,g.market_price,g.shop_price,g.promote_price,
         g.goods_brief,g.goods_thumb,g.is_hot,g.give_integral
@@ -10,65 +13,39 @@
 
     <select id="listCustomCart" parameterType="int" resultType="com.ymm.portal.pojo.vo.CartCustom">
         select
-        <include refid="base_column"/>
+        <include refid="union_column"/>
         from cart c left join goods g
         on c.goods_id=g.goods_id
         where c.user_id=#{user_id}
         order by c.add_time desc
     </select>
+
+    <select id="findItem" parameterType="com.ymm.portal.pojo.po.Cart" resultType="com.ymm.portal.pojo.po.Cart">
+        select
+        <include refid="base_column"/>
+        from cart
+        where goods_id=#{goods_id} and user_id=#{user_id}
+    </select>
+
     <delete id="delCart" parameterType="com.ymm.portal.pojo.po.Cart">
         delete from cart
         where goods_id=#{goods_id} and user_id=#{user_id}
     </delete>
+
     <update id="updateAmount" parameterType="com.ymm.portal.pojo.po.Cart">
         update cart
         set amount=#{amount}
+        <if test="add_time != null and add_time != ''">
+            ,add_time=#{add_time}
+        </if>
         where user_id=#{user_id} and goods_id=#{goods_id}
     </update>
-    <!--<select id="listRank" resultType="com.ymm.pojo.po.Rank" parameterType="com.ymm.pojo.po.Rank">
-        select
-        <include refid="base_column"/>
-        from rank
-        order by rank_id
-    </select>
 
-    <select id="countRank" resultType="int">
-        select count(1)
-        from rank
-        order by rank_id
-    </select>
-
-    <insert id="addRank" parameterType="com.ymm.pojo.po.Rank">
-        insert into rank(
+    <insert id="addCart" parameterType="com.ymm.portal.pojo.po.Cart">
+        insert into cart(
         <include refid="base_column"/>
-        ) values(#{rank_id},#{rank_name},#{points},#{discount})
+        )
+        values(#{user_id},#{goods_id},#{amount},#{add_time})
     </insert>
-
-    <update id="editRank" parameterType="com.ymm.pojo.po.Rank">
-        update rank
-        set
-        rank_name=#{rank_name},points=#{points},discount=#{discount}
-        where
-        rank_id=#{rank_id}
-    </update>
-
-    <select id="findMaxRankId" resultType="int">
-        select
-        max(rank_id)
-        from rank
-    </select>
-
-    <delete id="delRank" parameterType="com.ymm.pojo.po.Rank">
-        delete from
-        rank
-        where
-        rank_id=#{rank_id}
-    </delete>
-    <select id="ListRankSum" resultType="com.ymm.pojo.vo.UserCustom">
-        select u.rank_id,r.rank_name,COUNT(u.rank_id) as rankSum
-        from users u left join rank r
-        on r.rank_id=u.rank_id
-        group by u.rank_id
-    </select>-->
 
 </mapper>

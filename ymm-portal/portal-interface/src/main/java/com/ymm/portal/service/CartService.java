@@ -2,6 +2,7 @@ package com.ymm.portal.service;
 
 import java.util.List;
 
+import com.ymm.portal.pojo.po.Cart;
 import com.ymm.portal.pojo.vo.CartCustom;
 /**
  * Description:
@@ -31,7 +32,33 @@ public interface CartService {
      *
      * @param goods_id 购物车内要增加数量的商品id
      * @param user_id 用户id
-     * @return
+     * @return 更新成功影响的条数
      */
     int updateAmount(int goods_id, int amount, int user_id);
+
+    /**
+     *
+     * @param user_id 当前用户id
+     * @param goods_id 要加入购物车的商品id
+     * @return 购物车中已有的记录
+     */
+    Cart findItem(int user_id, int goods_id);
+
+    /**
+     *
+     * @param goods_id 要加入购物车的商品id
+     * @param amount 要加入购物车的商品的数量
+     * @param user_id 当前用户id
+     * @return 成功影响的条数
+     */
+    int addCart(int goods_id, int amount, int user_id);
+
+    /**
+     *
+     * @param goods_id 购物车内夫人商品id
+     * @param amount 总的商品的数量
+     * @param user_id 当前用户id
+     * @return 成功影响的条数
+     */
+    int addAmount(int goods_id, int amount, int user_id);
 }
