@@ -57,7 +57,7 @@
                         <p>${good.goods_sn}</p>
                     </li>
                     <li class="list_price">
-                        <p class="price">${good.shop_price}</p>
+                        <p class="priceP">￥<span class="price">${good.shop_price}</span></p>
                     </li>
                     <li class="list_amount">
                         <div class="amount_box">

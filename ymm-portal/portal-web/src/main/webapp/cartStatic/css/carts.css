@@ -178,7 +178,7 @@ a:hover{
 .order_lists .list_price{
     width: 130px;
 }
-.order_lists .list_price .price{
+.order_lists .list_price .priceP{
     margin-top: 20px;
     line-height: 18px;
     font-family: Verdana,Tahoma,arial;
