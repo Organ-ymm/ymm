@@ -16,4 +16,6 @@ public interface CartMapper {
     List<CartCustom> listCustomCart(int user_id);
 
     int delCart(Cart cart);
+
+    int updateAmount(Cart cart);
 }

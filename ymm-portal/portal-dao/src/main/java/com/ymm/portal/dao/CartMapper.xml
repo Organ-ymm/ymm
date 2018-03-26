@@ -20,6 +20,11 @@
         delete from cart
         where goods_id=#{goods_id} and user_id=#{user_id}
     </delete>
+    <update id="updateAmount" parameterType="com.ymm.portal.pojo.po.Cart">
+        update cart
+        set amount=#{amount}
+        where user_id=#{user_id} and goods_id=#{goods_id}
+    </update>
     <!--<select id="listRank" resultType="com.ymm.pojo.po.Rank" parameterType="com.ymm.pojo.po.Rank">
         select
         <include refid="base_column"/>

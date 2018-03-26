@@ -61,4 +61,20 @@ public class CartAction {
         return i;
     }
 
+    @ResponseBody
+    @RequestMapping(value="/updateAmount",method = RequestMethod.GET)
+    public int amountPlus(@RequestParam("goods_id")int goods_id,@RequestParam("amount")int amount,HttpSession session){
+        Users user1=new Users();
+        user1.setUser_id(1);
+        session.setAttribute("user",user1);
+
+        int i=0;
+        Users user= (Users) session.getAttribute("user");
+        try {
+            i = cartService.updateAmount(goods_id,amount,user.getUser_id());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
 }

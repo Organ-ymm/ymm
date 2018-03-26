@@ -145,6 +145,16 @@ $(function () {
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
             $priceTotal = $count*parseInt($price.substring(1));
+        var id=$(this).parents('.order_lists').children("[name='goods_id']").val();//得到增加数量的商品的id
+        var amount=parseInt($count);//得到增加后的数量
+        //alert(amount);
+        //alert(id);
+        $.ajax({
+            data:{"goods_id":id,"amount":amount},
+            dataType:"text",
+            type:"GET",
+            url:"../../portal/cart/updateAmount"
+        });
         $inputVal.val($count);
         $priceTotalObj.html('￥'+$priceTotal);
         if($inputVal.val()>1 && $obj.hasClass('reSty')){
@@ -159,9 +169,19 @@ $(function () {
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
             $priceTotal = $count*parseInt($price.substring(1));
-        if($inputVal.val()>1){
+        if($inputVal.val()>1){//数量大于1时才能减数量
             $inputVal.val($count);
             $priceTotalObj.html('￥'+$priceTotal);
+            var id=$(this).parents('.order_lists').children("[name='goods_id']").val();//得到减少数量的商品的id
+            var amount=parseInt($count);//得到减少后的数量
+            //alert(amount);
+            //alert(id);
+            $.ajax({
+                data:{"goods_id":id,"amount":amount},
+                dataType:"text",
+                type:"GET",
+                url:"../../portal/cart/updateAmount"
+            });
         }
         if($inputVal.val()==1 && !$(this).hasClass('reSty')){
             $(this).addClass('reSty');
@@ -193,7 +213,7 @@ $(function () {
     $('.delBtn').click(function () {
         $order_lists = $(this).parents('.order_lists');
         $order_content = $order_lists.parents('.order_content');
-        $('.model_bg').fadeIn(300);
+        //$('.model_bg').fadeIn(300);
         $('.my_model').fadeIn(300);
     });
 
@@ -205,7 +225,7 @@ $(function () {
         closeM();
     });
     function closeM() {
-        $('.model_bg').fadeOut(300);
+        //$('.model_bg').fadeOut(300);
         $('.my_model').fadeOut(300);
     }
     //确定按钮，移除商品

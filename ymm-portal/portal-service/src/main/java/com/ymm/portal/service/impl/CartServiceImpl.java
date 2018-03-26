@@ -54,4 +54,19 @@ public class CartServiceImpl implements CartService{
         }
         return sum;
     }
+
+    @Override
+    public int updateAmount(int goods_id, int amount, int user_id) {
+        int i=0;
+        Cart cart = new Cart();
+        cart.setUser_id(user_id);
+        cart.setGoods_id(goods_id);
+        cart.setAmount(amount);
+        try {
+            i=cartMapper.updateAmount(cart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
 }
