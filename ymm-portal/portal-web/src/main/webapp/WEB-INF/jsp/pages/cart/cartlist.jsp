@@ -50,7 +50,7 @@
                         <label for="${good.goods_id}"></label>
                     </li>
                     <li class="list_con">
-                        <div class="list_img"><a href="javascript:;"><img src="${good.goods_thumb}" alt=""></a></div>
+                        <div class="list_img"><a href="javascript:;"><img src="${good.goods_thumb}" title="${good.goods_name}"></a></div>
                         <div class="list_text"><a href="javascript:;">"${good.goods_brief}"</a></div>
                     </li>
                     <li class="list_info">
@@ -62,7 +62,7 @@
                     <li class="list_amount">
                         <div class="amount_box">
                             <a href="javascript:;" class="reduce reSty">-</a>
-                            <input type="text" value="${good.amount}" class="sum">
+                            <input type="text" value="${good.amount}" class="sum" readonly>
                             <a href="javascript:;" class="plus">+</a>
                         </div>
                     </li>
@@ -74,8 +74,8 @@
                             <p class="price">库存紧张</p>
                         </c:if>
                     </li>--%>
-                    <li class="list_sum">
-                        <p class="sum_price">${good.subTotal}</p>
+                    <li class="list_sum" style="color: red">
+                        <p class="myP">￥<span class="sum_price">${good.subTotal}</span></p>
                     </li>
                     <li class="list_op">
                         <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
@@ -133,7 +133,7 @@
     <div class="bar-wrapper">
         <div class="bar-right">
             <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
-            <div class="totalMoney">共计: <strong class="total_text">0.00</strong></div>
+            <div class="totalMoney">共计: <span class="totalSpan">￥<strong class="total_text">0.00</strong></span></div>
             <div class="calBtn"><a href="javascript:;">结算</a></div>
         </div>
     </div>
