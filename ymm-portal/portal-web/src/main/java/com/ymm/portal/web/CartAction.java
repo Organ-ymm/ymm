@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -44,7 +45,11 @@ public class CartAction {
     }
     @ResponseBody
     @RequestMapping(value="/delCart",method= RequestMethod.GET)
-    public int delCart(@Param("goods_id")int goods_id,HttpSession session){
+    public int delCart(@RequestParam("goods_id")int goods_id, HttpSession session){
+        Users user1=new Users();
+        user1.setUser_id(1);
+        session.setAttribute("user",user1);
+
         int i= 0;
         int[] ids={goods_id};
         Users user= (Users) session.getAttribute("user");

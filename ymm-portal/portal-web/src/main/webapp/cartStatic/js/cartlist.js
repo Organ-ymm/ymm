@@ -192,26 +192,9 @@ $(function () {
     var $order_content = '';
     $('.delBtn').click(function () {
         $order_lists = $(this).parents('.order_lists');
-        var id=$order_lists.children("[name='goods_id']").val();
-        //alert(id);
         $order_content = $order_lists.parents('.order_content');
         $('.model_bg').fadeIn(300);
         $('.my_model').fadeIn(300);
-        /*$.ajax({
-            type:"POST",
-            data:$.param({id:v}),
-            url:"/action/post/dele", //后台提供的删除接口
-            dataType:'json',
-            success:function(data){
-                var html = '';
-                if(data.status == 1){
-                    alert('删除成功');
-                    window.location.reload();
-                } else {
-                    alert('删除失败，请稍后重试'); return false;
-                }
-            }
-        });*/
     });
 
     //关闭模态框
@@ -227,9 +210,27 @@ $(function () {
     }
     //确定按钮，移除商品
     $('.dialog-sure').click(function () {
-        $order_lists.remove();
+        $order_lists.remove();//移除购物车内的这项商品
+        var id=$order_lists.children("[name='goods_id']").val();
+        //alert(id);
+        $.ajax({
+            type:"GET",
+            data:{"goods_id":id},
+            //data:$.param({id:id}),
+            url:"../../portal/cart/delCart", //后台提供的删除接口
+            dataType:'text',
+            success:function(data){
+                if(data == 1){
+                    //alert('删除成功');
+                    window.location.reload();
+                } else {
+                    //alert('删除失败，请稍后重试');
+                    return false;
+                }
+            }
+        });
         if($order_content.html().trim() == null || $order_content.html().trim().length == 0){
-            $order_content.parents('.cartBox').remove();
+            $order_content.parents('.cartBox').remove();//若店铺的商品均为空，则移除该店铺
         }
         closeM();
         $sonCheckBox = $('.son_check');

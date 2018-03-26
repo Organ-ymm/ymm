@@ -78,7 +78,7 @@
                         <p class="sum_price">${good.subTotal}</p>
                     </li>
                     <li class="list_op">
-                        <p class="del"><a href="javascript:;" class="delBtn" onclick="del(this)">移除商品</a></p>
+                        <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
                     </li>
                 </ul>
             </c:forEach>
@@ -138,12 +138,20 @@
         </div>
     </div>
 </section>
-<section class="model_bg"></section>
+<%--<section class="model_bg"></section>--%>
 <section class="my_model">
     <p class="title">删除宝贝<span class="closeModel">X</span></p>
     <p>您确认要删除该宝贝吗？</p>
     <div class="opBtn"><a href="javascript:;" class="dialog-sure">确定</a><a href="javascript:;" class="dialog-close">关闭</a></div>
 </section>
+<%--<section class="doSuccess">
+    <p class="title">提示信息<span class="closeModel">X</span></p>
+    <p>删除成功</p>
+</section>
+<section class="doFail">
+    <p class="title">提示信息<span class="closeModel">X</span></p>
+    <p>删除失败，请稍后重试</p>
+</section>--%>
 
 <script src="${pageContext.request.contextPath}/cartStatic/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/cartStatic/js/cartlist.js"></script>
