@@ -27,10 +27,12 @@
                 <input type="checkbox" id="all" class="whole_check">
                 <label for="all"></label>
                 全选
-                <!--删除所选商品-->
-                <%--<div><input type="button" onclick="delSome()" value="删除所选商品"/></div>--%>
             </li>
-            <li class="list_con">商品信息</li>
+            <li class="list_con">
+                <%--<!--删除所选商品-->
+                <a href="javascript:;" onclick="delSome()" value="">删除所选商品</a>--%>
+                商品信息
+            </li>
             <li class="list_info">商品参数</li>
             <li class="list_price">单价</li>
             <li class="list_amount">数量</li>
