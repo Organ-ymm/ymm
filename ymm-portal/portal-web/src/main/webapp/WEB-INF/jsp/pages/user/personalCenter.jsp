@@ -46,7 +46,7 @@
                         </div>
                         <div class="box-bd">
                             <ul class="uc-nav-list">
-                                <li><a href="//static.mi.com/order/">我的订单</a></li>
+                                <li><a href="#">我的订单</a></li>
                                 <li><a href="#">意外保</a></li>
                                 <li><a href="#">团购订单</a></li>
                                 <li><a href="#" data-count="comment" data-count-style="bracket">评价晒单</a></li>
@@ -60,8 +60,8 @@
                         <div class="box-bd">
                             <ul class="uc-nav-list">
                                 <li class="active"><a href="${pageContext.request.contextPath}/pages/user/personalCenter">我的个人中心</a></li>
-                                <li><a href="https://order.mi.com/message/list?r=61115.1522138533">消息通知<i class="J_miMessageTotal"></i></a></li>
-                                <li><a href="https://order.mi.com/user/address?r=61115.1522138533">收货地址</a></li>
+                                <li><a href="#">消息通知<i class="J_miMessageTotal"></i></a></li>
+                                <li><a href="#">收货地址</a></li>
                             </ul>
                         </div>
                     </div>
@@ -83,8 +83,7 @@
                         <div class="box-bd">
                             <ul class="uc-nav-list">
                                 <li><a href="https://account.xiaomi.com/" target="_blank">个人信息</a></li>
-                                <li><a href="https://account.xiaomi.com/pass/auth/security/home#service=setPassword" target="_blank">修改密码</a></li>
-                                <li><a href="http://uvip.xiaomi.cn" target="_blank">社区VIP认证</a></li>
+                                <li><a href="changePass" target="_blank">修改密码</a></li>
                             </ul>
                         </div>
                     </div>
@@ -93,11 +92,7 @@
 
 
             <div class="span16">
-                <div class="protal-content-update hide">
-                    <div class="protal-username">
-                        Hi, 陈士明        </div>
-                    <p class="msg">我们做了一个小升级：你的用户名可以直接修改啦，去换个酷炫的名字吧。<a href="https://account.xiaomi.com/pass/auth/profile/home" target="_blank"> 立即前往></a></p>
-                </div>
+
                 <div class="uc-box uc-main-box">
                     <div class="uc-content-box portal-content-box">
                         <div class="box-bd">
@@ -222,6 +217,9 @@
     </div>
 </div>
   <script src="js/base.min.js"></script>
+
+<%--修改密码--%>
+
 <script>
     (function() {
         MI.namespace('GLOBAL_CONFIG');

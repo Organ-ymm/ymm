@@ -7,4 +7,6 @@ public interface UserService {
     Users checkLogin(Users user);
 
     void register(Users user);
+
+    Users checkOldPass(Users user);
 }

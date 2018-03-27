@@ -27,6 +27,12 @@ status int(1) NULL状态：0删除，1正常-->
         WHERE username = #{username} and password = #{password}
     </select>
 
+    <select id="checkOldPass" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Users">
+        SELECT <include refid="baseSql"/>
+        FROM users
+        WHERE password = #{password}
+    </select>
+
     <insert id="register" parameterType="com.ymm.commons.pojo.po.Users" >
         INSERT INTO
         users(email,username,password,alias,sex,birthday,rank_points,rank_id,reg_time,mobile_phone,status)
