@@ -121,4 +121,20 @@ public class CartAction {
         }
         return i;
     }
+
+    /*
+        结算页面的购物信息
+     */
+    //@ResponseBody
+    @RequestMapping(value="/listOrderItem",method= RequestMethod.POST)
+    public String listOrderItem(HttpSession session,Model model){
+        Users user1=new Users();
+        user1.setUser_id(1);
+        session.setAttribute("user",user1);
+
+        Users user= (Users) session.getAttribute("user");
+        List<CartCustom> orderItem = cartService.listCustomCart(user.getUser_id());
+        model.addAttribute("orderItem",orderItem);
+        return "pages/order/confirmOrder";
+    }
 }

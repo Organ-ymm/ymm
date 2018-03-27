@@ -29,7 +29,7 @@ $(function () {
     });
 
     //===============================================全局全选与单个商品的关系================================
-    $wholeChexbox.click(function () {
+    $wholeChexbox.click(function () {//单选框和全选框的样式
         var $checkboxs = $cartBox.find('input[type="checkbox"]');
         if ($(this).is(':checked')) {
             $checkboxs.prop("checked", true);
@@ -40,7 +40,6 @@ $(function () {
         }
         totalMoney();
     });
-
 
     $sonCheckBox.each(function () {
         $(this).click(function () {
@@ -53,7 +52,7 @@ $(function () {
                         num++;
                     }
                 });
-                if (num == len) {
+                if (num == len) {//若单选框全部被选中，则全选框被选中
                     $wholeChexbox.prop("checked", true);
                     $wholeChexbox.next('label').addClass('mark');
                 }
@@ -259,6 +258,36 @@ $(function () {
         closeM();
         $sonCheckBox = $('.son_check');
         totalMoney();
+    });
+    //======================================结算==========================================
+    $('.settleAccount').click(function () {//TODO
+        //var id=$('.order_lists').children('[name="goods_id"]').val();
+        // alert(id);
+        var $sonCheckBox=$('.son_check');
+        var ids=[];
+        $sonCheckBox.each(function () {
+            if ($(this).is(':checked')) {
+                var id=$(this).parents('.list_chk').children('[name="goods_id"]').val();
+                //console.log(id);
+                ids.push(id);
+            }
+        });
+        //当有勾选商品时，才能结算
+        if(ids.length>0){
+            $.ajax({
+                data:{"ids[]":ids},
+                dataType:"text",
+                type:"POST",
+                url:"../../portal/cart/listOrderItem",
+                success:function (data) {
+                    window.location.href="../../portal/pages/order/confirmOrder";
+                    //location.href="../../pages/order/order";
+                }
+
+            });
+        }else{
+            alert("请选择要结算的商品");
+        }
     })
 
     //======================================总计==========================================
@@ -283,6 +312,7 @@ $(function () {
 
         // console.log(total_money,total_count);
 
+        //结算按钮的颜色变化
         if(total_money!=0 && total_count!=0){
             if(!calBtn.hasClass('btn_sty')){
                 calBtn.addClass('btn_sty');
@@ -293,6 +323,5 @@ $(function () {
             }
         }
     }
-
 
 });
