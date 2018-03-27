@@ -19,4 +19,6 @@ public interface AdminService {
     void saveEdit(Admin admin);
 
     void delAdmin(Admin admin);
+
+    void delBatch(List<Integer> ids);
 }
