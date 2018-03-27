@@ -8,9 +8,7 @@ import com.ymm.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class AdminServiceimpl implements AdminService {
@@ -59,5 +57,11 @@ public class AdminServiceimpl implements AdminService {
     @Override
     public void delAdmin(Admin admin) {
       adminMapper.delAdmin(admin);
+    }
+
+    @Override
+    public void delBatch(List<Integer> ids) {
+       adminMapper.delBatch(ids);
+
     }
 }

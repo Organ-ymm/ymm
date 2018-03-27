@@ -5,13 +5,11 @@ import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.po.Admin;
 import com.ymm.pojo.vo.AdminQuery;
 import com.ymm.service.AdminService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -44,7 +42,7 @@ public class AdminAction {
      */
     @ResponseBody
     @RequestMapping(value="/adminList",method= RequestMethod.GET)
-    public MessageResult<Admin> adminList(Page page,AdminQuery query ){
+    public MessageResult<Admin> adminList(Page page, AdminQuery query ){
         MessageResult<Admin> messageResult = new MessageResult<>();
         int countAdmin = adminService.countAdmin(query);
         List<Admin> admins = adminService.selectAllAdmin(page,query);
@@ -72,17 +70,35 @@ public class AdminAction {
     }
     //修改状态
     @ResponseBody
-    @RequestMapping(value="/changeStatus",method= RequestMethod.POST)
+    @RequestMapping(value="/changeStatus1",method= RequestMethod.POST)
     public String stopAdmin(Admin admin){
         int status = admin.getAd_status();
         try{
-            if (status==1){
+            if(status==1){
                 admin.setAd_status(0);
+                adminService.changeStatus(admin);
+                return "1";
+            }else{
+               return "0";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "0";
+    }
+    //修改状态
+    @ResponseBody
+    @RequestMapping(value="/changeStatus2",method= RequestMethod.POST)
+    public String startAdmin(Admin admin){
+        int status = admin.getAd_status();
+        try{
+            if(status==1){
+                return "0";
             }else{
                 admin.setAd_status(1);
+                adminService.changeStatus(admin);
+                return "1";
             }
-            adminService.changeStatus(admin);
-            return "1";
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -106,6 +122,18 @@ public class AdminAction {
     public int delAdmin(Admin admin){
         try {
         adminService.delAdmin(admin);
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    //批量删除admin
+    @ResponseBody
+    @RequestMapping(value="/delBatch",method= RequestMethod.POST)
+    public int delBatch(@RequestParam("ids[]") List<Integer> ids ){
+        try {
+         adminService.delBatch(ids);
             return 1;
         }catch (Exception e){
             e.printStackTrace();

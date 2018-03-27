@@ -52,7 +52,7 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="we-red">*</span>分类</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <select name="cat_id" id="category" required="" lay-verify="required" lay-filter="category">
                     <option value="">请选择</option>
 
@@ -61,7 +61,7 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="we-red">*</span>品牌</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <select name="brand_id" required="" lay-verify="required" id="brand" lay-filter="brand">
                     <option value="">请选择</option>
 
