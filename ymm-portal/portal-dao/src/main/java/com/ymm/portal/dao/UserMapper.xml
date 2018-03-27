@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymm.portal.dao.UserMapper" >
+    <!--
+user_id int(8) NOT NULL会员资料自增id
+email varchar(60) NULL会员Email
+username varchar(60) NULL用户名
+password varchar(32) NULL用户密码
+alias varchar(60) NULL昵称
+sex int(1) NULL性别 ; 0保密; 1男; 2女
+birthday varchar(60) NULL出生日期
+rank_points int(11) NULL会员等级积分
+rank_id int(8) NULL会员表的rank_id
+reg_time varchar(60) NULL注册时间
+mobile_phone bigint(20) NULL移动电话
+status int(1) NULL状态：0删除，1正常-->
+    <sql id="baseSql">
+      user_id,email,username,password,alias,sex,birthday,rank_points,rank_id,reg_time,mobile_phone,status
+    </sql>
+    <select id="queryByUsernameOrPhone" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Users">
+        SELECT username FROM users WHERE username = #{username} OR mobile_phone = #{mobile_phone}
+    </select>
+
+    <select id="checkLogin" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Users">
+        SELECT <include refid="baseSql"/>
+        FROM users
+        WHERE username = #{username} and password = #{password}
+    </select>
+
+    <insert id="register" parameterType="com.ymm.commons.pojo.po.Users" >
+        INSERT INTO
+        users(email,username,password,alias,sex,birthday,rank_points,rank_id,reg_time,mobile_phone,status)
+        VALUES (#{email},#{username},#{password},#{alias},#{sex},#{birthday},#{rank_points},
+        #{rank_id},#{reg_time},#{mobile_phone},#{status})
+    </insert>
+</mapper>
