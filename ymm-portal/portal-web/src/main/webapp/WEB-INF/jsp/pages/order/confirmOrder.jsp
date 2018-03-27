@@ -232,6 +232,7 @@
                             <input type="hidden" name="newAddress[zipcode]" id="newZipcode">
                             <input type="hidden" name="newAddress[tel]" id="newTel">
                             <input type="hidden" name="newAddress[tag_name]" id="newTag">
+                            <%----------------------------------------------收货地址的添加--------------------------------------------------------%>
                             <!--点击弹出新增/收货地址界面start-->
                             <div class="xm-edit-addr-box" id="J_editAddrBox">
                                 <div class="bd">
@@ -279,7 +280,8 @@
                             </div>
                             <!--点击弹出新增/收货地址界面end-->
                             <div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
-                        </div>                </div>
+                        </div>
+                    </div>
                     <!-- 收货地址 END-->
                     <div id="checkoutPayment">
                         <!-- 支付方式 -->

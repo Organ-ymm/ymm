@@ -149,7 +149,7 @@ a:hover,a:focus {
 .clearfix:after {
 	clear:both
 }
-.item-row img{/*TODO*/
+.item-row img{/*zy定义*/
 	width: 80px;
 	height: 80px;
 }
