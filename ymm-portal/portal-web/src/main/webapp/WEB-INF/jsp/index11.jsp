@@ -79,8 +79,8 @@
 <div class="slider-wrap">
     <div class="preview-2">
         <div id="nivoslider" class="slides">
-            <img src="img/slider/20.png" alt="" title="#slider-direction-1"  />
-            <img src="img/slider/30.png" alt="" title="#slider-direction-2"  />
+            <img src="${pageContext.request.contextPath}/images/slider/xiaomi20.jpg" alt="" title="#slider-direction-1"  />
+            <img src="${pageContext.request.contextPath}/images/slider/sz30.jpg" alt="" title="#slider-direction-2"  />
         </div>
         <!-- direction 1 -->
         <div id="slider-direction-1" class="t-cn slider-direction">
@@ -92,17 +92,18 @@
                 </div>
                 <div class="slider-content slider-text-2">
                     <div class="wow zoomInUp" data-wow-delay=".2s">
-                        <h2 class="title">New Season heroes</h2>
+                        <h2 class="title">小米最新科技</h2>
                     </div>
                 </div>
                 <div class="slider-content slider-text-4">
                     <div class="wow zoomInUp" data-wow-delay=".3s">
-                        <h3 class="title ti7">East Meets West in CWST’s Fall Winter 2015 Lookbook</h3>
+                        <h3 class="title ti7">骁龙845 + 8GB + 256GB
+                            性能王者中的王者！</h3>
                     </div>
                 </div>
                 <div class="slider-content slider-text-3">
                     <div class="wow zoomInUp" data-wow-delay=".4s">
-                        <a href='shop-full-grid.html' class='slider-button'>Shop Now</a>
+                        <a href='shop-full-grid.html' class='slider-button'>立即购买</a>
                     </div>
                 </div>
             </div>
@@ -112,22 +113,22 @@
             <div class="nivo_text">
                 <div class="slider-content slider-text-1">
                     <div class="wow zoomInUp" data-wow-delay="0.3s">
-                        <h3>Shopppie shop</h3>
+                        <h3>YMM shop</h3>
                     </div>
                 </div>
                 <div class="slider-content slider-text-2">
                     <div class="wow zoomInUp" data-wow-delay=".2s">
-                        <h2 class="title">New Season heroes</h2>
+                        <h2 class="title">神舟质量实惠</h2>
                     </div>
                 </div>
                 <div class="slider-content slider-text-4">
                     <div class="wow zoomInUp" data-wow-delay=".3s">
-                        <h3 class="title ti7">East Meets West in CWST’s Fall Winter 2015 Lookbook</h3>
+                        <h3 class="title ti7">精盾 KINGBOOK T97 GTX1070 Max-Q 8G 15.6英寸游戏笔记本电脑</h3>
                     </div>
                 </div>
                 <div class="slider-content slider-text-3">
                     <div class="wow zoomInUp" data-wow-delay=".4s">
-                        <a href='shop-full-grid.html' class='slider-button'>Shop Now</a>
+                        <a href='shop-full-grid.html' class='slider-button'>立即购买</a>
                     </div>
                 </div>
             </div>
@@ -139,7 +140,7 @@
 <div class="service_area clearfix">
     <div class="single-service">
         <div class="service-icon">
-            <img src="img/icon/s1.png" alt="">
+            <img src="${pageContext.request.contextPath}/images/icon/s1.png" alt="">
         </div>
         <div class="service-info">
             <h2>Free Shipping</h2>
@@ -148,7 +149,7 @@
     </div>
     <div class="single-service">
         <div class="service-icon">
-            <img src="img/icon/s2.png" alt="">
+            <img src="${pageContext.request.contextPath}/images/icon/s2.png" alt="">
         </div>
         <div class="service-info">
             <h2>Money Guarante</h2>
@@ -157,7 +158,7 @@
     </div>
     <div class="single-service hidden-sm">
         <div class="service-icon">
-            <img src="img/icon/s3.png" alt="">
+            <img src="${pageContext.request.contextPath}/images/icon/s3.png" alt="">
         </div>
         <div class="service-info">
             <h2>Safe Shopping</h2>
@@ -166,7 +167,7 @@
     </div>
     <div class="single-service hidden-sm hidden-md">
         <div class="service-icon">
-            <img src="img/icon/s4.png" alt="">
+            <img src="${pageContext.request.contextPath}/images/icon/s4.png" alt="">
         </div>
         <div class="service-info">
             <h2>Online Support</h2>
@@ -176,26 +177,7 @@
 </div>
 <!-- service end -->
 <!-- banner start -->
-<div class="banner-area clearfix">
-    <div class="single-banner left">
-        <a href="#" class="border-hover"><img src="img/banner/1.jpg" alt=""></a>
-        <div class="single-banner-text">
-            <h3><a href="#">60% OFF<br>
-                Woman<br>
-                Collection</a></h3>
-            <a href="shop-full-grid.html" class="shop-button hidden-sm hidden-xs">shop now</a>
-        </div>
-    </div>
-    <div class="single-banner right">
-        <a href="#" class="border-hover"><img src="img/banner/2.jpg" alt=""></a>
-        <div class="single-banner-text">
-            <h3><a href="#">50%<br>
-                OFF Men<br>
-                Collection</a></h3>
-            <a href="shop-full-grid.html" class="shop-button hidden-sm hidden-xs">shop now</a>
-        </div>
-    </div>
-</div>
+
 <!-- banner end -->
 <!-- featured start -->
 <div class="featured-area clearfix">
@@ -226,7 +208,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/1.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -253,7 +235,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/2.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -284,7 +266,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/3.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/3.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -315,7 +297,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/4.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/4.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -346,7 +328,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/1.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -377,7 +359,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/2.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -408,7 +390,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/3.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/3.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -439,7 +421,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/4.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/4.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -474,7 +456,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/2.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -501,7 +483,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/4.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/4.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -528,7 +510,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/1.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">
@@ -555,7 +537,7 @@
                                         <div class="single-product-item">
                                             <div class="single-product-img clearfix hover-effect">
                                                 <a href="#">
-                                                    <img class="primary-image" src="img/product/3.jpg" alt="">
+                                                    <img class="primary-image" src="${pageContext.request.contextPath}/images/product/3.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="single-product-info clearfix">

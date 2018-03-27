@@ -72,19 +72,19 @@
                 <div class="header-top-right">
                     <div class="account-cart">
                         <ul>
-                            <li class="account"><a href="#">my account</a>
+                            <li class="account"><a href="${pageContext.request.contextPath}/pages/user/personalCenter">个人中心</a>
                                 <ul class="submenu-mainmenu">
                                     <li><a href="cart.html">my bag</a></li>
                                     <li><a href="checkout.html">checkout</a></li>
-                                    <li><a href="wishlist.html">wishlist</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/pages/user/personalCenter">我的账户</a></li>
                                 </ul>
                             </li>
-                            <li class="login"><a href="#">login</a>
+                            <li class="login"><a href="${pageContext.request.contextPath}/pages/user/login">登录</a>
                                 <ul class="submenu-mainmenu">
-                                    <li><a href="#">login or register</a></li>
-                                    <li class="login-button"><a href="#">login</a></li>
+                                    <%--<li><a href="#">login or register</a></li>--%>
+                                    <li class="login-button"><a href="${pageContext.request.contextPath}/pages/user/login">登录</a></li>
                                     <li><a href="#">or</a></li>
-                                    <li class="creat-button"><a href="#">creat account</a></li>
+                                    <li class="creat-button"><a href="${pageContext.request.contextPath}/pages/user/register">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</a></li>
                                 </ul>
                             </li>
                             <li class="cart"><a href="cart.html"><img src="${pageContext.request.contextPath}/images/icon/cart.png" alt="cart"><p>2</p></a>
@@ -136,7 +136,7 @@
                 <div class="mainmenu">
                     <nav>
                         <ul>
-                            <li><a href="index.html">Home</a>
+                            <li><a href="index.html"><b>首页</b></a>
                                 <ul class="submenu-mainmenu">
                                     <li><a href="index.html">Home Version 1</a></li>
                                     <li><a href="index-2.html">Home Version 2</a></li>
