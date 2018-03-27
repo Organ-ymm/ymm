@@ -77,4 +77,14 @@
     <delete id="delAdmin" parameterType="com.ymm.pojo.po.Admin">
         DELETE FROM admin WHERE ad_id = #{ad_id}
     </delete>
+
+    <!--批量删除-->
+    <delete id="delBatch" parameterType="java.util.List">
+            DELETE FROM admin where ad_id in
+            <foreach collection="ids" index="index" item="ad_id" open="(" separator="," close=")">
+                #{ad_id}
+            </foreach>
+    </delete>
+
+
 </mapper>

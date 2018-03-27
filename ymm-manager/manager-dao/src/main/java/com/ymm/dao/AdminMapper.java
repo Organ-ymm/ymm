@@ -6,7 +6,6 @@ import com.ymm.pojo.vo.AdminQuery;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Map;
 
 public interface AdminMapper {
     Admin selectAdminByUsername(Admin admin);
@@ -21,4 +20,6 @@ public interface AdminMapper {
     void saveEdit(Admin admin);
 
     void delAdmin(Admin admin);
+
+    void delBatch(@Param("ids") List<Integer> ids);
 }
