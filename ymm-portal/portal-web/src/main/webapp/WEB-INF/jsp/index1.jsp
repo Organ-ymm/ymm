@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="topbar-info" id="J_userInfo">
-            <a  rel="nofollow" class="link" href="//order.mi.com/site/login" data-needlogin="true">登录</a><span class="sep">|</span><a  rel="nofollow" class="link" href="https://account.xiaomi.com/pass/register" >注册</a>        </div>
+            <a  rel="nofollow" class="link" href="${pageContext.request.contextPath}/pages/user/login" data-needlogin="true">登录</a><span class="sep">|</span><a  rel="nofollow" class="link" href="${pageContext.request.contextPath}/pages/user/register" >注册</a>        </div>
     </div>
 </div>
 <div class="site-header">
