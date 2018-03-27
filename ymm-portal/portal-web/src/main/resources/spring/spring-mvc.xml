@@ -28,4 +28,5 @@
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/images/**" location="/images/"/>-->
     <mvc:resources mapping="/cartStatic/**" location="/cartStatic/"/>
+    <mvc:resources mapping="/userStatic/**" location="/userStatic/"/>
 </beans>
