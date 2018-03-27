@@ -260,7 +260,7 @@ $(function () {
         totalMoney();
     });
     //======================================结算==========================================
-    $('.settleAccount').click(function () {//TODO
+    $('.settleAccount').click(function () {
         //var id=$('.order_lists').children('[name="goods_id"]').val();
         // alert(id);
         var $sonCheckBox=$('.son_check');
@@ -274,17 +274,18 @@ $(function () {
         });
         //当有勾选商品时，才能结算
         if(ids.length>0){
-            $.ajax({
+            window.location.href="../../portal/cart/listOrderItem?goods_id="+ids;
+            /*$.ajax({
                 data:{"ids[]":ids},
                 dataType:"text",
                 type:"POST",
-                url:"../../portal/cart/listOrderItem",
+                url:"../../portal/cart/listOrderItem"
                 success:function (data) {
-                    window.location.href="../../portal/pages/order/confirmOrder";
+                    //window.location.href="../../portal/pages/order/confirmOrder";
                     //location.href="../../pages/order/order";
                 }
 
-            });
+            });*/
         }else{
             alert("请选择要结算的商品");
         }

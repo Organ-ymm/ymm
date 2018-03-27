@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -98,7 +99,7 @@ public class CartAction {
         int i=0;
         Users user= (Users) session.getAttribute("user");
         int user_id=user.getUser_id();
-        Cart cart= null;
+        CartCustom cart= null;
         //先查询该用户的购物车内是否有该商品
         try {
             cart = cartService.findItem(user_id,goods_id);
@@ -126,14 +127,20 @@ public class CartAction {
         结算页面的购物信息
      */
     //@ResponseBody
-    @RequestMapping(value="/listOrderItem",method= RequestMethod.POST)
-    public String listOrderItem(HttpSession session,Model model){
+    @RequestMapping(value="/listOrderItem",method= RequestMethod.GET)
+    public String listOrderItem(@RequestParam("goods_id")String ids,HttpSession session,Model model){
         Users user1=new Users();
         user1.setUser_id(1);
         session.setAttribute("user",user1);
 
         Users user= (Users) session.getAttribute("user");
-        List<CartCustom> orderItem = cartService.listCustomCart(user.getUser_id());
+        List<CartCustom> orderItem = new ArrayList<>();
+        String[] goods_ids=ids.split("[,]");
+        for(int i=0;i<goods_ids.length;i++){
+            int goods_id=Integer.parseInt(goods_ids[i]);
+            CartCustom cart=cartService.findItem(user.getUser_id(),goods_id);
+            orderItem.add(cart);
+        }
         model.addAttribute("orderItem",orderItem);
         return "pages/order/confirmOrder";
     }

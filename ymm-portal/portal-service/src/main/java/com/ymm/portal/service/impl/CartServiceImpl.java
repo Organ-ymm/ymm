@@ -73,10 +73,10 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public Cart findItem(int user_id, int goods_id) {
-        Cart cart=null;
+    public CartCustom findItem(int user_id, int goods_id) {
+        CartCustom cart=null;
         try {
-            Cart cartPar=new Cart();
+            CartCustom cartPar=new CartCustom();
             cartPar.setUser_id(user_id);
             cartPar.setGoods_id(goods_id);
             cart = cartMapper.findItem(cartPar);

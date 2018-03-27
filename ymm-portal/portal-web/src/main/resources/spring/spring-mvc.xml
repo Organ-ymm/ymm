@@ -30,4 +30,5 @@
     <mvc:resources mapping="/fonts/**" location="/fonts/"/>
     <mvc:resources mapping="/picture/**" location="/picture/"/>
     <mvc:resources mapping="/cartStatic/**" location="/cartStatic/"/>
+    <mvc:resources mapping="/orderStatic/**" location="/orderStatic/"/>
 </beans>

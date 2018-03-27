@@ -19,7 +19,7 @@ public interface CartMapper {
 
     int updateAmount(Cart cart);
 
-    Cart findItem(Cart cartPar);
+    CartCustom findItem(CartCustom cartPar);
 
     int addCart(Cart cart);
 }

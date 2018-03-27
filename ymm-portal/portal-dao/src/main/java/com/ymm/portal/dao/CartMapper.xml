@@ -20,11 +20,12 @@
         order by c.add_time desc
     </select>
 
-    <select id="findItem" parameterType="com.ymm.portal.pojo.po.Cart" resultType="com.ymm.portal.pojo.po.Cart">
+    <select id="findItem" parameterType="com.ymm.portal.pojo.vo.CartCustom" resultType="com.ymm.portal.pojo.vo.CartCustom">
         select
-        <include refid="base_column"/>
-        from cart
-        where goods_id=#{goods_id} and user_id=#{user_id}
+        <include refid="union_column"/>
+        from cart c left join goods g
+        on c.goods_id=g.goods_id
+        where c.goods_id=#{goods_id} and c.user_id=#{user_id}
     </select>
 
     <delete id="delCart" parameterType="com.ymm.portal.pojo.po.Cart">

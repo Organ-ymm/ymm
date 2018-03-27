@@ -42,7 +42,7 @@ public interface CartService {
      * @param goods_id 要加入购物车的商品id
      * @return 购物车中已有的记录
      */
-    Cart findItem(int user_id, int goods_id);
+    CartCustom findItem(int user_id, int goods_id);
 
     /**
      *

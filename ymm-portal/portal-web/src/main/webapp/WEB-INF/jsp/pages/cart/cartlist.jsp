@@ -53,7 +53,7 @@
                     </li>
                     <li class="list_con">
                         <div class="list_img"><a href="javascript:;"><img src="${good.goods_thumb}" title="${good.goods_name}"></a></div>
-                        <div class="list_text"><a href="javascript:;">"${good.goods_brief}"</a></div>
+                        <div class="list_text"><a href="javascript:;">${good.goods_brief}</a></div>
                     </li>
                     <li class="list_info">
                         <p>${good.goods_sn}</p>
