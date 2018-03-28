@@ -221,12 +221,14 @@
                                         </dd>
                                     </dl>
                                 </c:forEach>
-                                <%--TODO--%>
                                 <input type="hidden" name="receiver_address"
                                        value="${addressList[0].province}${addressList[0].city}${addressList[0].county}${addressList[0].street}(${addressList[0].zipcode})"/>
                                 <input type="hidden" name="receiver_name" value="${addressList[0].consignee}" />
                                 <input type="hidden" name="receiver_phone" value="${addressList[0].phone}" />
-                                <input type="hidden"  name="order_money" value="0" /><%--TODO--%>
+                                <input type="hidden"  name="order_money" />
+                                <%--<c:forEach items="${orderItem}" var="good" begin="1" end="${orderItem }">
+                                    <div class="col col-4" id="subTotal" name="subTotal">${good.subTotal}</div>
+                                </c:forEach>--%>
                                 <%--<dl class="item" >
                                     <dt>
                                         <strong class="itemConsignee">潘骏杰</strong>
@@ -454,7 +456,7 @@
 
                                                     <div class="col col-2">${good.shop_price}</div>
                                                     <div class="col col-3">${good.amount}</div>
-                                                    <div class="col col-4" id="subTotal" name="subTotal">${good.subTotal}</div>
+                                                    <div class="col col-4" name="subTotal">${good.subTotal}</div>
 
                                                 </div>
                                             </dd>

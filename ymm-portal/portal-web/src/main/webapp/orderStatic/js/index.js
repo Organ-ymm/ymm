@@ -16,13 +16,16 @@ $(document).ready(function(){
 
 function SetTotalMoney() {
     var totalMoney = 0;
-    var $subTotal = $('#subTotal');
+    // var $subTotal = $('.subTotal');
+    var $subTotal = $('[name="subTotal"]');
     $subTotal.each(function () {
         var subMoney=parseFloat($(this).parents('.item-row').find('[name="subTotal"]').html());
+        //alert(subMoney);
         totalMoney += subMoney;
     });
     console.log(totalMoney);
     $('.totalPrice').html(totalMoney);
+    $('[name="order_money"]').val(totalMoney);
 };
 function SetShortCutEffect(){
     $('.shortcut_v2013').find(".menu").hover(function(){

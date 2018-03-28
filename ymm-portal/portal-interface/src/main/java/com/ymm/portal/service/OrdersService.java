@@ -12,7 +12,5 @@ import java.util.List;
  * Version:1.0
  */
 public interface OrdersService {
-
-    void addOrder(int user_id, String receiver_address, String receiver_name, long receiver_phone,double order_money);
     void addOrder(Orders order);
 }

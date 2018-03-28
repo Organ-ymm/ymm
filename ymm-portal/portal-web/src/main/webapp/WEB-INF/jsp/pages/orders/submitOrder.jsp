@@ -221,7 +221,7 @@
                     <h3>您的订单已提交成功！付款咯～</h3>
                     <p></p>
 
-                    <p class="post-date">成功付款后，7天发货</p>
+                    <p class="post-date">成功付款后，48小时内发货</p>
                 </div>
                 <div class="info">
                     <p>

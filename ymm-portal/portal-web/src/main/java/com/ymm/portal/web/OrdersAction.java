@@ -30,15 +30,13 @@ public class OrdersAction {
      */
     //@ResponseBody
     @RequestMapping(value = "/submitOrder",method = RequestMethod.POST)
-    public String addOrder(@RequestParam("order") Orders order, HttpSession session){
-    //public String addOrder(@RequestParam("receiver_address")String receiver_address, @RequestParam("receiver_name")String receiver_name, @RequestParam("receiver_phone")long receiver_phone, @RequestParam("order_money")double order_money, HttpSession session){
+    public String addOrder(@Param("order") Orders order, HttpSession session){
         Users user1=new Users();
         user1.setUser_id(1);
         session.setAttribute("user",user1);
 
         Users user= (Users) session.getAttribute("user");
         int user_id=user.getUser_id();
-        //Orders order=new Orders();
         order.setUser_id(user_id);
         try {
             //orderService.addOrder(user_id,receiver_address,receiver_name,receiver_phone,order_money);
