@@ -11,20 +11,19 @@ $(document).ready(function(){
     SetFloorLunBo();//楼层广告轮播
     SetFixedSearch();//固定顶部搜索
 	//SetClassify();//设置顶部商品分类菜单的显示与隐藏
-    //SetMoney();
+    SetTotalMoney();
 });
 
-/*function SetMoney() {
-    var $subTotal = $('.subTotal');
-    alert(".....");
+function SetTotalMoney() {
+    var totalMoney = 0;
+    var $subTotal = $('#subTotal');
     $subTotal.each(function () {
-        alert(".....");
-        var subTotal=$(this).parents('.item-row').find('.subTotal').html();
-        console.log(subTotal);
+        var subMoney=parseFloat($(this).parents('.item-row').find('[name="subTotal"]').html());
+        totalMoney += subMoney;
     });
-
-    $('#totalPrice').html();
-};*/
+    console.log(totalMoney);
+    $('.totalPrice').html(totalMoney);
+};
 function SetShortCutEffect(){
     $('.shortcut_v2013').find(".menu").hover(function(){
         $(this).addClass('hover');

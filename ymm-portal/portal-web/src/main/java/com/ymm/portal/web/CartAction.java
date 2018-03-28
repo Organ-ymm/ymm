@@ -1,8 +1,9 @@
 package com.ymm.portal.web;
 
 import com.ymm.commons.pojo.po.Users;
-import com.ymm.portal.pojo.po.Cart;
+import com.ymm.portal.pojo.po.Address;
 import com.ymm.portal.pojo.vo.CartCustom;
+import com.ymm.portal.service.AddressService;
 import com.ymm.portal.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,8 @@ import java.util.List;
 public class CartAction {
     @Autowired
     private CartService cartService;
+    @Autowired
+    private AddressService addressService;
 
     /*
         列出该用户的购物车信息
@@ -124,7 +127,7 @@ public class CartAction {
     }
 
     /*
-        结算页面的购物信息
+        结算页面的地址信息和购物信息
      */
     //@ResponseBody
     @RequestMapping(value="/listOrderItem",method= RequestMethod.GET)
@@ -134,14 +137,17 @@ public class CartAction {
         session.setAttribute("user",user1);
 
         Users user= (Users) session.getAttribute("user");
+        int user_id=user.getUser_id();
         List<CartCustom> orderItem = new ArrayList<>();
         String[] goods_ids=ids.split("[,]");
         for(int i=0;i<goods_ids.length;i++){
             int goods_id=Integer.parseInt(goods_ids[i]);
-            CartCustom cart=cartService.findItem(user.getUser_id(),goods_id);
+            CartCustom cart=cartService.findItem(user_id,goods_id);
             orderItem.add(cart);
         }
+        List<Address> addressList = addressService.listAddress(user_id);
         model.addAttribute("orderItem",orderItem);
+        model.addAttribute("addressList",addressList);
         return "pages/order/confirmOrder";
     }
 }

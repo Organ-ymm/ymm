@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymm.portal.dao.AddressMapper" >
+
+    <sql id="base_column">
+        address_id,zipcode,user_id,consignee,
+        province,city,county,street,phone,tag
+    </sql>
+
+    <select id="listAddress" resultType="com.ymm.portal.pojo.po.Address" parameterType="int">
+        select
+        <include refid="base_column"/>
+        from address
+        where user_id=#{user_id}
+        order by address_id asc
+    </select>
+
+</mapper>

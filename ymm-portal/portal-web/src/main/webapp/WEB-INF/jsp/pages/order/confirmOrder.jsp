@@ -51,8 +51,8 @@
             <li class="fl"><i class="shortcut_s"></i></li>
             <li class="fl"><div class="menu_hd"><a href="#">服务中心</a></div></li>
             <li class="fl"><i class="shortcut_s"></i></li>
-            <li class="fl"><div class="menu_hd"><a href="#">商家入驻</a></div></li>
-            <li class="fl"><i class="shortcut_s"></i></li>
+            <%--<li class="fl"><div class="menu_hd"><a href="#">商家入驻</a></div></li>
+            <li class="fl"><i class="shortcut_s"></i></li>--%>
             <li class="fl">
                 <div class="menu">
                     <div class="menu_hd"><a href="#">网站导航</a><b><em></em></b></div>
@@ -85,15 +85,15 @@
                 <input name="search" type="text" class="header_search_input" default_val="锡货网三期上线全场五折" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh">
                 <button type="submit" class="header_search_btn">搜索</button>
             </form>
-            <ul class="hot_word">
+            <%--<ul class="hot_word">
                 <li><a class="red" href="#" target="_blank">礼品卡</a></li>
                 <li><a target="_blank" href="#">百货五折</a></li>
                 <li><a target="_blank" href="#">大闸蟹</a></li>
                 <li><a target="_blank" href="#">年货</a></li>
                 <li><a target="_blank" href="#">电子产品</a></li>
-            </ul>
+            </ul>--%>
         </div>
-        <div id="cart_box" class="cart_box">
+        <%--<div id="cart_box" class="cart_box">
             <a id="cart" class="cart_link" href="#" rel="nofollow">
                 <span class="text">去购物车结算</span>
                 <img src="${pageContext.request.contextPath}/orderStatic/images/shopping_icon.png" width="24" height="24" class="cart_gif">
@@ -129,7 +129,7 @@
                         <div><span class="price_gongji">共计<em>￥</em><span class="total_price">69</span></span><a href="#" class="cart_btn" rel="nofollow">去购物车结算</a></div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
         </div>
         <span class="clr"></span>
     </div>
@@ -174,7 +174,7 @@
             hasAir:false,
             hasScales:false,
             hasGiftcard:false,
-            totalPrice:244.00,
+            //totalPrice:244.00,
             postage:10,//运费
             postFree:true,//活动是否免邮了
             bcPrice:150,//计算界值
@@ -203,7 +203,25 @@
                         </div>
                         <div class="box-bd">
                             <div class="clearfix xm-address-list" id="checkoutAddrList">
-                                <dl class="item" >
+                                <c:forEach items="${addressList}" var="address">
+                                    <dl class="item" >
+                                        <dt>
+                                            <input type="hidden" name="address_id" value="${address.address_id}"/>
+                                            <strong class="itemConsignee" name="consignee">${address.consignee}</strong>
+                                            <span class="itemTag tag" name="tag">${address.tag}</span>
+                                        </dt>
+                                        <dd>
+                                            <p class="tel itemTel" name="phone">${address.phone}</p>
+                                            <p class="itemRegion" name="province">${address.province} ${address.city} ${address.county}</p>
+                                            <p class="itemStreet" name="street">${address.street}(${address.zipcode})</p>
+                                            <span class="edit-btn J_editAddr">编辑</span>
+                                        </dd>
+                                        <dd style="display:none">
+                                            <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+                                        </dd>
+                                    </dl>
+                                </c:forEach>
+                                <%--<dl class="item" >
                                     <dt>
                                         <strong class="itemConsignee">潘骏杰</strong>
                                         <span class="itemTag tag">家</span>
@@ -217,7 +235,7 @@
                                     <dd style="display:none">
                                         <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
                                     </dd>
-                                </dl>
+                                </dl>--%>
                                 <div class="item use-new-addr"  id="J_useNewAddr" data-state="off">
                                     <span class="iconfont icon-add"><img src="${pageContext.request.contextPath}/orderStatic/images/add_cart.png" /></span>
                                     使用新地址
@@ -294,7 +312,7 @@
                                     <li class="item selected">
                                         <input type="radio" name="Checkout[pay_id]" checked="checked" value="1">
                                         <p>
-                                            货到付款                                <span></span>
+                                            在线支付                               <span></span>
                                         </p>
                                     </li>
                                 </ul>
@@ -430,7 +448,7 @@
 
                                                     <div class="col col-2">${good.shop_price}</div>
                                                     <div class="col col-3">${good.amount}</div>
-                                                    <div class="col col-4" class="subTotal" name="subTotal">${good.subTotal}</div>
+                                                    <div class="col col-4" id="subTotal" name="subTotal">${good.subTotal}</div>
 
                                                 </div>
                                             </dd>
@@ -464,23 +482,23 @@
                                         <ul>
 
                                             <li>
-                                                订单总额：<span>244元</span>
+                                                订单总额：<span><span class="totalPrice"></span>元</span>
                                             </li>
                                             <li>
                                                 活动优惠：<span>-0元</span>
                                                 <script type="text/javascript">
                                                     checkoutConfig.activityDiscountMoney=0;
-                                                    checkoutConfig.totalPrice=244.00;
+//                                                    checkoutConfig.totalPrice=244.00;
                                                 </script>
                                             </li>
-                                            <li>
+                                            <%--<li>
                                                 优惠券抵扣：<span id="couponDesc">-0元</span>
-                                            </li>
+                                            </li>--%>
                                             <li>
                                                 运费：<span id="postageDesc">0元</span>
                                             </li>
                                         </ul>
-                                        <p class="checkout-total">应付总额：<span><strong id="totalPrice">244</strong>元</span></p>
+                                        <p class="checkout-total">应付总额：<span><strong class="totalPrice">244</strong>元</span></p>
                                     </div>
                                     <!--  -->
                                 </div>
