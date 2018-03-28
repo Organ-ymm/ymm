@@ -192,7 +192,7 @@
     <!-- -----------------------------------------------------收获地址---------------------------------------------------------- -->
     <div class="container">
         <div class="checkout-box">
-            <form  id="checkoutForm" action="#" method="post">
+            <form  id="checkoutForm" action="${pageContext.request.contextPath}/order/addOrder" method="post">
                 <div class="checkout-box-bd">
                     <!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
                     <input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
@@ -538,7 +538,7 @@
                     <div class="checkout-confirm">
 
                         <a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
-                        <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" />
+                        <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" /><%--TODO--%>
                     </div>
                 </div>
         </div>

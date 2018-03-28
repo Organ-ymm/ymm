@@ -2,14 +2,12 @@ package com.ymm.service.impl;
 
 import com.ymm.dao.OrdersMapper;
 import com.ymm.pojo.dto.Page;
-import com.ymm.pojo.po.Orders;
+import com.ymm.commons.pojo.po.Orders;
 import com.ymm.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class OrdersServiceImpl implements OrdersService {

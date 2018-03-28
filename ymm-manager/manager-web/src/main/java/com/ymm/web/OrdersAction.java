@@ -3,7 +3,7 @@ package com.ymm.web;
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.dto.Page;
 
-import com.ymm.pojo.po.Orders;
+import com.ymm.commons.pojo.po.Orders;
 import com.ymm.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

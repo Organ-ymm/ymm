@@ -18,7 +18,7 @@ CREATE TABLE `orders` (
         order_id,user_id,receiver_name,receiver_address,receiver_phone,
         order_time,order_money,pay_status,deliver_status
     </sql>
-    <select id="selectAllOrders" resultType="com.ymm.pojo.po.Orders">
+    <select id="selectAllOrders" resultType="com.ymm.commons.pojo.po.Orders">
         SELECT
         <include refid="Orders_column"/>
         from orders
@@ -36,7 +36,7 @@ CREATE TABLE `orders` (
         SET deliver_status = 2
         WHERE order_id = #{id};
     </update>
-    <update id="updateOrders" parameterType="com.ymm.pojo.po.Orders">
+    <update id="updateOrders" parameterType="com.ymm.commons.pojo.po.Orders">
         UPDATE
 
         orders
