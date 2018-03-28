@@ -39,12 +39,12 @@ public class PortalIndexAction {
 
     @RequestMapping(value="/pages/{pageName}",method= RequestMethod.GET)
     public String forwardOne(@PathVariable("pageName") String pageName){
-        return "/pages/"+pageName;
+        return "pages/"+pageName;
     }
 
     @RequestMapping(value="/pages/{pageName1}/{pageName2}",method= RequestMethod.GET)
     public String forwardTwo(@PathVariable("pageName1") String pageName1,@PathVariable("pageName2") String pageName2){
-        return "/pages/"+pageName1+"/"+pageName2;
+        return "pages/"+pageName1+"/"+pageName2;
     }
 
 }

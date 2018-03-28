@@ -1,9 +1,9 @@
 package com.ymm.portal.web;
 
 import com.ymm.commons.pojo.po.Users;
+import com.ymm.portal.pojo.po.Cart;
 import com.ymm.portal.pojo.vo.CartCustom;
 import com.ymm.portal.service.CartService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,9 +28,8 @@ public class CartAction {
     @Autowired
     private CartService cartService;
 
-    /**
-     * 展示购物车信息
-     * return 购物车详情
+    /*
+        列出该用户的购物车信息
      */
     //@ResponseBody
     @RequestMapping(value="/listCustomCart",method= RequestMethod.GET)
@@ -43,6 +43,10 @@ public class CartAction {
         model.addAttribute("customCartList",customCartList);
         return "pages/cart/cartlist";
     }
+
+    /*
+        购物车商品的删除
+     */
     @ResponseBody
     @RequestMapping(value="/delCart",method= RequestMethod.GET)
     public int delCart(@RequestParam("goods_id")int goods_id, HttpSession session){
@@ -61,6 +65,9 @@ public class CartAction {
         return i;
     }
 
+    /*
+        购物车商品数量的增，减
+     */
     @ResponseBody
     @RequestMapping(value="/updateAmount",method = RequestMethod.GET)
     public int amountPlus(@RequestParam("goods_id")int goods_id,@RequestParam("amount")int amount,HttpSession session){
@@ -70,11 +77,71 @@ public class CartAction {
 
         int i=0;
         Users user= (Users) session.getAttribute("user");
+        int user_id=user.getUser_id();
         try {
-            i = cartService.updateAmount(goods_id,amount,user.getUser_id());
+            i = cartService.updateAmount(goods_id,amount,user_id);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return i;
+    }
+
+    /*
+        商品添加购物车
+     */
+    @ResponseBody
+    @RequestMapping(value="/addCart")
+    public int addCart(@RequestParam("goods_id")int goods_id,@RequestParam("amount")int amount,HttpSession session){
+        Users user1=new Users();
+        user1.setUser_id(1);
+        session.setAttribute("user",user1);
+
+        int i=0;
+        Users user= (Users) session.getAttribute("user");
+        int user_id=user.getUser_id();
+        CartCustom cart= null;
+        //先查询该用户的购物车内是否有该商品
+        try {
+            cart = cartService.findItem(user_id,goods_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(cart!=null){//若购物车有该商品，则添加数量
+            try {
+                int oldAmount=cart.getAmount();
+                i = cartService.addAmount(goods_id,oldAmount+amount,user_id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{//若购物车没有该商品，则添加纪录
+            try {
+                i=cartService.addCart(goods_id,amount,user_id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return i;
+    }
+
+    /*
+        结算页面的购物信息
+     */
+    //@ResponseBody
+    @RequestMapping(value="/listOrderItem",method= RequestMethod.GET)
+    public String listOrderItem(@RequestParam("goods_id")String ids,HttpSession session,Model model){
+        Users user1=new Users();
+        user1.setUser_id(1);
+        session.setAttribute("user",user1);
+
+        Users user= (Users) session.getAttribute("user");
+        List<CartCustom> orderItem = new ArrayList<>();
+        String[] goods_ids=ids.split("[,]");
+        for(int i=0;i<goods_ids.length;i++){
+            int goods_id=Integer.parseInt(goods_ids[i]);
+            CartCustom cart=cartService.findItem(user.getUser_id(),goods_id);
+            orderItem.add(cart);
+        }
+        model.addAttribute("orderItem",orderItem);
+        return "pages/order/confirmOrder";
     }
 }

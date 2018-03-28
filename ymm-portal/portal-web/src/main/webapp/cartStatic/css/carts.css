@@ -137,7 +137,6 @@ a:hover{
 .order_lists .list_chk label{
     margin: 20px 0 0 24px;
 }
-
 .order_lists .list_con{
     width: 342px;
 }
@@ -178,7 +177,7 @@ a:hover{
 .order_lists .list_price{
     width: 130px;
 }
-.order_lists .list_price .price{
+.order_lists .list_price .priceP{
     margin-top: 20px;
     line-height: 18px;
     font-family: Verdana,Tahoma,arial;
@@ -250,13 +249,21 @@ a:hover{
 .order_lists .list_sum{
     width: 140px;
 }
-.order_lists .list_sum .sum_price{
+/*￥商品小计*/
+.order_lists .list_sum .myP{
     line-height: 18px;
     margin-top: 20px;
     font-family: Verdana,Tahoma,arial;
     color: #ff0000;
     font-weight: bold;
 }
+/*.order_lists .list_sum .sum_price{
+    line-height: 18px;
+    margin-top: 20px;
+    font-family: Verdana,Tahoma,arial;
+    color: #ff0000;
+    font-weight: bold;
+}*/
 .order_lists .list_op{
     width: 164px;
 }
@@ -302,7 +309,8 @@ a:hover{
     height: 50px;
     line-height: 50px;
 }
-.bar-wrapper .bar-right .totalMoney .total_text{
+/*￥共计*/
+.bar-wrapper .bar-right .totalMoney .totalSpan{
     float: right;
     font-weight: 400;
     font-size: 20px;

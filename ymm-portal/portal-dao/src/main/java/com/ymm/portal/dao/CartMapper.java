@@ -18,4 +18,8 @@ public interface CartMapper {
     int delCart(Cart cart);
 
     int updateAmount(Cart cart);
+
+    CartCustom findItem(CartCustom cartPar);
+
+    int addCart(Cart cart);
 }

@@ -47,7 +47,6 @@ $(function(){
                 dataType: 'text',
                 success: function (rec) {
                     if (rec == "0") {
-							alert(99999);
                         $("input").eq(0).parent().next("div").text("该用户名已被注册");
                         $("input").eq(0).parent().next("div").css("color",'red');
                         return ;

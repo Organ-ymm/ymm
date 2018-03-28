@@ -29,7 +29,7 @@ $(function () {
     });
 
     //===============================================全局全选与单个商品的关系================================
-    $wholeChexbox.click(function () {
+    $wholeChexbox.click(function () {//单选框和全选框的样式
         var $checkboxs = $cartBox.find('input[type="checkbox"]');
         if ($(this).is(':checked')) {
             $checkboxs.prop("checked", true);
@@ -40,7 +40,6 @@ $(function () {
         }
         totalMoney();
     });
-
 
     $sonCheckBox.each(function () {
         $(this).click(function () {
@@ -53,7 +52,7 @@ $(function () {
                         num++;
                     }
                 });
-                if (num == len) {
+                if (num == len) {//若单选框全部被选中，则全选框被选中
                     $wholeChexbox.prop("checked", true);
                     $wholeChexbox.next('label').addClass('mark');
                 }
@@ -144,7 +143,10 @@ $(function () {
             $obj = $(this).parents('.amount_box').find('.reduce'),
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
-            $priceTotal = $count*parseInt($price.substring(1));
+            $priceTotal = $count*parseFloat($price);
+        //alert(parseFloat($priceTotalObj.html()));
+        //alert(parseFloat($price));
+        //alert(parseFloat($priceTotal));
         var id=$(this).parents('.order_lists').children("[name='goods_id']").val();//得到增加数量的商品的id
         var amount=parseInt($count);//得到增加后的数量
         //alert(amount);
@@ -156,7 +158,7 @@ $(function () {
             url:"../../portal/cart/updateAmount"
         });
         $inputVal.val($count);
-        $priceTotalObj.html('￥'+$priceTotal);
+        $priceTotalObj.html($priceTotal);
         if($inputVal.val()>1 && $obj.hasClass('reSty')){
             $obj.removeClass('reSty');
         }
@@ -168,10 +170,10 @@ $(function () {
             $count = parseInt($inputVal.val())-1,
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
-            $priceTotal = $count*parseInt($price.substring(1));
+            $priceTotal = $count*parseFloat($price);
         if($inputVal.val()>1){//数量大于1时才能减数量
             $inputVal.val($count);
-            $priceTotalObj.html('￥'+$priceTotal);
+            $priceTotalObj.html($priceTotal);
             var id=$(this).parents('.order_lists').children("[name='goods_id']").val();//得到减少数量的商品的id
             var amount=parseInt($count);//得到减少后的数量
             //alert(amount);
@@ -189,21 +191,22 @@ $(function () {
         totalMoney();
     });
 
-    $all_sum.keyup(function () {
+    /*$all_sum.keyup(function () {
         var $count = 0,
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
             $priceTotal = 0;
+        //alert(parseFloat($price));
         if($(this).val()==''){
             $(this).val('1');
         }
         $(this).val($(this).val().replace(/\D|^0/g,''));
         $count = $(this).val();
-        $priceTotal = $count*parseInt($price.substring(1));
+        $priceTotal = $count*parseFloat($price);
         $(this).attr('value',$count);
-        $priceTotalObj.html('￥'+$priceTotal);
+        $priceTotalObj.html($priceTotal);
         totalMoney();
-    })
+    });*/
 
     //======================================移除商品========================================
 
@@ -255,6 +258,37 @@ $(function () {
         closeM();
         $sonCheckBox = $('.son_check');
         totalMoney();
+    });
+    //======================================结算==========================================
+    $('.settleAccount').click(function () {
+        //var id=$('.order_lists').children('[name="goods_id"]').val();
+        // alert(id);
+        var $sonCheckBox=$('.son_check');
+        var ids=[];
+        $sonCheckBox.each(function () {
+            if ($(this).is(':checked')) {
+                var id=$(this).parents('.list_chk').children('[name="goods_id"]').val();
+                //console.log(id);
+                ids.push(id);
+            }
+        });
+        //当有勾选商品时，才能结算
+        if(ids.length>0){
+            window.location.href="../../portal/cart/listOrderItem?goods_id="+ids;
+            /*$.ajax({
+                data:{"ids[]":ids},
+                dataType:"text",
+                type:"POST",
+                url:"../../portal/cart/listOrderItem"
+                success:function (data) {
+                    //window.location.href="../../portal/pages/order/confirmOrder";
+                    //location.href="../../pages/order/order";
+                }
+
+            });*/
+        }else{
+            alert("请选择要结算的商品");
+        }
     })
 
     //======================================总计==========================================
@@ -265,17 +299,21 @@ $(function () {
         var calBtn = $('.calBtn a');
         $sonCheckBox.each(function () {
             if ($(this).is(':checked')) {
-                var goods = parseInt($(this).parents('.order_lists').find('.sum_price').html().substring(1));
-                var num =  parseInt($(this).parents('.order_lists').find('.sum').val());
+                var goods = parseFloat($(this).parents('.order_lists').find('.sum_price').html());
+                var num =  parseFloat($(this).parents('.order_lists').find('.sum').val());
+                //alert(goods);
+                // alert(num);
                 total_money += goods;
                 total_count += num;
+                //alert(typeof goods);
             }
         });
-        $('.total_text').html('￥'+total_money);
+        $('.total_text').html(total_money);
         $('.piece_num').html(total_count);
 
         // console.log(total_money,total_count);
 
+        //结算按钮的颜色变化
         if(total_money!=0 && total_count!=0){
             if(!calBtn.hasClass('btn_sty')){
                 calBtn.addClass('btn_sty');
@@ -286,6 +324,5 @@ $(function () {
             }
         }
     }
-
 
 });
