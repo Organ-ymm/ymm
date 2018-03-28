@@ -6,7 +6,7 @@ import java.util.Date;
 public class Orders implements Serializable {
     /**
      * CREATE TABLE `orders` (
-     `order_id` int(11) NOT NULL COMMENT '订单编号',
+     `order_id` bigint(20) NOT NULL COMMENT '订单编号',
      `user_id` int(11) DEFAULT NULL COMMENT '下单会员id',
      `receiver_name` varchar(20) DEFAULT NULL COMMENT '收货人姓名',
      `receiver_address` varchar(200) DEFAULT NULL COMMENT '收货地址',
@@ -18,21 +18,21 @@ public class Orders implements Serializable {
      PRIMARY KEY (`order_id`)
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
      */
-    private Integer order_id;
+    private Long order_id;
     private Integer user_id;
     private String receiver_name;
     private String receiver_address;
-    private Integer receiver_phone;
+    private Long receiver_phone;
     private String order_time;
     private Double order_money;
     private Integer pay_status;
     private Integer deliver_status;
 
-    public Integer getOrder_id() {
+    public Long getOrder_id() {
         return order_id;
     }
 
-    public void setOrder_id(Integer order_id) {
+    public void setOrder_id(Long order_id) {
         this.order_id = order_id;
     }
 
@@ -60,11 +60,11 @@ public class Orders implements Serializable {
         this.receiver_address = receiver_address;
     }
 
-    public Integer getReceiver_phone() {
+    public Long getReceiver_phone() {
         return receiver_phone;
     }
 
-    public void setReceiver_phone(Integer receiver_phone) {
+    public void setReceiver_phone(Long receiver_phone) {
         this.receiver_phone = receiver_phone;
     }
 

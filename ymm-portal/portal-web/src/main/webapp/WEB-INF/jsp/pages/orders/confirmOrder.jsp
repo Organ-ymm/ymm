@@ -192,7 +192,7 @@
     <!-- -----------------------------------------------------收获地址---------------------------------------------------------- -->
     <div class="container">
         <div class="checkout-box">
-            <form  id="checkoutForm" action="${pageContext.request.contextPath}/order/addOrder" method="post">
+            <form  id="checkoutForm" action="${pageContext.request.contextPath}/orders/submitOrder" method="post">
                 <div class="checkout-box-bd">
                     <!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
                     <input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
@@ -203,17 +203,17 @@
                         </div>
                         <div class="box-bd">
                             <div class="clearfix xm-address-list" id="checkoutAddrList">
-                                <c:forEach items="${addressList}" var="address">
+                                <c:forEach items="${addressList}" var="address" varStatus="vs">
                                     <dl class="item" >
                                         <dt>
-                                            <input type="hidden" name="address_id" value="${address.address_id}"/>
-                                            <strong class="itemConsignee" name="consignee">${address.consignee}</strong>
-                                            <span class="itemTag tag" name="tag">${address.tag}</span>
+                                            <input type="hidden" value="${vs.count}"/>
+                                            <strong class="itemConsignee">${address.consignee}</strong>
+                                            <span class="itemTag tag">${address.tag}</span>
                                         </dt>
                                         <dd>
-                                            <p class="tel itemTel" name="phone">${address.phone}</p>
-                                            <p class="itemRegion" name="province">${address.province} ${address.city} ${address.county}</p>
-                                            <p class="itemStreet" name="street">${address.street}(${address.zipcode})</p>
+                                            <p class="tel itemTel">${address.phone}</p>
+                                            <p class="itemRegion">${address.province} ${address.city} ${address.county}</p>
+                                            <p class="itemStreet">${address.street}(${address.zipcode})</p>
                                             <span class="edit-btn J_editAddr">编辑</span>
                                         </dd>
                                         <dd style="display:none">
@@ -221,6 +221,12 @@
                                         </dd>
                                     </dl>
                                 </c:forEach>
+                                <%--TODO--%>
+                                <input type="hidden" name="receiver_address"
+                                       value="${addressList[0].province}${addressList[0].city}${addressList[0].county}${addressList[0].street}(${addressList[0].zipcode})"/>
+                                <input type="hidden" name="receiver_name" value="${addressList[0].consignee}" />
+                                <input type="hidden" name="receiver_phone" value="${addressList[0].phone}" />
+                                <input type="hidden"  name="order_money" value="0" /><%--TODO--%>
                                 <%--<dl class="item" >
                                     <dt>
                                         <strong class="itemConsignee">潘骏杰</strong>
@@ -498,7 +504,7 @@
                                                 运费：<span id="postageDesc">0元</span>
                                             </li>
                                         </ul>
-                                        <p class="checkout-total">应付总额：<span><strong class="totalPrice">244</strong>元</span></p>
+                                        <p class="checkout-total">应付总额：<span><strong class="totalPrice"></strong>元</span></p>
                                     </div>
                                     <!--  -->
                                 </div>
@@ -541,9 +547,10 @@
                         <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" /><%--TODO--%>
                     </div>
                 </div>
-        </div>
 
-        </form>
+
+            </form>
+        </div>
 
     </div>
     <!-- 禮品卡提示 S-->

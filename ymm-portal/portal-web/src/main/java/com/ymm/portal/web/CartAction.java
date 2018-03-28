@@ -137,17 +137,21 @@ public class CartAction {
         session.setAttribute("user",user1);
 
         Users user= (Users) session.getAttribute("user");
+        if(user!=null) {
         int user_id=user.getUser_id();
-        List<CartCustom> orderItem = new ArrayList<>();
-        String[] goods_ids=ids.split("[,]");
-        for(int i=0;i<goods_ids.length;i++){
-            int goods_id=Integer.parseInt(goods_ids[i]);
-            CartCustom cart=cartService.findItem(user_id,goods_id);
-            orderItem.add(cart);
+            List<CartCustom> orderItem = new ArrayList<>();
+            String[] goods_ids = ids.split("[,]");
+            for (int i = 0; i < goods_ids.length; i++) {
+                int goods_id = Integer.parseInt(goods_ids[i]);
+                CartCustom cart = cartService.findItem(user_id, goods_id);
+                orderItem.add(cart);
+            }
+            List<Address> addressList = addressService.listAddress(user_id);
+            model.addAttribute("orderItem", orderItem);
+            model.addAttribute("addressList", addressList);
+            return "pages/orders/confirmOrder";
+        }else{
+            return "loginTip";
         }
-        List<Address> addressList = addressService.listAddress(user_id);
-        model.addAttribute("orderItem",orderItem);
-        model.addAttribute("addressList",addressList);
-        return "pages/order/confirmOrder";
     }
 }
