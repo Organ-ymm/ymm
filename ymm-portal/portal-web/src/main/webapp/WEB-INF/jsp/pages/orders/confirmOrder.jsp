@@ -204,21 +204,23 @@
                         <div class="box-bd">
                             <div class="clearfix xm-address-list" id="checkoutAddrList">
                                 <c:forEach items="${addressList}" var="address" varStatus="vs">
-                                    <dl class="item" >
-                                        <dt>
-                                            <input type="hidden" value="${vs.count}"/>
-                                            <strong class="itemConsignee">${address.consignee}</strong>
-                                            <span class="itemTag tag">${address.tag}</span>
-                                        </dt>
-                                        <dd>
-                                            <p class="tel itemTel">${address.phone}</p>
-                                            <p class="itemRegion">${address.province} ${address.city} ${address.county}</p>
-                                            <p class="itemStreet">${address.street}(${address.zipcode})</p>
-                                            <span class="edit-btn J_editAddr">编辑</span>
-                                        </dd>
-                                        <dd style="display:none">
-                                            <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-                                        </dd>
+                                    <dl class="item">
+                                        <div class="addressItem" >
+                                            <dt>
+                                                <input type="hidden" name="addressNo" class="addressNo" value=${vs.count}/>
+                                                <strong class="itemConsignee">${address.consignee}</strong>
+                                                <span class="itemTag tag">${address.tag}</span>
+                                            </dt>
+                                            <dd>
+                                                <p class="tel itemTel">${address.phone}</p>
+                                                <p class="itemRegion">${address.province} ${address.city} ${address.county}</p>
+                                                <p class="itemStreet">${address.street}(${address.zipcode})</p>
+                                                <span class="edit-btn J_editAddr">编辑</span>
+                                            </dd>
+                                            <dd style="display:none">
+                                                <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+                                            </dd>
+                                        </div>
                                     </dl>
                                 </c:forEach>
                                 <input type="hidden" name="receiver_address"

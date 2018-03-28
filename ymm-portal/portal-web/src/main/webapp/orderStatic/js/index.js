@@ -11,7 +11,8 @@ $(document).ready(function(){
     SetFloorLunBo();//楼层广告轮播
     SetFixedSearch();//固定顶部搜索
 	//SetClassify();//设置顶部商品分类菜单的显示与隐藏
-    SetTotalMoney();
+    SetTotalMoney();//总金额的计算
+    //addressSele();//地址的选择
 });
 
 function SetTotalMoney() {
@@ -20,12 +21,48 @@ function SetTotalMoney() {
     var $subTotal = $('[name="subTotal"]');
     $subTotal.each(function () {
         var subMoney=parseFloat($(this).parents('.item-row').find('[name="subTotal"]').html());
-        //alert(subMoney);
         totalMoney += subMoney;
     });
-    console.log(totalMoney);
-    $('.totalPrice').html(totalMoney);
-    $('[name="order_money"]').val(totalMoney);
+    //console.log(totalMoney);
+    $('.totalPrice').html(totalMoney);//确认订单的总金额显示
+    $('[name="order_money"]').val(totalMoney);//生成订单时的订单总额
+};
+// function addressSele(){
+//     var b=$("#checkoutAddrList").find(".selected").parents('.item').children('.addressNo');
+//     alert(b);
+// };
+$("#checkoutToPay").on("click",function(){
+    var $addressItem=$('.addressItem');
+    $addressItem.each(function(){
+        // alert(2);
+        //debugger;
+        if ($(this).find(".selected")) {
+            //debugger;
+            //alert(3);
+            var id=$(this).parents('.item').children('[name="addressNo"]').val();
+            alert(id);
+        }
+    });
+});
+function addressSele(){
+    //var $checkoutAddrList = $('#checkoutAddrList');
+    var $addressItem=$('.addressItem');
+    // $checkoutAddrList.each(function(){
+    $addressItem.each(function(){
+        alert(2);
+        debugger;
+        if ($(this).is(":checked")) {
+            debugger;
+            alert(3);
+            // var id=$(this).parents('.item').children('.addressNo').val();
+            // alert(id);
+        }
+    });
+    /*$(".addressItem").click(function(){
+        var id=$(this).parents('.item').children('[name="addressNo"]').val();
+        console.log(typeof id);
+        alert(id);
+    });*/
 };
 function SetShortCutEffect(){
     $('.shortcut_v2013').find(".menu").hover(function(){
