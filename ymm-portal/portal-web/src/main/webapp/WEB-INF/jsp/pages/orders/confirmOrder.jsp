@@ -206,8 +206,9 @@
                                 <c:forEach items="${addressList}" var="address" varStatus="vs">
                                     <dl class="item">
                                         <div class="addressItem" >
+                                            <%--<input type="radio" value="${vs.count}" name="son_check" class="son_check">--%>
                                             <dt>
-                                                <input type="hidden" name="addressNo" class="addressNo" value=${vs.count}/>
+                                                <%--<input type="hidden" name="addressNo" class="addressNo" value=${vs.count}/>--%>
                                                 <strong class="itemConsignee">${address.consignee}</strong>
                                                 <span class="itemTag tag">${address.tag}</span>
                                             </dt>

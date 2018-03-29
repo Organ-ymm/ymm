@@ -33,6 +33,8 @@ function SetTotalMoney() {
 // };
 $("#checkoutToPay").on("click",function(){//TODO
     var $addressItem=$('.addressItem');
+    //var $sonCheckBox=$('.son_check');
+
     $addressItem.each(function(){
         // alert(2);
         //debugger;
@@ -44,7 +46,7 @@ $("#checkoutToPay").on("click",function(){//TODO
         }
     });
 });
-function addressSele(){
+function addressSele(){//TODO
     //var $checkoutAddrList = $('#checkoutAddrList');
     var $addressItem=$('.addressItem');
     // $checkoutAddrList.each(function(){

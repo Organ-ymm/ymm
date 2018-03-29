@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Description:
@@ -41,10 +43,17 @@ public class CartAction {
         user1.setUser_id(1);
         session.setAttribute("user",user1);
 
+
         Users user= (Users) session.getAttribute("user");
-        List<CartCustom> customCartList = cartService.listCustomCart(user.getUser_id());
-        model.addAttribute("customCartList",customCartList);
-        return "pages/cart/cartlist";
+        if(user!=null){//网站用户登录
+            int user_id=user.getUser_id();
+            List<CartCustom> customCartList = cartService.listCustomCart(user_id);
+            model.addAttribute("customCartList",customCartList);
+            return "pages/cart/cartlist";
+        }else{//游客登录
+            //Cart visitorCart=session.getAttribute("visitorCart");
+            return "";
+        }
     }
 
     /*
@@ -99,31 +108,41 @@ public class CartAction {
         user1.setUser_id(1);
         session.setAttribute("user",user1);
 
-        int i=0;
         Users user= (Users) session.getAttribute("user");
-        int user_id=user.getUser_id();
-        CartCustom cart= null;
-        //先查询该用户的购物车内是否有该商品
-        try {
-            cart = cartService.findItem(user_id,goods_id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if(cart!=null){//若购物车有该商品，则添加数量
-            try {
-                int oldAmount=cart.getAmount();
-                i = cartService.addAmount(goods_id,oldAmount+amount,user_id);
+        if(user!=null) {//网站用户登录
+            int i = 0;
+            int user_id = user.getUser_id();
+            CartCustom cart = null;
+            try {//先查询该用户的购物车内是否有该商品
+                cart = cartService.findItem(user_id, goods_id);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else{//若购物车没有该商品，则添加纪录
-            try {
-                i=cartService.addCart(goods_id,amount,user_id);
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (cart != null) {//若购物车有该商品，则添加数量
+                try {
+                    int oldAmount = cart.getAmount();
+                    i = cartService.addAmount(goods_id, oldAmount + amount, user_id);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {//若购物车没有该商品，则添加纪录
+                try {
+                    i = cartService.addCart(goods_id, amount, user_id);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+            return i;
+        }else{//游客登录
+            Map<Integer,Integer> visitorCart=new HashMap<>();
+            visitorCart= (Map<Integer, Integer>) session.getAttribute("visitorCart");
+            if(visitorCart!=null){
+                //for()
+            }else{
+
+            }
+            return 1;
         }
-        return i;
     }
 
     /*
