@@ -29,4 +29,13 @@ public class AddressServiceImpl implements AddressService{
         List<Address> addressList=addressMapper.listAddress(user_id);
         return addressList;
     }
+
+    @Override
+    public Address findAddress(int address_id,int user_id) {
+        Address addresspra=new Address();
+        addresspra.setAddress_id(address_id);
+        addresspra.setUser_id(user_id);
+        Address address=addressMapper.findAddress(addresspra);
+        return address;
+    }
 }
