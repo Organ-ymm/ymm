@@ -5,9 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
+    <link rel="icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
     <title>羊咩咩商城登陆 </title>
-</head>
 
+</head>
 <body>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/userStatic/css/login/style.css"/>
@@ -28,9 +29,11 @@
     }
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/userStatic/js/jquery-1.9.1.js"></script>
+
 <div id="header">
+    <%--<jsp:include page="top.jsp"/>--%>
     <a href="#" class="logo">
-        <img  style="width: 160px;height: 60px;" src="${pageContext.request.contextPath}/userStatic/images/regester/ymm.png">
+        <img  style="width: 160px;height: 60px;" src="${pageContext.request.contextPath}/images/logo/logo.png">
     </a>
 </div>
 
