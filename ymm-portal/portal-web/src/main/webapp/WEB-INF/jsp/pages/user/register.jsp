@@ -3,14 +3,15 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <link rel="icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
+    <title>ymm商城注册</title>
     <script src="${pageContext.request.contextPath}/userStatic/js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/userStatic/css/regester/regester.css"/>
 </head>
 <body>
 <header>
     <a href="#" class="logo">
-        <img style="width: 100%;height: 100%" src="${pageContext.request.contextPath}/userStatic/images/regester/ymm.png">
+        <img style="width: 100%;height: 100%" src="${pageContext.request.contextPath}//images/logo/logo.png">
     </a>
     <div class="desc">欢迎注册</div>
 </header>

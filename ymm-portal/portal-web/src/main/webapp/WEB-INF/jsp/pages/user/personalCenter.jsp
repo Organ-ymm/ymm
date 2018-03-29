@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="zh-CN" xml:lang="zh-CN">
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="UTF-8" />
@@ -8,16 +9,29 @@
     <meta name="viewport" content="width=1226" />
     <meta name="description" content="" />
     <meta name="keywords" content="ymm商城" />
-    <link rel="shortcut icon" href="//s01.mifile.cn/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="//s01.mifile.cn/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <%--<link rel="shortcut icon" href="//s01.mifile.cn/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="//s01.mifile.cn/favicon.ico" type="image/x-icon" />--%>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
+    <link rel="icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.min.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/userStatic/css/main.min.css" />
+    <!-- Bootstrap CSS
+    ============================================ -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+
+    <!-- style CSS
+    ============================================ -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/userStatic/css/top.css">
 </head>
+
 <body>
-<div class="site-topbar">
+
+<div class="site-topbar" style="height: 61px;background-color: #262626">
     <div class="container">
-        <div class="topbar-nav">
-            <a href="${pageContext.request.contextPath}/index" >ymm商城</a><span class="sep">|</span>
+
+        <div class="topbar-nav" style="height: 55px">
+            <img src="${pageContext.request.contextPath}/images/logo2.png"><span class="sep">|</span>
         </div>
         <div class="topbar-cart" id="J_miniCartTrigger">
             <a class="cart-mini" id="J_miniCartBtn" href="//static.mi.com/cart/"><i class="iconfont">&#xe60c;</i>购物车<span class="cart-mini-num J_cartNum"></span></a>
@@ -26,10 +40,10 @@
             </div>
         </div>
         <div class="topbar-info" id="J_userInfo">
-            <a class="link" href="${pageContext.request.contextPath}/pages/user/login" data-needlogin="true">登录</a><span class="sep">|</span><a class="link" href="${pageContext.request.contextPath}/pages/user/login" >注册</a>        </div>
+            <a class="link" href="${pageContext.request.contextPath}/pages/user/login" data-needlogin="true">登录</a>
+            <span class="sep">|</span><a class="link" href="${pageContext.request.contextPath}/pages/user/login" >注册</a>        </div>
     </div>
 </div>
-
 <div class="breadcrumbs">
     <div class="container">
         <a href='${pageContext.request.contextPath}/index'>首页</a><span class="sep">&gt;</span><span>个人中心</span>    </div>
