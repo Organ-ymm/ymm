@@ -14,10 +14,10 @@ public class DetailServiceImpl implements DetailService {
     @Autowired
     private DetailMapper detailMapper;
     @Override
-    public Goods selectById(Integer id) {
+    public Goods selectById(Integer goods_id) {
         Goods goods = null;
         try {
-            goods = detailMapper.selectGoodsById(id);
+            goods = detailMapper.selectGoodsById(goods_id);
         } catch (Exception e) {
             logger.debug(e.getMessage(), e);
         }
