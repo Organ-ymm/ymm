@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,6 +64,58 @@ public class CartServiceImpl implements CartService{
         cart.setUser_id(user_id);
         cart.setGoods_id(goods_id);
         cart.setAmount(amount);
+        try {
+            i=cartMapper.updateAmount(cart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    @Override
+    public CartCustom findItem(int user_id, int goods_id) {
+        CartCustom cart=null;
+        try {
+            CartCustom cartPar=new CartCustom();
+            cartPar.setUser_id(user_id);
+            cartPar.setGoods_id(goods_id);
+            cart = cartMapper.findItem(cartPar);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cart;
+    }
+
+    @Override
+    public int addCart(int goods_id, int amount, int user_id) {
+        int i=0;
+        Cart cart = new Cart();
+        cart.setUser_id(user_id);
+        cart.setGoods_id(goods_id);
+        cart.setAmount(amount);
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String add_time=sdf.format(date);
+        cart.setAdd_time(add_time);
+        try {
+            i=cartMapper.addCart(cart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    @Override
+    public int addAmount(int goods_id, int amount, int user_id) {
+        int i=0;
+        Cart cart=new Cart();
+        cart.setUser_id(user_id);
+        cart.setGoods_id(goods_id);
+        cart.setAmount(amount);
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String add_time=sdf.format(date);
+        cart.setAdd_time(add_time);
         try {
             i=cartMapper.updateAmount(cart);
         } catch (Exception e) {

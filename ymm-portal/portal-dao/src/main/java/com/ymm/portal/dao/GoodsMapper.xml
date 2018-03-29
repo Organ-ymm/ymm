@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymm.portal.dao.GoodsMapper">
+
+    <!--GoodsCustom sql块-->
+    <sql id="GoodsCustom_Column_List">
+        g.goods_id,g.cat_id,g.goods_sn,g.goods_name,g.click_count,g.brand_id,g.goods_number,g.market_price
+        ,g.shop_price,g.promote_price,g.keywords,g.goods_brief,g.goods_desc,g.goods_img,g.goods_thumb
+        ,g.add_time,g.is_new,g.is_hot,g.give_integral,g.status
+        ,c.cat_name
+        ,b.brand_name
+    </sql>
+    <!--Goods sql块(少goods_desc)-->
+    <sql id="Goods_Column_List">
+        g.goods_id,g.cat_id,g.goods_sn,g.goods_name,g.click_count,g.brand_id,g.goods_number,g.market_price
+        ,g.shop_price,g.promote_price,g.keywords,g.goods_brief,g.goods_desc,g.goods_img,g.goods_thumb
+        ,g.add_time,g.is_new,g.is_hot,g.give_integral,g.status
+    </sql>
+
+    <!--Goods sql块(只有id,name,price,img)-->
+    <sql id="GoodsIDNameImg_Column_List">
+        g.goods_id,g.goods_name,g.market_price,g.goods_img
+    </sql>
+    <!--where status不为3-->
+    <sql id="Where_Clause">
+        <where>
+            g.status IN (1,2)
+            <if test="query != null and query.title != null and query.title != '' ">
+                and g.keywords like '%${query.title}%'
+            </if>
+        </where>
+    </sql>
+    <!--where is_hot=1 and status不为3-->
+    <sql id="WhereIsHot_Clause">
+        <where>
+            g.status IN (1,2)
+            AND is_hot=1
+        </where>
+    </sql>
+    <!--查询所有热门goods-->
+    <select id="listHotGoods" parameterType="int" resultType="com.ymm.commons.pojo.po.Goods">
+        SELECT
+        <include refid="GoodsIDNameImg_Column_List"/>
+        FROM goods g
+        <include refid="WhereIsHot_Clause"/>
+        AND cat_id = #{cat_id}
+        ORDER BY g.goods_id
+    </select>
+
+
+
+
+</mapper>

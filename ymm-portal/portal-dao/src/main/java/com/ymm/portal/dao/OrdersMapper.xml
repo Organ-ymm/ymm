@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymm.portal.dao.OrdersMapper" >
+
+    <sql id="base_column">
+        order_id,user_id,receiver_name,receiver_address,
+        receiver_phone,order_time,order_money,pay_status,deliver_status
+    </sql>
+
+    <insert id="addOrder" parameterType="com.ymm.commons.pojo.po.Orders">
+        insert into
+        orders
+        values(#{order_id},#{user_id},#{receiver_name},#{receiver_address},#{receiver_phone},
+        #{order_time},#{order_money},#{pay_status},#{deliver_status})
+    </insert>
+
+</mapper>

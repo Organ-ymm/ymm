@@ -10,7 +10,12 @@
 <body>
 <h2>Hello World!门户页面。。。。</h2>
 <hr>
-<%--<a href="./pages/cart/cartlist">购物车</a>--%>
 <a href="${pageContext.request.contextPath}/cart/listCustomCart">购物车</a>
+<br>
+<form action="${pageContext.request.contextPath}/cart/addCart">
+    商品id：<input type="text" name="goods_id">
+    商品数量：<input type="text" name="amount">
+    <input type="submit" value="加入购物车">
+</form>
 </body>
 </html>

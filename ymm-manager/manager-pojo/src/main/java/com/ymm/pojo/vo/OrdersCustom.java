@@ -1,5 +1,5 @@
 package com.ymm.pojo.vo;
-import com.ymm.pojo.po.Orders;
+import com.ymm.commons.pojo.po.Orders;
 
 import java.io.Serializable;
 

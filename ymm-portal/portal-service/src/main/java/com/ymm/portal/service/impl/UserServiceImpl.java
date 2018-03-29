@@ -28,4 +28,10 @@ public class UserServiceImpl implements UserService {
     public void register(Users user) {
        userMapper.register(user);
     }
+
+    @Override
+    public Users checkOldPass(Users user) {
+        Users user2 =userMapper.checkOldPass(user);
+        return user2;
+    }
 }
