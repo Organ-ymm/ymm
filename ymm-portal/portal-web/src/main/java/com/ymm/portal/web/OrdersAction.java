@@ -26,11 +26,13 @@ public class OrdersAction {
     @Autowired
     private OrdersService orderService;
 
+    @Autowired
+    private AddressService addressService;
     /*
         列出该用户的所有的地址列表
      */
     //@ResponseBody
-    @RequestMapping(value = "/submitOrder",method = RequestMethod.POST)
+    /*@RequestMapping(value = "/submitOrder",method = RequestMethod.POST)
     public String addOrder(@Param("order") Orders order, HttpSession session){
         Users user1=new Users();
         user1.setUser_id(1);
@@ -46,13 +48,10 @@ public class OrdersAction {
             e.printStackTrace();
         }
         return "pages/orders/submitOrder";
-    }
-
-    @Autowired
-    private AddressService addressService;
+    }*/
 
     @ResponseBody
-    @RequestMapping(value = "/submitOrder1",method = RequestMethod.POST)
+    @RequestMapping(value = "/submitOrder",method = RequestMethod.POST)
     public String addOrder(@RequestParam("address_id") int address_id,@RequestParam("order_money") double order_money, HttpSession session){
         Users user1=new Users();
         user1.setUser_id(1);
