@@ -1936,6 +1936,7 @@
 
 
     function toCart() {
+        alert("添加成功");
         $.ajax({
 
             type:"POST",
