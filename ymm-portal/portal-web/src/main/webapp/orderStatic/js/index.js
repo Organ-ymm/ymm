@@ -31,21 +31,21 @@ function SetTotalMoney() {
 //     var b=$("#checkoutAddrList").find(".selected").parents('.item').children('.addressNo');
 //     alert(b);
 // };
-$("#checkoutToPay").on("click",function(){//TODO
-    var $addressItem=$('.addressItem');
-    //var $sonCheckBox=$('.son_check');
-
-    $addressItem.each(function(){
-        // alert(2);
-        //debugger;
-        if ($(this).find(".selected")) {
-            //debugger;
-            //alert(3);
-            var id=$(this).parents('.item').children('[name="addressNo"]').val();
-            alert(id);
-        }
-    });
-});
+// $("#checkoutToPay").on("click",function(){//TODO
+//     var $addressItem=$('.addressItem');
+//     //var $sonCheckBox=$('.son_check');
+//
+//     $addressItem.each(function(){
+//         // alert(2);
+//         //debugger;
+//         if ($(this).find(".selected")) {
+//             //debugger;
+//             //alert(3);
+//             var id=$(this).parents('.item').children('[name="addressNo"]').val();
+//             alert(id);
+//         }
+//     });
+// });
 function addressSele(){//TODO
     //var $checkoutAddrList = $('#checkoutAddrList');
     var $addressItem=$('.addressItem');

@@ -1,17 +1,14 @@
 package com.ymm.portal.web;
 import com.ymm.commons.pojo.po.Orders;
 import com.ymm.commons.pojo.po.Users;
-import com.ymm.portal.pojo.po.Address;
 import com.ymm.portal.service.OrdersService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * Description:

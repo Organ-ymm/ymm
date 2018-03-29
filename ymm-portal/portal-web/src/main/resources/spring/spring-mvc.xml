@@ -28,9 +28,9 @@
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/fonts/**" location="/fonts/"/>
-    <mvc:resources mapping="/picture/**" location="/picture/"/>
     <mvc:resources mapping="/lib/**" location="/lib/"/>
     <mvc:resources mapping="/cartStatic/**" location="/cartStatic/"/>
     <mvc:resources mapping="/userStatic/**" location="/userStatic/"/>
+    <mvc:resources mapping="/orderStatic/**" location="/orderStatic/"/>
     <mvc:resources mapping="/detailStatic/**" location="/detailStatic/"/>
 </beans>

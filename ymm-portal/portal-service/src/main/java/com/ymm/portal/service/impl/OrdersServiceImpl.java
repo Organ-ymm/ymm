@@ -31,7 +31,7 @@ public class OrdersServiceImpl implements OrdersService {
         order.setOrder_time(order_time);
         SimpleDateFormat sdf1=new SimpleDateFormat("yyyyMMddHHmmss");
         StringBuilder order_id1=new StringBuilder(sdf1.format(date));
-        int order_id2=(int)(Math.random()*9+1)*1000;
+        int order_id2=(int)(Math.random()*9999+1);
         long order_id=Long.parseLong((order_id1.append(order_id2)).toString());
         order.setOrder_id(order_id);
         try {
