@@ -58,6 +58,8 @@
     <script src="${pageContext.request.contextPath}/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
+<!-- header start -->
+<header class="header-area">
 <div class="header-top-area">
     <div class="container">
         <div class="row">
@@ -87,7 +89,7 @@
                                     <li class="creat-button"><a href="${pageContext.request.contextPath}/pages/user/register">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</a></li>
                                 </ul>
                             </li>
-                            <li class="cart"><a href="cart.html"><img src="${pageContext.request.contextPath}/images/icon/cart.png" alt="cart"><p>2</p></a>
+                            <li class="cart"><a href="${pageContext.request.contextPath}/cart/listCustomCart"><img src="${pageContext.request.contextPath}/images/icon/cart.png" alt="cart"><p>2</p></a>
                                 <ul class="submenu-mainmenu">
                                     <li class="single-cart-item clearfix">
                                                     <span class="cart-img">
@@ -270,6 +272,8 @@
         </div>
     </div>
 </div>
+</header>
+<!-- header end -->
 <!-- jquery
 ============================================ -->
 <script src="${pageContext.request.contextPath}/js/vendor/jquery-1.12.3.min.js"></script>

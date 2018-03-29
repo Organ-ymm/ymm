@@ -68,10 +68,10 @@
 <![endif]-->
 
 <!-- header start -->
-<header class="header-area">
+<%--<header class="header-area">--%>
     <jsp:include page="top.jsp"/>
     <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-</header>
+<%--</header>--%>
 <!-- header end -->
 <!-- 轮播图板块 开始 -->
 <div class="slider-wrap">
