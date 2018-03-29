@@ -16,13 +16,6 @@
     <link rel="icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.min.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/userStatic/css/main.min.css" />
-    <!-- Bootstrap CSS
-    ============================================ -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-
-    <!-- style CSS
-    ============================================ -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/userStatic/css/top.css">
 </head>
 
 <body>
