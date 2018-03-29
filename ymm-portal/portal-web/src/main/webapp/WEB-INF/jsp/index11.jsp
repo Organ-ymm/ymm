@@ -209,7 +209,7 @@
                                                 <div class="single-product">
                                                     <div class="single-product-item">
                                                         <div class="single-product-img clearfix hover-effect">
-                                                            <a href="javascript:void(0)">
+                                                            <a href="${pageContext.request.contextPath}/detail/detailIndex.do?goods_id=${goods2.goods_id}">
                                                                 <img class="primary-image"
                                                                      style="max-width:100%;height:100%;margin:0 auto;display: block;"
                                                                      src="${goods2.goods_img}"
@@ -226,7 +226,7 @@
                                                         </div>
                                                         <div class="product-content text-center">
                                                             <h3>${goods2.goods_name}</h3>
-                                                            <h4><a href="javascript:void(0)">点击查看</a></h4>
+                                                            <h4><a href="${pageContext.request.contextPath}/detail/detailIndex.do?goods_id=${goods2.goods_id}">点击查看</a></h4>
                                                         </div>
                                                         <div class="product-action">
                                                             <ul>
@@ -261,7 +261,7 @@
                                                 <div class="single-product">
                                                     <div class="single-product-item">
                                                         <div class="single-product-img clearfix hover-effect">
-                                                            <a href="javascript:void(0)">
+                                                            <a href="${pageContext.request.contextPath}/detail/detailIndex.do?goods_id=${goods1.goods_id}">
                                                                 <img class="primary-image"
                                                                      style="max-width:100%;height:100%;margin:0 auto;display: block;"
                                                                      src="${goods1.goods_img}"
@@ -278,7 +278,7 @@
                                                         </div>
                                                         <div class="product-content text-center">
                                                             <h3>${goods1.goods_name}</h3>
-                                                            <h4><a href="javascript:void(0)">点击查看</a></h4>
+                                                            <h4><a href="${pageContext.request.contextPath}/detail/detailIndex.do?goods_id=${goods1.goods_id}">点击查看</a></h4>
                                                         </div>
                                                         <div class="product-action">
                                                             <ul>
