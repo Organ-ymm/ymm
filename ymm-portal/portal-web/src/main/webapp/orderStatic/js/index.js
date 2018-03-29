@@ -31,7 +31,7 @@ function SetTotalMoney() {
 //     var b=$("#checkoutAddrList").find(".selected").parents('.item').children('.addressNo');
 //     alert(b);
 // };
-$("#checkoutToPay").on("click",function(){
+$("#checkoutToPay").on("click",function(){//TODO
     var $addressItem=$('.addressItem');
     $addressItem.each(function(){
         // alert(2);
