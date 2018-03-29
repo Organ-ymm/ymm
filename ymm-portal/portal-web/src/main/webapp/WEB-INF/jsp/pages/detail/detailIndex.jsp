@@ -564,7 +564,8 @@
 
 <div class="w">
     <div id="logo-2014">
-        <a href="//www.jd.com/" class="logo" clstag="shangpin|keycount|topitemnormal|d01">ymm</a>
+        <%--<a href="//www.jd.com/" class="logo" clstag="shangpin|keycount|topitemnormal|d01"></a>--%>
+        <img src="/ymm/portal/images/logo/logo.png" alt="SHOPPPIE">
         <div class="extra">
             <div id="channel"></div>
             <div id="categorys-mini">
@@ -1045,7 +1046,7 @@
         </div>
         <div class="itemInfo-wrap">
             <div class="sku-name">
-                <img src="picture/5860da3ene40e081e.png" alt="京东精选" />
+                <img src="/ymm/portal/images/logo/logo.png" alt="精选">/>
                 ${goods.goods_name}                </div>
             <div class="news">
                 <div class="item hide" id="p-ad" clstag="shangpin|keycount|product|slogana" data-hook="hide"></div>
@@ -1936,7 +1937,7 @@
 
     function toCart() {
         $.ajax({
-           
+
             type:"POST",
             url:"${pageContext.request.contextPath}/cart/addCart",
             dataType:"text",
