@@ -903,7 +903,6 @@
     <div class="w">
         <div class="crumb fl clearfix">
             <div class="item first"><a href='//diannao.jd.com' clstag="shangpin|keycount|product|mbNav-1">电脑、办公</a></div>
-            <div class="item sep">&gt;</div>
             <div class="item">
                 <div class="J-crumb-br crumb-br EDropdown">
                     <div class="inner border">
@@ -1600,7 +1599,7 @@
                             <%--<li title='小于5小时'>待机时长：小于5小时</li>--%>
                             <%--<li title='Intel i7标准电压版'>处理器：Intel i7标准电压版</li>
                             <li title='机械键盘，背光键盘'>特性：机械键盘，背光键盘</li>--%>
-                            <li title='机械革命 - 深海泰坦'>系列：机械革命 - 深海泰坦</li>
+                            <li title='机械革命 - 深海泰坦'>系列：${goods.goods_name}</li>
                             <li title='大于2.5KG'>裸机重量：大于2.5KG</li>
                             <li title='高性能游戏独立显卡'>显卡类别：高性能游戏独立显卡</li>
                             <li title='4G'>显存容量：4G</li>
@@ -1936,14 +1935,15 @@
 
 
     function toCart() {
+        alert("添加成功");
         $.ajax({
 
             type:"POST",
             url:"${pageContext.request.contextPath}/cart/addCart",
-            dataType:"text",
-            data:[${goods.goods_id},$("#buy-num").val()],
-            success:function(data){
-                alert("添加成功");
+            dataType:"json",
+            data:[{'goods_id':${goods.goods_id}},{'num':$("#buy-num").val()}],
+            success:function(res){
+
             }
         });
     }
