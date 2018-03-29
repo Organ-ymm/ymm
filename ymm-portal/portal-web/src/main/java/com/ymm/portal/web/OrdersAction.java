@@ -43,6 +43,7 @@ public class OrdersAction {
         }
         return "pages/orders/submitOrder";
     }*/
+
     @RequestMapping(value = "/submitOrder",method = RequestMethod.POST)
     public String addOrder(@Param("order") Orders order, HttpSession session){
         Users user1=new Users();

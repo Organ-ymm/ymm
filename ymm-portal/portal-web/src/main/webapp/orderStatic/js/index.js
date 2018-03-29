@@ -76,6 +76,7 @@ $("#checkoutToPay").on("click",function(){
     if(0<b){
         var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
         alert(address_id);
+        alert();
         /*var order_money=$('[name="order_money"]').val();
         $.ajax({
             data:{"address_id":address_id,"order_money":order_money},

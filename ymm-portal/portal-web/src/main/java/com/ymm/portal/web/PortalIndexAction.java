@@ -29,7 +29,7 @@ public class PortalIndexAction {
         List<Goods> list2 = goodsService.listHotGoods(2);
         model.addAttribute("hot1",list1);
         model.addAttribute("hot2",list2);
-        return "index11";
+        return "index";
     }
 
     @RequestMapping(value="/{page}",method= RequestMethod.GET)

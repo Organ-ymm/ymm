@@ -64,7 +64,7 @@ public class CartAction {
                     cartPra.setGoods_id(goods_id);
                     cartPra.setAmount(amount);
                     CartCustom cartCustom=cartService.findItem(cartPra);
-                    customCartList.add(cartCustom);
+                    customCartList.add(cartCustom);//遍历出所有该游客的购物车信息,放入model中，返回前台页面
                 }
                 model.addAttribute("customCartList",customCartList);
             }else{//游客登录，购物车为空
@@ -84,15 +84,34 @@ public class CartAction {
         user1.setUser_id(1);
         session.setAttribute("user",user1);
 
-        int i= 0;
-        int[] ids={goods_id};
         Users user= (Users) session.getAttribute("user");
-        try {
-            i = cartService.delCart(ids,user.getUser_id());
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(user!=null) {//网站用户登录
+            int i = 0;
+            int[] ids = {goods_id};
+            try {
+                i = cartService.delCart(ids, user.getUser_id());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return i;
+        }else{//游客登录
+            Map<Integer,Integer> visitorCart=null;
+            visitorCart= (Map<Integer, Integer>) session.getAttribute("visitorCart");
+            Set<Map.Entry<Integer, Integer>> s = visitorCart.entrySet();
+            Iterator<Map.Entry<Integer, Integer>> it = s.iterator();
+            while(it.hasNext()) {
+                Map.Entry<Integer, Integer> entry = it.next();
+                Integer good_id = entry.getKey();
+                if(good_id.equals(goods_id)){
+                    it.remove();
+                }
+            }
+            session.setAttribute("visitorCart", visitorCart);
+            if(visitorCart==null||visitorCart.size()==0){
+                session.removeAttribute("visitorCart");
+            }
+            return 1;
         }
-        return i;
     }
 
     /*
@@ -105,15 +124,35 @@ public class CartAction {
         user1.setUser_id(1);
         session.setAttribute("user",user1);
 
-        int i=0;
         Users user= (Users) session.getAttribute("user");
-        int user_id=user.getUser_id();
-        try {
-            i = cartService.updateAmount(goods_id,amount,user_id);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(user!=null) {//网站用户登录
+            int i = 0;
+            int user_id = user.getUser_id();
+            try {
+                i = cartService.updateAmount(goods_id, amount, user_id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return i;
+        }else{//游客登录
+            Map<Integer,Integer> visitorCart=null;
+            visitorCart= (Map<Integer, Integer>) session.getAttribute("visitorCart");
+            for (Integer good_id : visitorCart.keySet()) {
+                if (good_id.equals(goods_id)) {
+                    visitorCart.put(goods_id, amount);
+                }
+            }
+            session.setAttribute("visitorCart", visitorCart);
+//            Set<Map.Entry<Integer, Integer>> set=visitorCart.entrySet();
+//            Iterator<Map.Entry<Integer, Integer>> iterator=set.iterator();
+//            while(iterator.hasNext()){
+//                Map.Entry<Integer, Integer> it=iterator.next();
+//                if(it.getKey().equals(goods_id)){//购物车有该商品
+//                    it.setValue(amount);
+//                }
+//            }
+            return 1;
         }
-        return i;
     }
 
     /*
