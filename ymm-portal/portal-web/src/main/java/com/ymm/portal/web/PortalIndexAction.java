@@ -23,7 +23,7 @@ public class PortalIndexAction {
     @Autowired
     private GoodsService goodsService;
 
-    @RequestMapping(value="/index11",method= RequestMethod.GET)
+    @RequestMapping(value="/index",method= RequestMethod.GET)
     public String indexshow(Model model){
         List<Goods> list1 = goodsService.listHotGoods(1);
         List<Goods> list2 = goodsService.listHotGoods(2);
