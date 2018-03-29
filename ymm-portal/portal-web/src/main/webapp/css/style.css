@@ -815,6 +815,8 @@ a.shop-button {
 .single-product {
     margin-bottom: 20px;
     margin-top: 50px;
+    width: 210px;
+    height: 210px;
     position: relative;
 }
 .pro-price {
