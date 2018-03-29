@@ -44,46 +44,51 @@
 
     <div class="cartBox">
         <div class="order_content">
-            <c:forEach items="${customCartList}" var="good">
-                <ul class="order_lists">
-                    <li class="list_chk">
-                        <input type="hidden" name="goods_id" value="${good.goods_id}">
-                        <input type="checkbox" id="${good.goods_id}" class="son_check">
-                        <label for="${good.goods_id}"></label>
-                    </li>
-                    <li class="list_con">
-                        <div class="list_img"><a href="javascript:;"><img src="${good.goods_thumb}" title="${good.goods_name}"></a></div>
-                        <div class="list_text"><a href="javascript:;">${good.goods_brief}</a></div>
-                    </li>
-                    <li class="list_info">
-                        <p>${good.goods_sn}</p>
-                    </li>
-                    <li class="list_price">
-                        <p class="priceP">￥<span class="price">${good.shop_price}</span></p>
-                    </li>
-                    <li class="list_amount">
-                        <div class="amount_box">
-                            <a href="javascript:;" class="reduce reSty">-</a>
-                            <input type="text" value="${good.amount}" class="sum" readonly>
-                            <a href="javascript:;" class="plus">+</a>
-                        </div>
-                    </li>
-                    <%--<li class="list_store">
-                        <c:if test="${good.goods_number>=10}">
-                            <p class="price">有货</p>
-                        </c:if>
-                        <c:if test="${good.goods_number<10}">
-                            <p class="price">库存紧张</p>
-                        </c:if>
-                    </li>--%>
-                    <li class="list_sum" style="color: red">
-                        <p class="myP">￥<span class="sum_price">${good.subTotal}</span></p>
-                    </li>
-                    <li class="list_op">
-                        <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
-                    </li>
-                </ul>
-            </c:forEach>
+            <c:if test="${empty customCartList}">
+                <h3 style="color: #999">您的购物车里还没有添加任何商品</h3>
+            </c:if>
+            <c:if test="${!empty customCartList}">
+                <c:forEach items="${customCartList}" var="good">
+                    <ul class="order_lists">
+                        <li class="list_chk">
+                            <input type="hidden" name="goods_id" value="${good.goods_id}">
+                            <input type="checkbox" id="${good.goods_id}" class="son_check">
+                            <label for="${good.goods_id}"></label>
+                        </li>
+                        <li class="list_con">
+                            <div class="list_img"><a href="javascript:;"><img src="${good.goods_thumb}" title="${good.goods_name}"></a></div>
+                            <div class="list_text"><a href="javascript:;">${good.goods_brief}</a></div>
+                        </li>
+                        <li class="list_info">
+                            <p>${good.goods_sn}</p>
+                        </li>
+                        <li class="list_price">
+                            <p class="priceP">￥<span class="price">${good.shop_price}</span></p>
+                        </li>
+                        <li class="list_amount">
+                            <div class="amount_box">
+                                <a href="javascript:;" class="reduce reSty">-</a>
+                                <input type="text" value="${good.amount}" class="sum" readonly>
+                                <a href="javascript:;" class="plus">+</a>
+                            </div>
+                        </li>
+                            <%--<li class="list_store">
+                                <c:if test="${good.goods_number>=10}">
+                                    <p class="price">有货</p>
+                                </c:if>
+                                <c:if test="${good.goods_number<10}">
+                                    <p class="price">库存紧张</p>
+                                </c:if>
+                            </li>--%>
+                        <li class="list_sum" style="color: red">
+                            <p class="myP">￥<span class="sum_price">${good.subTotal}</span></p>
+                        </li>
+                        <li class="list_op">
+                            <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
+                        </li>
+                    </ul>
+                </c:forEach>
+            </c:if>
         </div>
     </div>
 

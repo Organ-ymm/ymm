@@ -206,9 +206,8 @@
                                 <c:forEach items="${addressList}" var="address" varStatus="vs">
                                     <dl class="item">
                                         <div class="addressItem" >
-                                            <%--<input type="radio" value="${vs.count}" name="son_check" class="son_check">--%>
                                             <dt>
-                                                <%--<input type="hidden" name="addressNo" class="addressNo" value=${vs.count}/>--%>
+                                                <input type="hidden" name="addressNo" id="addressNo" class="addressNo" value=${address.address_id} />
                                                 <strong class="itemConsignee">${address.consignee}</strong>
                                                 <span class="itemTag tag">${address.tag}</span>
                                             </dt>
@@ -549,7 +548,7 @@
                     <div class="checkout-confirm">
 
                         <a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
-                        <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" /><%--TODO--%>
+                        <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" />
                     </div>
                 </div>
 

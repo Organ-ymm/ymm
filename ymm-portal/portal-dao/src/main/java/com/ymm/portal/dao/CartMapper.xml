@@ -25,7 +25,10 @@
         <include refid="union_column"/>
         from cart c left join goods g
         on c.goods_id=g.goods_id
-        where c.goods_id=#{goods_id} and c.user_id=#{user_id}
+        where c.goods_id=#{goods_id}
+        <if test="user_id!=null and user_id!=''">
+          and c.user_id=#{user_id}
+        </if>
     </select>
 
     <delete id="delCart" parameterType="com.ymm.portal.pojo.po.Cart">

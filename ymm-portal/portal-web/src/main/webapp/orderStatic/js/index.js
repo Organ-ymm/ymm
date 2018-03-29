@@ -22,6 +22,7 @@ function SetTotalMoney() {
     $subTotal.each(function () {
         var subMoney=parseFloat($(this).parents('.item-row').find('[name="subTotal"]').html());
         totalMoney += subMoney;
+        //alert(totalMoney);
     });
     //console.log(totalMoney);
     $('.totalPrice').html(totalMoney);//确认订单的总金额显示
@@ -31,7 +32,7 @@ function SetTotalMoney() {
 //     var b=$("#checkoutAddrList").find(".selected").parents('.item').children('.addressNo');
 //     alert(b);
 // };
-// $("#checkoutToPay").on("click",function(){//TODO
+// $("#checkoutToPay").on("click",function(){
 //     var $addressItem=$('.addressItem');
 //     //var $sonCheckBox=$('.son_check');
 //
@@ -46,26 +47,46 @@ function SetTotalMoney() {
 //         }
 //     });
 // });
-function addressSele(){//TODO
-    //var $checkoutAddrList = $('#checkoutAddrList');
-    var $addressItem=$('.addressItem');
-    // $checkoutAddrList.each(function(){
-    $addressItem.each(function(){
-        alert(2);
-        debugger;
-        if ($(this).is(":checked")) {
-            debugger;
-            alert(3);
-            // var id=$(this).parents('.item').children('.addressNo').val();
-            // alert(id);
-        }
-    });
-    /*$(".addressItem").click(function(){
-        var id=$(this).parents('.item').children('[name="addressNo"]').val();
-        console.log(typeof id);
-        alert(id);
-    });*/
-};
+// function addressSele(){
+//     //var $checkoutAddrList = $('#checkoutAddrList');
+//     var $addressItem=$('.addressItem');
+//     // $checkoutAddrList.each(function(){
+//     $addressItem.each(function(){
+//         alert(2);
+//         debugger;
+//         if ($(this).is(":checked")) {
+//             debugger;
+//             alert(3);
+//             // var id=$(this).parents('.item').children('.addressNo').val();
+//             // alert(id);
+//         }
+//     });
+//     /*$(".addressItem").click(function(){
+//         var id=$(this).parents('.item').children('[name="addressNo"]').val();
+//         console.log(typeof id);
+//         alert(id);
+//     });*/
+// };
+$("#checkoutToPay").on("click",function(){
+    var b=$("#checkoutAddrList").find(".selected").length;
+    //var addressNo=0;
+    /*if(0>=b){
+        alert("请选择地址");
+    }*/
+    if(0<b){
+        var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
+        alert(address_id);
+        /*var order_money=$('[name="order_money"]').val();
+        $.ajax({
+            data:{"address_id":address_id,"order_money":order_money},
+            dataType:"text",
+            type:"POST",
+            url:"../../portal/orders/submitOrder"
+        });*/
+    }
+    //alert(order_money);
+
+});
 function SetShortCutEffect(){
     $('.shortcut_v2013').find(".menu").hover(function(){
         $(this).addClass('hover');

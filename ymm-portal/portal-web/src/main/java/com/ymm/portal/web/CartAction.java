@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Description:
@@ -38,22 +36,42 @@ public class CartAction {
      */
     //@ResponseBody
     @RequestMapping(value="/listCustomCart",method= RequestMethod.GET)
-    public String listCustomCart(HttpSession session,Model model){
+    public String listCustomCart(HttpSession session, Model model){
         Users user1=new Users();
         user1.setUser_id(1);
         session.setAttribute("user",user1);
 
 
+        //HttpSession session = request.getSession();
         Users user= (Users) session.getAttribute("user");
         if(user!=null){//网站用户登录
             int user_id=user.getUser_id();
             List<CartCustom> customCartList = cartService.listCustomCart(user_id);
             model.addAttribute("customCartList",customCartList);
-            return "pages/cart/cartlist";
+            //return "pages/cart/cartlist";
         }else{//游客登录
-            //Cart visitorCart=session.getAttribute("visitorCart");
-            return "";
+            Map<Integer,Integer> visitorCart=new HashMap<>();
+            visitorCart = (Map<Integer, Integer>) session.getAttribute("visitorCart");
+            if(visitorCart!=null && visitorCart.size()>0) {//游客登录，购物车不为空
+                List<CartCustom> customCartList = new ArrayList<>();
+                Set<Map.Entry<Integer, Integer>> set=visitorCart.entrySet();
+                Iterator<Map.Entry<Integer, Integer>> iterator=set.iterator();
+                while(iterator.hasNext()){
+                    Map.Entry<Integer, Integer> it=iterator.next();
+                    int goods_id=it.getKey();
+                    int amount=it.getValue();
+                    CartCustom cartPra=new CartCustom();
+                    cartPra.setGoods_id(goods_id);
+                    cartPra.setAmount(amount);
+                    CartCustom cartCustom=cartService.findItem(cartPra);
+                    customCartList.add(cartCustom);
+                }
+                model.addAttribute("customCartList",customCartList);
+            }else{//游客登录，购物车为空
+                model.addAttribute("customCartList",null);
+            }
         }
+        return "pages/cart/cartlist";
     }
 
     /*
@@ -114,7 +132,11 @@ public class CartAction {
             int user_id = user.getUser_id();
             CartCustom cart = null;
             try {//先查询该用户的购物车内是否有该商品
-                cart = cartService.findItem(user_id, goods_id);
+                CartCustom cartPra=new CartCustom();
+                cartPra.setUser_id(user_id);
+                cartPra.setGoods_id(goods_id);
+//                cart = cartService.findItem(user_id, goods_id);
+                cart = cartService.findItem(cartPra);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -136,10 +158,24 @@ public class CartAction {
         }else{//游客登录
             Map<Integer,Integer> visitorCart=new HashMap<>();
             visitorCart= (Map<Integer, Integer>) session.getAttribute("visitorCart");
-            if(visitorCart!=null){
-                //for()
-            }else{
+            if(visitorCart!=null && visitorCart.size()>0){//游客登录，购物车不为空
+                Set<Map.Entry<Integer, Integer>> set=visitorCart.entrySet();
+                Iterator<Map.Entry<Integer, Integer>> iterator=set.iterator();
+                boolean hasPro = false;
+                while(iterator.hasNext()){
+                    Map.Entry<Integer, Integer> it=iterator.next();
+                    if(it.getKey().equals(goods_id)){//购物车有该商品
+                        it.setValue(amount+it.getValue());
+                        hasPro=true;
+                    }
+                }
+                if (!hasPro) {//购物车内没有该商品
+                    visitorCart.put(goods_id, amount);
+                }
 
+            }else{//游客登录，购物车为空
+                visitorCart.put(goods_id, amount);
+                session.setAttribute("visitorCart", visitorCart);
             }
             return 1;
         }
@@ -156,20 +192,23 @@ public class CartAction {
         session.setAttribute("user",user1);
 
         Users user= (Users) session.getAttribute("user");
-        if(user!=null) {
+        if(user!=null) {//用户登录，前往结算页
         int user_id=user.getUser_id();
             List<CartCustom> orderItem = new ArrayList<>();
             String[] goods_ids = ids.split("[,]");
             for (int i = 0; i < goods_ids.length; i++) {
                 int goods_id = Integer.parseInt(goods_ids[i]);
-                CartCustom cart = cartService.findItem(user_id, goods_id);
+                CartCustom cartPra=new CartCustom();
+                cartPra.setUser_id(user_id);
+                cartPra.setGoods_id(goods_id);
+                CartCustom cart = cartService.findItem(cartPra);
                 orderItem.add(cart);
             }
             List<Address> addressList = addressService.listAddress(user_id);
             model.addAttribute("orderItem", orderItem);
             model.addAttribute("addressList", addressList);
             return "pages/orders/confirmOrder";
-        }else{
+        }else{//游客登录，前往跳转登录页
             return "loginTip";
         }
     }

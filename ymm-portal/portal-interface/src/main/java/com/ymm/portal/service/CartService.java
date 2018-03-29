@@ -36,13 +36,19 @@ public interface CartService {
      */
     int updateAmount(int goods_id, int amount, int user_id);
 
+//    /**
+//     *
+//     * @param user_id 当前用户id
+//     * @param goods_id 要加入购物车的商品id
+//     * @return 购物车中已有的记录
+//     */
+//    CartCustom findItem(int user_id, int goods_id);
     /**
      *
-     * @param user_id 当前用户id
-     * @param goods_id 要加入购物车的商品id
+     * @param cartPra 包含user_id和goods_id
      * @return 购物车中已有的记录
      */
-    CartCustom findItem(int user_id, int goods_id);
+    CartCustom findItem(CartCustom cartPra);
 
     /**
      *

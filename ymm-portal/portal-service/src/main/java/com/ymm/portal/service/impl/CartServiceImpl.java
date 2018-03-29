@@ -73,18 +73,31 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public CartCustom findItem(int user_id, int goods_id) {
+    public CartCustom findItem(CartCustom cartPra) {
         CartCustom cart=null;
         try {
-            CartCustom cartPar=new CartCustom();
-            cartPar.setUser_id(user_id);
-            cartPar.setGoods_id(goods_id);
-            cart = cartMapper.findItem(cartPar);
+//            CartCustom cartPar=new CartCustom();
+//            cartPar.setUser_id(user_id);
+//            cartPar.setGoods_id(goods_id);
+            cart = cartMapper.findItem(cartPra);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return cart;
     }
+//    @Override
+//    public CartCustom findItem(int user_id, int goods_id) {
+//        CartCustom cart=null;
+//        try {
+//            CartCustom cartPar=new CartCustom();
+//            cartPar.setUser_id(user_id);
+//            cartPar.setGoods_id(goods_id);
+//            cart = cartMapper.findItem(cartPar);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return cart;
+//    }
 
     @Override
     public int addCart(int goods_id, int amount, int user_id) {

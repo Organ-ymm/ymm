@@ -26,13 +26,13 @@
                 //设置定时器，timer就表示该定时器
                 timer = setTimeout(desc,1000);
             }else{
-                location.href = "${pageContext.request.contextPath}/"; /*TODO*/
+                location.href = "${pageContext.request.contextPath}/pages/user/login"; /*前往登录页面*/
             }
         }
         function clearTimer(){
             //清除定时器
             clearTimeout(timer);
-            location.href = "${pageContext.request.contextPath}/"; /*TODO*/
+            location.href = "${pageContext.request.contextPath}/pages/user/login"; /*前往登录页面*/
         }
 
     </script>
