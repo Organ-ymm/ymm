@@ -75,17 +75,16 @@ $("#checkoutToPay").on("click",function(){
     }*/
     if(0<b){
         var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
-        var orderMoney=parseFloat($('[name="order_money"]').val());
-        //alert(address_id);
-        //alert(orderMoney);
+        //alert($('.totalPrice').html());
+        var orderMoney=parseFloat($('.totalPrice').html()-0);
 
         $.ajax({
             data:{"address_id":address_id,"order_money":orderMoney},
             dataType:"text",
             type:"POST",
             url:"../../portal/orders/submitOrder",
-            success:function () {
-                location.href="../../portal/pages/orders/submitOrder";
+            success:function (order_id) {
+                location.href="../../portal/pages/orders/submitOrder?order_id="+order_id;
             }
         });
     }

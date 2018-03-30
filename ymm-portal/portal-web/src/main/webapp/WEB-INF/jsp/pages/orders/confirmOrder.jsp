@@ -223,11 +223,12 @@
                                         </div>
                                     </dl>
                                 </c:forEach>
-                                <input type="hidden" name="receiver_address"
+                                <%--<input type="hidden" name="receiver_address"
                                        value="${addressList[0].province}${addressList[0].city}${addressList[0].county}${addressList[0].street}(${addressList[0].zipcode})"/>
                                 <input type="hidden" name="receiver_name" value="${addressList[0].consignee}" />
                                 <input type="hidden" name="receiver_phone" value="${addressList[0].phone}" />
-                                <input type="hidden"  name="order_money" />
+                                <input type="hidden"  name="order_money" />--%>
+
                                 <%--<c:forEach items="${orderItem}" var="good" begin="1" end="${orderItem }">
                                     <div class="col col-4" id="subTotal" name="subTotal">${good.subTotal}</div>
                                 </c:forEach>--%>

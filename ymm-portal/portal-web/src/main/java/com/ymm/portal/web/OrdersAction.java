@@ -68,12 +68,16 @@ public class OrdersAction {
         order.setReceiver_name(address.getConsignee());
         order.setReceiver_address(address.getProvince()+address.getCity()+address.getCounty()+address.getStreet()+" 邮编："+address.getZipcode());
         order.setReceiver_phone(address.getPhone());
+        long order_id;
         try {
-            orderService.addOrder(order);
+            int i=orderService.addOrder(order);
+            if(i>0){
+                order_id=order.getOrder_id();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "";
+        return "order_id";
     }
 
 }
