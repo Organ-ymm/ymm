@@ -200,6 +200,7 @@
                     <div class="xm-box">
                         <div class="box-hd ">
                             <h2 class="title">收货地址</h2>
+                            <input type="hidden" name="address_id"/>
                         </div>
                         <div class="box-bd">
                             <div class="clearfix xm-address-list" id="checkoutAddrList">
@@ -207,7 +208,7 @@
                                     <dl class="item">
                                         <div class="addressItem" >
                                             <dt>
-                                                <input type="hidden" name="addressNo" id="addressNo" class="addressNo" value=${address.address_id} />
+                                                <input type="hidden" id="addressNo" value=${address.address_id} />
                                                 <strong class="itemConsignee">${address.consignee}</strong>
                                                 <span class="itemTag tag">${address.tag}</span>
                                             </dt>
@@ -444,7 +445,7 @@
                                         <c:forEach items="${orderItem}" var="good">
                                             <dd class="item clearfix">
                                                 <div class="item-row">
-
+                                                    <input type="hidden" name="goods_id" value="${good.goods_id}"/>
                                                     <div class="col col-1">
                                                         <div class="g-pic">
                                                             <img src="${good.goods_thumb}" title="${good.goods_name}">
@@ -458,7 +459,7 @@
                                                     </div>
 
                                                     <div class="col col-2">${good.shop_price}</div>
-                                                    <div class="col col-3">${good.amount}</div>
+                                                    <div class="col col-3" name="amount">${good.amount}</div>
                                                     <div class="col col-4" name="subTotal">${good.subTotal}</div>
 
                                                 </div>
