@@ -21,11 +21,11 @@ status int(1) NULL状态：0删除，1正常-->
         SELECT username FROM users WHERE username = #{username} OR mobile_phone = #{mobile_phone}
     </select>
 
-    <select id="checkLogin" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Users">
+    <!--<select id="checkLogin" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Users">
         SELECT <include refid="baseSql"/>
         FROM users
         WHERE username = #{username} and password = #{password}
-    </select>
+    </select>-->
 
     <select id="checkOldPass" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Users">
         SELECT <include refid="baseSql"/>
@@ -39,4 +39,24 @@ status int(1) NULL状态：0删除，1正常-->
         VALUES (#{email},#{username},#{password},#{alias},#{sex},#{birthday},#{rank_points},
         #{rank_id},#{reg_time},#{mobile_phone},#{status})
     </insert>
+
+    <sql id="allBaseSql">
+        u.user_id,u.email,u.username,u.password,u.alias,u.sex,u.birthday,u.rank_points,u.rank_id,u.reg_time,u.mobile_phone,u.status,
+        a.address_id,  a.zipcode, a.user_id, a.consignee, a.province, a.city, a.county, a.street, a.phone,  a.tag ,
+        c.cart_id ,c.user_id  ,c.session_id ,c.goods_id  ,c.goods_sn  ,c.product_id  ,c.goods_name  ,c.market_price  ,c.goods_price  ,c.goods_number  ,c.goods_attr,
+        o.order_id  ,o.user_id  ,o.receiver_name  ,o.receiver_address ,o.receiver_phone ,o.order_time ,o.order_money  ,o.pay_status  ,o.deliver_status
+    </sql>
+    <!--关联查询用户所有信息-->
+    <select id="checkLogin" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Users">
+        SELECT <include refid="allBaseSql"/>
+        FROM users u
+        LEFT JOIN address a ON u.user_id = a.address_id
+        LEFT JOIN cart c ON u.user_id = c.cart_id
+        LEFT JOIN order o ON u.user_id = o.order_id
+        WHERE u.username = #{username} and u.password = #{password}
+    </select>
+
+
+
+
 </mapper>

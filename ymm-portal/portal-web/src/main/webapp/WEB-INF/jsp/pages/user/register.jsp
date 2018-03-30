@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-    <a href="#" class="logo">
+    <a href="${pageContext.request.contextPath}/index11" class="logo">
         <img style="width: 100%;height: 100%" src="${pageContext.request.contextPath}//images/logo/logo.png">
     </a>
     <div class="desc">欢迎注册</div>

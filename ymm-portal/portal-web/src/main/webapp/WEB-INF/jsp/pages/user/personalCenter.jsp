@@ -105,7 +105,7 @@
                         <div class="box-bd">
                             <div class="portal-main clearfix">
                                 <div class="user-card">
-                                    <h2 class="username">用户名${user.username}</h2>
+                                    <h2 class="username">${user.username}</h2>
                                     <p class="tip">下午好～</p>
                                     <a class="link" href="https://account.xiaomi.com/pass/userInfo" target="_blank">修改个人信息 &gt;</a>
                                     <img class="avatar" src="picture/avna8j0kgin8eh_320.jpg" width="150" height="150" alt="头像" />
@@ -113,9 +113,9 @@
                                 <div class="user-actions">
                                     <ul class="action-list">
                                         <li>账户安全：<span class="level level-3">较高</span></li>
-                                        <li>绑定手机：<span class="tel">133********71</span></li>
+                                        <li>绑定手机：<span class="tel">${user.mobile_phone}</span></li>
 
-                                        <li>绑定邮箱：<span class="tel">49******1@q*.com</span></li>
+                                        <li>绑定邮箱：<span class="tel">${user.email}</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -224,50 +224,9 @@
     </div>
 </div>
   <script src="js/base.min.js"></script>
-
+    <script src="${pageContext.request.contextPath}/userStatic/js/personalCenter.js"/>
 <%--修改密码--%>
 
-<script>
-    (function() {
-        MI.namespace('GLOBAL_CONFIG');
-        MI.GLOBAL_CONFIG = {
-            orderSite: 'https://order.mi.com',
-            wwwSite: '//www.mi.com',
-            cartSite: '//cart.mi.com',
-            itemSite: '//item.mi.com',
-            assetsSite: '//s01.mifile.cn',
-            listSite: '//list.mi.com',
-            searchSite: '//search.mi.com',
-            mySite: '//my.mi.com',
-            damiaoSite: 'http://tp.hd.mi.com/',
-            damiaoGoodsId:[],
-            logoutUrl: 'https://order.mi.com/site/logout',
-            staticSite: '//static.mi.com',
-            quickLoginUrl: 'https://account.xiaomi.com/pass/static/login.html'
-        };
-        MI.setLoginInfo.orderUrl = MI.GLOBAL_CONFIG.orderSite + '/user/order';
-        MI.setLoginInfo.logoutUrl = MI.GLOBAL_CONFIG.logoutUrl;
-        MI.setLoginInfo.init(MI.GLOBAL_CONFIG);
-        MI.miniCart.init();
-        MI.updateMiniCart();
-    })();
-</script>
-
-<script type="text/javascript" src="js/user.min.js"></script>
-
-<script>
-    var _msq = _msq || [];
-    _msq.push(['setDomainId', 100]);
-    _msq.push(['trackPageView']);
-    (function() {
-        var ms = document.createElement('script');
-        ms.type = 'text/javascript';
-        ms.async = true;
-        ms.src = '//s1.mi.com/stat/18/xmst.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ms, s);
-    })();
-</script>
 </body>
 </html>
 

@@ -32,7 +32,7 @@
 
 <div id="header">
     <%--<jsp:include page="top.jsp"/>--%>
-    <a href="#" class="logo">
+    <a href="${pageContext.request.contextPath}/index11" class="logo">
         <img  style="width: 160px;height: 60px;" src="${pageContext.request.contextPath}/images/logo/logo.png">
     </a>
 </div>
@@ -74,8 +74,8 @@
                         <div class="form-error" style=""><i></i><label class="text"></label></div>
                         <dl class="clearfix">
                             <dt>账户名：</dt>
-                            <dd><input type="text" name="username" id="normalUser" class="input-text"
-                                       autocomplete="off"/><span class="placeholder">用户名/邮箱/手机号</span></dd>
+                            <dd><input type="text" value="" name="username" id="normalUser" class="input-text" placeholder="用户名/邮箱/手机号"
+                                       autocomplete="off" /><%--<span class="placeholder" >用户名/邮箱/手机号</span>--%></dd>
                         </dl>
                         <dl class="top1 clearfix">
                             <dt>密<em></em>码：</dt>
@@ -229,7 +229,7 @@
                 if (rec == "0") {
                     showError("用户名或密码错误");
                 } else {
-                    window.location.href="${pageContext.request.contextPath}/index";
+                    window.location.href="${pageContext.request.contextPath}/index11";
                 }
             }
         });
