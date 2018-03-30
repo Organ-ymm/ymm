@@ -13,4 +13,6 @@ import java.util.List;
  */
 public interface OrdersService {
     int addOrder(Orders order);
+
+    Orders selectOrderById(long order_id);
 }

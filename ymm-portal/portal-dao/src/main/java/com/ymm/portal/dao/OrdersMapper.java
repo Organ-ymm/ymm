@@ -9,4 +9,6 @@ import com.ymm.commons.pojo.po.Orders;
  */
 public interface OrdersMapper {
     int addOrder(Orders order);
+
+    Orders selectOrderById(long order_id);
 }

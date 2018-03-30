@@ -12,7 +12,7 @@ $(document).ready(function(){
     SetFixedSearch();//固定顶部搜索
 	//SetClassify();//设置顶部商品分类菜单的显示与隐藏
     SetTotalMoney();//总金额的计算
-    //addressSele();//地址的选择
+    getAddress();//订单提交页的地址显示
 });
 
 function SetTotalMoney() {
@@ -79,8 +79,12 @@ $("#checkoutToPay").on("click",function(){
             dataType:"text",
             type:"POST",
             url:"../../portal/orders/submitOrder",
-            success:function (order_id) {
-                location.href="../../portal/pages/orders/submitOrder?order_id="+order_id;
+            success:function (data) {
+                if(data>0){
+                    location.href="../../portal/pages/orders/submitOrder";
+                }else{
+                    location.href="../../portal/404";
+                }
             }
         });
     }
@@ -93,7 +97,17 @@ function SetShortCutEffect(){
         $(this).removeClass('hover');
     });
 };
+function getAddress(){
+    $.ajax({
+        //data:"",
+        dataType:"text",
+        type:"POST",
+        url:"../../portal/address/getAddress",
+        success:function (order_id) {
 
+        }
+    });
+}
 function SetCartEffect(){
     $("#cart_box").hover(
         function(){
