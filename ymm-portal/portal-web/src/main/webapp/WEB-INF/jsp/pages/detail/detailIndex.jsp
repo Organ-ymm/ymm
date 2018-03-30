@@ -462,6 +462,9 @@
         var __FE_Monitor_Config = { sid: 'item', browsers: [ 'chrome' ] };
     </script>
     <script src="js/28ab72bf8893457eb921697d2ce893e2.js"></script>
+    <%--<script type="text/javascript" src="jquery.js"></script>--%>
+    <%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>--%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/userStatic/js/jquery-1.9.1.js"></script>
 
     <script>
         seajs.config({
@@ -800,7 +803,7 @@
                         <div class="sh-hd-wrap">
                             <ul class="menu-list">
                                 <li class="menu">
-                                    <a class="main-link" style="font-weight: bold;color: #ffffff" href="//mall.jd.com/index-1000000948.html" target="_self" clstag="jshopmall|keycount|1000000948|xdpdh">首页</a>
+                                    <a class="main-link" style="font-weight: bold;color: #ffffff" href="${pageContext.request.contextPath}/index" target="_self" clstag="jshopmall|keycount|1000000948|xdpdh">首页</a>
                                 </li>
                                 <li class="menu" clstag="jshopmall|keycount|1000000948|xdpdh1">
                                     <a style="color: #ffffff" class="main-link"  target="_blank"  href="${pageContext.request.contextPath}/index1">全部商品</a>
@@ -1330,7 +1333,7 @@
                     <!--<a id="choose-btn-gift" class="btn-special1 btn-lg" style="display:none;" href="//cart.gift.jd.com/cart/addGiftToCart.action?pid=5167978&pcount=1&ptype=1" class="btn-gift" clstag="shangpin|keycount|product|选作礼物购买_1"><b></b>选作礼物购买</a>-->
 
                     <%--<a href="#none" id="btn-heyue" class="btn-special1 btn-lg" style="display:none;" clstag="shangpin|keycount|product|选择号码和套餐_1">选择号码和套餐</a>--%>
-                    <a href="javascript:void(0);" onclick="toCart()" id="InitCartUrl" class="btn-special1 btn-lg "  clstag="shangpin|keycount|product|加入购物车_1">加入购物车</a>
+                    <a href="javascript:void(0);" onclick="toCart(${goods.goods_id})" id="InitCartUrl" class="btn-special1 btn-lg">加入购物车</a>
                     <%--<a href="#none" id="btn-baitiao" class="btn-special2 btn-lg" style="display:none;" clstag="shangpin|keycount|product|dabaitiaobutton_670_671_1105">打白条</a>--%>
                     <%--<a href="//jc.jd.com" target="_blank" id="btn-jincai" class="btn-special2 btn-lg" style="display: none;" clstag="shangpin|keycount|product|jincai_1">使用金采</a>--%>
 
@@ -1934,14 +1937,16 @@
     });
 
 
-    function toCart() {
-        alert("添加成功");
-        $.ajax({
+    function toCart(a) {
 
-            type:"POST",
+        alert("添加成功");
+        alert(goods_id);
+        alert(amount);
+        $.ajax({
             url:"${pageContext.request.contextPath}/cart/addCart",
-            dataType:"json",
-            data:[{'goods_id':${goods.goods_id}},{'num':$("#buy-num").val()}],
+            type:"POST",
+            dataType:"text",
+            data:{'goods_id':goods_id,'amount':amount},
             success:function(res){
 
             }
