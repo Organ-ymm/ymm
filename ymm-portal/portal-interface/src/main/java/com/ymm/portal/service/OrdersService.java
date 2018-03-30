@@ -12,5 +12,5 @@ import java.util.List;
  * Version:1.0
  */
 public interface OrdersService {
-    void addOrder(Orders order);
+    int addOrder(Orders order);
 }

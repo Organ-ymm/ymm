@@ -75,17 +75,19 @@ $("#checkoutToPay").on("click",function(){
     }*/
     if(0<b){
         var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
-        alert(address_id);
-        alert();
-        /*var order_money=$('[name="order_money"]').val();
+        //alert($('.totalPrice').html());
+        var orderMoney=parseFloat($('.totalPrice').html()-0);
+
         $.ajax({
-            data:{"address_id":address_id,"order_money":order_money},
+            data:{"address_id":address_id,"order_money":orderMoney},
             dataType:"text",
             type:"POST",
-            url:"../../portal/orders/submitOrder"
-        });*/
+            url:"../../portal/orders/submitOrder",
+            success:function (order_id) {
+                location.href="../../portal/pages/orders/submitOrder?order_id="+order_id;
+            }
+        });
     }
-    //alert(order_money);
 
 });
 function SetShortCutEffect(){

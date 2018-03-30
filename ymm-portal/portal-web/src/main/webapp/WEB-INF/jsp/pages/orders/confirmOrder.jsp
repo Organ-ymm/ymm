@@ -192,7 +192,7 @@
     <!-- -----------------------------------------------------收获地址---------------------------------------------------------- -->
     <div class="container">
         <div class="checkout-box">
-            <form  id="checkoutForm" action="${pageContext.request.contextPath}/orders/submitOrder" method="post">
+            <%--<form  id="checkoutForm" action="${pageContext.request.contextPath}/orders/submitOrder" method="post">--%>
                 <div class="checkout-box-bd">
                     <!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
                     <input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
@@ -223,11 +223,12 @@
                                         </div>
                                     </dl>
                                 </c:forEach>
-                                <input type="hidden" name="receiver_address"
+                                <%--<input type="hidden" name="receiver_address"
                                        value="${addressList[0].province}${addressList[0].city}${addressList[0].county}${addressList[0].street}(${addressList[0].zipcode})"/>
                                 <input type="hidden" name="receiver_name" value="${addressList[0].consignee}" />
                                 <input type="hidden" name="receiver_phone" value="${addressList[0].phone}" />
-                                <input type="hidden"  name="order_money" />
+                                <input type="hidden"  name="order_money" />--%>
+
                                 <%--<c:forEach items="${orderItem}" var="good" begin="1" end="${orderItem }">
                                     <div class="col col-4" id="subTotal" name="subTotal">${good.subTotal}</div>
                                 </c:forEach>--%>
@@ -553,7 +554,7 @@
                 </div>
 
 
-            </form>
+            <%--</form>--%>
         </div>
 
     </div>

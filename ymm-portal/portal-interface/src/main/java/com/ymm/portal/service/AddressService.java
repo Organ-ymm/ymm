@@ -19,4 +19,12 @@ public interface AddressService {
      * @return 当前用户的地址列表
      */
     List<Address> listAddress(int user_id);
+
+    /**
+     *
+     * @param user_id 当前用户id
+     * @param address_id 地址id
+     * @return 当前用户选择的结算地址
+     */
+    Address findAddress(int address_id,int user_id);
 }

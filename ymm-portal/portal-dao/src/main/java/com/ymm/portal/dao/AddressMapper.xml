@@ -15,4 +15,11 @@
         order by address_id asc
     </select>
 
+    <select id="findAddress" parameterType="com.ymm.portal.pojo.po.Address" resultType="com.ymm.portal.pojo.po.Address">
+        select
+        <include refid="base_column"/>
+        from address
+        where address_id=#{address_id} and user_id=#{user_id}
+    </select>
+
 </mapper>

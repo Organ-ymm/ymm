@@ -7,6 +7,7 @@
 //import org.springframework.stereotype.Controller;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.ResponseBody;
 //
 //import javax.servlet.http.HttpSession;
@@ -19,7 +20,7 @@
 // * Version:1.0
 // */
 //@Controller
-////@RequestMapping("/address")
+//@RequestMapping("/address")
 //public class AddressAction {
 //    @Autowired
 //    private AddressService addressService;
@@ -28,8 +29,8 @@
 //        列出该用户的所有的地址列表
 //     */
 //    @ResponseBody
-//    @RequestMapping(value = "/listAddress",method = RequestMethod.POST)
-//    public List<Address> listAddress(HttpSession session){
+//    @RequestMapping(value = "/findAddress",method = RequestMethod.POST)
+//    public List<Address> findAddress(@RequestParam("address_id") int address_id, HttpSession session){
 //        Users user1=new Users();
 //        user1.setUser_id(1);
 //        session.setAttribute("user",user1);
