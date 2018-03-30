@@ -135,7 +135,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <div class="logo">
-                        <a href="index"><img src="${pageContext.request.contextPath}/images/logo/logo.png"
+                        <a href="${pageContext.request.contextPath}/index"><img src="${pageContext.request.contextPath}/images/logo/logo.png"
                                                   alt="SHOPPPIE"></a>
                     </div>
                 </div>
@@ -143,19 +143,19 @@
                     <div class="mainmenu">
                         <nav>
                             <ul>
-                                <li><a href="index"><b>首页</b></a>
+                                <li><a href="${pageContext.request.contextPath}/index"><b>首页</b></a>
 
                                 </li>
-                                <li><a href="shop-full-grid.html"><b>手机</b></a>
+                                <li><a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&offSet=0&pageSize=16"><b>手机</b></a>
                                     <div class="mega-menu">
                                                 <span>
                                                     <a href="javascript:void(0)" class="title">热门品牌</a>
-                                                    <a href="#">小米</a>
-                                                    <a href="#">vivo</a>
-                                                    <a href="#">苹果</a>
-                                                    <a href="#">华为</a>
-                                                    <a href="#">三星</a>
-                                                    <a href="#">魅族</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=23&offSet=0&pageSize=16">小米</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=27&offSet=0&pageSize=16">vivo</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=24&offSet=0&pageSize=16">苹果</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=25&offSet=0&pageSize=16">华为</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=26&offSet=0&pageSize=16">三星</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=29&offSet=0&pageSize=16">魅族</a>
                                                 </span>
 
                                     </div>
@@ -167,16 +167,16 @@
                                         </span>
                                     </div>
                                 </li>
-                                <li><a href="blog-full-view.html"><b>笔记本</b></a>
+                                <li><a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&offSet=0&pageSize=16"><b>笔记本</b></a>
                                     <div class="mega-menu">
                                                 <span>
                                                     <a href="javascript:void(0)" class="title">热门品牌</a>
-                                                    <a href="#">华硕</a>
-                                                    <a href="#">神舟</a>
-                                                    <a href="#">苹果</a>
-                                                    <a href="#">戴尔</a>
-                                                    <a href="#">惠普</a>
-                                                    <a href="#">联想</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=1&offSet=0&pageSize=16">华硕</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=5&offSet=0&pageSize=16">神舟</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=3&offSet=0&pageSize=16">苹果</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=2&offSet=0&pageSize=16">戴尔</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=6&offSet=0&pageSize=16">惠普</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=7&offSet=0&pageSize=16">联想</a>
                                                 </span>
 
                                     </div>

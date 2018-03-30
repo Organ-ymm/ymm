@@ -75,12 +75,11 @@
                         <dl class="clearfix">
                             <dt>账户名：</dt>
                             <dd><input type="text" name="username" id="normalUser" class="input-text"
-                                       autocomplete="off"/><span class="placeholder">用户名/邮箱/手机号</span></dd>
+                                       autocomplete="off" placeholder="用户名/邮箱/手机号" /></dd>
                         </dl>
                         <dl class="top1 clearfix">
                             <dt>密<em></em>码：</dt>
-                            <dd><input type="password" name="password" id="normalPassword" class="input-text"><span
-                                    class="placeholder">请输入密码</span></dd>
+                            <dd><input type="password" name="password" id="normalPassword" placeholder="请输入密码" class="input-text"></dd>
                         </dl>
 
                         <%--<div class="form-remember">
