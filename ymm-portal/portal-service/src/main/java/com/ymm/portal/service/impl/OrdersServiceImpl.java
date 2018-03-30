@@ -22,7 +22,8 @@ public class OrdersServiceImpl implements OrdersService {
     private OrdersMapper ordersMapper;
 
     @Override
-    public void addOrder(Orders order) {
+    public int addOrder(Orders order) {
+        int i=0;
         order.setDeliver_status(0);
         order.setPay_status(0);
         Date date =new Date();
@@ -35,9 +36,10 @@ public class OrdersServiceImpl implements OrdersService {
         long order_id=Long.parseLong((order_id1.append(order_id2)).toString());
         order.setOrder_id(order_id);
         try {
-            ordersMapper.addOrder(order);
+            i=ordersMapper.addOrder(order);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return i;
     }
 }

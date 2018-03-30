@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface AddressMapper {
     List<Address> listAddress(int user_id);
+
+    Address findAddress(Address address);
 }

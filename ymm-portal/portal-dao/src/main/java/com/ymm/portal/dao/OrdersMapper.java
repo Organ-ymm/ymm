@@ -8,5 +8,5 @@ import com.ymm.commons.pojo.po.Orders;
  * Version:1.0
  */
 public interface OrdersMapper {
-    void addOrder(Orders order);
+    int addOrder(Orders order);
 }
