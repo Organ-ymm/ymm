@@ -1125,6 +1125,7 @@ span.counting{
     display: block;
 }
 .single-product-item{
+    height: 210px;
     position: relative;
     overflow: hidden;
     -webkit-transition: all 0.5s ease 0s;
