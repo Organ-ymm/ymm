@@ -405,7 +405,7 @@
                 //obj包含了当前分页的所有参数，比如：
                 //console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
                 //console.log(obj.limit); //得到每页显示的条数
-                var offSet = obj.curr-1;
+                var offSet = obj.curr;
                 var pageSize = obj.limit;
 
                 //首次不执行

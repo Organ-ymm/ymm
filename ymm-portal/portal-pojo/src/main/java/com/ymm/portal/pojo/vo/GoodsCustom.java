@@ -38,7 +38,7 @@ public class GoodsCustom implements Serializable {
     }
 
     public int getOffSet() {
-        return offSet;
+        return (offSet-1)*pageSize;
     }
 
     public void setOffSet(int offSet) {

@@ -37,7 +37,7 @@
     <!--where is_hot=1 and status不为3-->
     <sql id="WhereIsHot_Clause">
         <where>
-            g.status IN (1,2)
+            g.status =1
             AND is_hot=1
         </where>
     </sql>
@@ -45,7 +45,7 @@
     <!--where cat_id&&brand_id != null , status不为3-->
     <sql id="WhereList_Clause">
         <where>
-            g.status IN (1,2)
+            g.status = 1
             <if test="goodsCustom != null and goodsCustom.cat_id != null and  goodsCustom.cat_id != 0">
                 AND cat_id = #{goodsCustom.cat_id}
             </if>
