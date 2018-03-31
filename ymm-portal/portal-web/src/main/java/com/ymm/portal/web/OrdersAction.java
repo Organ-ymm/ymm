@@ -5,10 +5,8 @@ import com.ymm.commons.pojo.po.Orders;
 import com.ymm.commons.pojo.po.Users;
 import com.ymm.portal.pojo.po.Address;
 import com.ymm.portal.service.*;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -166,6 +164,8 @@ public class OrdersAction {
         StringBuilder order_id1=new StringBuilder(sdf1.format(date));
         int order_id2=(int)(Math.random()*9999+1);
         long order_id=Long.parseLong((order_id1.append(order_id2)).toString());
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String order_time=sdf.format(date);
 
         int k=0;
         double order_money=0;//订单总价
@@ -198,6 +198,7 @@ public class OrdersAction {
             Orders order=new Orders();
             order.setOrder_id(order_id);
             order.setUser_id(user_id);
+            order.setOrder_time(order_time);
             order.setOrder_money(order_money);
             order.setReceiver_name(address.getConsignee());
             order.setReceiver_address(address.getProvince()+address.getCity()+address.getCounty()+address.getStreet()+" 邮编："+address.getZipcode());
@@ -210,6 +211,19 @@ public class OrdersAction {
             return 0;
         }
 
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getOrderByUserId",method = RequestMethod.POST)
+    public Orders getOrderByUserId(HttpSession session){
+        Users user1=new Users();
+        user1.setUser_id(1);
+        session.setAttribute("user",user1);
+
+        Users user= (Users) session.getAttribute("user");
+        int user_id=user.getUser_id();
+        Orders order=orderService.getOrderByUserId(user_id);
+        return order;
     }
 
 }

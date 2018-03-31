@@ -11,11 +11,10 @@ $(document).ready(function(){
     SetFloorLunBo();//楼层广告轮播
     SetFixedSearch();//固定顶部搜索
 	//SetClassify();//设置顶部商品分类菜单的显示与隐藏
-    SetTotalMoney();//总金额的计算
-    getAddress();//订单提交页的地址显示
+    GetTotalMoney();//总金额的计算
 });
 
-function SetTotalMoney() {
+function GetTotalMoney() {
     var totalMoney = 0;
     // var $subTotal = $('.subTotal');
     var $subTotal = $('[name="subTotal"]');
@@ -68,10 +67,10 @@ $("#checkoutToPay").on("click",function(){
             amounts=[];
         $item_row.each(function () {
             var goods_id=parseInt($(this).find('[name="goods_id"]').val());
-            alert(goods_id);
+            //alert(goods_id);
             goods_ids.push(goods_id);//得到要结算的多个商品id
             var amount=parseInt($(this).find('[name="amount"]').html());
-            alert(amount);
+            //alert(amount);
             amounts.push(amount);//得到要结算的多个商品的数量
         });
         $.ajax({
@@ -97,17 +96,6 @@ function SetShortCutEffect(){
         $(this).removeClass('hover');
     });
 };
-function getAddress(){
-    $.ajax({
-        //data:"",
-        dataType:"text",
-        type:"POST",
-        url:"../../portal/address/getAddress",
-        success:function (order_id) {
-
-        }
-    });
-}
 function SetCartEffect(){
     $("#cart_box").hover(
         function(){

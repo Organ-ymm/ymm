@@ -12,7 +12,8 @@ import java.util.List;
  * Version:1.0
  */
 public interface OrdersService {
+
     int addOrder(Orders order);
 
-    Orders selectOrderById(long order_id);
+    Orders getOrderByUserId(int user_id);
 }

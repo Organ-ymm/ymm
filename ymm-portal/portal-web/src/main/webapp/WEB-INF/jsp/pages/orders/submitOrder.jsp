@@ -23,6 +23,29 @@
 
         window.onload = function(){
             new tab('test4-input-input_tab1-input_tab2', '-');
+            $.ajax({//订单提交页的地址显示
+                //data:"",
+                dataType:"text",
+                type:"POST",
+                url:"${pageContext.request.contextPath}/orders/getOrderByUserId",
+                success:function (data) {//返回的是Orders对象
+                    //console.log(data);
+                    if(data!=null){
+                        var order=eval("("+data+")");//将json类型字符串转化成json对象
+//                        alert(order.order_id);
+//                        alert(order.receiver_name);
+//                        alert(order.receiver_address);
+//                        alert(order.receiver_phone);
+//                        alert(order.order_money);
+                        $(".order_id").html(order.order_id);
+                        $(".receiver_name").html(order.receiver_name);
+                        $(".receiver_address").html(order.receiver_address);
+                        $(".receiver_phone").html(order.receiver_phone);
+                        $(".order_money").html(order.order_money);
+
+                    }
+                }
+            });
         }
         function tab(o, s, cb, ev){ //tab换类
             var $ = function(o){return document.getElementById(o)};
@@ -141,10 +164,9 @@
             </ul>
         </div>
         <div id="cart_box" class="cart_box">
-            <a id="cart" class="cart_link" href="#" rel="nofollow">
+            <a id="cart" class="cart_link" href="${pageContext.request.contextPath}/cart/listCustomCart" rel="nofollow">
                 <span class="text">去购物车结算</span>
                 <img src="${pageContext.request.contextPath}/orderStatic/images/shopping_icon.png" width="24" height="24" class="cart_gif">
-
                 <!-- 购物车没有物品时，隐藏此num -->
                 <span class="num">12</span>
                 <s class="icon_arrow_right"></s>
@@ -226,16 +248,16 @@
                 </div>
                 <div class="info">
                     <p>
-                        金额：<span class="pay-total">${order.order_money}元</span>
+                        金额：<span class="pay-total"><span class="order_money"></span>元</span>
                     </p>
                     <p>
-                        订单：1150505740045173                    </p>
+                        订单编号：<span class="order_id"></span>         </p>
                     <p>
-                        配送：潘骏杰                                    <span class="line">/</span>
-                        159****6437                                    <span class="line">/</span>
-                        江苏,无锡市,北塘区 民丰西苑82号202室                                                                <span class="line">/</span>
-                        不限送货时间                                    <span class="line">/</span>
-                        个人电子发票                                                    </p>
+                        配送：<span class="receiver_name"></span>       <span class="line">/</span>
+                        <span class="receiver_phone"></span>             <span class="line">/</span>
+                        <span class="receiver_address"></span>           <span class="line">/</span><%--
+                        不限送货时间                                      <span class="line">/</span>
+                        个人电子发票--%>                                                    </p>
                 </div>
                 <div class="icon-box">
                     <i class="iconfont"><img src="${pageContext.request.contextPath}/orderStatic/images/yes_ok.png"></i>

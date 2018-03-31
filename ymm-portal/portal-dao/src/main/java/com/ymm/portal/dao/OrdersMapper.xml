@@ -22,4 +22,14 @@
         order_id=#{order_id}
     </select>
 
+    <select id="getOrderByUserId" parameterType="int" resultType="com.ymm.commons.pojo.po.Orders">
+        select
+        <include refid="base_column"/>
+        from orders where order_id=(
+        select max(order_id)
+        from orders
+        where
+        user_id=#{user_id}
+        )
+    </select>
 </mapper>

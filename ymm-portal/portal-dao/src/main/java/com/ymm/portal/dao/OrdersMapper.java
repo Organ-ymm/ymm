@@ -1,6 +1,7 @@
 package com.ymm.portal.dao;
 
 import com.ymm.commons.pojo.po.Orders;
+
 /**
  * Description:
  * Author: zy
@@ -8,7 +9,8 @@ import com.ymm.commons.pojo.po.Orders;
  * Version:1.0
  */
 public interface OrdersMapper {
+
     int addOrder(Orders order);
 
-    Orders selectOrderById(long order_id);
+    Orders getOrderByUserId(int user_id);
 }
