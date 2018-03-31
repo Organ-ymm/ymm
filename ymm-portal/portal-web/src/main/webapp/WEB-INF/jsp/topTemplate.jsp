@@ -1,9 +1,16 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: zy
+  Date: 2018/3/31
+  Time: 20:18
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>topest</title>
+    <title>topTemplate</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,9 +27,8 @@
     <script src="${pageContext.request.contextPath}/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-<!-- header start -->
 <header class="header-area">
-<%------------------------------begin---------------------------------%>
+    <%------------------------------begin---------------------------------%>
     <div class="header-top-area">
         <div class="container">
             <div class="row">
@@ -36,7 +42,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="header-top-right">
                         <div class="account-cart">
-                            <ul>
+                            <%--<ul>
                                 <li class="account"><a href="${pageContext.request.contextPath}/pages/user/personalCenter">个人中心</a>
                                     <ul class="submenu-mainmenu">
                                         <li><a href="cart.html">my bag</a></li>
@@ -46,7 +52,7 @@
                                 </li>
                                 <li class="login"><a href="${pageContext.request.contextPath}/pages/user/login">登录</a>
                                     <ul class="submenu-mainmenu">
-                                        <%--<li><a href="#">login or register</a></li>--%>
+                                        &lt;%&ndash;<li><a href="#">login or register</a></li>&ndash;%&gt;
                                         <li class="login-button"><a href="${pageContext.request.contextPath}/pages/user/login">登录</a></li>
                                         <li><a href="#">or</a></li>
                                         <li class="creat-button"><a href="${pageContext.request.contextPath}/pages/user/register">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</a></li>
@@ -82,53 +88,15 @@
                                         </li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul>--%>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<%------------------------------over---------------------------------%>
+    <%------------------------------over---------------------------------%>
 
 </header>
-<!-- header end -->
-<!-- jquery
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/vendor/jquery-1.12.3.min.js"></script>
-<!-- bootstrap JS
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<!-- meanmenu JS
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/jquery.meanmenu.js"></script>
-<!-- wow JS
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/wow.min.js"></script>
-<!-- owl.carousel JS
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
-<!-- countdown JS
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/jquery.countdown.min.js"></script>
-<!-- price-slider JS
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/jquery-price-slider.js"></script>
-<!-- Elevate Zoom js
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/jquery.elevatezoom.js"></script>
-<!-- scrollUp JS
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/jquery.scrollUp.min.js"></script>
-<!-- plugins JS
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/plugins.js"></script>
-<!-- Nevo Slider js
-============================================ -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/custom-slider/js/jquery.nivo.slider.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/custom-slider/home.js"></script>
-<!-- main JS
-============================================ -->
-<script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>

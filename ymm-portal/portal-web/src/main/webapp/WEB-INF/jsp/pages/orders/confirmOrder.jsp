@@ -11,7 +11,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>确认订单页面</title>
+    <title>确认订单 - ymm商城</title>
+    <!-- ======================= favicon ========================== -->
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/logo_icon.png">
+
     <link href="${pageContext.request.contextPath}/orderStatic/css/public.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/orderStatic/css/base.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/orderStatic/js/jquery_cart.js"></script>
@@ -19,7 +22,7 @@
 </head>
 
 <body>
-<!--顶部快捷菜单-->
+<%--<!--顶部快捷菜单-->
 <div class="shortcut_v2013 alink_v2013">
     <div class="w">
         <ul class="fl 1h">
@@ -51,8 +54,8 @@
             <li class="fl"><i class="shortcut_s"></i></li>
             <li class="fl"><div class="menu_hd"><a href="#">服务中心</a></div></li>
             <li class="fl"><i class="shortcut_s"></i></li>
-            <%--<li class="fl"><div class="menu_hd"><a href="#">商家入驻</a></div></li>
-            <li class="fl"><i class="shortcut_s"></i></li>--%>
+            &lt;%&ndash;<li class="fl"><div class="menu_hd"><a href="#">商家入驻</a></div></li>
+            <li class="fl"><i class="shortcut_s"></i></li>&ndash;%&gt;
             <li class="fl">
                 <div class="menu">
                     <div class="menu_hd"><a href="#">网站导航</a><b><em></em></b></div>
@@ -70,13 +73,12 @@
 </div>
 <!--顶部快捷菜单-->
 
-
 <!--顶部Logo及搜索-->
 <div class="header_2013">
     <div class="w">
         <div class="logo_v2013">
             <a href="#">
-                <img class="border_r" src="${pageContext.request.contextPath}/orderStatic/images/logo.jpg" width="120" height="50">
+                <img class="border_r" src="${pageContext.request.contextPath}/images/logo/logo.png" width="120" height="50">
                 <img src="${pageContext.request.contextPath}/orderStatic/images/slogan.jpg" width="170" height="50">
             </a>
         </div>
@@ -85,15 +87,15 @@
                 <input name="search" type="text" class="header_search_input" default_val="锡货网三期上线全场五折" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh">
                 <button type="submit" class="header_search_btn">搜索</button>
             </form>
-            <%--<ul class="hot_word">
+            &lt;%&ndash;<ul class="hot_word">
                 <li><a class="red" href="#" target="_blank">礼品卡</a></li>
                 <li><a target="_blank" href="#">百货五折</a></li>
                 <li><a target="_blank" href="#">大闸蟹</a></li>
                 <li><a target="_blank" href="#">年货</a></li>
                 <li><a target="_blank" href="#">电子产品</a></li>
-            </ul>--%>
+            </ul>&ndash;%&gt;
         </div>
-        <%--<div id="cart_box" class="cart_box">
+        &lt;%&ndash;<div id="cart_box" class="cart_box">
             <a id="cart" class="cart_link" href="#" rel="nofollow">
                 <span class="text">去购物车结算</span>
                 <img src="${pageContext.request.contextPath}/orderStatic/images/shopping_icon.png" width="24" height="24" class="cart_gif">
@@ -129,7 +131,7 @@
                         <div><span class="price_gongji">共计<em>￥</em><span class="total_price">69</span></span><a href="#" class="cart_btn" rel="nofollow">去购物车结算</a></div>
                     </div>
                 </div>
-            </div>--%>
+            </div>&ndash;%&gt;
         </div>
         <span class="clr"></span>
     </div>
@@ -155,13 +157,13 @@
 </div>
 <!--  导航条    end-->
 
-
-
 <div class="banner_red_top">
 
 
-</div>
+</div>--%>
 
+<%--==================================通用头部导航条导入========================================--%>
+<jsp:include page="../../topTemplate22.jsp"/>
 
 <!--收货地址body部分开始-->
 <div class="border_top_cart">
@@ -549,7 +551,7 @@
                     <input type="hidden" id="couponValue" name="Checkout[couponsValue]">
                     <div class="checkout-confirm">
 
-                        <a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+                        <a href="${pageContext.request.contextPath}/cart/listCustomCart" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
                         <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" />
                     </div>
                 </div>

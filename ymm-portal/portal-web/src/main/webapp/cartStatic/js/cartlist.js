@@ -147,7 +147,7 @@ $(function () {
         //alert(parseFloat($priceTotalObj.html()));
         //alert(parseFloat($price));
         //alert(parseFloat($priceTotal));
-        var id=$(this).parents('.order_lists').children("[name='goods_id']").val();//得到增加数量的商品的id
+        var id=$(this).parents('.order_lists').find("[name='goods_id']").val();//children("[name='goods_id']").val();//得到增加数量的商品的id
         var amount=parseInt($count);//得到增加后的数量
         //alert(amount);
         //alert(id);
@@ -174,7 +174,7 @@ $(function () {
         if($inputVal.val()>1){//数量大于1时才能减数量
             $inputVal.val($count);
             $priceTotalObj.html($priceTotal);
-            var id=$(this).parents('.order_lists').children("[name='goods_id']").val();//得到减少数量的商品的id
+            var id=$(this).parents('.order_lists').find("[name='goods_id']").val();//得到减少数量的商品的id
             var amount=parseInt($count);//得到减少后的数量
             //alert(amount);
             //alert(id);

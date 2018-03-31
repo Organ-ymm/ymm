@@ -11,7 +11,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>订单提交</title>
+    <title>订单提交 - ymm商城</title>
+    <!-- ======================= favicon ========================== -->
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/logo_icon.png">
+
     <link href="${pageContext.request.contextPath}/orderStatic/css/public.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/orderStatic/css/base.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/orderStatic/js/jquery_cart.js"></script>
@@ -89,7 +92,7 @@
 </head>
 
 <body>
-<!--顶部快捷菜单-->
+<%--<!--顶部快捷菜单-->
 <div class="shortcut_v2013 alink_v2013">
     <div class="w">
         <ul class="fl 1h">
@@ -146,7 +149,7 @@
     <div class="w">
         <div class="logo_v2013">
             <a href="#">
-                <img class="border_r" src="${pageContext.request.contextPath}/orderStatic/images/logo.jpg" width="120" height="50">
+                <img class="border_r" src="${pageContext.request.contextPath}/images/logo/logo.png" width="120" height="50">
                 <img src="${pageContext.request.contextPath}/orderStatic/images/slogan.jpg" width="170" height="50">
             </a>
         </div>
@@ -195,7 +198,7 @@
                     </div>
                     <div class="con_all">
                         <div class="price_whole"><span>共<span class="num_all">12</span>件商品</span></div>
-                        <div><span class="price_gongji">共计<em>￥</em><span class="total_price">69</span></span><a href="#" class="cart_btn" rel="nofollow">去购物车结算</a></div>
+                        <div><span class="price_gongji">共计<em>￥</em><span class="total_price">69</span></span><a href="${pageContext.request.contextPath}/cart/listCustomCart" class="cart_btn" rel="nofollow">去购物车结算</a></div>
                     </div>
                 </div>
             </div>
@@ -229,12 +232,12 @@
 <div class="banner_red_top">
 
 
-</div>
+</div>--%>
 
+<%--==================================通用头部导航条导入========================================--%>
+<jsp:include page="../../topTemplate22.jsp"/>
 
 <!--订单提交body部分开始-->
-
-
 <div class="border_top_cart">
 
     <div class="container payment-con">
