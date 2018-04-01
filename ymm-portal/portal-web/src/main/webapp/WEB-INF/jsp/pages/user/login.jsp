@@ -32,7 +32,7 @@
 
 <div id="header">
     <%--<jsp:include page="top.jsp"/>--%>
-    <a href="${pageContext.request.contextPath}/index11" class="logo">
+    <a href="${pageContext.request.contextPath}/index" class="logo">
         <img  style="width: 160px;height: 60px;" src="${pageContext.request.contextPath}/images/logo/logo.png">
     </a>
 </div>
@@ -229,7 +229,7 @@
                 if (rec == "0") {
                     showError("用户名或密码错误");
                 } else {
-                    window.location.href="${pageContext.request.contextPath}/index11";
+                    window.location.href="${pageContext.request.contextPath}/index";
                 }
             }
         });

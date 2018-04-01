@@ -52,10 +52,15 @@ public class RegisterAndLogin {
     @RequestMapping(value = "/checkLogin",method = RequestMethod.POST)
     public int checkLogin(Users user, HttpSession session){
         try{
-            Users user1 = userService.checkLogin(user);
-            if(user1!=null){
-                session.setAttribute("user",user1);
+            Users oldUser = (Users)session.getAttribute("user");
+            if(oldUser!=null){
                 return 1;
+            }else{
+                Users user1 = userService.checkLogin(user);
+                if(user1!=null){
+                    session.setAttribute("user",user1);
+                    return 1;
+                }
             }
         }catch (Exception e){
             e.printStackTrace();
