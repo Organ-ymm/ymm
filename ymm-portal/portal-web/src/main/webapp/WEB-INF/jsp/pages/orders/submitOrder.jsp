@@ -49,6 +49,10 @@
                     }
                 }
             });
+            handleCart();
+        };
+        function handleCart() {
+
         }
         function tab(o, s, cb, ev){ //tab换类
             var $ = function(o){return document.getElementById(o)};
@@ -235,7 +239,7 @@
 </div>--%>
 
 <%--==================================通用头部导航条导入========================================--%>
-<jsp:include page="../../topTemplate22.jsp"/>
+<jsp:include page="../../top.jsp"/>
 
 <!--订单提交body部分开始-->
 <div class="border_top_cart">

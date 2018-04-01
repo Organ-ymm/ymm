@@ -234,7 +234,8 @@ $(function () {
     //确定按钮，移除商品
     $('.dialog-sure').click(function () {
         $order_lists.remove();//移除购物车内的这项商品
-        var id=$order_lists.children("[name='goods_id']").val();
+        var id=$order_lists.find("[name='goods_id']").val();
+        console.log(id);
         //alert(id);
         $.ajax({
             type:"GET",

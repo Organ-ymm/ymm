@@ -23,8 +23,14 @@
 </head>
 <body>
 <%--==================================通用头部导航条导入========================================--%>
-<jsp:include page="../../topTemplate22.jsp"/>
-
+<jsp:include page="../../top.jsp"/>
+<c:if test="${empty customCartList}">
+    <h3 style="text-align:center;margin-top:150px;color: #999">
+        您的购物车内还没有添加任何商品！
+        <a href="${pageContext.request.contextPath}/index" style="color: red ">前往添加 >>></a>
+    </h3>
+</c:if>
+<c:if test="${!empty customCartList}">
 <section class="cartMain">
     <div class="cartMain_hd">
         <ul class="order_lists cartTop">
@@ -50,10 +56,7 @@
 
     <div class="cartBox">
         <div class="order_content">
-            <c:if test="${empty customCartList}">
-                <h3 style="color: #999">您的购物车里还没有添加任何商品</h3>
-            </c:if>
-            <c:if test="${!empty customCartList}">
+            <%--<c:if test="${!empty customCartList}">--%>
                 <c:forEach items="${customCartList}" var="good">
                     <ul class="order_lists">
                         <li class="list_chk">
@@ -94,7 +97,7 @@
                         </li>
                     </ul>
                 </c:forEach>
-            </c:if>
+            <%--</c:if>--%>
         </div>
     </div>
 
@@ -107,6 +110,7 @@
         </div>
     </div>
 </section>
+</c:if>
 <%--<section class="model_bg"></section>--%>
 <section class="my_model">
     <p class="title">删除宝贝<span class="closeModel">X</span></p>
