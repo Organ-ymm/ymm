@@ -465,7 +465,7 @@
                             <h4>立即购买</h4>
                             <div class="widget-banner">
                                 <a href="#"><img src="img/banner/8.jpg" alt=""></a>
-                                <a href="shop-full-grid.html" class="shop-now">立刻购买</a>
+                                <a href="javascript:void(0);" onclick="buyNow('${goods.goods_id}')" class="shop-now">立刻购买</a><%--todo--%>
                             </div>
                         </div>
                     </div>
@@ -1379,18 +1379,27 @@
     function toCart(a) {
         var goods_id = a;
         var amount = $('#buy-num').val();
-        alert("添加成功");
-        alert(goods_id);
-        alert(amount);
+        //alert(goods_id);
+        //alert(amount);
         $.ajax({
             url: "${pageContext.request.contextPath}/cart/addCart",
             type: "POST",
             dataType: "text",
             data: {'goods_id': goods_id, 'amount': amount},
             success: function (res) {
-
+                if(i>0){
+                    alert("添加成功");
+                }else{
+                    alert("添加未成功，请稍后重试");
+                }
             }
         });
+    }
+    function buyNow(id) {//todo zy
+        var amount = $('#buy-num').val();
+        alert(id);
+        alert(amount);
+        location.href="${pageContext.request.contextPath}/cart/findOrderItem?id="+id+"&amount="+amount;
     }
 </script>
 </html>

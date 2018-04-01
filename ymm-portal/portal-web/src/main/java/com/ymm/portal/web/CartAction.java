@@ -242,6 +242,7 @@ public class CartAction {
         Users user= (Users) session.getAttribute("user");
         if(user!=null) {//用户登录，前往结算页
         int user_id=user.getUser_id();
+            //为了订单确认页的商品显示
             List<CartCustom> orderItem = new ArrayList<>();
             String[] goods_ids = ids.split("[,]");
             for (int i = 0; i < goods_ids.length; i++) {
@@ -252,8 +253,42 @@ public class CartAction {
                 CartCustom cart = cartService.findItem(cartPra);
                 orderItem.add(cart);
             }
-            List<Address> addressList = addressService.listAddress(user_id);
             model.addAttribute("orderItem", orderItem);
+            //为了订单确认页的地址显示
+            List<Address> addressList = addressService.listAddress(user_id);
+            model.addAttribute("addressList", addressList);
+            return "pages/orders/confirmOrder";
+        }else{//游客登录，前往跳转登录页
+            return "loginTip";
+        }
+    }
+    /*
+    商品详情页直接购买展示商品信息
+     */
+    @RequestMapping(value="/findOrderItem",method= RequestMethod.GET)
+    public String findOrderItem(@RequestParam("id")String idStr,@RequestParam("amount")String amountStr,HttpSession session,Model model){
+        Users user= (Users) session.getAttribute("user");
+        if(user!=null) {//用户登录，前往结算页
+            int user_id=user.getUser_id();
+            int goods_id = Integer.parseInt(idStr);
+            int amount = Integer.parseInt(amountStr);
+            //为了订单确认页的商品显示
+            Goods good = detailService.selectById(goods_id);
+            CartCustom cartCustom=new CartCustom();
+            cartCustom.setAmount(amount);
+            cartCustom.setGoods_id(good.getGoods_id());
+            cartCustom.setGoods_name(good.getGoods_name());
+            cartCustom.setGoods_sn(good.getGoods_sn());
+            cartCustom.setGoods_brief(good.getGoods_brief());
+            cartCustom.setShop_price(good.getShop_price());
+            cartCustom.setMarket_price(good.getMarket_price());
+            cartCustom.setGoods_thumb(good.getGoods_thumb());
+            cartCustom.setSubTotal(amount * (good.getShop_price()));
+            List<CartCustom> orderItem = new ArrayList<>();
+            orderItem.add(cartCustom);
+            model.addAttribute("orderItem", orderItem);
+            //为了订单确认页的地址显示
+            List<Address> addressList = addressService.listAddress(user_id);
             model.addAttribute("addressList", addressList);
             return "pages/orders/confirmOrder";
         }else{//游客登录，前往跳转登录页

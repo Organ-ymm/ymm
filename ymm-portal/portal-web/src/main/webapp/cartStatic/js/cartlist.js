@@ -275,7 +275,7 @@ $(function () {
         });
         //当有勾选商品时，才能结算
         if(ids.length>0){
-            window.location.href="../../portal/cart/listOrderItem?goods_id="+ids;
+            window.location.href="../../portal/cart/listOrderItem?goods_id="+ids;//结算前先查询出商品的详细信息
             /*$.ajax({
                 data:{"ids[]":ids},
                 dataType:"text",
