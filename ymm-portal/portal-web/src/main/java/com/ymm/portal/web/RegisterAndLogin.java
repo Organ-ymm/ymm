@@ -67,4 +67,20 @@ public class RegisterAndLogin {
         }
         return 0;
     }
+    /**
+     * 注销
+     */
+    @RequestMapping(value = "/loginOut",method = RequestMethod.GET)
+    public String loginOut(Users user, HttpSession session){
+        try{
+            Users oldUser = (Users)session.getAttribute("user");
+            if(oldUser!=null){
+                session.setAttribute("user",null);
+                return "index";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "index";
+    }
 }
