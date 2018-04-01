@@ -124,7 +124,7 @@
                                         <li class="creat-button"><a href="#">creat account</a></li>
                                     </ul>
                                 </li>
-                                <li class="cart"><a href="${pageContext.request.contextPath}/cart/listCustomCart"><img src="img/icon/cart.png" alt="cart"><p></p></a>
+                                <li class="cart"><a href="${pageContext.request.contextPath}/cart/listCustomCart"><img src="img/icon/cart.png" alt="我的购物车"><p></p></a>
                                     <ul class="submenu-mainmenu">
                                         <li class="single-cart-item clearfix">
                                                     <span class="cart-img">
@@ -363,7 +363,8 @@
                 <div class="product-detail shop-product-text">
                     <h4><a href="#">${goods.goods_name}</a></h4>
                     <div class="price-rating-container">
-                        <div class="price-box"><span>${goods.promote_price}</span> <del>(${goods.shop_price})</del></div>
+                        <div class="price-box"><span>${goods.promote_price}</span>
+                            秒杀价<del>(${goods.shop_price})</del></div>
                         <div class="rating-right">
                             <div class="star-content">
                                 <i class="fa fa-star"></i>
@@ -378,33 +379,33 @@
                     <h5 class="overview">配置信息:</h5>
                     <p class="product-desc">${goods.goods_brief}</p>
                     <%--<div class="size-categories">--%>
-                        <%--<h5 class="size">Size:</h5>--%>
-                        <%--<ul>--%>
-                            <%--<li><a href="#">S</a></li>--%>
-                            <%--<li><a href="#">M</a></li>--%>
-                            <%--<li><a href="#">L</a></li>--%>
-                            <%--<li><a href="#">XL</a></li>--%>
-                        <%--</ul>--%>
+                    <%--<h5 class="size">Size:</h5>--%>
+                    <%--<ul>--%>
+                    <%--<li><a href="#">S</a></li>--%>
+                    <%--<li><a href="#">M</a></li>--%>
+                    <%--<li><a href="#">L</a></li>--%>
+                    <%--<li><a href="#">XL</a></li>--%>
+                    <%--</ul>--%>
                     <%--</div>--%>
                     <%--<div class="color">--%>
-                        <%--<h5 class="color">color:</h5>--%>
-                        <%--<div class="color-cat">--%>
-                            <%--<select class="category-items " name="category">--%>
-                                <%--<option>Select a color</option>--%>
-                                <%--<option>red</option>--%>
-                                <%--<option>black</option>--%>
-                                <%--<option>pink</option>--%>
-                                <%--<option>blue</option>--%>
-                                <%--<option>green</option>--%>
-                            <%--</select>--%>
-                        <%--</div>--%>
+                    <%--<h5 class="color">color:</h5>--%>
+                    <%--<div class="color-cat">--%>
+                    <%--<select class="category-items " name="category">--%>
+                    <%--<option>Select a color</option>--%>
+                    <%--<option>red</option>--%>
+                    <%--<option>black</option>--%>
+                    <%--<option>pink</option>--%>
+                    <%--<option>blue</option>--%>
+                    <%--<option>green</option>--%>
+                    <%--</select>--%>
+                    <%--</div>--%>
                     <%--</div>--%>
                     <div class="shop-buttons">
                         <h5 class="quantity">quantity:</h5>
                         <div id="quantity-wanted-p">
                             <input type="number" value="1" id="buy-num" class="cart-plus-minus-box">
-                            <div class="dec qtybutton">-</div>
-                            <div class="inc qtybutton">+</div>
+                            <div class="dec qtybutton" id="decbtn">-</div>
+                            <div class="inc qtybutton" id="incbtn">+</div>
                             <span class="clearfix"></span>
                         </div>
                         <a href="javascript:void(0);" onclick="toCart(${goods.goods_id})" class="cart-btn"><span>加入购物车</span></a>
@@ -465,7 +466,7 @@
                             <h4>立即购买</h4>
                             <div class="widget-banner">
                                 <a href="#"><img src="img/banner/8.jpg" alt=""></a>
-                                <a href="javascript:void(0);" onclick="buyNow('${goods.goods_id}')" class="shop-now">立刻购买</a><%--todo--%>
+                                <a href="javascript:void(0);" onclick="buyNow('${goods.goods_id}')" class="shop-now">立刻购买</a>
                             </div>
                         </div>
                     </div>
@@ -477,719 +478,719 @@
 <!--End Product Details area  -->
 <!-- featured start -->
 <%--<div class="featured-area clearfix">--%>
-    <%--<div class="container">--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-xs-12">--%>
-                <%--<div class="section-title">--%>
-                    <%--<h2>其他商品</h2>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-xs-12">--%>
-                <%--<div class="section-tab">--%>
-                    <%--<div class="section-tab-menu text-left">--%>
-                        <%--<ul role="tablist">--%>
-                            <%--<li role="presentation" class="active"><a href="#women" aria-controls="women" role="tab" data-toggle="tab">电脑</a></li>--%>
-                            <%--<li role="presentation"><a href="#men" aria-controls="men" role="tab" data-toggle="tab">手机</a></li>--%>
-                            <%--<li role="presentation"><a href="#trendy" aria-controls="trendy" role="tab" data-toggle="tab">家用电器</a></li>--%>
-                        <%--</ul>--%>
-                    <%--</div>--%>
-                    <%--<div class="clearfix"></div>--%>
-                    <%--<div class="tab-content row">--%>
-                        <%--<div id="women" role="tabpanel" class="active section-tab-item">--%>
-                            <%--<div class="tab-item-slider">--%>
-                                <%--<div class="col-xs-12 col-width">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="${goods.goods_img}" alt="暂时无法显示">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">${goods.goods_market_price}</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12 col-width">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<!--                                                            <span class="old-price">$26</span>-->--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                                <%--<div class="new-sale">--%>
-                                                    <%--<span>new</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12 col-width">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                    <%--<!--                                                            <span class="old-price">$180</span>-->--%>
-                                                <%--</div>--%>
-                                                <%--<div class="new-sale">--%>
-                                                    <%--<span>new</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12 col-width">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                    <%--<!--                                                            <span class="old-price">$180</span>-->--%>
-                                                <%--</div>--%>
-                                                <%--<div class="new-sale">--%>
-                                                    <%--<span>new</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12 col-width">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                    <%--<!--                                                            <span class="old-price">$180</span>-->--%>
-                                                <%--</div>--%>
-                                                <%--<div class="new-sale">--%>
-                                                    <%--<span>new</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12 col-width">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                    <%--<!--                                                            <span class="old-price">$180</span>-->--%>
-                                                <%--</div>--%>
-                                                <%--<div class="new-sale">--%>
-                                                    <%--<span>new</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12 col-width">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                    <%--<!--                                                            <span class="old-price">$180</span>-->--%>
-                                                <%--</div>--%>
-                                                <%--<div class="new-sale">--%>
-                                                    <%--<span>new</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12 col-width">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                    <%--<!--                                                            <span class="old-price">$180</span>-->--%>
-                                                <%--</div>--%>
-                                                <%--<div class="new-sale">--%>
-                                                    <%--<span>new</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <%--<div id="men" role="tabpanel" class="section-tab-item">--%>
-                            <%--<div class="tab-item-slider">--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <%--<div id="trendy" role="tabpanel" class="section-tab-item">--%>
-                            <%--<div class="tab-item-slider">--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item box-shadow-effect">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item box-shadow-effect">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item box-shadow-effect">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item box-shadow-effect">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item box-shadow-effect">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item box-shadow-effect">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item box-shadow-effect">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-xs-12">--%>
-                                    <%--<div class="single-product">--%>
-                                        <%--<div class="single-product-item box-shadow-effect">--%>
-                                            <%--<div class="single-product-img clearfix hover-effect">--%>
-                                                <%--<a href="#">--%>
-                                                    <%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
-                                                <%--</a>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="single-product-info clearfix">--%>
-                                                <%--<div class="pro-price">--%>
-                                                    <%--<span class="new-price">$25.99</span>--%>
-                                                <%--</div>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-content text-center">--%>
-                                                <%--<h3>Full sleev women shirt</h3>--%>
-                                                <%--<h4><a href="#">view details</a></h4>--%>
-                                            <%--</div>--%>
-                                            <%--<div class="product-action">--%>
-                                                <%--<ul>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
-                                                    <%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
-                                                    <%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
-                                                <%--</ul>--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
+<%--<div class="container">--%>
+<%--<div class="row">--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="section-title">--%>
+<%--<h2>其他商品</h2>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="row">--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="section-tab">--%>
+<%--<div class="section-tab-menu text-left">--%>
+<%--<ul role="tablist">--%>
+<%--<li role="presentation" class="active"><a href="#women" aria-controls="women" role="tab" data-toggle="tab">电脑</a></li>--%>
+<%--<li role="presentation"><a href="#men" aria-controls="men" role="tab" data-toggle="tab">手机</a></li>--%>
+<%--<li role="presentation"><a href="#trendy" aria-controls="trendy" role="tab" data-toggle="tab">家用电器</a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--<div class="clearfix"></div>--%>
+<%--<div class="tab-content row">--%>
+<%--<div id="women" role="tabpanel" class="active section-tab-item">--%>
+<%--<div class="tab-item-slider">--%>
+<%--<div class="col-xs-12 col-width">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="${goods.goods_img}" alt="暂时无法显示">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">${goods.goods_market_price}</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12 col-width">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<!--                                                            <span class="old-price">$26</span>-->--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--<div class="new-sale">--%>
+<%--<span>new</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12 col-width">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--<!--                                                            <span class="old-price">$180</span>-->--%>
+<%--</div>--%>
+<%--<div class="new-sale">--%>
+<%--<span>new</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12 col-width">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--<!--                                                            <span class="old-price">$180</span>-->--%>
+<%--</div>--%>
+<%--<div class="new-sale">--%>
+<%--<span>new</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12 col-width">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--<!--                                                            <span class="old-price">$180</span>-->--%>
+<%--</div>--%>
+<%--<div class="new-sale">--%>
+<%--<span>new</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12 col-width">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--<!--                                                            <span class="old-price">$180</span>-->--%>
+<%--</div>--%>
+<%--<div class="new-sale">--%>
+<%--<span>new</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12 col-width">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--<!--                                                            <span class="old-price">$180</span>-->--%>
+<%--</div>--%>
+<%--<div class="new-sale">--%>
+<%--<span>new</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12 col-width">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--<!--                                                            <span class="old-price">$180</span>-->--%>
+<%--</div>--%>
+<%--<div class="new-sale">--%>
+<%--<span>new</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div id="men" role="tabpanel" class="section-tab-item">--%>
+<%--<div class="tab-item-slider">--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div id="trendy" role="tabpanel" class="section-tab-item">--%>
+<%--<div class="tab-item-slider">--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item box-shadow-effect">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item box-shadow-effect">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item box-shadow-effect">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item box-shadow-effect">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item box-shadow-effect">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/1.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item box-shadow-effect">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/4.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item box-shadow-effect">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/2.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="col-xs-12">--%>
+<%--<div class="single-product">--%>
+<%--<div class="single-product-item box-shadow-effect">--%>
+<%--<div class="single-product-img clearfix hover-effect">--%>
+<%--<a href="#">--%>
+<%--<img class="primary-image" src="img/product/3.jpg" alt="">--%>
+<%--</a>--%>
+<%--</div>--%>
+<%--<div class="single-product-info clearfix">--%>
+<%--<div class="pro-price">--%>
+<%--<span class="new-price">$25.99</span>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="product-content text-center">--%>
+<%--<h3>Full sleev women shirt</h3>--%>
+<%--<h4><a href="#">view details</a></h4>--%>
+<%--</div>--%>
+<%--<div class="product-action">--%>
+<%--<ul>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Compage"><i class="fa fa-refresh"></i></a></li>--%>
+<%--<li class="add-bag"><a href="#" data-toggle="tooltip" title="Shopping Cart">Add to Bag</a></li>--%>
+<%--<li><a href="#" data-toggle="tooltip" title="Like it!"><i class="fa fa-heart"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
 <%--</div>--%>
 <!-- featured end -->
 <!-- client start -->
@@ -1376,29 +1377,36 @@
 <script src="js/main.js"></script>
 </body>
 <script>
+    $("#decbtn").on("click",function () {
+        var dec = $('#buy-num').val();
+        if(dec>0){
+            dec = dec - 1;
+        }else {
+            dec = dec;
+        }
+    })
+    $("#incbtn").on("click",function () {
+        var inc = $('#buy-num').val();
+        inc = inc + 1;
+    })
     function toCart(a) {
         var goods_id = a;
         var amount = $('#buy-num').val();
-        //alert(goods_id);
-        //alert(amount);
+        alert("添加成功");
+        alert(goods_id);
+        alert(amount);
         $.ajax({
             url: "${pageContext.request.contextPath}/cart/addCart",
             type: "POST",
             dataType: "text",
             data: {'goods_id': goods_id, 'amount': amount},
             success: function (res) {
-                if(i>0){
-                    alert("添加成功");
-                }else{
-                    alert("添加未成功，请稍后重试");
-                }
+
             }
         });
     }
-    function buyNow(id) {//todo zy
+    function buyNow(id) {
         var amount = $('#buy-num').val();
-        alert(id);
-        alert(amount);
         location.href="${pageContext.request.contextPath}/cart/findOrderItem?id="+id+"&amount="+amount;
     }
 </script>
