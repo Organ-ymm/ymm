@@ -22,4 +22,6 @@ public interface CartMapper {
     CartCustom findItem(CartCustom cartPar);
 
     int addCart(Cart cart);
+
+    int cartNum(int user_id);
 }

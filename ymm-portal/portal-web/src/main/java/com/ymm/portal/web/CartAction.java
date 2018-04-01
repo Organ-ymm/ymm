@@ -41,12 +41,6 @@ public class CartAction {
     //@ResponseBody
     @RequestMapping(value="/listCustomCart",method= RequestMethod.GET)
     public String listCustomCart(HttpSession session, Model model){
-//        Users user1=new Users();
-//        user1.setUser_id(1);
-//        session.setAttribute("user",user1);
-
-
-        //HttpSession session = request.getSession();
         Users user= (Users) session.getAttribute("user");
         if(user!=null){//网站用户登录
             int user_id=user.getUser_id();
@@ -81,6 +75,30 @@ public class CartAction {
             }
         }
         return "pages/cart/cartlist";
+    }
+
+    /*
+        得到购物车商品总数
+     */
+    @RequestMapping(value="/cartNum")
+    @ResponseBody
+    public void cartNum(HttpSession session){
+        Users user = (Users) session.getAttribute("user");
+        int cartNum=0;
+        if(user!=null){
+            int user_id = user.getUser_id();
+            cartNum=cartService.cartNum(user_id);
+        }else{
+            Map<Goods,Integer> visitorCart = (Map<Goods, Integer>) session.getAttribute("visitorCart");
+            if(visitorCart!=null && visitorCart.size()>0){
+                Set<Goods> goods = visitorCart.keySet();
+                for(Goods good : goods){
+                    int num=visitorCart.get(good);
+                    cartNum+=num;
+                }
+            }
+        }
+        session.setAttribute("cartNum",cartNum);
     }
 
     /*

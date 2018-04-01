@@ -67,4 +67,11 @@ public interface CartService {
      * @return 成功影响的条数
      */
     int addAmount(int goods_id, int amount, int user_id);
+
+    /**
+     * 得到登录用户的购物车商品总数
+     * @param user_id 用户id
+     * @return
+     */
+    int cartNum(int user_id);
 }

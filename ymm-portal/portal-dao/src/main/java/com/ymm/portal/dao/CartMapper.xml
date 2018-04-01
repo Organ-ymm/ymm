@@ -52,4 +52,10 @@
         values(#{user_id},#{goods_id},#{amount},#{add_time})
     </insert>
 
+    <select id="cartNum" parameterType="com.ymm.portal.pojo.po.Cart" resultType="int">
+        select sum(amount)
+        from cart
+        where user_id=#{user_id}
+    </select>
+
 </mapper>

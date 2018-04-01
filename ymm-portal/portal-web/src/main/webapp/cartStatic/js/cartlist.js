@@ -162,6 +162,7 @@ $(function () {
         if($inputVal.val()>1 && $obj.hasClass('reSty')){
             $obj.removeClass('reSty');
         }
+        $.ajax("../../portal/cart/cartNum");
         totalMoney();
     });
 
@@ -188,6 +189,7 @@ $(function () {
         if($inputVal.val()==1 && !$(this).hasClass('reSty')){
             $(this).addClass('reSty');
         }
+        $.ajax("../../portal/cart/cartNum");
         totalMoney();
     });
 
