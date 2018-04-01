@@ -56,9 +56,15 @@
     ============================================ -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css">
 
+    <!-- layui CSS
+    ============================================ -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui/css/layui.css" media="all">
+
     <!-- modernizr JS
     ============================================ -->
     <script src="${pageContext.request.contextPath}/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
 
 </head>
 <body>
@@ -69,8 +75,8 @@
 
 <!-- header start -->
 <%--<header class="header-area">--%>
-    <jsp:include page="top.jsp"/>
-    <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
+<jsp:include page="top.jsp"/>
+<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
 <%--</header>--%>
 <!-- header end -->
 <!-- 轮播图板块 开始 -->
@@ -226,14 +232,17 @@
                                                         </div>
                                                         <div class="product-content text-center">
                                                             <h3>${goods2.goods_name}</h3>
-                                                            <h4><a href="${pageContext.request.contextPath}/detail/detailIndex.do?goods_id=${goods2.goods_id}">点击查看</a></h4>
+                                                            <h4>
+                                                                <a href="${pageContext.request.contextPath}/detail/detailIndex.do?goods_id=${goods2.goods_id}">点击查看</a>
+                                                            </h4>
                                                         </div>
                                                         <div class="product-action">
                                                             <ul>
-                                                                <li><a href="javascript:void(0)" data-toggle="tooltip"
+                                                                <li><a href="javascript:;" data-toggle="tooltip"
                                                                        title="加入对比"><i
                                                                         class="fa fa-refresh"></i></a></li>
-                                                                <li class="add-bag"><a href="javascript:void(0)"
+                                                                <li class="add-bag"><a href="javascript:;"
+                                                                                       onclick="addCart(${goods2.goods_id})"
                                                                                        data-toggle="tooltip"
                                                                                        title="购物车">加入购物车</a>
                                                                 </li>
@@ -278,14 +287,17 @@
                                                         </div>
                                                         <div class="product-content text-center">
                                                             <h3>${goods1.goods_name}</h3>
-                                                            <h4><a href="${pageContext.request.contextPath}/detail/detailIndex.do?goods_id=${goods1.goods_id}">点击查看</a></h4>
+                                                            <h4>
+                                                                <a href="${pageContext.request.contextPath}/detail/detailIndex.do?goods_id=${goods1.goods_id}">点击查看</a>
+                                                            </h4>
                                                         </div>
                                                         <div class="product-action">
                                                             <ul>
-                                                                <li><a href="javascript:void(0)" data-toggle="tooltip"
+                                                                <li><a href="javascript:;" data-toggle="tooltip"
                                                                        title="加入对比"><i
                                                                         class="fa fa-refresh"></i></a></li>
-                                                                <li class="add-bag"><a href="javascript:void(0)"
+                                                                <li class="add-bag"><a href="javascript:;"
+                                                                                       onclick="addCart(${goods2.goods_id})"
                                                                                        data-toggle="tooltip"
                                                                                        title="购物车">加入购物车</a>
                                                                 </li>
@@ -504,5 +516,31 @@
 <!-- main JS
 ============================================ -->
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
+
+<!-- layui JS
+   ============================================ -->
+<script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
+
+<script>
+    layui.use(['jquery','layer'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer;
+
+        window.addCart = function (goods_id) {
+            $.ajax({
+                data: {"goods_id": goods_id, "amount": 1},
+                dataType: "text",
+                type: "get",
+                url: "${pageContext.request.contextPath}/cart/addCart",
+                success: function (res) {
+                    if (res > 0) {
+                        layer.msg("加入成功!");
+                    }
+                }
+            });
+        }
+    });
+</script>
+
 </body>
 </html>

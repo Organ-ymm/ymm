@@ -21,6 +21,10 @@
     <sql id="GoodsIDNameImg_Column_List">
         g.goods_id,g.goods_name,g.market_price,g.goods_img
     </sql>
+    <!--Goods sql块(只有id,name,price,img,is_hot,is_new)-->
+    <sql id="GoodsList_Column_List">
+        g.goods_id,g.goods_name,g.market_price,g.goods_img,is_hot,is_new
+    </sql>
     <!--where status不为3-->
     <sql id="Where_Clause">
         <where>
@@ -33,10 +37,25 @@
     <!--where is_hot=1 and status不为3-->
     <sql id="WhereIsHot_Clause">
         <where>
-            g.status IN (1,2)
+            g.status =1
             AND is_hot=1
         </where>
     </sql>
+
+    <!--where cat_id&&brand_id != null , status不为3-->
+    <sql id="WhereList_Clause">
+        <where>
+            g.status = 1
+            <if test="goodsCustom != null and goodsCustom.cat_id != null and  goodsCustom.cat_id != 0">
+                AND cat_id = #{goodsCustom.cat_id}
+            </if>
+            <if test="goodsCustom != null and goodsCustom.brand_id != null and  goodsCustom.brand_id != 0">
+                AND brand_id = #{goodsCustom.brand_id}
+            </if>
+
+        </where>
+    </sql>
+
     <!--查询所有热门goods-->
     <select id="listHotGoods" parameterType="int" resultType="com.ymm.commons.pojo.po.Goods">
         SELECT
@@ -46,7 +65,19 @@
         AND cat_id = #{cat_id}
         ORDER BY g.goods_id
     </select>
-
+    <!--查询根据分类和品牌查询商品-->
+    <select id="listGoods" resultType="com.ymm.commons.pojo.po.Goods">
+        SELECT
+        <include refid="GoodsList_Column_List"/>
+        FROM goods g
+        <include refid="WhereList_Clause"/>
+        limit #{goodsCustom.offSet},#{goodsCustom.pageSize}
+    </select>
+    <select id="countGoods" resultType="int">
+        SELECT COUNT(1)
+        FROM goods g
+        <include refid="WhereList_Clause"/>
+    </select>
 
 
 

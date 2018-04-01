@@ -2,6 +2,7 @@ package com.ymm.portal.service.impl;
 
 import com.ymm.commons.pojo.po.Goods;
 import com.ymm.portal.dao.GoodsMapper;
+import com.ymm.portal.pojo.vo.GoodsCustom;
 import com.ymm.portal.service.GoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +25,20 @@ public class GoodsServiceImpl implements GoodsService {
         try {
             list = goodsDao.listHotGoods(i);
         } catch (Exception e) {
-            logger.debug(e.getMessage(),e);
+            logger.debug(e.getMessage(), e);
             e.printStackTrace();
         }
         return list;
     }
+
+    @Override
+    public GoodsCustom listGoods(GoodsCustom goodsCustom) {
+        List<Goods> goodsList = goodsDao.listGoods(goodsCustom);
+        int countGoods = goodsDao.countGoods(goodsCustom);
+        goodsCustom.setGoodsList(goodsList);
+        goodsCustom.setTotalCount(countGoods);
+        return goodsCustom;
+    }
+
+
 }

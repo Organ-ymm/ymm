@@ -14,11 +14,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>购物车</title>
+    <title>我的购物车 - ymm商城</title>
+    <!-- ======================= favicon ========================== -->
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/logo_icon.png">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/cartStatic/css/reset.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/cartStatic/css/carts.css">
 </head>
 <body>
+<%--==================================通用头部导航条导入========================================--%>
+<jsp:include page="../../topTemplate22.jsp"/>
+
 <section class="cartMain">
     <div class="cartMain_hd">
         <ul class="order_lists cartTop">

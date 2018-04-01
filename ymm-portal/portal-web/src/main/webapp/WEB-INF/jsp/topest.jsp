@@ -22,6 +22,7 @@
 <body>
 <!-- header start -->
 <header class="header-area">
+<%------------------------------begin---------------------------------%>
     <div class="header-top-area">
         <div class="container">
             <div class="row">
@@ -88,7 +89,7 @@
             </div>
         </div>
     </div>
-
+<%------------------------------over---------------------------------%>
 
 </header>
 <!-- header end -->
