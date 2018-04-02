@@ -10,21 +10,22 @@
     <meta name="description" content="" />
     <meta name="keywords" content="ymm商城" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-    <%--<link rel="shortcut icon" href="//s01.mifile.cn/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="//s01.mifile.cn/favicon.ico" type="image/x-icon" />--%>
+    <link rel="shortcut icon" href="//s01.mifile.cn/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="//s01.mifile.cn/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
     <link rel="icon" href="${pageContext.request.contextPath}/images/logo_icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.min.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/userStatic/css/main.min.css" />
+    <script src="${pageContext.request.contextPath}/userStatic/js/jquery-1.12.4.min.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/userStatic/js/personalCenter.js"/>--%>
 </head>
-
 <body>
-
+<input type="hidden" id="user_id" value="${user.user_id}"/>
 <div class="site-topbar" style="height: 61px;background-color: #262626">
     <div class="container">
 
         <div class="topbar-nav" style="height: 55px">
-            <img src="${pageContext.request.contextPath}/images/logo2.png"><span class="sep">|</span>
+            <a href="${pageContext.request.contextPath}/index"><img src="${pageContext.request.contextPath}/images/logo2.png"></a><span class="sep">|</span>
         </div>
         <div class="topbar-cart" id="J_miniCartTrigger">
             <a class="cart-mini" id="J_miniCartBtn" href="//static.mi.com/cart/"><i class="iconfont">&#xe60c;</i>购物车<span class="cart-mini-num J_cartNum"></span></a>
@@ -53,7 +54,7 @@
                         </div>
                         <div class="box-bd">
                             <ul class="uc-nav-list">
-                                <li><a href="#">我的订单</a></li>
+                                <li><a href="${pageContext.request.contextPath}/pages/orders/myOrder">我的订单</a></li>
                                 <li><a href="#">意外保</a></li>
                                 <li><a href="#">团购订单</a></li>
                                 <li><a href="#" data-count="comment" data-count-style="bracket">评价晒单</a></li>
@@ -105,7 +106,7 @@
                         <div class="box-bd">
                             <div class="portal-main clearfix">
                                 <div class="user-card">
-                                    <h2 class="username">用户名${user.username}</h2>
+                                    <h2 class="username">${user.username}</h2>
                                     <p class="tip">下午好～</p>
                                     <a class="link" href="https://account.xiaomi.com/pass/userInfo" target="_blank">修改个人信息 &gt;</a>
                                     <img class="avatar" src="picture/avna8j0kgin8eh_320.jpg" width="150" height="150" alt="头像" />
@@ -113,9 +114,9 @@
                                 <div class="user-actions">
                                     <ul class="action-list">
                                         <li>账户安全：<span class="level level-3">较高</span></li>
-                                        <li>绑定手机：<span class="tel">133********71</span></li>
+                                        <li>绑定手机：<span class="tel">${user.mobile_phone}</span></li>
 
-                                        <li>绑定邮箱：<span class="tel">49******1@q*.com</span></li>
+                                        <li>绑定邮箱：<span class="tel">${user.email}</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -123,23 +124,23 @@
                                 <ul class="info-list clearfix">
                                     <li>
                                         <h3>待支付的订单：<span class="num">0</span></h3>
-                                        <a href="//static.mi.com/order/?type=7">查看待支付订单<i class="iconfont">&#xe623;</i></a>
-                                        <img src="picture/portal-icon-1.png" alt="" />
+                                        <a href="${pageContext.request.contextPath}/pages/orders/unpayOrder">查看待支付订单<i class="iconfont">&#xe623;</i></a>
+                                        <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-1.png" alt="" />
                                     </li>
                                     <li>
                                         <h3>待收货的订单：<span class="num">0</span></h3>
                                         <a href="//static.mi.com/order/?type=8">查看待收货订单<i class="iconfont">&#xe623;</i></a>
-                                        <img src="picture/portal-icon-2.png" alt="" />
+                                        <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-2.png" alt="" />
                                     </li>
                                     <li>
                                         <h3>待评价商品数：<span class="num">2</span></h3>
                                         <a href="https://order.mi.com/user/comment?filter=1&r=61115.1522138533">查看待评价商品<i class="iconfont">&#xe623;</i></a>
-                                        <img src="picture/portal-icon-3.png" alt="" />
+                                        <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-3.png" alt="" />
                                     </li>
                                     <li>
                                         <h3>喜欢的商品：<span class="num">1</span></h3>
                                         <a href="https://order.mi.com/user/favorite?r=61115.1522138533">查看喜欢的商品<i class="iconfont">&#xe623;</i></a>
-                                        <img src="picture/portal-icon-4.png" alt="" />
+                                        <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-4.png" alt="" />
                                     </li>
                                 </ul>
                             </div>
@@ -223,51 +224,10 @@
         </div>
     </div>
 </div>
-  <script src="js/base.min.js"></script>
+<script src="js/base.min.js"></script>
 
 <%--修改密码--%>
 
-<script>
-    (function() {
-        MI.namespace('GLOBAL_CONFIG');
-        MI.GLOBAL_CONFIG = {
-            orderSite: 'https://order.mi.com',
-            wwwSite: '//www.mi.com',
-            cartSite: '//cart.mi.com',
-            itemSite: '//item.mi.com',
-            assetsSite: '//s01.mifile.cn',
-            listSite: '//list.mi.com',
-            searchSite: '//search.mi.com',
-            mySite: '//my.mi.com',
-            damiaoSite: 'http://tp.hd.mi.com/',
-            damiaoGoodsId:[],
-            logoutUrl: 'https://order.mi.com/site/logout',
-            staticSite: '//static.mi.com',
-            quickLoginUrl: 'https://account.xiaomi.com/pass/static/login.html'
-        };
-        MI.setLoginInfo.orderUrl = MI.GLOBAL_CONFIG.orderSite + '/user/order';
-        MI.setLoginInfo.logoutUrl = MI.GLOBAL_CONFIG.logoutUrl;
-        MI.setLoginInfo.init(MI.GLOBAL_CONFIG);
-        MI.miniCart.init();
-        MI.updateMiniCart();
-    })();
-</script>
-
-<script type="text/javascript" src="js/user.min.js"></script>
-
-<script>
-    var _msq = _msq || [];
-    _msq.push(['setDomainId', 100]);
-    _msq.push(['trackPageView']);
-    (function() {
-        var ms = document.createElement('script');
-        ms.type = 'text/javascript';
-        ms.async = true;
-        ms.src = '//s1.mi.com/stat/18/xmst.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ms, s);
-    })();
-</script>
 </body>
 </html>
 

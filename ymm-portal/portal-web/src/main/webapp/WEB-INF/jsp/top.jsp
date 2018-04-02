@@ -105,17 +105,17 @@
                                 </c:if>
                                 <c:if test="${!empty user}">
                                     <li class="login"><a
-                                            href="${pageContext.request.contextPath}/pages/user/personalCenter">${user.alias}</a>
+                                            href="${pageContext.request.contextPath}/pages/user/personalCenter">${user.username}</a>
                                         <ul class="submenu-mainmenu">
 
-                                            <li class="login-button"><a href="#">注销</a></li>
+                                            <li class="login-button"><a href="${pageContext.request.contextPath}/loginOut">注销</a></li>
                                         </ul>
                                     </li>
                                 </c:if>
                                 <%--这里的购物车数量,将会在单点登录之后,用user.catcount来动态显示--%>
                                 <li class="cart"><a href="${pageContext.request.contextPath}/cart/listCustomCart"><img
                                         src="${pageContext.request.contextPath}/images/icon/cart.png" alt="cart">
-                                    <p>0</p></a>
+                                    <p class="cartNum"></p></a><%--todo zy--%><%--<p>${cartNum}</p>--%>
                                     <%--这里进行一个动画,判断user.catcount==0,如果=0,则显示button"去添加",跳转到商品列表--%>
                                     <ul class="submenu-mainmenu">
 
@@ -135,7 +135,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <div class="logo">
-                        <a href="index"><img src="${pageContext.request.contextPath}/images/logo/logo.png"
+                        <a href="${pageContext.request.contextPath}/index"><img src="${pageContext.request.contextPath}/images/logo/logo.png"
                                                   alt="SHOPPPIE"></a>
                     </div>
                 </div>
@@ -143,19 +143,19 @@
                     <div class="mainmenu">
                         <nav>
                             <ul>
-                                <li><a href="index"><b>首页</b></a>
+                                <li><a href="${pageContext.request.contextPath}/index"><b>首页</b></a>
 
                                 </li>
-                                <li><a href="shop-full-grid.html"><b>手机</b></a>
+                                <li><a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&offSet=1&pageSize=16"><b>手机</b></a>
                                     <div class="mega-menu">
                                                 <span>
                                                     <a href="javascript:void(0)" class="title">热门品牌</a>
-                                                    <a href="#">小米</a>
-                                                    <a href="#">vivo</a>
-                                                    <a href="#">苹果</a>
-                                                    <a href="#">华为</a>
-                                                    <a href="#">三星</a>
-                                                    <a href="#">魅族</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=23&offSet=1&pageSize=16">小米</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=27&offSet=1&pageSize=16">vivo</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=24&offSet=1&pageSize=16">苹果</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=25&offSet=1&pageSize=16">华为</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=26&offSet=1&pageSize=16">三星</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=29&offSet=1&pageSize=16">魅族</a>
                                                 </span>
 
                                     </div>
@@ -167,16 +167,16 @@
                                         </span>
                                     </div>
                                 </li>
-                                <li><a href="blog-full-view.html"><b>笔记本</b></a>
+                                <li><a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&offSet=1&pageSize=16"><b>笔记本</b></a>
                                     <div class="mega-menu">
                                                 <span>
                                                     <a href="javascript:void(0)" class="title">热门品牌</a>
-                                                    <a href="#">华硕</a>
-                                                    <a href="#">神舟</a>
-                                                    <a href="#">苹果</a>
-                                                    <a href="#">戴尔</a>
-                                                    <a href="#">惠普</a>
-                                                    <a href="#">联想</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=1&offSet=1&pageSize=16">华硕</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=5&offSet=1&pageSize=16">神舟</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=3&offSet=1&pageSize=16">苹果</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=2&offSet=1&pageSize=16">戴尔</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=6&offSet=1&pageSize=16">惠普</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=7&offSet=1&pageSize=16">联想</a>
                                                 </span>
 
                                     </div>
@@ -324,5 +324,18 @@
 <!-- main JS
 ============================================ -->
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
+
 </body>
+<script>
+    $(function(){//todo zy
+        $.ajax({
+            url:"${pageContext.request.contextPath}/cart/cartNum",
+            dataType:"text",
+            type:"get",
+            success:function (data) {
+                $('.cartNum').html(data);
+            }
+        });
+    });
+</script>
 </html>

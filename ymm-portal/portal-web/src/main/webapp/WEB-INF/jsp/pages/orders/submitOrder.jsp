@@ -6,11 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>订单提交</title>
+    <title>订单提交 - ymm商城</title>
+    <!-- ======================= favicon ========================== -->
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/logo_icon.png">
+
     <link href="${pageContext.request.contextPath}/orderStatic/css/public.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/orderStatic/css/base.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/orderStatic/js/jquery_cart.js"></script>
@@ -22,6 +26,33 @@
 
         window.onload = function(){
             new tab('test4-input-input_tab1-input_tab2', '-');
+            $.ajax({//订单提交页的地址显示
+                //data:"",
+                dataType:"text",
+                type:"POST",
+                url:"${pageContext.request.contextPath}/orders/getOrderByUserId",
+                success:function (data) {//返回的是Orders对象
+                    //console.log(data);
+                    if(data!=null){
+                        var order=eval("("+data+")");//将json类型字符串转化成json对象
+//                        alert(order.order_id);
+//                        alert(order.receiver_name);
+//                        alert(order.receiver_address);
+//                        alert(order.receiver_phone);
+//                        alert(order.order_money);
+                        $(".order_id").html(order.order_id);
+                        $(".receiver_name").html(order.receiver_name);
+                        $(".receiver_address").html(order.receiver_address);
+                        $(".receiver_phone").html(order.receiver_phone);
+                        $(".order_money").html(order.order_money);
+
+                    }
+                }
+            });
+            handleCart();
+        };
+        function handleCart() {
+
         }
         function tab(o, s, cb, ev){ //tab换类
             var $ = function(o){return document.getElementById(o)};
@@ -65,7 +96,7 @@
 </head>
 
 <body>
-<!--顶部快捷菜单-->
+<%--<!--顶部快捷菜单-->
 <div class="shortcut_v2013 alink_v2013">
     <div class="w">
         <ul class="fl 1h">
@@ -122,7 +153,7 @@
     <div class="w">
         <div class="logo_v2013">
             <a href="#">
-                <img class="border_r" src="${pageContext.request.contextPath}/orderStatic/images/logo.jpg" width="120" height="50">
+                <img class="border_r" src="${pageContext.request.contextPath}/images/logo/logo.png" width="120" height="50">
                 <img src="${pageContext.request.contextPath}/orderStatic/images/slogan.jpg" width="170" height="50">
             </a>
         </div>
@@ -140,10 +171,9 @@
             </ul>
         </div>
         <div id="cart_box" class="cart_box">
-            <a id="cart" class="cart_link" href="#" rel="nofollow">
+            <a id="cart" class="cart_link" href="${pageContext.request.contextPath}/cart/listCustomCart" rel="nofollow">
                 <span class="text">去购物车结算</span>
                 <img src="${pageContext.request.contextPath}/orderStatic/images/shopping_icon.png" width="24" height="24" class="cart_gif">
-
                 <!-- 购物车没有物品时，隐藏此num -->
                 <span class="num">12</span>
                 <s class="icon_arrow_right"></s>
@@ -172,7 +202,7 @@
                     </div>
                     <div class="con_all">
                         <div class="price_whole"><span>共<span class="num_all">12</span>件商品</span></div>
-                        <div><span class="price_gongji">共计<em>￥</em><span class="total_price">69</span></span><a href="#" class="cart_btn" rel="nofollow">去购物车结算</a></div>
+                        <div><span class="price_gongji">共计<em>￥</em><span class="total_price">69</span></span><a href="${pageContext.request.contextPath}/cart/listCustomCart" class="cart_btn" rel="nofollow">去购物车结算</a></div>
                     </div>
                 </div>
             </div>
@@ -206,12 +236,12 @@
 <div class="banner_red_top">
 
 
-</div>
+</div>--%>
 
+<%--==================================通用头部导航条导入========================================--%>
+<jsp:include page="../../top.jsp"/>
 
 <!--订单提交body部分开始-->
-
-
 <div class="border_top_cart">
 
     <div class="container payment-con">
@@ -225,16 +255,16 @@
                 </div>
                 <div class="info">
                     <p>
-                        金额：<span class="pay-total">49.00元</span>
+                        金额：<span class="pay-total"><span class="order_money"></span>元</span>
                     </p>
                     <p>
-                        订单：1150505740045173                    </p>
+                        订单编号：<span class="order_id"></span>         </p>
                     <p>
-                        配送：潘骏杰                                    <span class="line">/</span>
-                        159****6437                                    <span class="line">/</span>
-                        江苏,无锡市,北塘区 民丰西苑82号202室                                                                <span class="line">/</span>
-                        不限送货时间                                    <span class="line">/</span>
-                        个人电子发票                                                    </p>
+                        配送：<span class="receiver_name"></span>       <span class="line">/</span>
+                        <span class="receiver_phone"></span>             <span class="line">/</span>
+                        <span class="receiver_address"></span>           <span class="line">/</span><%--
+                        不限送货时间                                      <span class="line">/</span>
+                        个人电子发票--%>                                                    </p>
                 </div>
                 <div class="icon-box">
                     <i class="iconfont"><img src="${pageContext.request.contextPath}/orderStatic/images/yes_ok.png"></i>

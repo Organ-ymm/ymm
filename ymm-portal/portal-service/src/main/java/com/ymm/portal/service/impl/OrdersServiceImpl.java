@@ -6,9 +6,6 @@ import com.ymm.portal.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * Description:
  * Author: zy
@@ -26,15 +23,6 @@ public class OrdersServiceImpl implements OrdersService {
         int i=0;
         order.setDeliver_status(0);
         order.setPay_status(0);
-        Date date =new Date();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String order_time=sdf.format(date);
-        order.setOrder_time(order_time);
-        SimpleDateFormat sdf1=new SimpleDateFormat("yyyyMMddHHmmss");
-        StringBuilder order_id1=new StringBuilder(sdf1.format(date));
-        int order_id2=(int)(Math.random()*9999+1);
-        long order_id=Long.parseLong((order_id1.append(order_id2)).toString());
-        order.setOrder_id(order_id);
         try {
             i=ordersMapper.addOrder(order);
         } catch (Exception e) {
@@ -42,4 +30,12 @@ public class OrdersServiceImpl implements OrdersService {
         }
         return i;
     }
+
+    @Override
+    public Orders getOrderByUserId(int user_id) {
+        Orders order=ordersMapper.getOrderByUserId(user_id);
+        return order;
+    }
+
+
 }

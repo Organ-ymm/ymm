@@ -38,4 +38,19 @@ public class AddressServiceImpl implements AddressService{
         Address address=addressMapper.findAddress(addresspra);
         return address;
     }
+
+    @Override
+    public int addAddress(int user_id) {
+        Address address=new Address();
+        address.setUser_id(user_id);
+        int i= 0;
+        try {
+            int addressCount=addressMapper.addressCount(user_id);
+            address.setAddress_id(addressCount+1);
+            i = addressMapper.addAddress(address);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
 }

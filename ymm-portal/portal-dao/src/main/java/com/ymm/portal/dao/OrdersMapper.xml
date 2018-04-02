@@ -13,5 +13,23 @@
         values(#{order_id},#{user_id},#{receiver_name},#{receiver_address},#{receiver_phone},
         #{order_time},#{order_money},#{pay_status},#{deliver_status})
     </insert>
+    
+    <select id="selectOrderById" parameterType="long" resultType="com.ymm.commons.pojo.po.Orders">
+        select
+        <include refid="base_column"/>
+        from orders
+        where
+        order_id=#{order_id}
+    </select>
 
+    <select id="getOrderByUserId" parameterType="int" resultType="com.ymm.commons.pojo.po.Orders">
+        select
+        <include refid="base_column"/>
+        from orders where order_id=(
+        select max(order_id)
+        from orders
+        where
+        user_id=#{user_id}
+        )
+    </select>
 </mapper>

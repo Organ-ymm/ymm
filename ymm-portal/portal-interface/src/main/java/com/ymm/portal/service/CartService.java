@@ -30,7 +30,7 @@ public interface CartService {
 
     /**
      *
-     * @param goods_id 购物车内要增加数量的商品id
+     * @param goods_id 购物车内要增加数量的商品id（在购物车修改数量的商品，不更新add_time）
      * @param user_id 用户id
      * @return 更新成功影响的条数
      */
@@ -61,10 +61,17 @@ public interface CartService {
 
     /**
      *
-     * @param goods_id 购物车内夫人商品id
+     * @param goods_id 购物车内对应的商品id（在商品详情页加入的商品，更新add_time）
      * @param amount 总的商品的数量
      * @param user_id 当前用户id
      * @return 成功影响的条数
      */
     int addAmount(int goods_id, int amount, int user_id);
+
+    /**
+     * 得到登录用户的购物车商品总数
+     * @param user_id 用户id
+     * @return
+     */
+    int cartNum(int user_id);
 }

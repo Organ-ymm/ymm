@@ -4,7 +4,7 @@
 
     <sql id="base_column">
         address_id,zipcode,user_id,consignee,
-        province,city,county,street,phone,tag
+        province,city,county,street,phone
     </sql>
 
     <select id="listAddress" resultType="com.ymm.portal.pojo.po.Address" parameterType="int">
@@ -22,4 +22,24 @@
         where address_id=#{address_id} and user_id=#{user_id}
     </select>
 
+    <select id="addressCount" parameterType="int" resultType="int">
+        select count(1)
+        from address
+        where user_id=#{user_id}
+    </select>
+
+    <insert id="addAddress" parameterType="com.ymm.portal.pojo.po.Address">
+        insert into
+        address(
+        <include refid="base_column"/>
+        <if test="tag != null and tag != ''">
+            ,tag
+        </if>
+        )
+        values(#{address_id},#{zipcode},#{user_id},#{consignee},#{province},#{city},#{county},#{street},#{phone}
+        <if test="tag != null and tag != ''">
+            ,#{tag}
+        </if>
+        )
+    </insert>
 </mapper>

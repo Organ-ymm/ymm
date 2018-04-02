@@ -27,9 +27,9 @@ public class CartCustom extends Cart implements Serializable {
         return getAmount() * shop_price;
     }
 
-    /*public void setSubTotal(Double subTotal) {
+    public void setSubTotal(Double subTotal) {
         this.subTotal = subTotal;
-    }*/
+    }
 
     public String getGoods_sn() {
         return goods_sn;

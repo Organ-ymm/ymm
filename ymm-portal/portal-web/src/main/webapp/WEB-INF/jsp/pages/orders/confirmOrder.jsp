@@ -11,7 +11,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>确认订单页面</title>
+    <title>确认订单 - ymm商城</title>
+    <!-- ======================= favicon ========================== -->
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/logo_icon.png">
+
     <link href="${pageContext.request.contextPath}/orderStatic/css/public.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/orderStatic/css/base.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/orderStatic/js/jquery_cart.js"></script>
@@ -19,7 +22,7 @@
 </head>
 
 <body>
-<!--顶部快捷菜单-->
+<%--<!--顶部快捷菜单-->
 <div class="shortcut_v2013 alink_v2013">
     <div class="w">
         <ul class="fl 1h">
@@ -51,8 +54,8 @@
             <li class="fl"><i class="shortcut_s"></i></li>
             <li class="fl"><div class="menu_hd"><a href="#">服务中心</a></div></li>
             <li class="fl"><i class="shortcut_s"></i></li>
-            <%--<li class="fl"><div class="menu_hd"><a href="#">商家入驻</a></div></li>
-            <li class="fl"><i class="shortcut_s"></i></li>--%>
+            &lt;%&ndash;<li class="fl"><div class="menu_hd"><a href="#">商家入驻</a></div></li>
+            <li class="fl"><i class="shortcut_s"></i></li>&ndash;%&gt;
             <li class="fl">
                 <div class="menu">
                     <div class="menu_hd"><a href="#">网站导航</a><b><em></em></b></div>
@@ -70,13 +73,12 @@
 </div>
 <!--顶部快捷菜单-->
 
-
 <!--顶部Logo及搜索-->
 <div class="header_2013">
     <div class="w">
         <div class="logo_v2013">
             <a href="#">
-                <img class="border_r" src="${pageContext.request.contextPath}/orderStatic/images/logo.jpg" width="120" height="50">
+                <img class="border_r" src="${pageContext.request.contextPath}/images/logo/logo.png" width="120" height="50">
                 <img src="${pageContext.request.contextPath}/orderStatic/images/slogan.jpg" width="170" height="50">
             </a>
         </div>
@@ -85,15 +87,15 @@
                 <input name="search" type="text" class="header_search_input" default_val="锡货网三期上线全场五折" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh">
                 <button type="submit" class="header_search_btn">搜索</button>
             </form>
-            <%--<ul class="hot_word">
+            &lt;%&ndash;<ul class="hot_word">
                 <li><a class="red" href="#" target="_blank">礼品卡</a></li>
                 <li><a target="_blank" href="#">百货五折</a></li>
                 <li><a target="_blank" href="#">大闸蟹</a></li>
                 <li><a target="_blank" href="#">年货</a></li>
                 <li><a target="_blank" href="#">电子产品</a></li>
-            </ul>--%>
+            </ul>&ndash;%&gt;
         </div>
-        <%--<div id="cart_box" class="cart_box">
+        &lt;%&ndash;<div id="cart_box" class="cart_box">
             <a id="cart" class="cart_link" href="#" rel="nofollow">
                 <span class="text">去购物车结算</span>
                 <img src="${pageContext.request.contextPath}/orderStatic/images/shopping_icon.png" width="24" height="24" class="cart_gif">
@@ -129,7 +131,7 @@
                         <div><span class="price_gongji">共计<em>￥</em><span class="total_price">69</span></span><a href="#" class="cart_btn" rel="nofollow">去购物车结算</a></div>
                     </div>
                 </div>
-            </div>--%>
+            </div>&ndash;%&gt;
         </div>
         <span class="clr"></span>
     </div>
@@ -155,14 +157,13 @@
 </div>
 <!--  导航条    end-->
 
-
-
 <div class="banner_red_top">
 
 
-</div>
+</div>--%>
 
-
+<%--==================================通用头部导航条导入========================================--%>
+<%--<jsp:include page="../../top.jsp"/>--%>
 <!--收货地址body部分开始-->
 <div class="border_top_cart">
     <script type="text/javascript">
@@ -200,6 +201,7 @@
                     <div class="xm-box">
                         <div class="box-hd ">
                             <h2 class="title">收货地址</h2>
+                            <input type="hidden" name="address_id"/>
                         </div>
                         <div class="box-bd">
                             <div class="clearfix xm-address-list" id="checkoutAddrList">
@@ -207,7 +209,7 @@
                                     <dl class="item">
                                         <div class="addressItem" >
                                             <dt>
-                                                <input type="hidden" name="addressNo" id="addressNo" class="addressNo" value=${address.address_id} />
+                                                <input type="hidden" id="addressNo" value=${address.address_id} />
                                                 <strong class="itemConsignee">${address.consignee}</strong>
                                                 <span class="itemTag tag">${address.tag}</span>
                                             </dt>
@@ -266,8 +268,9 @@
                             <div class="xm-edit-addr-box" id="J_editAddrBox">
                                 <div class="bd">
                                     <div class="item">
-                                        <label>收货人姓名<span>*</span></label>
-                                        <input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
+                                        <label>收货人姓名<span>*</span></label><%--todo--%>
+                                        <%--<input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>--%>
+                                        <input type="text" name="consignee" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
                                         <p class="tip-msg tipMsg"></p>
                                     </div>
                                     <div class="item">
@@ -441,29 +444,55 @@
                                         <span class="col col-3">购买数量</span>
                                         <span class="col col-4">小计（元）</span>
                                     </dt>
-                                        <c:forEach items="${orderItem}" var="good">
+                                        <c:if test="${!empty orderItem}">
+                                            <c:forEach items="${orderItem}" var="good">
+                                                <dd class="item clearfix">
+                                                    <div class="item-row">
+                                                        <input type="hidden" name="goods_id" value="${good.goods_id}"/>
+                                                        <div class="col col-1">
+                                                            <div class="g-pic">
+                                                                <img src="${good.goods_thumb}" title="${good.goods_name}">
+                                                            </div>
+                                                            <div class="g-info">
+                                                                <a href="javascript:;">${good.goods_name}</a>
+                                                            </div>
+                                                            <div class="g-info">
+                                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;${good.goods_sn}</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col col-2">${good.shop_price}</div>
+                                                        <div class="col col-3" name="amount">${good.amount}</div>
+                                                        <div class="col col-4" name="subTotal">${good.subTotal}</div>
+
+                                                    </div>
+                                                </dd>
+                                            </c:forEach>
+                                        </c:if>
+                                        <c:if test="${!empty item}">
                                             <dd class="item clearfix">
                                                 <div class="item-row">
-
+                                                    <p class="flag">1</p>
+                                                    <input type="hidden" name="goods_id" value="${item.goods_id}"/>
                                                     <div class="col col-1">
                                                         <div class="g-pic">
-                                                            <img src="${good.goods_thumb}" title="${good.goods_name}">
+                                                            <img src="${item.goods_thumb}" title="${item.goods_name}">
                                                         </div>
                                                         <div class="g-info">
-                                                            <a href="javascript:;">${good.goods_name}</a>
+                                                            <a href="javascript:;">${item.goods_name}</a>
                                                         </div>
                                                         <div class="g-info">
-                                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;${good.goods_sn}</span>
+                                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;${item.goods_sn}</span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col col-2">${good.shop_price}</div>
-                                                    <div class="col col-3">${good.amount}</div>
-                                                    <div class="col col-4" name="subTotal">${good.subTotal}</div>
+                                                    <div class="col col-2">${item.shop_price}</div>
+                                                    <div class="col col-3" name="amount">${item.amount}</div>
+                                                    <div class="col col-4" name="subTotal">${item.subTotal}</div>
 
                                                 </div>
                                             </dd>
-                                        </c:forEach>
+                                        </c:if>
                                     <%--<dd class="item clearfix">
                                         <div class="item-row">
                                             <div class="col col-1">
@@ -548,7 +577,7 @@
                     <input type="hidden" id="couponValue" name="Checkout[couponsValue]">
                     <div class="checkout-confirm">
 
-                        <a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+                        <a href="${pageContext.request.contextPath}/cart/listCustomCart" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
                         <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" />
                     </div>
                 </div>

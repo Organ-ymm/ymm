@@ -147,7 +147,7 @@ $(function () {
         //alert(parseFloat($priceTotalObj.html()));
         //alert(parseFloat($price));
         //alert(parseFloat($priceTotal));
-        var id=$(this).parents('.order_lists').children("[name='goods_id']").val();//得到增加数量的商品的id
+        var id=$(this).parents('.order_lists').find("[name='goods_id']").val();//children("[name='goods_id']").val();//得到增加数量的商品的id
         var amount=parseInt($count);//得到增加后的数量
         //alert(amount);
         //alert(id);
@@ -162,6 +162,7 @@ $(function () {
         if($inputVal.val()>1 && $obj.hasClass('reSty')){
             $obj.removeClass('reSty');
         }
+        $.ajax("../../portal/cart/cartNum");
         totalMoney();
     });
 
@@ -174,7 +175,7 @@ $(function () {
         if($inputVal.val()>1){//数量大于1时才能减数量
             $inputVal.val($count);
             $priceTotalObj.html($priceTotal);
-            var id=$(this).parents('.order_lists').children("[name='goods_id']").val();//得到减少数量的商品的id
+            var id=$(this).parents('.order_lists').find("[name='goods_id']").val();//得到减少数量的商品的id
             var amount=parseInt($count);//得到减少后的数量
             //alert(amount);
             //alert(id);
@@ -188,6 +189,7 @@ $(function () {
         if($inputVal.val()==1 && !$(this).hasClass('reSty')){
             $(this).addClass('reSty');
         }
+        $.ajax("../../portal/cart/cartNum");
         totalMoney();
     });
 
@@ -234,7 +236,8 @@ $(function () {
     //确定按钮，移除商品
     $('.dialog-sure').click(function () {
         $order_lists.remove();//移除购物车内的这项商品
-        var id=$order_lists.children("[name='goods_id']").val();
+        var id=$order_lists.find("[name='goods_id']").val();
+        console.log(id);
         //alert(id);
         $.ajax({
             type:"GET",
@@ -274,7 +277,7 @@ $(function () {
         });
         //当有勾选商品时，才能结算
         if(ids.length>0){
-            window.location.href="../../portal/cart/listOrderItem?goods_id="+ids;
+            window.location.href="../../portal/cart/listOrderItem?goods_id="+ids;//结算前先查询出商品的详细信息
             /*$.ajax({
                 data:{"ids[]":ids},
                 dataType:"text",

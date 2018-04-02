@@ -14,4 +14,8 @@ public interface AddressMapper {
     List<Address> listAddress(int user_id);
 
     Address findAddress(Address address);
+
+    int addAddress(Address address);
+
+    int addressCount(int user_id);
 }

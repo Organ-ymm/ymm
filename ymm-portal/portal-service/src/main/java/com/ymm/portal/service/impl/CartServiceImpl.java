@@ -136,4 +136,10 @@ public class CartServiceImpl implements CartService{
         }
         return i;
     }
+
+    @Override
+    public int cartNum(int user_id) {
+        int i=cartMapper.cartNum(user_id);
+        return i;
+    }
 }

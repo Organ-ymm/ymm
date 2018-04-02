@@ -1,5 +1,7 @@
 package com.ymm.commons.pojo.po;
 
+import java.util.List;
+
 public class Users {
     private int user_id;
     private String email;
@@ -15,6 +17,7 @@ public class Users {
     private String reg_time;
     private Long mobile_phone;
     private Integer status;
+    private List<Orders> orders;
 
     public Integer getStatus() {
         return status;
@@ -119,5 +122,22 @@ public class Users {
 
     public void setMobile_phone(Long mobile_phone) {
         this.mobile_phone = mobile_phone;
+    }
+
+
+    public Integer getPay_points() {
+        return pay_points;
+    }
+
+    public void setPay_points(Integer pay_points) {
+        this.pay_points = pay_points;
+    }
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
     }
 }

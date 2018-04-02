@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ymm.portal.dao.UserMapper" >
-    <!--
-user_id int(8) NOT NULL会员资料自增id
-email varchar(60) NULL会员Email
-username varchar(60) NULL用户名
-password varchar(32) NULL用户密码
-alias varchar(60) NULL昵称
-sex int(1) NULL性别 ; 0保密; 1男; 2女
-birthday varchar(60) NULL出生日期
-rank_points int(11) NULL会员等级积分
-rank_id int(8) NULL会员表的rank_id
-reg_time varchar(60) NULL注册时间
-mobile_phone bigint(20) NULL移动电话
-status int(1) NULL状态：0删除，1正常-->
+
     <sql id="baseSql">
       user_id,email,username,password,alias,sex,birthday,rank_points,rank_id,reg_time,mobile_phone,status
     </sql>
@@ -39,4 +27,42 @@ status int(1) NULL状态：0删除，1正常-->
         VALUES (#{email},#{username},#{password},#{alias},#{sex},#{birthday},#{rank_points},
         #{rank_id},#{reg_time},#{mobile_phone},#{status})
     </insert>
+
+    <sql id="allBaseSql">
+        u.user_id,u.email,u.username,u.password,u.alias,u.sex,u.birthday,u.rank_points,u.rank_id,u.reg_time,u.mobile_phone,u.status,
+        a.address_id,  a.zipcode, a.user_id, a.consignee, a.province, a.city, a.county, a.street, a.phone,  a.tag ,
+        c.user_id ,c.goods_id  ,c.amount  ,c.add_time,
+        o.order_id  ,o.user_id  ,o.receiver_name  ,o.receiver_address ,o.receiver_phone ,o.order_time ,o.order_money  ,o.pay_status  ,o.deliver_status
+    </sql>
+
+    <!--关联查询用户其他信息-->
+    <resultMap id="userResultMapper" type="com.ymm.commons.pojo.po.Users">
+        <id property="user_id" column="user_id" ></id>
+        <result property="user_id" column="user_id"></result>
+        <collection property="address" resultMap="addressResultMapper"></collection>
+        <collection property="cart" resultMap="cartResultMapper"></collection>
+        <collection property="orders" resultMap="orderResultMapper"></collection>
+    </resultMap>
+
+    <resultMap id="addressResultMapper" type="com.ymm.portal.pojo.po.Address">
+        <id property="address_id" column="address_id" ></id>
+    </resultMap>
+
+    <resultMap id="cartResultMapper" type="com.ymm.portal.pojo.po.Cart">
+        <result property="user_id" column="user_id"></result>
+    </resultMap>
+
+    <resultMap id="orderResultMapper" type="com.ymm.commons.pojo.po.Orders">
+        <id property="order_id" column="order_id" ></id>
+    </resultMap>
+
+    <select id="selectUserAddressCartOrders" parameterType="com.ymm.commons.pojo.po.Users" resultMap="userResultMapper">
+        SELECT <include refid="allBaseSql"/>
+        FROM users u
+        LEFT JOIN address a ON u.user_id = a.address_id
+        LEFT JOIN cart c ON u.user_id = c.user_id
+        LEFT JOIN orders o ON u.user_id = o.order_id
+        WHERE u.user_id= #{user_id}
+    </select>
+
 </mapper>

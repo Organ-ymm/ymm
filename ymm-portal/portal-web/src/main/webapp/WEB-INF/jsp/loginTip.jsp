@@ -39,11 +39,11 @@
     </script>
 </head>
 <body>
-<%--<jsp:include page="top.jsp"></jsp:include>--%>
-<p>您还未登录!请先登录》》》</p>
-<span style="color: red;" id="sp1">5</span>秒后前往登录页面~~~
-<input type="button" onclick="clearTimer()" value="立即前往" />
-<br>
-<%--<jsp:include page="bottom.jsp"></jsp:include>--%>
+<jsp:include page="top.jsp"/>
+<h3 style="text-align:center;margin-top:150px;color: #999">
+    您还未登录!请先登录 >>>
+    <span style="color: red;" id="sp1">5</span>秒后前往登录页面~~~
+    <a onclick="clearTimer()" style="color: red">立即前往</a>
+</h3>
 </body>
 </html>
