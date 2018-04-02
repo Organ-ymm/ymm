@@ -27,4 +27,11 @@ public interface AddressService {
      * @return 当前用户选择的结算地址
      */
     Address findAddress(int address_id,int user_id);
+
+    /**
+     * 添加收货地址
+     * @param user_id
+     * @return
+     */
+    int addAddress(int user_id);
 }

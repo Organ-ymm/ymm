@@ -73,27 +73,29 @@ public class RegisterAndLogin {
                     //将未登录前加入购物车的商品，添加进该用户的购物车
                     int user_id = user1.getUser_id();
                     Map<Goods,Integer> visitorCart = (Map<Goods, Integer>) session.getAttribute("visitorCart");
-                    Set<Map.Entry<Goods, Integer>> s = visitorCart.entrySet();
-                    Iterator<Map.Entry<Goods, Integer>> it = s.iterator();
-                    while(it.hasNext()) {
-                        Map.Entry<Goods, Integer> entry = it.next();
-                        Goods good = entry.getKey();
+                    if(visitorCart!=null){
+                        Set<Map.Entry<Goods, Integer>> s = visitorCart.entrySet();
+                        Iterator<Map.Entry<Goods, Integer>> it = s.iterator();
+                        while(it.hasNext()) {
+                            Map.Entry<Goods, Integer> entry = it.next();
+                            Goods good = entry.getKey();
 
-                        int goods_id = good.getGoods_id();
-                        CartCustom cartCustomPra=new CartCustom();
-                        cartCustomPra.setUser_id(user_id);
-                        cartCustomPra.setGoods_id(goods_id);
-                        CartCustom cartCustom = cartService.findItem(cartCustomPra);
-                        int oldAmount = entry.getValue();
-                        if(cartCustom!=null){//该用户的购物车中有该商品，增加原有数量
-                            int addAmount=entry.getValue(),
-                                amount=oldAmount+addAmount;
-                            cartService.addAmount(goods_id,amount,user_id);
-                        }else{//该用户的购物车中没有该商品，则增加商品
-                            cartService.addCart(goods_id,oldAmount,user_id);
+                            int goods_id = good.getGoods_id();
+                            CartCustom cartCustomPra=new CartCustom();
+                            cartCustomPra.setUser_id(user_id);
+                            cartCustomPra.setGoods_id(goods_id);
+                            CartCustom cartCustom = cartService.findItem(cartCustomPra);
+                            int oldAmount = entry.getValue();
+                            if(cartCustom!=null){//该用户的购物车中有该商品，增加原有数量
+                                int addAmount=entry.getValue(),
+                                        amount=oldAmount+addAmount;
+                                cartService.addAmount(goods_id,amount,user_id);
+                            }else{//该用户的购物车中没有该商品，则增加商品
+                                cartService.addCart(goods_id,oldAmount,user_id);
+                            }
                         }
+                        session.removeAttribute("visitorCart");
                     }
-                    session.removeAttribute("visitorCart");
 
                     return 1;
                 }

@@ -38,16 +38,14 @@ $("#checkoutAddrList").on("click",function(){//获得用户的选取的地址id
         if(address_id>0){
             $('[name="address_id"]').val(address_id);
         }
-        //alert($('.totalPrice').html());
-        /*$.ajax({
-            data:{"address_id":address_id,"order_money":orderMoney},
-            dataType:"text",
-            type:"POST",
-            url:"../../portal/orders/submitOrder",
-            success:function (order_id) {
-                location.href="../../portal/pages/orders/submitOrder?order_id="+order_id;
-            }
-        });*/
+        /*var flag=$('.flag').html();
+        if(flag=='1'){//直接购买
+            var $item_row=$('.item-row');
+            var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
+            var amount=parseInt($item_row.find('[name="amount"]').html());
+            alert(goods_id);
+            alert(amount);
+        }*/
     }
 
 });
@@ -59,33 +57,52 @@ $("#checkoutToPay").on("click",function(){
     }*/
     if(0<b){
         var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
-        $('[name="address_id"]').val(address_id);
-        //console.log(address_id);
         //var orderMoney=parseFloat($('.totalPrice').html()-0);
-        var $item_row=$('.item-row');
-        var goods_ids=[],
-            amounts=[];
-        $item_row.each(function () {
-            var goods_id=parseInt($(this).find('[name="goods_id"]').val());
-            //alert(goods_id);
-            goods_ids.push(goods_id);//得到要结算的多个商品id
-            var amount=parseInt($(this).find('[name="amount"]').html());
-            //alert(amount);
-            amounts.push(amount);//得到要结算的多个商品的数量
-        });
-        $.ajax({
-            data:{"address_id":address_id,"goods_ids[]":goods_ids,"amounts[]":amounts},
-            dataType:"text",
-            type:"POST",
-            url:"../../portal/orders/submitOrder",
-            success:function (data) {
-                if(data>0){
-                    location.href="../../portal/pages/orders/submitOrder";
-                }else{
-                    location.href="../../portal/404";
+        var flag=$('.flag').html();
+        if(flag=='1'){//直接购买
+            var $item_row=$('.item-row');
+            var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
+            var amount=parseInt($item_row.find('[name="amount"]').html());
+            $.ajax({
+                data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
+                dataType:"text",
+                type:"POST",
+                url:"../../portal/orders/addOrder",//直接购买
+                success:function (data) {
+                    if(data>0){
+                        location.href="../../portal/pages/orders/submitOrder";
+                    }else{
+                        location.href="../../portal/404";
+                    }
                 }
-            }
-        });
+            });
+        }else{//购物车购买
+            var $item_row=$('.item-row');
+            var goods_ids=[],
+                amounts=[];
+            //alert($item_row.length);
+            $item_row.each(function () {
+                var goods_id=parseInt($(this).find('[name="goods_id"]').val());
+                //alert(goods_id);
+                goods_ids.push(goods_id);//得到要结算的多个商品id
+                var amount=parseInt($(this).find('[name="amount"]').html());
+                //alert(amount);
+                amounts.push(amount);//得到要结算的多个商品的数量
+            });
+            $.ajax({
+                data:{"address_id":address_id,"goods_ids[]":goods_ids,"amounts[]":amounts},
+                dataType:"text",
+                type:"POST",
+                url:"../../portal/orders/submitOrder",//购物车购买
+                success:function (data) {
+                    if(data>0){
+                        location.href="../../portal/pages/orders/submitOrder";
+                    }else{
+                        location.href="../../portal/404";
+                    }
+                }
+            });
+        }
     }
 
 });

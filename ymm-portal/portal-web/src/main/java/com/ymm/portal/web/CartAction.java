@@ -281,7 +281,7 @@ public class CartAction {
         }
     }
     /*
-    商品详情页直接购买展示商品信息
+        商品详情页直接购买商品
      */
     @RequestMapping(value="/findOrderItem",method= RequestMethod.GET)
     public String findOrderItem(@RequestParam("id")String idStr,@RequestParam("amount")String amountStr,HttpSession session,Model model){
@@ -302,9 +302,10 @@ public class CartAction {
             cartCustom.setMarket_price(good.getMarket_price());
             cartCustom.setGoods_thumb(good.getGoods_thumb());
             cartCustom.setSubTotal(amount * (good.getShop_price()));
-            List<CartCustom> orderItem = new ArrayList<>();
-            orderItem.add(cartCustom);
-            model.addAttribute("orderItem", orderItem);
+            //List<CartCustom> orderItem = new ArrayList<>();
+            //orderItem.add(cartCustom);
+            //model.addAttribute("orderItem", orderItem);
+            model.addAttribute("item",cartCustom);
             //为了订单确认页的地址显示
             List<Address> addressList = addressService.listAddress(user_id);
             model.addAttribute("addressList", addressList);

@@ -268,8 +268,9 @@
                             <div class="xm-edit-addr-box" id="J_editAddrBox">
                                 <div class="bd">
                                     <div class="item">
-                                        <label>收货人姓名<span>*</span></label>
-                                        <input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
+                                        <label>收货人姓名<span>*</span></label><%--todo--%>
+                                        <%--<input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>--%>
+                                        <input type="text" name="consignee" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
                                         <p class="tip-msg tipMsg"></p>
                                     </div>
                                     <div class="item">
@@ -443,29 +444,55 @@
                                         <span class="col col-3">购买数量</span>
                                         <span class="col col-4">小计（元）</span>
                                     </dt>
-                                        <c:forEach items="${orderItem}" var="good">
+                                        <c:if test="${!empty orderItem}">
+                                            <c:forEach items="${orderItem}" var="good">
+                                                <dd class="item clearfix">
+                                                    <div class="item-row">
+                                                        <input type="hidden" name="goods_id" value="${good.goods_id}"/>
+                                                        <div class="col col-1">
+                                                            <div class="g-pic">
+                                                                <img src="${good.goods_thumb}" title="${good.goods_name}">
+                                                            </div>
+                                                            <div class="g-info">
+                                                                <a href="javascript:;">${good.goods_name}</a>
+                                                            </div>
+                                                            <div class="g-info">
+                                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;${good.goods_sn}</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col col-2">${good.shop_price}</div>
+                                                        <div class="col col-3" name="amount">${good.amount}</div>
+                                                        <div class="col col-4" name="subTotal">${good.subTotal}</div>
+
+                                                    </div>
+                                                </dd>
+                                            </c:forEach>
+                                        </c:if>
+                                        <c:if test="${!empty item}">
                                             <dd class="item clearfix">
                                                 <div class="item-row">
-                                                    <input type="hidden" name="goods_id" value="${good.goods_id}"/>
+                                                    <p class="flag">1</p>
+                                                    <input type="hidden" name="goods_id" value="${item.goods_id}"/>
                                                     <div class="col col-1">
                                                         <div class="g-pic">
-                                                            <img src="${good.goods_thumb}" title="${good.goods_name}">
+                                                            <img src="${item.goods_thumb}" title="${item.goods_name}">
                                                         </div>
                                                         <div class="g-info">
-                                                            <a href="javascript:;">${good.goods_name}</a>
+                                                            <a href="javascript:;">${item.goods_name}</a>
                                                         </div>
                                                         <div class="g-info">
-                                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;${good.goods_sn}</span>
+                                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;${item.goods_sn}</span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col col-2">${good.shop_price}</div>
-                                                    <div class="col col-3" name="amount">${good.amount}</div>
-                                                    <div class="col col-4" name="subTotal">${good.subTotal}</div>
+                                                    <div class="col col-2">${item.shop_price}</div>
+                                                    <div class="col col-3" name="amount">${item.amount}</div>
+                                                    <div class="col col-4" name="subTotal">${item.subTotal}</div>
 
                                                 </div>
                                             </dd>
-                                        </c:forEach>
+                                        </c:if>
                                     <%--<dd class="item clearfix">
                                         <div class="item-row">
                                             <div class="col col-1">
