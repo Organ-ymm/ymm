@@ -164,7 +164,7 @@ public class OrdersAction {
         Date date=new Date();
         SimpleDateFormat sdf1=new SimpleDateFormat("yyyyMMddHHmmss");
         StringBuilder order_id1=new StringBuilder(sdf1.format(date));
-        int order_id2=(int)(Math.random()*9999+1);
+        int order_id2=(int)((Math.random()* 9 +1)*1000);
         long order_id=Long.parseLong((order_id1.append(order_id2)).toString());
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String order_time=sdf.format(date);
@@ -273,10 +273,6 @@ public class OrdersAction {
     @ResponseBody
     @RequestMapping(value = "/getOrderByUserId",method = RequestMethod.POST)
     public Orders getOrderByUserId(HttpSession session){
-        Users user1=new Users();
-        user1.setUser_id(1);
-        session.setAttribute("user",user1);
-
         Users user= (Users) session.getAttribute("user");
         int user_id=user.getUser_id();
         Orders order=orderService.getOrderByUserId(user_id);

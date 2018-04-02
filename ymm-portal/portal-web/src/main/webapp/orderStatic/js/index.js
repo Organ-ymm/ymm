@@ -106,6 +106,19 @@ $("#checkoutToPay").on("click",function(){
     }
 
 });
+$('#J_editAddrOk').on('click',function () {
+    var $J_editAddrOk=$('##J_editAddrOk');
+    $J_editAddrOk.find('[name="consignee"]').val();
+    /*$.ajax({
+        data:"",
+        url:"../../portal/pages/address/addAddress",
+        dataType:"text",
+        type:"POST",
+        success:function(){
+
+        }
+    });*/
+});
 function SetShortCutEffect(){
     $('.shortcut_v2013').find(".menu").hover(function(){
         $(this).addClass('hover');

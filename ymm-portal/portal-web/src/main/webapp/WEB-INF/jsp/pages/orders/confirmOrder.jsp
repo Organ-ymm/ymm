@@ -265,12 +265,10 @@
                             <input type="hidden" name="newAddress[tag_name]" id="newTag">
                             <%----------------------------------------------收货地址的添加--------------------------------------------------------%>
                             <!--点击弹出新增/收货地址界面start-->
-                            <div class="xm-edit-addr-box" id="J_editAddrBox">
+                            <%--<div class="xm-edit-addr-box" id="J_editAddrBox">
                                 <div class="bd">
                                     <div class="item">
-                                        <label>收货人姓名<span>*</span></label><%--todo--%>
-                                        <%--<input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>--%>
-                                        <input type="text" name="consignee" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
+                                        <input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
                                         <p class="tip-msg tipMsg"></p>
                                     </div>
                                     <div class="item">
@@ -307,6 +305,51 @@
                                 </div>
                                 <div class="ft clearfix">
                                     <button  type="button"  class="btn btn-lineDake btn-small " id="J_editAddrCancel">取消</button>
+                                    <button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>
+                                </div>
+                            </div>--%>
+                            <div class="xm-edit-addr-box" id="J_editAddrBox">
+                                <div class="bd">
+                                    <div class="item">
+                                        <label>收货人姓名<span>*</span></label><%--todo--%>
+                                        <input type="text" name="consignee" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
+                                        <p class="tip-msg tipMsg"></p>
+                                    </div>
+                                    <div class="item">
+                                        <label>联系电话<span>*</span></label>
+                                        <input type="text" name="phone" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
+                                        <p class="tel-modify-tip" id="telModifyTip"></p>
+                                        <p class="tip-msg tipMsg"></p>
+                                    </div>
+                                    <div class="item">
+                                        <label>地址<span>*</span></label>
+                                        <select name="province" id="Provinces" class="select-1">
+                                            <option>省份/自治区</option>
+                                        </select>
+                                        <select name="city"  id="Citys" class="select-2" disabled>
+                                            <option>城市/地区/自治州</option>
+                                        </select>
+                                        <select name="county"  id="Countys" class="select-3" disabled>
+                                            <option>区/县</option>
+                                        </select>
+                                        <textarea   name="street" class="input-area" id="Street" placeholder="路名或街道地址，门牌号"></textarea>
+                                        <p class="tip-msg tipMsg"></p>
+                                    </div>
+                                    <div class="item">
+                                        <label>邮政编码<span>*</span></label>
+                                        <input type="text" name="zipcode" id="Zipcode" class="input" placeholder="邮政编码"  autocomplete='off'>
+                                        <p class="zipcode-tip" id="zipcodeTip"></p>
+                                        <p class="tip-msg tipMsg"></p>
+                                    </div>
+                                    <div class="item">
+                                        <label>地址标签<span>*</span></label>
+                                        <input type="text" name="tag" id="Tag" class="input" placeholder='地址标签：如"家"、"公司"。限5个字内'  >
+                                        <p class="tip-msg tipMsg"></p>
+                                    </div>
+                                </div>
+                                <div class="ft clearfix">
+                                    <button  type="button"  class="btn btn-lineDake btn-small " id="J_editAddrCancel">取消</button>
+                                    <%--<button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>--%>
                                     <button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>
                                 </div>
                             </div>
