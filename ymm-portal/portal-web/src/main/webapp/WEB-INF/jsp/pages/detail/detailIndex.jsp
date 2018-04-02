@@ -73,248 +73,236 @@
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-
+<jsp:include page="top.jsp"/>
 <!-- header start -->
-<header class="header-area">
-    <div class="header-top-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6 hidden-xs">
-                    <div class="header-top-left">
-                        <div class="language-usd">
-                            <ul>
-                                <li><a href="#">eng</a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="#">Bengali</a></li>
-                                        <li><a href="#">English</a></li>
-                                        <li><a href="#">French</a></li>
-                                        <li><a href="#">German</a></li>
-                                        <li><a href="#">Spanish</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">usd</a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="#">usd</a></li>
-                                        <li><a href="#">uero</a></li>
-                                        <li><a href="#">taka</a></li>
-                                        <li><a href="#">pound</a></li>
-                                        <li><a href="#">rupi</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="header-top-right">
-                        <div class="account-cart">
-                            <ul>
-                                <li class="account"><a href="#">my account</a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="${pageContext.request.contextPath}/cart/listCustomCart">我的购物车</a></li>
-                                        <li><a href="checkout.html">checkout</a></li>
-                                        <li><a href="wishlist.html">wishlist</a></li>
-                                    </ul>
-                                </li>
-                                <li class="login"><a href="#">login</a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="#">login or register</a></li>
-                                        <li class="login-button"><a href="#">login</a></li>
-                                        <li><a href="#">or</a></li>
-                                        <li class="creat-button"><a href="#">creat account</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cart"><a href="${pageContext.request.contextPath}/cart/listCustomCart"><img src="img/icon/cart.png" alt="我的购物车"><p></p></a>
-                                    <ul class="submenu-mainmenu">
-                                        <li class="single-cart-item clearfix">
-                                                    <span class="cart-img">
-                                                        <a href="#"><img src="img/menu/3.jpg" alt=""></a>
-                                                    </span>
-                                            <span class="cart-info">
-                                                        <a href="#">Lorem Ipsam...</a>
-                                                        <span>1 x $104.99</span>
-                                                        <a class="trash" href="#"><i class="fa fa-trash"></i></a>
-                                                    </span>
-                                        </li>
-                                        <li class="single-cart-item clearfix">
-                                                    <span class="cart-img">
-                                                        <a href="#"><img src="img/menu/4.jpg" alt=""></a>
-                                                    </span>
-                                            <span class="cart-info">
-                                                        <a href="#">Lorem Ipsam...</a>
-                                                        <span>2 x $104.99</span>
-                                                        <a class="trash" href="#"><i class="fa fa-trash"></i></a>
-                                                    </span>
-                                        </li>
-                                        <li>
-                                                    <span class="sub-total-cart text-center">
-                                                        SubTotal <span>$620</span>
-                                                        <a href="checkout.html" class="view-cart">Checkout</a>
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="main-header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                    <div class="logo">
-                        <a href="index.html"><img src="/ymm/portal/images/logo/logo.png" alt="SHOPPPIE">
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-8 col-sm-6">
-                    <div class="mainmenu">
-                        <nav>
-                            <ul>
-                                <li><a href="${pageContext.request.contextPath}/index.html">ymm商城主页</a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="index.html">Home Version 1</a></li>
-                                        <li><a href="index-2.html">Home Version 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="shop-full-grid.html">Women</a>
-                                    <div class="mega-menu">
-                                                <span>
-                                                    <a href="shop-grid-left-sidebar.html" class="title">men</a>
-                                                    <a href="#">blazers</a>
-                                                    <a href="#">jackets</a>
-                                                    <a href="#">Colletions</a>
-                                                    <a href="#">T-shirts</a>
-                                                    <a href="#">Jeens pant's</a>
-                                                    <a href="#">Sport shoes</a>
-                                                </span>
-                                        <span>
-                                                    <a href="shop-grid-left-sidebar.html" class="title">women</a>
-                                                    <a href="#">cocktail</a>
-                                                    <a href="#">sunglass</a>
-                                                    <a href="#">evening</a>
-                                                    <a href="#">footwear</a>
-                                                    <a href="#">bootees bags</a>
-                                                    <a href="#">furniture</a>
-                                                </span>
-                                        <span>
-                                                    <a href="shop-grid-left-sidebar.html" class="title">accessories</a>
-                                                    <a href="#">gagets</a>
-                                                    <a href="#">laptop</a>
-                                                    <a href="#">mobile</a>
-                                                    <a href="#">lifestyle</a>
-                                                    <a href="#">Jeens pant's</a>
-                                                    <a href="#">Sport items</a>
-                                                </span>
-                                        <span>
-                                                    <img src="img/menu/1.jpg" alt="">
-                                                    <img src="img/menu/2.jpg" alt="">
-                                                </span>
-                                    </div>
-                                </li>
-                                <li><a href="shop-full-grid.html">Accessories</a></li>
-                                <li><a href="blog-full-view.html">Blog</a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="blog-full-view.html">Blog Full View</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="shop-full-grid.html">Shop</a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
-                                        <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
-                                        <li><a href="shop-grid-left-sidebar.html">Shop Grid Left Sidebar</a></li>
-                                        <li><a href="shop-grid-right-sidebar.html">Shop Grid Right Sidebar</a></li>
-                                        <li><a href="shop-full-grid.html">Shop None Sidebar</a></li>
-                                        <li><a href="product-details-fullwidth.html">Product Details Fullwidth</a></li>
-                                        <li><a href="product-details-left-sidebar.html">Product Details Left Sidebar</a></li>
-                                        <li><a href="product-details-right-sidebar.html">Product Details Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about-us.html">Pages</a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="404.html">404 Page</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-2 col-sm-6 col-xs-12">
-                    <div class="search-box">
-                        <form action="#">
-                            <input type="text" placeholder="Search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Mobile Menu Area start -->
-    <div class="mobile-menu-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="mobile-menu">
-                        <nav id="dropdown">
-                            <ul>
-                                <li><a href="index.html">HOME</a>
-                                    <ul>
-                                        <li><a href="index.html">Home Version 1</a></li>
-                                        <li><a href="index-2.html">Home Version 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="shop-full-grid.html">Women</a></li>
-                                <li><a href="shop-full-grid.html">Accessories</a></li>
-                                <li><a href="blog-full-view.html">Blog</a>
-                                    <ul>
-                                        <li><a href="blog-full-view.html">Blog Full View</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="shop-full-grid.html">Shop</a>
-                                    <ul>
-                                        <li><a href="shop-grid-left-sidebar.html">Shop Grid Left Sidebar</a></li>
-                                        <li><a href="shop-grid-right-sidebar.html">Shop Grid Right Sidebar</a></li>
-                                        <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
-                                        <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
-                                        <li><a href="shop-full-grid.html">Shop None Sidebar</a></li>
-                                        <li><a href="product-details-fullwidth.html">Product Details Fullwidth</a></li>
-                                        <li><a href="product-details-left-sidebar.html">Product Details Left Sidebar</a></li>
-                                        <li><a href="product-details-right-sidebar.html">Product Details Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about-us.html">Pages</a>
-                                    <ul>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="404.html">404 Page</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Mobile Menu Area end -->
-</header>
+<%--<header class="header-area">--%>
+    <%--<div class="header-top-area">--%>
+        <%--<div class="container">--%>
+            <%--<div class="row">--%>
+                <%--<div class="col-md-6 col-sm-6 hidden-xs">--%>
+                    <%--<div class="header-top-left">--%>
+                        <%--<div class="language-usd">--%>
+                            <%--<ul>--%>
+                                <%--<li><a href="#">eng</a>--%>
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li><a href="#">Bengali</a></li>--%>
+                                        <%--<li><a href="#">English</a></li>--%>
+                                        <%--<li><a href="#">French</a></li>--%>
+                                        <%--<li><a href="#">German</a></li>--%>
+                                        <%--<li><a href="#">Spanish</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="#">usd</a>--%>
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li><a href="#">usd</a></li>--%>
+                                        <%--<li><a href="#">uero</a></li>--%>
+                                        <%--<li><a href="#">taka</a></li>--%>
+                                        <%--<li><a href="#">pound</a></li>--%>
+                                        <%--<li><a href="#">rupi</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                            <%--</ul>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<div class="col-md-6 col-sm-6 col-xs-12">--%>
+                    <%--<div class="header-top-right">--%>
+                        <%--<div class="account-cart">--%>
+                            <%--<ul>--%>
+                                <%--<li class="account"><a href="#">my account</a>--%>
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li><a href="${pageContext.request.contextPath}/cart/listCustomCart">我的购物车</a></li>--%>
+                                        <%--<li><a href="checkout.html">checkout</a></li>--%>
+                                        <%--<li><a href="wishlist.html">wishlist</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li class="login"><a href="#">login</a>--%>
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li><a href="#">login or register</a></li>--%>
+                                        <%--<li class="login-button"><a href="#">login</a></li>--%>
+                                        <%--<li><a href="#">or</a></li>--%>
+                                        <%--<li class="creat-button"><a href="#">creat account</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li class="cart"><a href="${pageContext.request.contextPath}/cart/listCustomCart"><img src="/ymm/portal/images/icon/cart.png" alt="cart"></a>--%>
+
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li class="single-cart-item clearfix">--%>
+                                                    <%--<span class="cart-img">--%>
+                                                        <%--<a href="#"><img src="img/menu/3.jpg" alt=""></a>--%>
+                                                    <%--</span>--%>
+                                            <%--<span class="cart-info">--%>
+                                                        <%--<a href="#">Lorem Ipsam...</a>--%>
+                                                        <%--<span>1 x $104.99</span>--%>
+                                                        <%--<a class="trash" href="#"><i class="fa fa-trash"></i></a>--%>
+                                                    <%--</span>--%>
+                                        <%--</li>--%>
+                                        <%--<li class="single-cart-item clearfix">--%>
+                                                    <%--<span class="cart-img">--%>
+                                                        <%--<a href="#"><img src="img/menu/4.jpg" alt=""></a>--%>
+                                                    <%--</span>--%>
+                                            <%--<span class="cart-info">--%>
+                                                        <%--<a href="#">Lorem Ipsam...</a>--%>
+                                                        <%--<span>2 x $104.99</span>--%>
+                                                        <%--<a class="trash" href="#"><i class="fa fa-trash"></i></a>--%>
+                                                    <%--</span>--%>
+                                        <%--</li>--%>
+                                        <%--<li>--%>
+                                                    <%--<span class="sub-total-cart text-center">--%>
+                                                        <%--SubTotal <span>$620</span>--%>
+                                                        <%--<a href="checkout.html" class="view-cart">Checkout</a>--%>
+                                                    <%--</span>--%>
+                                        <%--</li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                            <%--</ul>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+    <%--<div class="main-header-area">--%>
+        <%--<div class="container">--%>
+            <%--<div class="row">--%>
+                <%--<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">--%>
+                    <%--<div class="logo">--%>
+                        <%--<a href="index.html"><img src="/ymm/portal/images/logo/logo.png" alt="SHOPPPIE">--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<div class="col-lg-7 col-md-8 col-sm-6">--%>
+                    <%--<div class="mainmenu">--%>
+                        <%--<nav>--%>
+                            <%--<ul>--%>
+                                <%--<li><a href="${pageContext.request.contextPath}/index.html">ymm商城主页</a>--%>
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li><a href="index.html">Home Version 1</a></li>--%>
+                                        <%--<li><a href="index-2.html">Home Version 2</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="shop-full-grid.html">手机</a>--%>
+                                    <%--<div class="mega-menu">--%>
+                                                <%--<span>--%>
+                                                    <%--<a href="shop-grid-left-sidebar.html" class="title">热门品牌</a>--%>
+                                                    <%--<a href="#">小米</a>--%>
+                                                    <%--<a href="#">Vivo</a>--%>
+                                                    <%--<a href="#">苹果</a>--%>
+                                                    <%--<a href="#">华为</a>--%>
+                                                    <%--<a href="#">三星</a>--%>
+                                                    <%--<a href="#">魅族</a>--%>
+                                                <%--</span>--%>
+
+                                        <%--<span>--%>
+                                                    <%--<img src="img/menu/1.jpg" alt="">--%>
+                                                    <%--<img src="img/menu/2.jpg" alt="">--%>
+                                                <%--</span>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="shop-full-grid.html">智能家电</a></li>--%>
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li><a href="blog-details.html">敬请期待</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="blog-full-view.html">笔记本</a>--%>
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li><a href="blog-full-view.html">Blog Full View</a></li>--%>
+                                        <%--<li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>--%>
+                                        <%--<li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>--%>
+                                        <%--<li><a href="blog-details.html">Blog Details</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="shop-full-grid.html">耳机 音箱</a>--%>
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>--%>
+                                        <%--<li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>--%>
+                                        <%--<li><a href="shop-grid-left-sidebar.html">Shop Grid Left Sidebar</a></li>--%>
+                                        <%--<li><a href="shop-grid-right-sidebar.html">Shop Grid Right Sidebar</a></li>--%>
+                                        <%--<li><a href="shop-full-grid.html">Shop None Sidebar</a></li>--%>
+                                        <%--<li><a href="product-details-fullwidth.html">Product Details Fullwidth</a></li>--%>
+                                        <%--<li><a href="product-details-left-sidebar.html">Product Details Left Sidebar</a></li>--%>
+                                        <%--<li><a href="product-details-right-sidebar.html">Product Details Right Sidebar</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="about-us.html">路由器 手机配件</a>--%>
+                                    <%--<ul class="submenu-mainmenu">--%>
+                                        <%--<li><a href="about-us.html">About Us</a></li>--%>
+                                        <%--<li><a href="cart.html">Cart</a></li>--%>
+                                        <%--<li><a href="checkout.html">Checkout</a></li>--%>
+                                        <%--<li><a href="wishlist.html">Wishlist</a></li>--%>
+                                        <%--<li><a href="404.html">404 Page</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="contact.html">留言板</a></li>--%>
+                            <%--</ul>--%>
+                        <%--</nav>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<div class="col-lg-3 col-md-2 col-sm-6 col-xs-12">--%>
+                    <%--<div class="search-box">--%>
+                        <%--<form action="#">--%>
+                            <%--<input type="text" placeholder="Search">--%>
+                            <%--<button type="submit"><i class="fa fa-search"></i></button>--%>
+                        <%--</form>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+    <%--<!-- Mobile Menu Area start -->--%>
+    <%--<div class="mobile-menu-area">--%>
+        <%--<div class="container">--%>
+            <%--<div class="row">--%>
+                <%--<div class="col-lg-12 col-md-12 col-sm-12">--%>
+                    <%--<div class="mobile-menu">--%>
+                        <%--<nav id="dropdown">--%>
+                            <%--<ul>--%>
+                                <%--<li><a href="index.html">HOME</a>--%>
+                                    <%--<ul>--%>
+                                        <%--<li><a href="index.html">Home Version 1</a></li>--%>
+                                        <%--<li><a href="index-2.html">Home Version 2</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="shop-full-grid.html">Women</a></li>--%>
+                                <%--<li><a href="shop-full-grid.html">Accessories</a></li>--%>
+                                <%--<li><a href="blog-full-view.html">Blog</a>--%>
+                                    <%--<ul>--%>
+                                        <%--<li><a href="blog-full-view.html">Blog Full View</a></li>--%>
+                                        <%--<li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>--%>
+                                        <%--<li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>--%>
+                                        <%--<li><a href="blog-details.html">Blog Details</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="shop-full-grid.html">Shop</a>--%>
+                                    <%--<ul>--%>
+                                        <%--<li><a href="shop-grid-left-sidebar.html">Shop Grid Left Sidebar</a></li>--%>
+                                        <%--<li><a href="shop-grid-right-sidebar.html">Shop Grid Right Sidebar</a></li>--%>
+                                        <%--<li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>--%>
+                                        <%--<li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>--%>
+                                        <%--<li><a href="shop-full-grid.html">Shop None Sidebar</a></li>--%>
+                                        <%--<li><a href="product-details-fullwidth.html">Product Details Fullwidth</a></li>--%>
+                                        <%--<li><a href="product-details-left-sidebar.html">Product Details Left Sidebar</a></li>--%>
+                                        <%--<li><a href="product-details-right-sidebar.html">Product Details Right Sidebar</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="about-us.html">Pages</a>--%>
+                                    <%--<ul>--%>
+                                        <%--<li><a href="about-us.html">About Us</a></li>--%>
+                                        <%--<li><a href="cart.html">Cart</a></li>--%>
+                                        <%--<li><a href="checkout.html">Checkout</a></li>--%>
+                                        <%--<li><a href="wishlist.html">Wishlist</a></li>--%>
+                                        <%--<li><a href="404.html">404 Page</a></li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
+                                <%--<li><a href="contact.html">contact</a></li>--%>
+                            <%--</ul>--%>
+                        <%--</nav>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+    <%--<!-- Mobile Menu Area end -->--%>
+<%--</header>--%>
 <!-- header end -->
 <!--Start Product Details area  -->
 <div class="breadcrumb-area">
@@ -363,8 +351,10 @@
                 <div class="product-detail shop-product-text">
                     <h4><a href="#">${goods.goods_name}</a></h4>
                     <div class="price-rating-container">
-                        <div class="price-box"><span>${goods.promote_price}</span>
-                            秒杀价<del>(${goods.shop_price})</del></div>
+                        <div class="price-box">
+                            秒杀价 <span>${goods.shop_price}</span>
+                            <del>(${goods.market_price})</del>
+                        </div>
                         <div class="rating-right">
                             <div class="star-content">
                                 <i class="fa fa-star"></i>
@@ -409,7 +399,8 @@
                             <span class="clearfix"></span>
                         </div>
                         <a href="javascript:void(0);" onclick="toCart(${goods.goods_id})" class="cart-btn"><span>加入购物车</span></a>
-                        <a href="wishlist.html"><i class="fa fa-heart-o"></i></a>
+                        <a href="#"><img src="img/banner/8.jpg" alt=""></a>
+                        <a href="javascript:void(0);" onclick="buyNow('${goods.goods_id}')" class="cart-btn"><span>立刻购买</span></a>
                         <a href="#"><i class="fa fa-refresh"></i></a>
                     </div>
                     <div class="share">
@@ -462,13 +453,7 @@
                 </div>
                 <div class="col-md-3 hidden-sm col-xs-12">
                     <div class="single-left-widget without-background">
-                        <div class="section-title">
-                            <h4>立即购买</h4>
-                            <div class="widget-banner">
-                                <a href="#"><img src="img/banner/8.jpg" alt=""></a>
-                                <a href="javascript:void(0);" onclick="buyNow('${goods.goods_id}')" class="shop-now">立刻购买</a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1382,7 +1367,7 @@
         if(dec>0){
             dec = dec - 1;
         }else {
-            dec = dec;
+            dec = 1;
         }
     })
     $("#incbtn").on("click",function () {
@@ -1393,8 +1378,6 @@
         var goods_id = a;
         var amount = $('#buy-num').val();
         alert("添加成功");
-        alert(goods_id);
-        alert(amount);
         $.ajax({
             url: "${pageContext.request.contextPath}/cart/addCart",
             type: "POST",
