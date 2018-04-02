@@ -42,14 +42,13 @@
         <collection property="address" resultMap="addressResultMapper"></collection>
         <collection property="cart" resultMap="cartResultMapper"></collection>
         <collection property="orders" resultMap="orderResultMapper"></collection>
-
     </resultMap>
 
-    <resultMap id="addressResultMapper" type="com.ymm.commons.pojo.po.Address">
+    <resultMap id="addressResultMapper" type="com.ymm.portal.pojo.po.Address">
         <id property="address_id" column="address_id" ></id>
     </resultMap>
 
-    <resultMap id="cartResultMapper" type="com.ymm.commons.pojo.po.Cart">
+    <resultMap id="cartResultMapper" type="com.ymm.portal.pojo.po.Cart">
         <result property="user_id" column="user_id"></result>
     </resultMap>
 

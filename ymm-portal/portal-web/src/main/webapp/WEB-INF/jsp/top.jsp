@@ -115,7 +115,7 @@
                                 <%--这里的购物车数量,将会在单点登录之后,用user.catcount来动态显示--%>
                                 <li class="cart"><a href="${pageContext.request.contextPath}/cart/listCustomCart"><img
                                         src="${pageContext.request.contextPath}/images/icon/cart.png" alt="cart">
-                                    <p>${cartNum}</p></a><%--todo zy--%>
+                                    <p class="cartNum"></p></a><%--todo zy--%><%--<p>${cartNum}</p>--%>
                                     <%--这里进行一个动画,判断user.catcount==0,如果=0,则显示button"去添加",跳转到商品列表--%>
                                     <ul class="submenu-mainmenu">
 
@@ -328,7 +328,14 @@
 </body>
 <script>
     $(function(){//todo zy
-        $.ajax("${pageContext.request.contextPath}/cart/cartNum");
+        $.ajax({
+            url:"${pageContext.request.contextPath}/cart/cartNum",
+            dataType:"text",
+            type:"get",
+            success:function (data) {
+                $('.cartNum').html(data);
+            }
+        });
     });
 </script>
 </html>

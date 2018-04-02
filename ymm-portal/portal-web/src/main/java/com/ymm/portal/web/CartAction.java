@@ -82,7 +82,7 @@ public class CartAction {
      */
     @RequestMapping(value="/cartNum")
     @ResponseBody
-    public void cartNum(HttpSession session){
+    public int cartNum(HttpSession session){
         Users user = (Users) session.getAttribute("user");
         int cartNum=0;
         if(user!=null){
@@ -98,7 +98,8 @@ public class CartAction {
                 }
             }
         }
-        session.setAttribute("cartNum",cartNum);
+        return cartNum;
+        //session.setAttribute("cartNum",cartNum);
     }
 
     /*
