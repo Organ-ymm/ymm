@@ -9,4 +9,6 @@ public interface UserMapper {
     void register(Users user);
 
     Users checkOldPass(Users user);
+    Users selectUserAddressCartOrders(Users user);
+
 }

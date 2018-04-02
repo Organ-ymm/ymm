@@ -105,10 +105,10 @@
                                 </c:if>
                                 <c:if test="${!empty user}">
                                     <li class="login"><a
-                                            href="${pageContext.request.contextPath}/pages/user/personalCenter">${user.alias}</a>
+                                            href="${pageContext.request.contextPath}/pages/user/personalCenter">${user.username}</a>
                                         <ul class="submenu-mainmenu">
 
-                                            <li class="login-button"><a href="#">注销</a></li>
+                                            <li class="login-button"><a href="${pageContext.request.contextPath}/loginOut">注销</a></li>
                                         </ul>
                                     </li>
                                 </c:if>
@@ -324,6 +324,7 @@
 <!-- main JS
 ============================================ -->
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
+
 </body>
 <script>
     $(function(){//todo zy

@@ -34,4 +34,10 @@ public class UserServiceImpl implements UserService {
         Users user2 =userMapper.checkOldPass(user);
         return user2;
     }
+
+    @Override
+    public Users selectUserAddressCartOrders(Users user) {
+        Users user1 = userMapper.selectUserAddressCartOrders(user);
+        return user1;
+    }
 }
