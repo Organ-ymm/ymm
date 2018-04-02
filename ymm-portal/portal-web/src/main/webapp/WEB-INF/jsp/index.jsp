@@ -297,7 +297,7 @@
                                                                        title="加入对比"><i
                                                                         class="fa fa-refresh"></i></a></li>
                                                                 <li class="add-bag"><a href="javascript:;"
-                                                                                       onclick="addCart(${goods2.goods_id})"
+                                                                                       onclick="addCart(${goods1.goods_id})"
                                                                                        data-toggle="tooltip"
                                                                                        title="购物车">加入购物车</a>
                                                                 </li>
@@ -409,7 +409,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
                     <div class="footer-widget">
                         <div class="footer-logo">
-                            <img src="img/logo/footer-logo.png" alt="">
+                            <img src="${pageContext.request.contextPath}/images/logo/footer-logo.png" alt="">
                         </div>
                         <div class="footer-address">
                             <p>28 Green Tower, Street Name New<br> York City, USA</p>
@@ -464,12 +464,12 @@
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
                     <div class="copyright">
-                        <p>2016 ® All Rights Reserved <span><a href="http://jqueryfuns.com/">DevItems</a></span>.</p>
+                        <p>2016 ® All Rights Reserved <span><a href="#">Backstage Management</a></span>.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
                     <div class="payment text-right">
-                        <img src="img/payment/1.png" alt="">
+                        <img src="${pageContext.request.contextPath}/images/payment/1.png" alt="">
                     </div>
                 </div>
             </div>
@@ -522,7 +522,24 @@
 <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
 
 <script>
-    layui.use(['jquery','layer'], function () {
+    function addCart(goods_id) {
+
+//    }
+//    window.addCart = function (goods_id) {
+        $.ajax({
+            data: {"goods_id": goods_id, "amount": 1},
+            dataType: "text",
+            type: "get",
+            url: "${pageContext.request.contextPath}/cart/addCart",
+            success: function (res) {
+                if (res > 0) {
+                    alert("加入成功!");
+                    //top.layer.alert("加入成功!");
+                }
+            }
+        });
+    }
+    /*layui.use(['jquery','layer'], function () {
         var $ = layui.jquery,
             layer = layui.layer;
 
@@ -534,12 +551,13 @@
                 url: "${pageContext.request.contextPath}/cart/addCart",
                 success: function (res) {
                     if (res > 0) {
-                        layer.msg("加入成功!");
+                        alert("加入成功!");
+                        //top.layer.alert("加入成功!");
                     }
                 }
             });
         }
-    });
+    });*/
 </script>
 
 </body>
