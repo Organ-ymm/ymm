@@ -464,7 +464,7 @@
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
                     <div class="copyright">
-                        <p>2016 ® All Rights Reserved <span><a href="#">Backstage Management</a></span>.</p>
+                        <p>2016 ® All Rights Reserved <span><a href="javascript:;" onclick="toManage()">Backstage Management</a></span>.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
@@ -538,6 +538,9 @@
                 }
             }
         });
+    }
+    function toManage() {
+        location.href="http://localhost:8080/ymm/manager/login";
     }
     /*layui.use(['jquery','layer'], function () {
         var $ = layui.jquery,
