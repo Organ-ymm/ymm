@@ -60,8 +60,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Orders> selectOrdersAndGoods(Users user,Page page) {
-        List<Orders> orders = userMapper.selectOrdersAndGoods(user,page);
+    public List<Orders> selectOrdersAndGoods(Users user) {
+        List<Orders> orders = userMapper.selectOrdersAndGoods(user);
         return orders;
     }
 

@@ -21,7 +21,7 @@ public interface UserService {
 
     List<Order> getDeliverOrder(Users user);
 
-    List<Orders> selectOrdersAndGoods(Users user,Page page);
+    List<Orders> selectOrdersAndGoods(Users user);
 
     int countOrder(Users user);
 }

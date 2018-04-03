@@ -87,14 +87,13 @@
         WHERE o.user_id = user_id AND deliver_status = 1
     </select>
     <!--关联查询出用户订单和对应的商品-->
-    <select id="selectOrdersAndGoods" resultMap="orderResultMapper">
+    <select id="selectOrdersAndGoods" parameterType="com.ymm.commons.pojo.po.Users" resultMap="orderResultMapper">
         SELECT
         o.order_id  ,o.user_id as order_user_id ,o.receiver_name  ,o.receiver_address ,
         o.receiver_phone ,o.order_time ,o.order_money  ,o.pay_status  ,o.deliver_status,
         g.order_id as good_order_id,  g.goods_id,  g.amount,  g.goods_name, g.goods_sn,  g.goods_brief, g.shop_price,  g.market_price,  g.goods_thumb
         FROM orders o LEFT JOIN order_goods g ON o.order_id = g.order_id
-        WHERE o.user_id = #{user.user_id}
-        limit #{page.offset},#{page.limit}
+        WHERE o.user_id = user_id
     </select>
     <select id="countOrder" parameterType="com.ymm.commons.pojo.po.Users" resultType="int">
         SELECT COUNT(1) FROM orders o

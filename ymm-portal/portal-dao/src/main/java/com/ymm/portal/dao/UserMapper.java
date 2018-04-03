@@ -21,7 +21,7 @@ public interface UserMapper {
 
     List<Order> getDeliverOrder(Users user);
 
-    List<Orders> selectOrdersAndGoods(@Param("user") Users user,@Param("page") Page page);
+    List<Orders> selectOrdersAndGoods(Users user);
 
     int countOrder(Users user);
 }
