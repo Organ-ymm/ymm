@@ -18,6 +18,7 @@ public class Users {
     private Long mobile_phone;
     private Integer status;
     private List<Orders> orders;
+    private List<Address> address;
 
     public Integer getStatus() {
         return status;
@@ -140,4 +141,14 @@ public class Users {
     public void setOrders(List<Orders> orders) {
         this.orders = orders;
     }
+
+
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
+    }
+
 }

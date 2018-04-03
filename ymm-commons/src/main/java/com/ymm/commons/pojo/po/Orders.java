@@ -2,6 +2,7 @@ package com.ymm.commons.pojo.po;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Orders implements Serializable {
     /**
@@ -27,7 +28,7 @@ public class Orders implements Serializable {
     private Double order_money;
     private Integer pay_status;
     private Integer deliver_status;
-
+    List<Order_goods> order_goodsList;
     public Long getOrder_id() {
         return order_id;
     }
@@ -98,5 +99,13 @@ public class Orders implements Serializable {
 
     public void setDeliver_status(Integer deliver_status) {
         this.deliver_status = deliver_status;
+    }
+
+    public List<Order_goods> getOrder_goodsList() {
+        return order_goodsList;
+    }
+
+    public void setOrder_goodsList(List<Order_goods> order_goodsList) {
+        this.order_goodsList = order_goodsList;
     }
 }

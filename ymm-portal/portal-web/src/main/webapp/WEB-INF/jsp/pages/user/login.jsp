@@ -79,8 +79,8 @@
                         </dl>
                         <dl class="top1 clearfix">
                             <dt>密<em></em>码：</dt>
-                            <dd><input type="password" name="password" id="normalPassword" class="input-text"><span
-                                    class="placeholder">请输入密码</span></dd>
+                            <dd><input type="password" name="password" id="normalPassword" class="input-text" placeholder="请输入密码"><%--<span
+                                    placeholder="请输入密码"></span>--%></dd>
                         </dl>
 
                         <%--<div class="form-remember">

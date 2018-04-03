@@ -22,4 +22,5 @@ public interface UsersMapper {
     Users verifyUsername(Users users);
 
     Integer updateUser(Users user);
+
 }
