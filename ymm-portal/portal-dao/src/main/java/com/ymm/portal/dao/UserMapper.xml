@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ymm.portal.dao.UserMapper" >
-
+    <sql id="allBaseSql">
+        u.user_id,u.email,u.username,u.password,u.alias,u.sex,u.birthday,u.rank_points,u.rank_id,u.reg_time,u.mobile_phone,u.status,
+        a.address_id,  a.zipcode, a.user_id, a.consignee, a.province, a.city, a.county, a.street, a.phone,  a.tag ,
+        c.user_id ,c.goods_id  ,c.amount  ,c.add_time,
+        o.order_id  ,o.user_id  ,o.receiver_name  ,o.receiver_address ,o.receiver_phone ,o.order_time ,o.order_money  ,o.pay_status  ,o.deliver_status
+    </sql>
     <sql id="baseSql">
       user_id,email,username,password,alias,sex,birthday,rank_points,rank_id,reg_time,mobile_phone,status
     </sql>
@@ -28,41 +33,70 @@
         #{rank_id},#{reg_time},#{mobile_phone},#{status})
     </insert>
 
-    <sql id="allBaseSql">
-        u.user_id,u.email,u.username,u.password,u.alias,u.sex,u.birthday,u.rank_points,u.rank_id,u.reg_time,u.mobile_phone,u.status,
-        a.address_id,  a.zipcode, a.user_id, a.consignee, a.province, a.city, a.county, a.street, a.phone,  a.tag ,
-        c.user_id ,c.goods_id  ,c.amount  ,c.add_time,
-        o.order_id  ,o.user_id  ,o.receiver_name  ,o.receiver_address ,o.receiver_phone ,o.order_time ,o.order_money  ,o.pay_status  ,o.deliver_status
-    </sql>
-
     <!--关联查询用户其他信息-->
     <resultMap id="userResultMapper" type="com.ymm.commons.pojo.po.Users">
         <id property="user_id" column="user_id" ></id>
-        <result property="user_id" column="user_id"></result>
-        <collection property="address" resultMap="addressResultMapper"></collection>
-        <collection property="cart" resultMap="cartResultMapper"></collection>
-        <collection property="orders" resultMap="orderResultMapper"></collection>
     </resultMap>
 
-    <resultMap id="addressResultMapper" type="com.ymm.portal.pojo.po.Address">
+    <resultMap id="addressResultMapper" type="com.ymm.commons.pojo.po.Address">
         <id property="address_id" column="address_id" ></id>
     </resultMap>
 
-    <resultMap id="cartResultMapper" type="com.ymm.portal.pojo.po.Cart">
+    <!--<resultMap id="cartResultMapper" type="com.ymm.commons.pojo.po.Cart">
         <result property="user_id" column="user_id"></result>
-    </resultMap>
+    </resultMap>-->
 
     <resultMap id="orderResultMapper" type="com.ymm.commons.pojo.po.Orders">
         <id property="order_id" column="order_id" ></id>
+        <result property="user_id" column="order_user_id" />
+        <result property="receiver_name" column="receiver_name" />
+        <result property="receiver_address" column="receiver_address" />
+        <result property="receiver_phone" column="receiver_phone" />
+        <result property="order_time" column="order_time" />
+        <result property="order_money" column="order_money" />
+        <result property="pay_status" column="pay_status" />
+        <result property="deliver_status" column="deliver_status" />
+        <collection property="order_goodsList" ofType="com.ymm.commons.pojo.po.Order_goods"  resultMap="order_goodsResultMapper">
+        </collection>
     </resultMap>
 
-    <select id="selectUserAddressCartOrders" parameterType="com.ymm.commons.pojo.po.Users" resultMap="userResultMapper">
-        SELECT <include refid="allBaseSql"/>
-        FROM users u
-        LEFT JOIN address a ON u.user_id = a.address_id
-        LEFT JOIN cart c ON u.user_id = c.user_id
-        LEFT JOIN orders o ON u.user_id = o.order_id
-        WHERE u.user_id= #{user_id}
-    </select>
+    <resultMap id="order_goodsResultMapper" type="com.ymm.commons.pojo.po.Order_goods">
+        <result property="order_id" column="good_order_id" />
+        <result property="goods_id" column="goods_id"/>
+        <result property="amount" column="amount" />
+        <result property="goods_name" column="goods_name" />
+        <result property="goods_sn" column="goods_sn" />
+        <result property="goods_brief" column="goods_brief" />
+        <result property="shop_price" column="shop_price" />
+        <result property="market_price" column="market_price" />
+        <result property="goods_thumb" column="goods_thumb" />
+    </resultMap>
 
+    <!--获得未支付的订单列表-->
+    <select id="getPayOrder" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Orders" >
+        SELECT o.order_id  ,o.user_id  ,o.receiver_name  ,o.receiver_address ,
+        o.receiver_phone ,o.order_time ,o.order_money  ,o.pay_status  ,o.deliver_status
+        FROM orders o
+        WHERE o.user_id = user_id AND pay_status = 0
+    </select>
+    <!--获得待收货的订单列表-->
+    <select id="getDeliverOrder" parameterType="com.ymm.commons.pojo.po.Users" resultType="com.ymm.commons.pojo.po.Orders">
+        SELECT o.order_id  ,o.user_id  ,o.receiver_name  ,o.receiver_address ,
+        o.receiver_phone ,o.order_time ,o.order_money  ,o.pay_status  ,o.deliver_status
+        FROM orders o
+        WHERE o.user_id = user_id AND deliver_status = 1
+    </select>
+    <!--关联查询出用户订单和对应的商品-->
+    <select id="selectOrdersAndGoods" parameterType="com.ymm.commons.pojo.po.Users" resultMap="orderResultMapper">
+        SELECT
+        o.order_id  ,o.user_id as order_user_id ,o.receiver_name  ,o.receiver_address ,
+        o.receiver_phone ,o.order_time ,o.order_money  ,o.pay_status  ,o.deliver_status,
+        g.order_id as good_order_id,  g.goods_id,  g.amount,  g.goods_name, g.goods_sn,  g.goods_brief, g.shop_price,  g.market_price,  g.goods_thumb
+        FROM orders o LEFT JOIN order_goods g ON o.order_id = g.order_id
+        WHERE o.user_id = user_id
+    </select>
+    <select id="countOrder" parameterType="com.ymm.commons.pojo.po.Users" resultType="int">
+        SELECT COUNT(1) FROM orders o
+        WHERE o.user_id = user_id
+    </select>
 </mapper>

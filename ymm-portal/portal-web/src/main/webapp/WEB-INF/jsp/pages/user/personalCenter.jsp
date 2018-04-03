@@ -109,7 +109,7 @@
                                     <h2 class="username">${user.username}</h2>
                                     <p class="tip">下午好～</p>
                                     <a class="link" href="https://account.xiaomi.com/pass/userInfo" target="_blank">修改个人信息 &gt;</a>
-                                    <img class="avatar" src="picture/avna8j0kgin8eh_320.jpg" width="150" height="150" alt="头像" />
+                                    <img class="avatar" src="${pageContext.request.contextPath}/images/I01044377.jpg" style="width:150px;height: 150px " alt="头像" />
                                 </div>
                                 <div class="user-actions">
                                     <ul class="action-list">
@@ -123,12 +123,12 @@
                             <div class="portal-sub">
                                 <ul class="info-list clearfix">
                                     <li>
-                                        <h3>待支付的订单：<span class="num">0</span></h3>
+                                        <h3>待支付的订单：<span class="num">${payOrders.size()}</span></h3>
                                         <a href="${pageContext.request.contextPath}/pages/orders/unpayOrder">查看待支付订单<i class="iconfont">&#xe623;</i></a>
                                         <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-1.png" alt="" />
                                     </li>
                                     <li>
-                                        <h3>待收货的订单：<span class="num">0</span></h3>
+                                        <h3>待收货的订单：<span class="num">${deliverOrders.size()}</span></h3>
                                         <a href="//static.mi.com/order/?type=8">查看待收货订单<i class="iconfont">&#xe623;</i></a>
                                         <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-2.png" alt="" />
                                     </li>
@@ -224,8 +224,6 @@
         </div>
     </div>
 </div>
-<script src="js/base.min.js"></script>
-
 <%--修改密码--%>
 
 </body>

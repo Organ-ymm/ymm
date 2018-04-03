@@ -115,11 +115,11 @@ public class RegisterAndLogin {
             Users oldUser = (Users)session.getAttribute("user");
             if(oldUser!=null){
                 session.setAttribute("user",null);
-                return "index";
+                return "redirect:/index";
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "index";
+        return "redirect:/index";
     }
 }
