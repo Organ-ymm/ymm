@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/orderStatic/css/base.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/orderStatic/js/jquery_cart.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/orderStatic/css/checkOut.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui/css/layui.css" media="all">
 </head>
 
 <body>
@@ -641,8 +642,7 @@
     <!-- 保险弹窗 -->
     <!-- 保险弹窗 -->
 
-
-
+    <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
 
     <script src="${pageContext.request.contextPath}/orderStatic/js/base.min.js"></script>
 

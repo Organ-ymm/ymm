@@ -36,9 +36,6 @@
                     if(data!=null){
                         $("[name='order_id']").val(data.order_id);
                         $("[name='order_money']").val(data.order_money);
-                        var a=data.order_id;
-                        alert(typeof a);
-                        alert(data.order_id);
                         $(".order_id").html(data.order_id);
                         $(".receiver_name").html(data.receiver_name);
                         $(".receiver_address").html(data.receiver_address);
@@ -97,148 +94,84 @@
 </head>
 
 <body>
-<%--<!--顶部快捷菜单-->
-<div class="shortcut_v2013 alink_v2013">
-    <div class="w">
-        <ul class="fl 1h">
-            <li class="fl">
-                <div class="menu">
-                    <div class="menu_hd">
-                        <a href="#">
-                            <img src="${pageContext.request.contextPath}/orderStatic/images/top_phone_icon.png" width="12px" height="16px" />
-                            手机锡货
-                        </a>
-                        <b><em></em></b></div>
-                    <div class="menu_bd">
-                        <ul>
-                            <li><a href="#">App For Android</a></li>
-                            <li><a href="#">App For IOS</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <li class="fl"><i class="shortcut_s"></i></li>
-            <li class="fl"><div class="menu_hd">您好，欢迎来到锡货网！</div></li>
-            <li class="fl"><div class="menu_hd"><a href="#">请登录</a></div></li>
-            <li class="fl"><div class="menu_hd"><a href="#">免费注册</a></div></li>
-        </ul>
-        <ul class="fr 1h">
-            <li class="fl"><div class="menu_hd"><a href="#">我的订单</a></div></li>
-            <li class="fl"><i class="shortcut_s"></i></li>
-            <li class="fl"><div class="menu_hd"><a href="#">我的锡货</a></div></li>
-            <li class="fl"><i class="shortcut_s"></i></li>
-            <li class="fl"><div class="menu_hd"><a href="#">服务中心</a></div></li>
-            <li class="fl"><i class="shortcut_s"></i></li>
-            <li class="fl"><div class="menu_hd"><a href="#">商家入驻</a></div></li>
-            <li class="fl"><i class="shortcut_s"></i></li>
-            <li class="fl">
-                <div class="menu">
-                    <div class="menu_hd"><a href="#">网站导航</a><b><em></em></b></div>
-                    <div class="menu_bd">
-                        <ul>
-                            <li><a href="#">网站导航</a></li>
-                            <li><a href="#">网站导航</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <span class="clr"></span>
-    </div>
-</div>
-<!--顶部快捷菜单-->
+<script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
 
+<script>
+    layui.use(['jquery','layer'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer;
 
-<!--顶部Logo及搜索-->
-<div class="header_2013">
-    <div class="w">
-        <div class="logo_v2013">
-            <a href="#">
-                <img class="border_r" src="${pageContext.request.contextPath}/images/logo/logo.png" width="120" height="50">
-                <img src="${pageContext.request.contextPath}/orderStatic/images/slogan.jpg" width="170" height="50">
-            </a>
-        </div>
-        <div class="header_searchbox">
-            <form action="#">
-                <input name="search" type="text" class="header_search_input" default_val="锡货网三期上线全场五折" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh">
-                <button type="submit" class="header_search_btn">搜索</button>
-            </form>
-            <ul class="hot_word">
-                <li><a class="red" href="#" target="_blank">礼品卡</a></li>
-                <li><a target="_blank" href="#">百货五折</a></li>
-                <li><a target="_blank" href="#">大闸蟹</a></li>
-                <li><a target="_blank" href="#">年货</a></li>
-                <li><a target="_blank" href="#">电子产品</a></li>
-            </ul>
-        </div>
-        <div id="cart_box" class="cart_box">
-            <a id="cart" class="cart_link" href="${pageContext.request.contextPath}/cart/listCustomCart" rel="nofollow">
-                <span class="text">去购物车结算</span>
-                <img src="${pageContext.request.contextPath}/orderStatic/images/shopping_icon.png" width="24" height="24" class="cart_gif">
-                <!-- 购物车没有物品时，隐藏此num -->
-                <span class="num">12</span>
-                <s class="icon_arrow_right"></s>
-            </a>
+        /*window.addCart = function (goods_id) {
+            $.ajax({
+                data: {"goods_id": goods_id, "amount": 1},
+                dataType: "text",
+                type: "get",
+                url: "${pageContext.request.contextPath}/cart/addCart",
+                success: function (res) {
+                    if (res > 0) {
+                        layer.msg("加入成功!");
+                    }
+                }
+            });
+        }*/
+        $("#checkoutToPay").on("click",function(){
+            var b=$("#checkoutAddrList").find(".selected").length;
+            if(0>=b){
+                layer.msg("请选择地址");
+            }
+            if(0<b){
+                var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
+                //var orderMoney=parseFloat($('.totalPrice').html()-0);
+                var flag=$('.flag').html();
+                if(flag=='1'){//直接购买
+                    var $item_row=$('.item-row');
+                    var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
+                    var amount=parseInt($item_row.find('[name="amount"]').html());
+                    $.ajax({
+                        data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
+                        dataType:"text",
+                        type:"POST",
+                        url:"../../portal/orders/addOrder",//直接购买
+                        success:function (data) {
+                            if(data>0){
+                                location.href="../../portal/pages/orders/submitOrder";
+                            }else{
+                                location.href="../../portal/404";
+                            }
+                        }
+                    });
+                }else{//购物车购买
+                    var $item_row=$('.item-row');
+                    var goods_ids=[],
+                        amounts=[];
+                    //alert($item_row.length);
+                    $item_row.each(function () {
+                        var goods_id=parseInt($(this).find('[name="goods_id"]').val());
+                        //alert(goods_id);
+                        goods_ids.push(goods_id);//得到要结算的多个商品id
+                        var amount=parseInt($(this).find('[name="amount"]').html());
+                        //alert(amount);
+                        amounts.push(amount);//得到要结算的多个商品的数量
+                    });
+                    $.ajax({
+                        data:{"address_id":address_id,"goods_ids[]":goods_ids,"amounts[]":amounts},
+                        dataType:"text",
+                        type:"POST",
+                        url:"../../portal/orders/submitOrder",//购物车购买
+                        success:function (data) {
+                            if(data>0){
+                                location.href="../../portal/pages/orders/submitOrder";
+                            }else{
+                                location.href="../../portal/404";
+                            }
+                        }
+                    });
+                }
+            }
 
-            <div class="cart_content" id="cart_content">
-                <i class="cart-icons"></i>
-                <!-- 购物车没有物品时，显示cart_content_null、隐藏cart_content_all -->
-                <div class="cart_content_null" style="display: none;">购物车中还没有商品，<br>快去挑选心爱的商品吧！</div>
-                <div class="cart_content_all" style="display: block;">
-                    <div class="cart_left_time"><span>06分49.9秒</span> 后购物车将被清空，请及时结算</div>
-                    <div class="cart_content_center">
-                        <div class="cart_con_single">
-                            <div class="single_pic">
-                                <a href="#" target="_blank" alt="兰蔻 (Lancome)根源补养洁颜啫哩 125ml">
-                                    <img src="${pageContext.request.contextPath}/orderStatic/images/goods_img01.jpg" />
-                                </a>
-                            </div>
-                            <div class="single_info">
-                                <a href="#" target="_blank" alt="兰蔻 (Lancome)根源补养洁颜啫哩 125ml" class="name">兰蔻 (Lancome)根源补养洁颜啫哩 125ml</a>
-                                <span class="price">￥269.00</span>
-                                <span class="price_plus"> x </span>
-                                <span class="price_num">1</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="con_all">
-                        <div class="price_whole"><span>共<span class="num_all">12</span>件商品</span></div>
-                        <div><span class="price_gongji">共计<em>￥</em><span class="total_price">69</span></span><a href="${pageContext.request.contextPath}/cart/listCustomCart" class="cart_btn" rel="nofollow">去购物车结算</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <span class="clr"></span>
-    </div>
-</div>
-<!--顶部Logo及搜索-->
-
-<!--  导航条    start-->
-<div class="yHeader">
-    <div class="shop_Nav">
-        <div class="pullDown">
-            <h2 class="pullDownTitle"><i></i>全部商品分类</h2>
-        </div>
-
-        <ul class="Menu_box">
-            <li><a href="" target="_blank" class="yMenua">首页</a></li>
-            <li><a href="" target="_blank">大划算</a></li>
-            <li><a href="" target="_blank">抢拍</a></li>
-            <li><a href="" target="_blank">锡货专场</a></li>
-            <li><a href="" target="_blank">锡货超市</a></li>
-        </ul>
-        <div class="fr r_icon"><i class="i01"></i><span>30天退货</span><i class="i02"></i><span>满59包邮</span></div>
-    </div>
-</div>
-<!--  导航条    end-->
-
-
-
-<div class="banner_red_top">
-
-
-</div>--%>
-
+        });
+    });
+</script>
 <%--==================================通用头部导航条导入========================================--%>
 <jsp:include page="../../top.jsp"/>
 
@@ -328,47 +261,10 @@
                                 </dd>
                             </dl>
                         </form>
-
-                        <%--<dl class="clearfix payment-box" >
-                            <dt>
-                                <strong>银行网银</strong>
-                                <p>支持以下各银行借记卡及信用卡</p>
-
-                            </dt>
-                            <dd>
-                                <ul class="payment-list clearfix">
-                                    <li><label  for="CMB"><input type="radio" name="payOnlineBank" id="CMB" value="CMB" /> <img src="http://s1.mi.com/images/payOnline_zsyh.gif" alt=""/></label></li>
-                                    <li><label  for="ICBCB2C"><input type="radio" name="payOnlineBank" id="ICBCB2C" value="ICBCB2C" /> <img src="http://s1.mi.com/images/payOnline_gsyh.gif" alt=""/></label></li>
-                                    <li><label  for="CCB"><input type="radio" name="payOnlineBank" id="CCB" value="CCB" /> <img src="http://s1.mi.com/images/payOnline_jsyh.gif" alt=""/></label></li>
-                                    <li><label  for="ABC"><input type="radio" name="payOnlineBank" id="ABC" value="ABC" /> <img src="http://s1.mi.com/images/payOnline_nyyh.gif" alt=""/></label></li>
-                                    <li><label  for="BOCB2C"><input type="radio" name="payOnlineBank" id="BOCB2C" value="BOCB2C" /> <img src="http://s1.mi.com/images/payOnline_zgyh.gif" alt=""/></label></li>
-                                    <li><label  for="COMM"><input type="radio" name="payOnlineBank" id="COMM" value="COMM" /> <img src="http://s1.mi.com/images/payOnline_jtyh.gif" alt=""/></label></li>
-                                    <li><label  for="PSBC-DEBIT"><input type="radio" name="payOnlineBank" id="PSBC-DEBIT" value="PSBC-DEBIT" /> <img src="http://s1.mi.com/images/payOnline_youzheng.gif" alt=""/></label></li>
-                                    <li><label  for="GDB"><input type="radio" name="payOnlineBank" id="GDB" value="GDB" /> <img src="http://s1.mi.com/images/payOnline_gfyh.gif" alt=""/></label></li>
-                                    <li><label  for="SPDB"><input type="radio" name="payOnlineBank" id="SPDB" value="SPDB" /> <img src="http://s1.mi.com/images/payOnline_pufa.gif" alt=""/></label></li>
-                                    <li><label  for="CEBBANK"><input type="radio" name="payOnlineBank" id="CEBBANK" value="CEBBANK" /> <img src="http://s1.mi.com/images/payOnline_gdyh.gif" alt=""/></label></li>
-                                    <li><label  for="SPABANK"><input type="radio" name="payOnlineBank" id="SPABANK" value="SPABANK" /> <img src="http://s1.mi.com/images/payOnline_payh.gif" alt=""/></label></li>
-                                    <li><label  for="CIB"><input type="radio" name="payOnlineBank" id="CIB" value="CIB" /> <img src="http://s1.mi.com/images/payOnline_xyyh.gif" alt=""/></label></li>
-                                    <li><label  for="CMBC"><input type="radio" name="payOnlineBank" id="CMBC" value="CMBC" /> <img src="http://s1.mi.com/images/payOnline_msyh.gif" alt=""/></label></li>
-                                    <li><label  for="BOB"><input type="radio" name="payOnlineBank" id="BOB" value="BOB" /> <img src="http://s1.mi.com/images/payOnline_bjyh.gif" alt=""/></label></li>
-                                    <li><label  for="CITIC"><input type="radio" name="payOnlineBank" id="CITIC" value="CITIC" /> <img src="http://s1.mi.com/images/payOnline_zxyh.gif" alt=""/></label></li>
-                                    <li><label  for="SDB"><input type="radio" name="payOnlineBank" id="SDB" value="SDB" /> <img src="http://s1.mi.com/images/payOnline_sfyh.gif" alt=""/></label></li>
-                                    <li><label  for="SHBANK"><input type="radio" name="payOnlineBank" id="SHBANK" value="SHBANK" /> <img src="http://s1.mi.com/images/payOnline_shyh.gif" alt=""/></label></li>
-                                    <li><label  for="BJRCB"><input type="radio" name="payOnlineBank" id="BJRCB" value="BJRCB" /> <img src="http://s1.mi.com/images/payOnline_bjnsyh.gif" alt=""/></label></li>
-                                    <li><label  for="NBBANK"><input type="radio" name="payOnlineBank" id="NBBANK" value="NBBANK" /> <img src="http://s1.mi.com/images/payOnline_nbyh.gif" alt=""/></label></li>
-                                    <li><label  for="HZCBB2C"><input type="radio" name="payOnlineBank" id="HZCBB2C" value="HZCBB2C" /> <img src="http://s1.mi.com/images/payOnline_hzyh.gif" alt=""/></label></li>
-                                    <li><label  for="SHRCB"><input type="radio" name="payOnlineBank" id="SHRCB" value="SHRCB" /> <img src="http://s1.mi.com/images/payOnline_shnsyh.gif" alt=""/></label></li>
-                                    <li><label  for="FDB"><input type="radio" name="payOnlineBank" id="FDB" value="FDB" /> <img src="http://s1.mi.com/images/payOnline_fcyh.gif" alt=""/></label></li>                                </ul>
-                            </dd>
-                        </dl>--%>
-
-
-
-
                     </div>
                 </div>
                 <div class="box-ft clearfix">
-                    <input type="submit" class="btn btn-primary" value="下一步" id="payBtn">
+                    <input type="submit" class="btn btn-primary" value="去支付" id="payBtn">
                     <%--<a href="#" class="btn btn-lineDakeLight">修改订单</a>--%>
                     <span class="tip"></span>
                 </div>
