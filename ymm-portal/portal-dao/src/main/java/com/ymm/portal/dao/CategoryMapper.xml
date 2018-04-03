@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymm.portal.dao.CategoryMapper">
+    <!--category sql块-->
+    <sql id="Category_Column_List">
+      cat_id,cat_name,cat_desc,status
+    </sql>
+
+
+    <!--查询所有status不为3的category(select回显,不分页)-->
+    <select id="selectCatName" resultType="String">
+        SELECT
+        cat_name
+        FROM category
+        WHERE cat_id = #{cat_id}
+    </select>
+    <!--&lt;!&ndash;查询所有status不为3的category的条数&ndash;&gt;-->
+    <!--<select id="countCate" resultType="int">-->
+        <!--SELECT count(1)-->
+        <!--FROM category-->
+        <!--WHERE status IN (1,2)-->
+    <!--</select>-->
+
+
+</mapper>

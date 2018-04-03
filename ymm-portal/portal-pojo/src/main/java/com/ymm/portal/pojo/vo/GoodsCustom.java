@@ -14,12 +14,21 @@ public class GoodsCustom implements Serializable {
 
     private int cat_id;
     private int brand_id;
+    private String cat_name;
 
     private int offSet;
     private int pageSize;
     private int totalCount;
     private int totalPage;
     private List<Goods> goodsList;
+
+    public String getCat_name() {
+        return cat_name;
+    }
+
+    public void setCat_name(String cat_name) {
+        this.cat_name = cat_name;
+    }
 
     public int getCat_id() {
         return cat_id;

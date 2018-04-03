@@ -69,7 +69,7 @@
                 <div class="col-md-6 col-sm-6 hidden-xs">
                     <div class="header-top-left">
                         <div class="language-usd">
-                            <img src="${pageContext.request.contextPath}/images/logo2.png">
+                            <a href="${pageContext.request.contextPath}/index"><img src="${pageContext.request.contextPath}/images/logo2.png"></a>
                         </div>
                     </div>
                 </div>
@@ -225,27 +225,17 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul>
-                                <li><a href="index.html">HOME</a>
-                                    <ul>
-                                        <li><a href="index.html">Home Version 1</a></li>
-                                        <li><a href="index-2.html">Home Version 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="shop-full-grid.html"><b>手机</b></a>
+                                <li><a href="${pageContext.request.contextPath}/index"><b>首页</b></a>
+                                <li><a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&offSet=1&pageSize=16"><b>手机</b></a>
                                     <div class="mega-menu">
                                                 <span>
-                                                    <a href="shop-grid-left-sidebar.html" class="title">热门品牌</a>
-                                                    <a href="#">foreach遍历</a>
-                                                    <a href="#">jackets</a>
-                                                    <a href="#">Colletions</a>
-                                                    <a href="#">T-shirts</a>
-                                                    <a href="#">Jeens pant's</a>
-                                                    <a href="#">Sport shoes</a>
-                                                </span>
-
-                                        <span>
-                                                    <img src="img/menu/1.jpg" alt="">
-                                                    <img src="img/menu/2.jpg" alt="">
+                                                    <a href="javascript:void(0)" class="title">热门品牌</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=23&offSet=1&pageSize=16">小米</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=27&offSet=1&pageSize=16">vivo</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=24&offSet=1&pageSize=16">苹果</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=25&offSet=1&pageSize=16">华为</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=26&offSet=1&pageSize=16">三星</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=2&brand_id=29&offSet=1&pageSize=16">魅族</a>
                                                 </span>
                                     </div>
                                 </li>
@@ -254,28 +244,40 @@
                                         <li><a href="#"><b>敬请期待</b></a></li>
                                     </ul>
                                 </li>
-                                <li><a href="blog-full-view.html"><b>笔记本</b></a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="blog-full-view.html">Blog Full View</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
+                                <li><a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&offSet=1&pageSize=16"><b>笔记本</b></a>
+                                    <div class="mega-menu">
+                                                <span>
+                                                    <a href="javascript:void(0)" class="title">热门品牌</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=1&offSet=1&pageSize=16">华硕</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=5&offSet=1&pageSize=16">神舟</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=3&offSet=1&pageSize=16">苹果</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=2&offSet=1&pageSize=16">戴尔</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=6&offSet=1&pageSize=16">惠普</a>
+                                                    <a href="${pageContext.request.contextPath}/goods/listGoods?cat_id=1&brand_id=7&offSet=1&pageSize=16">联想</a>
+                                                </span>
+
+                                    </div>
                                 </li>
                                 <li><a href="#"><b>耳机 音箱</b></a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="404.html"><b>敬请期待</b></a></li>
-                                    </ul>
+                                    <div class="mega-menu">
+                                        <span>
+                                            <a href="404" class="title">敬请期待</a>
+                                        </span>
+                                    </div>
                                 </li>
                                 <li><a href="#"><b>路由器 手机配件</b></a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="404.html"><b>敬请期待</b></a></li>
-                                    </ul>
+                                    <div class="mega-menu">
+                                        <span>
+                                            <a href="404" class="title">敬请期待</a>
+                                        </span>
+                                    </div>
                                 </li>
                                 <li><a href="#"><b>留言板</b></a>
-                                    <ul class="submenu-mainmenu">
-                                        <li><a href="404.html"><b>敬请期待</b></a></li>
-                                    </ul>
+                                    <div class="mega-menu">
+                                        <span>
+                                            <a href="404" class="title">敬请期待</a>
+                                        </span>
+                                    </div>
                                 </li>
                             </ul>
                         </nav>

@@ -1,10 +1,16 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: SmallJIE
+  Date: 2018/4/2
+  Time: 20:04
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!doctype html>
-<html class="no-js" lang="">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>404 || Shopppie</title>
+    <title>foot page</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,8 +29,10 @@
 
     <!-- Nivo slider CSS
     ============================================ -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/custom-slider/css/nivo-slider.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/custom-slider/css/preview.css" media="screen" />
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/lib/custom-slider/css/nivo-slider.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/custom-slider/css/preview.css"
+          media="screen"/>
 
     <!-- Fontawsome CSS
     ============================================ -->
@@ -59,33 +67,6 @@
     <script src="${pageContext.request.contextPath}/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-
-<!-- header start -->
-<header class="header-area">
-    <jsp:include page="top.jsp"/>
-    <!-- Mobile Menu Area end -->
-</header>
-<!-- header end -->
-<!-- 404 area start -->
-<div class="error-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="error-content text-center">
-                    <h2>page not found</h2>
-                    <p>The page you are looking for was moved, removed,<br>
-                        renamed or might never existed.</p>
-                    <a href="${pageContext.request.contextPath}/index" class="back-home">返回首页</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 404 area end -->
-
 <!-- footer start -->
 <footer class="footer-area">
     <div class="footer-middle-area">
@@ -108,10 +89,10 @@
                     <div class="footer-widget">
                         <h5>Services</h5>
                         <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Return Policy</a></li>
-                            <li><a href="#">Our Blog</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="about.html">Return Policy</a></li>
+                            <li><a href="blog.html">Our Blog</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
                             <li class="hidden-sm"><a href="#">Terms &amp; Condition</a></li>
                         </ul>
                     </div>
@@ -121,7 +102,7 @@
                         <h5>Account</h5>
                         <ul>
                             <li><a href="#">Your Account</a></li>
-                            <li><a href="#">Checkout</a></li>
+                            <li><a href="${pageContext.request.contextPath}/404">Checkout</a></li>
                             <li><a href="#">Login</a></li>
                             <li><a href="#">Register</a></li>
                         </ul>
@@ -162,7 +143,6 @@
     </div>
 </footer>
 <!-- footer end -->
-
 <!-- jquery
 ============================================ -->
 <script src="${pageContext.request.contextPath}/js/vendor/jquery-1.12.3.min.js"></script>
@@ -195,10 +175,13 @@
 <script src="${pageContext.request.contextPath}/js/plugins.js"></script>
 <!-- Nevo Slider js
 ============================================ -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/custom-slider/js/jquery.nivo.slider.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/lib/custom-slider/js/jquery.nivo.slider.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib/custom-slider/home.js"></script>
 <!-- main JS
 ============================================ -->
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
+
 </body>
+
 </html>

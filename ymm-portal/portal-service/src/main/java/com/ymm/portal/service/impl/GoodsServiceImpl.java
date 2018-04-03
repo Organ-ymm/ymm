@@ -1,6 +1,7 @@
 package com.ymm.portal.service.impl;
 
 import com.ymm.commons.pojo.po.Goods;
+import com.ymm.portal.dao.CategoryMapper;
 import com.ymm.portal.dao.GoodsMapper;
 import com.ymm.portal.pojo.vo.GoodsCustom;
 import com.ymm.portal.service.GoodsService;
@@ -19,6 +20,9 @@ public class GoodsServiceImpl implements GoodsService {
     @Autowired
     private GoodsMapper goodsDao;
 
+    @Autowired
+    private CategoryMapper categoryDao;
+
     @Override
     public List<Goods> listHotGoods(int i) {
         List<Goods> list = null;
@@ -34,7 +38,9 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public GoodsCustom listGoods(GoodsCustom goodsCustom) {
         List<Goods> goodsList = goodsDao.listGoods(goodsCustom);
+        String catName = categoryDao.selectCatName(goodsCustom.getCat_id());
         int countGoods = goodsDao.countGoods(goodsCustom);
+        goodsCustom.setCat_name(catName);
         goodsCustom.setGoodsList(goodsList);
         goodsCustom.setTotalCount(countGoods);
         return goodsCustom;

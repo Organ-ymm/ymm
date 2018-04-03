@@ -83,7 +83,7 @@
             <div class="col-md-12 text-left">
                 <ul class="breadcrumb">
                     <li><a href="${pageContext.request.contextPath}/index">首页</a><span> - </span></li>
-                    <li><a href="#">手机</a></li>
+                    <li><a href="#">${goodsCustom.cat_name}</a></li>
                 </ul>
             </div>
         </div>
@@ -200,73 +200,7 @@
 </div>
 
 <!-- latest blog end -->
-<!-- client start -->
-<div class="client-area clearfix">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="section-title">
-                    <h2>popular Brand</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="client-owl">
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/1.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/2.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/3.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/4.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/5.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/1.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/2.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/3.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/4.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="img/client/5.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- client end -->
+
 <!-- footer start -->
 <footer class="footer-area">
     <div class="footer-middle-area">
@@ -275,7 +209,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
                     <div class="footer-widget">
                         <div class="footer-logo">
-                            <img src="img/logo/footer-logo.png" alt="">
+                            <img src="${pageContext.request.contextPath}/images/logo/footer-logo.png" alt="">
                         </div>
                         <div class="footer-address">
                             <p>28 Green Tower, Street Name New<br> York City, USA</p>
@@ -302,7 +236,7 @@
                         <h5>Account</h5>
                         <ul>
                             <li><a href="#">Your Account</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="${pageContext.request.contextPath}/404">Checkout</a></li>
                             <li><a href="#">Login</a></li>
                             <li><a href="#">Register</a></li>
                         </ul>
@@ -330,12 +264,12 @@
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
                     <div class="copyright">
-                        <p>2016 ® All Rights Reserved <span><a href="http://jqueryfuns.com/">DevItems</a></span>.</p>
+                        <p>2016 ® All Rights Reserved <span><a href="#">Backstage Management</a></span>.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
                     <div class="payment text-right">
-                        <img src="img/payment/1.png" alt="">
+                        <img src="${pageContext.request.contextPath}/images/payment/1.png" alt="">
                     </div>
                 </div>
             </div>
@@ -418,6 +352,23 @@
 
 
     });
+    function addCart(goods_id) {
+
+//    }
+//    window.addCart = function (goods_id) {
+        $.ajax({
+            data: {"goods_id": goods_id, "amount": 1},
+            dataType: "text",
+            type: "get",
+            url: "${pageContext.request.contextPath}/cart/addCart",
+            success: function (res) {
+                if (res > 0) {
+                    alert("加入成功!");
+                    //top.layer.alert("加入成功!");
+                }
+            }
+        });
+    }
 </script>
 
 </body>

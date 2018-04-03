@@ -25,6 +25,11 @@
     <sql id="GoodsList_Column_List">
         g.goods_id,g.goods_name,g.market_price,g.goods_img,is_hot,is_new
     </sql>
+
+    <!--Goods sql块(只有id,name,price,img,is_hot,is_new,cat_name)-->
+    <sql id="GoodsListcatName_Column_List">
+        g.goods_id,g.goods_name,g.market_price,g.goods_img,g.is_hot,g.is_new,c.cat_name
+    </sql>
     <!--where status不为3-->
     <sql id="Where_Clause">
         <where>
