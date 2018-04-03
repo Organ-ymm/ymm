@@ -426,6 +426,7 @@
                                         <span class="col col-3">购买数量</span>
                                         <span class="col col-4">小计（元）</span>
                                     </dt>
+                                    <input type="hidden" name="user_id" value="${user.user_id}"/>
                                         <c:if test="${!empty orderItem}">
                                             <c:forEach items="${orderItem}" var="good">
                                                 <dd class="item clearfix">
@@ -475,23 +476,6 @@
                                                 </div>
                                             </dd>
                                         </c:if>
-                                    <%--<dd class="item clearfix">
-                                        <div class="item-row">
-                                            <div class="col col-1">
-                                                <div class="g-pic">
-                                                    <img src="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!40x40.jpg" srcset="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!80x80.jpg 2x" width="40" height="40" />
-                                                </div>
-                                                <div class="g-info">
-                                                    <a href="#">
-                                                        小米T恤 忍者米兔双截棍 军绿 XXL                                            </a>
-                                                </div>
-                                            </div>
-
-                                            <div class="col col-2">39元</div>
-                                            <div class="col col-3">1</div>
-                                            <div class="col col-4">39元</div>
-                                        </div>
-                                    </dd>--%>
                                 </dl>
                                 <div class="checkout-count clearfix">
                                     <div class="checkout-count-extend xm-add-buy">

@@ -19,21 +19,26 @@ layui.use(['jquery','layer'], function () {
             var flag=$('.flag').html();
             if(flag=='1'){//直接购买
                 var $item_row=$('.item-row');
+                var user_id=parseInt($item_row.find('[name="user_id"]').val());
                 var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
                 var amount=parseInt($item_row.find('[name="amount"]').html());
-                $.ajax({
-                    data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
-                    dataType:"text",
-                    type:"POST",
-                    url:"../../portal/orders/addOrder",//直接购买
-                    success:function (data) {
-                        if(data>0){
-                            location.href="../../portal/pages/orders/submitOrder";
-                        }else{
-                            location.href="../../portal/404";
+                if(user_id!=null && user_id!=''){
+                    $.ajax({
+                        data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
+                        dataType:"text",
+                        type:"POST",
+                        url:"../../portal/orders/addOrder",//直接购买
+                        success:function (data) {
+                            if(data>0){
+                                location.href="../../portal/pages/orders/submitOrder";
+                            }else{
+                                location.href="../../portal/404";
+                            }
                         }
-                    }
-                });
+                    });
+                }else{
+                    location.href="../../portal/pages/loginTip";
+                }
             }else{//购物车购买
                 var $item_row=$('.item-row');
                 var goods_ids=[],
