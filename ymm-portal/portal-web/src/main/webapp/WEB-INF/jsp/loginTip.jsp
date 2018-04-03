@@ -11,7 +11,9 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>跳转登录页 - ymm商城</title>
+    <!-- ======================= favicon ========================== -->
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/logo_icon.png">
     <script>
         var time = 5;
         var timer;

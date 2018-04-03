@@ -22,6 +22,14 @@
     <script src="${pageContext.request.contextPath}/orderStatic/js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/orderStatic/js/unslider.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/orderStatic/js/index.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var user_id=$("[name='user_id']").val();
+            if(user_id==null || user_id==''){
+                location.href="${pageContext.request.contextPath}/loginTip";
+            }
+        };
+    </script>
 </head>
 
 <body>
@@ -30,7 +38,7 @@
 
 <!--订单提交body部分开始-->
 <div class="border_top_cart">
-
+    <input type="hidden" name="user_id" value="${user.user_id}"/>
     <div class="container payment-con">
         <div class="order-info">
             <div class="msg">

@@ -636,10 +636,11 @@
 
 <!--收货地址body部分结束-->
 
-
+<!-- 底部 -->
+<jsp:include page="../../foot.jsp"/>
 
 <!-- 底部 -->
-<div class="promise_box">
+<%--<div class="promise_box">
     <div class="w">
         <ul>
             <li><img src="${pageContext.request.contextPath}/orderStatic/images/promise_img01.jpg"><span>365天不打烊</span></li>
@@ -728,13 +729,12 @@
         <a href="#"><img src="${pageContext.request.contextPath}/orderStatic/images/bottom_img09.png"></a>
     </p>
 </div>
-<!-- 底部 -->
 <div class="fixed-buttons">
     <ul>
         <li><a href="#" class="fixed-weixin"><img src="${pageContext.request.contextPath}/orderStatic/images/fixed_weixin.png" /><div class="weixin-pic"><img src="${pageContext.request.contextPath}/orderStatic/images/weixin_big.jpg"></div></a></li>
         <li><img id="imgBtn-to-top" src="${pageContext.request.contextPath}/orderStatic/images/back_top.png" /></li>
     </ul>
-</div>
+</div>--%>
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script src="${pageContext.request.contextPath}/orderStatic/js/unslider.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/orderStatic/js/index.js" type="text/javascript"></script>

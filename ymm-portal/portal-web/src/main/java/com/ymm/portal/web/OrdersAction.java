@@ -177,11 +177,7 @@ public class OrdersAction {
     * 订单支付，修改订单的pay_status为1
     * */
     @RequestMapping(value = "/payOrder",method = RequestMethod.POST)
-   public String payOrder(@RequestParam("order_id")String order_idStr,HttpSession session){
-        Users user = (Users) session.getAttribute("user");
-        if(user==null){
-            return "/loginTip";
-        }
+   public String payOrder(@RequestParam("order_id")String order_idStr){
         long order_id=Long.parseLong(order_idStr);
         int i=orderService.updateOrderByOid(order_id);
         if(i>0){

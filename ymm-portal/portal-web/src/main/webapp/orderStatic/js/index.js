@@ -19,10 +19,8 @@ layui.use(['jquery','layer'], function () {
             var flag=$('.flag').html();
             if(flag=='1'){//直接购买
                 var $item_row=$('.item-row');
-                var user_id=parseInt($item_row.find('[name="user_id"]').val());
                 var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
                 var amount=parseInt($item_row.find('[name="amount"]').html());
-                if(user_id!=null && user_id!=''){
                     $.ajax({
                         data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
                         dataType:"text",
@@ -36,9 +34,6 @@ layui.use(['jquery','layer'], function () {
                             }
                         }
                     });
-                }else{
-                    location.href="../../portal/pages/loginTip";
-                }
             }else{//购物车购买
                 var $item_row=$('.item-row');
                 var goods_ids=[],
@@ -81,7 +76,6 @@ $(document).ready(function(){
 	//SetClassify();//设置顶部商品分类菜单的显示与隐藏
     GetTotalMoney();//总金额的计算
 });
-
 function GetTotalMoney() {
     var totalMoney = 0;
     // var $subTotal = $('.subTotal');
@@ -106,74 +100,9 @@ $("#checkoutAddrList").on("click",function(){//获得用户的选取的地址id
         if(address_id>0){
             $('[name="address_id"]').val(address_id);
         }
-        /*var flag=$('.flag').html();
-        if(flag=='1'){//直接购买
-            var $item_row=$('.item-row');
-            var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
-            var amount=parseInt($item_row.find('[name="amount"]').html());
-            alert(goods_id);
-            alert(amount);
-        }*/
     }
 
 });
-
-// $("#checkoutToPay").on("click",function(){
-//     var b=$("#checkoutAddrList").find(".selected").length;
-//     /*if(0>=b){
-//         alert("请选择地址");
-//     }*/
-//     if(0<b){
-//         var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
-//         //var orderMoney=parseFloat($('.totalPrice').html()-0);
-//         var flag=$('.flag').html();
-//         if(flag=='1'){//直接购买
-//             var $item_row=$('.item-row');
-//             var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
-//             var amount=parseInt($item_row.find('[name="amount"]').html());
-//             $.ajax({
-//                 data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
-//                 dataType:"text",
-//                 type:"POST",
-//                 url:"../../portal/orders/addOrder",//直接购买
-//                 success:function (data) {
-//                     if(data>0){
-//                         location.href="../../portal/pages/orders/submitOrder";
-//                     }else{
-//                         location.href="../../portal/404";
-//                     }
-//                 }
-//             });
-//         }else{//购物车购买
-//             var $item_row=$('.item-row');
-//             var goods_ids=[],
-//                 amounts=[];
-//             //alert($item_row.length);
-//             $item_row.each(function () {
-//                 var goods_id=parseInt($(this).find('[name="goods_id"]').val());
-//                 //alert(goods_id);
-//                 goods_ids.push(goods_id);//得到要结算的多个商品id
-//                 var amount=parseInt($(this).find('[name="amount"]').html());
-//                 //alert(amount);
-//                 amounts.push(amount);//得到要结算的多个商品的数量
-//             });
-//             $.ajax({
-//                 data:{"address_id":address_id,"goods_ids[]":goods_ids,"amounts[]":amounts},
-//                 dataType:"text",
-//                 type:"POST",
-//                 url:"../../portal/orders/submitOrder",//购物车购买
-//                 success:function (data) {
-//                     if(data>0){
-//                         location.href="../../portal/pages/orders/submitOrder";
-//                     }else{
-//                         location.href="../../portal/404";
-//                     }
-//                 }
-//             });
-//         }
-//     }
-//
-// });
 function SetShortCutEffect(){
     $('.shortcut_v2013').find(".menu").hover(function(){
         $(this).addClass('hover');

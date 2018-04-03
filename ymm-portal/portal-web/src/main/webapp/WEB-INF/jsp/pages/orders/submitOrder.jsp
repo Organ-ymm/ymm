@@ -26,27 +26,32 @@
 
         window.onload = function(){
             new tab('test4-input-input_tab1-input_tab2', '-');
-            $.ajax({//订单提交页的地址显示
-                //data:"",
-                dataType:"json",
-                type:"POST",
-                url:"${pageContext.request.contextPath}/orders/getOrderByUserId",
-                success:function (data) {//返回的是Orders对象
-                    //console.log(data);
-                    if(data!=null){
-                        $("[name='order_id']").val(data.order_id);
-                        $("[name='order_money']").val(data.order_money);
-                        $(".order_id").html(data.order_id);
-                        $(".receiver_name").html(data.receiver_name);
-                        $(".receiver_address").html(data.receiver_address);
-                        $(".receiver_phone").html(data.receiver_phone);
-                        $(".order_money").html(data.order_money);
+            var user_id=$("[name='user_id']").val();
+            if(user_id!=null && user_id!=''){
+                $.ajax({//订单提交页的地址显示
+                    //data:"",
+                    dataType:"json",
+                    type:"POST",
+                    url:"${pageContext.request.contextPath}/orders/getOrderByUserId",
+                    success:function (data) {//返回的是Orders对象
+                        //console.log(data);
+                        if(data!=null){
+                            $("[name='order_id']").val(data.order_id);
+                            $("[name='order_money']").val(data.order_money);
+                            $(".order_id").html(data.order_id);
+                            $(".receiver_name").html(data.receiver_name);
+                            $(".receiver_address").html(data.receiver_address);
+                            $(".receiver_phone").html(data.receiver_phone);
+                            $(".order_money").html(data.order_money);
 
-                    }else{
-                        location.href="${pageContext.request.contextPath}/loginTip";
+                        }else{
+                            location.href="${pageContext.request.contextPath}/loginTip";
+                        }
                     }
-                }
-            });
+                });
+            }else{//若用户没有登录，则跳转到登录页面
+                location.href="${pageContext.request.contextPath}/loginTip";
+            }
             handleCart();
         };
         function handleCart() {
@@ -111,6 +116,7 @@
                 </div>
                 <div class="info">
                     <p>
+                        <input type="hidden" name="user_id" value="${user.user_id}"/>
                         <input type="hidden" name="order_id"/>
                         <input type="hidden" name="order_money"/>
                         金额：<span class="pay-total"><span class="order_money"></span>元</span>
@@ -242,10 +248,11 @@
 
 <!--订单提交body部分结束-->
 
-
+<!-- 底部 -->
+<jsp:include page="../../foot.jsp"/>
 
 <!-- 底部 -->
-<div class="promise_box">
+<%--<div class="promise_box">
     <div class="w">
         <ul>
             <li><img src="${pageContext.request.contextPath}/orderStatic/images/promise_img01.jpg"><span>365天不打烊</span></li>
@@ -334,13 +341,12 @@
         <a href="#"><img src="${pageContext.request.contextPath}/orderStatic/images/bottom_img09.png"></a>
     </p>
 </div>
-<!-- 底部 -->
 <div class="fixed-buttons">
     <ul>
         <li><a href="#" class="fixed-weixin"><img src="${pageContext.request.contextPath}/orderStatic/images/fixed_weixin.png" /><div class="weixin-pic"><img src="${pageContext.request.contextPath}/orderStatic/images/weixin_big.jpg"></div></a></li>
         <li><img id="imgBtn-to-top" src="${pageContext.request.contextPath}/orderStatic/images/back_top.png" /></li>
     </ul>
-</div>
+</div>--%>
 
 </body>
 </html>
