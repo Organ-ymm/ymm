@@ -2,14 +2,14 @@ package com.ymm.pojo.dto;
 
 public class SwitchCheck {
     //开关状态
-    private int id;
+    private long id;
     private int switchStatus;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -49,8 +49,8 @@ PRIMARY KEY (`order_id`)
             <label class="layui-form-label">发货状态</label>
             <div class="layui-input-block">
                 <%--<input type="checkbox" id="status" name="status" lay-skin="switch" lay-text="是|否" {{ 1==d.status?'checked':''}}/>--%>
-                <input type="radio" name="deliver_status" value="0" title="未发货">
-                <input type="radio" name="deliver_status" value="1" title="待收货" checked>
+                <input type="radio" name="deliver_status" value="0" title="待发货" checked>
+                <input type="radio" name="deliver_status" value="1" title="待收货">
             </div>
         </div>
 

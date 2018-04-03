@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-       <!--
+<mapper namespace="com.ymm.dao.OrdersMapper" >
+    <!--
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL COMMENT '订单编号',
   `user_id` int(11) DEFAULT NULL COMMENT '下单会员id',
@@ -9,39 +10,64 @@ CREATE TABLE `orders` (
   `receiver_phone` int(11) DEFAULT NULL COMMENT '收件人电话',
   `order_time` date DEFAULT NULL COMMENT '下单时间',
   `order_money` double(10,2) DEFAULT NULL COMMENT '订单总金额',
-  `pay_status` int(1) DEFAULT NULL COMMENT '发货状态：0未付款,已支付',
-  `deliver_status` int(1) DEFAULT NULL COMMENT '-1待发货,0待收货'
+  `pay_status` int(1) DEFAULT NULL COMMENT '支付状态：0未付款,1已支付',
+  `deliver_status` int(1) DEFAULT NULL COMMENT '发货状态:0待发货,1待收货'
   PRIMARY KEY (`order_id`)-->
-<mapper namespace="com.ymm.dao.OrdersMapper" >
+
 
     <sql id="Orders_column">
         order_id,user_id,receiver_name,receiver_address,receiver_phone,
         order_time,order_money,pay_status,deliver_status
     </sql>
+
+    <sql id="where_clause">
+        <where>
+            deliver_status IN (0,1)
+            <if test="ordersQuery != null and ordersQuery.ordersText != null and ordersQuery.ordersText != ''">
+                and receiver_name like '%${ordersQuery.ordersText}%'
+               /* and receiver_name like '%${ordersQuery.ordersText}%'*/
+                /*OR pay_status like '%${ordersQuery.ordersText}%'
+                OR order_time like '%${ordersQuery.ordersText}%'
+                OR deliver_status like '%${ordersQuery.ordersText}%'*/
+            </if>
+        </where>
+    </sql>
+
     <select id="selectAllOrders" resultType="com.ymm.commons.pojo.po.Orders">
-        SELECT
+
+        select
         <include refid="Orders_column"/>
         from orders
-        WHERE deliver_status in (0,1)
-        ORDER BY order_id DESC
-        limit #{offset},#{limit}
+        <include refid="where_clause"/>
+        order by order_id desc
+        limit #{page.offset},#{page.limit}
     </select>
-    <select id="countOrders" resultType="int">
+    <select id="countOrders" resultType="Integer">
         SELECT count(1)
         FROM orders
-        WHERE pay_status IN (0,1)
+        WHERE deliver_status IN (0,1)
     </select>
-    <update id="updateOrdersDelstuById" parameterType="int">
-        UPDATE orders
-        SET deliver_status = 2
-        WHERE order_id = #{id};
-    </update>
-    <update id="updateOrders" parameterType="com.ymm.commons.pojo.po.Orders">
-        UPDATE
-
-        orders
-        SET
-          deliver_status = #{deliver_status}
+    <update id="UpdateDelierStatusById" parameterType="int">
+        UPDATE orders SET
+        deliver_status = 2
         WHERE order_id = #{order_id}
     </update>
+    <update id="AllUpdateDelStatusById" parameterType="com.ymm.commons.pojo.po.Orders">
+        update orders set deliver_status=#{deliver_status} where order_id=#{order_id}
+    </update>
+    <update id="UpdateOrders" parameterType="com.ymm.commons.pojo.po.Orders">
+        UPDATE orders SET
+        deliver_status = #{deliver_status}
+        WHERE order_id = #{order_id}
+    </update>
+    <update id="updateOrdersStatus" parameterType="com.ymm.pojo.dto.SwitchCheck">
+        UPDATE orders
+        SET deliver_status = #{switchStatus}
+        WHERE order_id = #{id}
+    </update>
 </mapper>
+
+
+
+
+
