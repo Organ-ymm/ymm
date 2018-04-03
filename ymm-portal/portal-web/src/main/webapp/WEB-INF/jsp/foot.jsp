@@ -102,7 +102,7 @@
                         <h5>Account</h5>
                         <ul>
                             <li><a href="#">Your Account</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="${pageContext.request.contextPath}/404">Checkout</a></li>
                             <li><a href="#">Login</a></li>
                             <li><a href="#">Register</a></li>
                         </ul>

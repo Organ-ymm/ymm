@@ -423,10 +423,10 @@
                     <div class="footer-widget">
                         <h5>Services</h5>
                         <ul>
-                            <li><a href="about.html">About us</a></li>
-                            <li><a href="about.html">Return Policy</a></li>
-                            <li><a href="blog.html">Our Blog</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">Our Blog</a></li>
+                            <li><a href="#">Contact Us</a></li>
                             <li class="hidden-sm"><a href="#">Terms &amp; Condition</a></li>
                         </ul>
                     </div>
@@ -436,7 +436,7 @@
                         <h5>Account</h5>
                         <ul>
                             <li><a href="#">Your Account</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="${pageContext.request.contextPath}/404">Checkout</a></li>
                             <li><a href="#">Login</a></li>
                             <li><a href="#">Register</a></li>
                         </ul>

@@ -78,80 +78,14 @@
                     <h2>page not found</h2>
                     <p>The page you are looking for was moved, removed,<br>
                         renamed or might never existed.</p>
-                    <a href="index11" class="back-home">back to homepage</a>
+                    <a href="${pageContext.request.contextPath}/index" class="back-home">返回首页</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- 404 area end -->
-<!-- client start -->
-<div class="client-area clearfix">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="section-title">
-                    <h2>popular Brand</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="client-owl">
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/1.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/2.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/3.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/4.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/5.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/1.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/2.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/3.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/4.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-client">
-                        <a href="#"><img src="${pageContext.request.contextPath}/images/client/5.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- client end -->
+
 <!-- footer start -->
 <footer class="footer-area">
     <div class="footer-middle-area">
@@ -174,10 +108,10 @@
                     <div class="footer-widget">
                         <h5>Services</h5>
                         <ul>
-                            <li><a href="about.html">About us</a></li>
-                            <li><a href="about.html">Return Policy</a></li>
-                            <li><a href="blog.html">Our Blog</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">Our Blog</a></li>
+                            <li><a href="#">Contact Us</a></li>
                             <li class="hidden-sm"><a href="#">Terms &amp; Condition</a></li>
                         </ul>
                     </div>
@@ -187,7 +121,7 @@
                         <h5>Account</h5>
                         <ul>
                             <li><a href="#">Your Account</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="#">Checkout</a></li>
                             <li><a href="#">Login</a></li>
                             <li><a href="#">Register</a></li>
                         </ul>
@@ -215,7 +149,7 @@
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
                     <div class="copyright">
-                        <p>2016 ® All Rights Reserved <span><a href="http://jqueryfuns.com/">DevItems</a></span>.</p>
+                        <p>2016 ® All Rights Reserved <span><a href="#">Backstage Management</a></span>.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">

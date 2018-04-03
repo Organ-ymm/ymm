@@ -69,7 +69,7 @@
                 <div class="col-md-6 col-sm-6 hidden-xs">
                     <div class="header-top-left">
                         <div class="language-usd">
-                            <img src="${pageContext.request.contextPath}/images/logo2.png">
+                            <a href="${pageContext.request.contextPath}/index"><img src="${pageContext.request.contextPath}/images/logo2.png"></a>
                         </div>
                     </div>
                 </div>
