@@ -28,24 +28,25 @@
             new tab('test4-input-input_tab1-input_tab2', '-');
             $.ajax({//订单提交页的地址显示
                 //data:"",
-                dataType:"text",
+                dataType:"json",
                 type:"POST",
                 url:"${pageContext.request.contextPath}/orders/getOrderByUserId",
                 success:function (data) {//返回的是Orders对象
                     //console.log(data);
                     if(data!=null){
-                        var order=eval("("+data+")");//将json类型字符串转化成json对象
-//                        alert(order.order_id);
-//                        alert(order.receiver_name);
-//                        alert(order.receiver_address);
-//                        alert(order.receiver_phone);
-//                        alert(order.order_money);
-                        $(".order_id").html(order.order_id);
-                        $(".receiver_name").html(order.receiver_name);
-                        $(".receiver_address").html(order.receiver_address);
-                        $(".receiver_phone").html(order.receiver_phone);
-                        $(".order_money").html(order.order_money);
+                        $("[name='order_id']").val(data.order_id);
+                        $("[name='order_money']").val(data.order_money);
+                        var a=data.order_id;
+                        alert(typeof a);
+                        alert(data.order_id);
+                        $(".order_id").html(data.order_id);
+                        $(".receiver_name").html(data.receiver_name);
+                        $(".receiver_address").html(data.receiver_address);
+                        $(".receiver_phone").html(data.receiver_phone);
+                        $(".order_money").html(data.order_money);
 
+                    }else{
+                        location.href="${pageContext.request.contextPath}/loginTip";
                     }
                 }
             });
@@ -245,7 +246,7 @@
 <div class="border_top_cart">
 
     <div class="container payment-con">
-        <form  target="_blank" action="#" id="pay-form" method="post">
+        <form action="${pageContext.request.contextPath}/orders/payOrder" id="pay-form" method="post">
             <div class="order-info">
                 <div class="msg">
                     <h3>您的订单已提交成功！付款咯～</h3>
@@ -255,6 +256,8 @@
                 </div>
                 <div class="info">
                     <p>
+                        <input type="hidden" name="order_id"/>
+                        <input type="hidden" name="order_money"/>
                         金额：<span class="pay-total"><span class="order_money"></span>元</span>
                     </p>
                     <p>
@@ -276,7 +279,7 @@
                 <div class="box-hd bank-title clearfix">
                     <div id="titleWrap" class="title-wrap">
                         <h2 class="title">选择支付方式</h2>
-                        <h2 class="title hide " >你还需要继续支付 <em>49.00</em> 元</h2>
+                        <%--<h2 class="title hide " >你还需要继续支付 <em>49.00</em> 元</h2>--%>
                         <span class="tip-tag"></span>
                     </div>
                 </div>
@@ -286,17 +289,17 @@
                             <dl class="clearfix payment-box" >
                                 <dt>
                                     <strong>支付平台</strong>
-                                    <p>手机等大额支付推荐使用支付宝快捷支付</p>
+                                    <p>手机等大额支付推荐使用预存款支付</p>
                                 </dt>
                                 <dd>
                                     <fieldset id="test4-input-input_tab1-input_tab2" style=" border:none;">
                                         <ul class="payment-list clearfix" >
-                                            <li> <input class="input_tab1" name="myradio" id="r1" type="radio" checked="checked"/><label for="r1" ><img src="${pageContext.request.contextPath}/orderStatic/images/xhw.png" alt=""/></label></label></li>
+                                            <li> <input class="input_tab1" name="myradio" id="r1" type="radio" checked="checked"/><label for="r1" ><img src="${pageContext.request.contextPath}/orderStatic/images/yck.png" alt=""/></label></li>
                                             <li><input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="${pageContext.request.contextPath}/orderStatic/images/zfb.png" alt=""/></label></li>
-                                            <li> <input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="${pageContext.request.contextPath}/orderStatic/images/yck.png" alt=""/></label></li>
-                                            <li>  <input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="${pageContext.request.contextPath}/orderStatic/images/zxzf.png" alt=""/></label></li>
+                                            <%--<li> <input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="${pageContext.request.contextPath}/orderStatic/images/yck.png" alt=""/></label></li>--%>
+                                            <li>  <input class="input_tab2" name="myradio" id="r3" type="radio" /><label for="r2" ><img src="${pageContext.request.contextPath}/orderStatic/images/zxzf.png" alt=""/></label></li>
                                         </ul>
-                                        <div >
+                                        <%--<div >
                                             <div id="test4_1">
                                                 <ul class="payment-list clearfix"  style="background-color:#f3f3f3;   ">
                                                     <div class="xhw">
@@ -320,13 +323,13 @@
 
 
 
-                                        </div>
+                                        </div>--%>
                                     </fieldset>
                                 </dd>
                             </dl>
                         </form>
 
-                        <dl class="clearfix payment-box" >
+                        <%--<dl class="clearfix payment-box" >
                             <dt>
                                 <strong>银行网银</strong>
                                 <p>支持以下各银行借记卡及信用卡</p>
@@ -357,7 +360,7 @@
                                     <li><label  for="SHRCB"><input type="radio" name="payOnlineBank" id="SHRCB" value="SHRCB" /> <img src="http://s1.mi.com/images/payOnline_shnsyh.gif" alt=""/></label></li>
                                     <li><label  for="FDB"><input type="radio" name="payOnlineBank" id="FDB" value="FDB" /> <img src="http://s1.mi.com/images/payOnline_fcyh.gif" alt=""/></label></li>                                </ul>
                             </dd>
-                        </dl>
+                        </dl>--%>
 
 
 

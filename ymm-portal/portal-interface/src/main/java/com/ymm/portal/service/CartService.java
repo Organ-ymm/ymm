@@ -73,5 +73,5 @@ public interface CartService {
      * @param user_id 用户id
      * @return
      */
-    int cartNum(int user_id);
+    Integer cartNum(int user_id);
 }

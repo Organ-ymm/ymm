@@ -13,4 +13,6 @@ public interface OrdersMapper {
     int addOrder(Orders order);
 
     Orders getOrderByUserId(int user_id);
+
+    int updateOrderByOid(long order_id);
 }

@@ -270,13 +270,49 @@ public class OrdersAction {
 
     }
 
+    /*
+    * 得到用户下的订单，显示在待支付页面submitOrder上
+    * */
     @ResponseBody
     @RequestMapping(value = "/getOrderByUserId",method = RequestMethod.POST)
     public Orders getOrderByUserId(HttpSession session){
         Users user= (Users) session.getAttribute("user");
-        int user_id=user.getUser_id();
-        Orders order=orderService.getOrderByUserId(user_id);
-        return order;
+        if(user!=null){
+            int user_id=user.getUser_id();
+            Orders order=orderService.getOrderByUserId(user_id);
+            return order;
+        }else{
+            return null;
+        }
+    }
+
+    /*
+    * 订单支付，修改订单的pay_status为1
+    * */
+    @RequestMapping(value = "/payOrder",method = RequestMethod.POST)
+   public String payOrder(@RequestParam("order_id")String order_idStr){
+        long order_id=Long.parseLong(order_idStr);
+        int i=orderService.updateOrderByOid(order_id);
+        if(i>0){
+            return "redirect:paySuccess";
+        }else{
+            return "redirect:payFailure";
+        }
+   }
+
+    /*
+    * 订单支付成功，跳转到支付成功页面
+    * */
+    @RequestMapping(value = "/paySuccess")
+    public String toPaySuccess(){
+        return "pages/orders/paySuccess";
+    }
+    /*
+   * 订单支付失败，跳转到支付失败页面
+   * */
+    @RequestMapping(value = "/payFailure")
+    public String toPayFailure(){
+        return "pages/orders/payFailure";
     }
 
 }

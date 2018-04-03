@@ -6,7 +6,7 @@ $(document).ready(function(){
     SetShortCutEffect();//设置顶部快捷菜单效果
     SetCartEffect();//设置购物车效果
     SetCategory();//设置分类导航面板效果
-    SetScrollAdvBig(); //设置轮播效果
+    //SetScrollAdvBig(); //设置轮播效果
     SetFixedButtonsAction(); //设置回到顶部动作及微信动画显示
     SetFloorLunBo();//楼层广告轮播
     SetFixedSearch();//固定顶部搜索
@@ -106,19 +106,21 @@ $("#checkoutToPay").on("click",function(){
     }
 
 });
-$('#J_editAddrOk').on('click',function () {
-    var $J_editAddrOk=$('##J_editAddrOk');
-    $J_editAddrOk.find('[name="consignee"]').val();
-    /*$.ajax({
+/*$('#payBtn').on('click',function () {
+    alert(11);
+    var $payBtn=$('#payBtn');
+    var a=$payBtn.parents(".payment-con").find('.order_id').html;
+    alert(a);
+    $.ajax({
         data:"",
-        url:"../../portal/pages/address/addAddress",
+        url:"../../portal/orders/payOrder",
         dataType:"text",
         type:"POST",
         success:function(){
 
         }
-    });*/
-});
+    });
+});*/
 function SetShortCutEffect(){
     $('.shortcut_v2013').find(".menu").hover(function(){
         $(this).addClass('hover');
@@ -149,7 +151,7 @@ function SetCategory(){
     );
 }
 
-function SetScrollAdvBig(){
+/*function SetScrollAdvBig(){
     var $slidey = $("#slide-scroll-adv").unslider({
         delay: 3000,//轮播间隔，单位：毫秒
         dots: true
@@ -161,7 +163,7 @@ function SetScrollAdvBig(){
     $(".scroll_adv_right").click(function(){
         data.next();
     });
-};
+};*/
 
 function SetFixedButtonsAction(){
     $("#imgBtn-to-top").on("click", function(){
@@ -210,7 +212,7 @@ function SetFloorLunBo(){
 function SetFixedSearch(){
     var _top = 200,
         $bg = $(".fixed-bar-bg"),
-        $bar = $(".fixed-bar");;
+        $bar = $(".fixed-bar");
     $(window).scroll(function(){
        if($(window).scrollTop() >= 200){
            if(!$bg.hasClass("show")){

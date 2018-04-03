@@ -99,7 +99,6 @@ public class CartAction {
             }
         }
         return cartNum;
-        //session.setAttribute("cartNum",cartNum);
     }
 
     /*
