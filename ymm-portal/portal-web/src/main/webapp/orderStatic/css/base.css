@@ -150,8 +150,8 @@ a:hover,a:focus {
 	clear:both
 }
 .item-row img{/*zy定义*/
-	width: 80px;
-	height: 80px;
+	width: 70px;
+	height: 70px;
 }
 .hide {
 	display:none

@@ -2,11 +2,74 @@
  * Created with JetBrains WebStorm.
  * 首页页面效果.
  */
+layui.use(['jquery','layer'], function () {
+    var $ = layui.jquery,
+        layer = layui.layer;
+    $("#checkoutToPay").on("click",function(){
+        var b=$("#checkoutAddrList").find(".selected").length;
+        if(0>=b){
+            layer.msg("请选择收货地址",{
+                icon:7,
+                time:1000
+            });
+        }
+        if(0<b){
+            var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
+            //var orderMoney=parseFloat($('.totalPrice').html()-0);
+            var flag=$('.flag').html();
+            if(flag=='1'){//直接购买
+                var $item_row=$('.item-row');
+                var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
+                var amount=parseInt($item_row.find('[name="amount"]').html());
+                $.ajax({
+                    data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
+                    dataType:"text",
+                    type:"POST",
+                    url:"../../portal/orders/addOrder",//直接购买
+                    success:function (data) {
+                        if(data>0){
+                            location.href="../../portal/pages/orders/submitOrder";
+                        }else{
+                            location.href="../../portal/404";
+                        }
+                    }
+                });
+            }else{//购物车购买
+                var $item_row=$('.item-row');
+                var goods_ids=[],
+                    amounts=[];
+                //alert($item_row.length);
+                $item_row.each(function () {
+                    var goods_id=parseInt($(this).find('[name="goods_id"]').val());
+                    //alert(goods_id);
+                    goods_ids.push(goods_id);//得到要结算的多个商品id
+                    var amount=parseInt($(this).find('[name="amount"]').html());
+                    //alert(amount);
+                    amounts.push(amount);//得到要结算的多个商品的数量
+                });
+                $.ajax({
+                    data:{"address_id":address_id,"goods_ids[]":goods_ids,"amounts[]":amounts},
+                    dataType:"text",
+                    type:"POST",
+                    url:"../../portal/orders/submitOrder",//购物车购买
+                    success:function (data) {
+                        if(data>0){
+                            location.href="../../portal/pages/orders/submitOrder";
+                        }else{
+                            location.href="../../portal/404";
+                        }
+                    }
+                });
+            }
+        }
+
+    });
+});
 $(document).ready(function(){
     SetShortCutEffect();//设置顶部快捷菜单效果
     SetCartEffect();//设置购物车效果
     SetCategory();//设置分类导航面板效果
-    SetScrollAdvBig(); //设置轮播效果
+    //SetScrollAdvBig(); //设置轮播效果
     SetFixedButtonsAction(); //设置回到顶部动作及微信动画显示
     SetFloorLunBo();//楼层广告轮播
     SetFixedSearch();//固定顶部搜索
@@ -50,62 +113,62 @@ $("#checkoutAddrList").on("click",function(){//获得用户的选取的地址id
 
 });
 
-$("#checkoutToPay").on("click",function(){
-    var b=$("#checkoutAddrList").find(".selected").length;
-    /*if(0>=b){
-        alert("请选择地址");
-    }*/
-    if(0<b){
-        var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
-        //var orderMoney=parseFloat($('.totalPrice').html()-0);
-        var flag=$('.flag').html();
-        if(flag=='1'){//直接购买
-            var $item_row=$('.item-row');
-            var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
-            var amount=parseInt($item_row.find('[name="amount"]').html());
-            $.ajax({
-                data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
-                dataType:"text",
-                type:"POST",
-                url:"../../portal/orders/addOrder",//直接购买
-                success:function (data) {
-                    if(data>0){
-                        location.href="../../portal/pages/orders/submitOrder";
-                    }else{
-                        location.href="../../portal/404";
-                    }
-                }
-            });
-        }else{//购物车购买
-            var $item_row=$('.item-row');
-            var goods_ids=[],
-                amounts=[];
-            //alert($item_row.length);
-            $item_row.each(function () {
-                var goods_id=parseInt($(this).find('[name="goods_id"]').val());
-                //alert(goods_id);
-                goods_ids.push(goods_id);//得到要结算的多个商品id
-                var amount=parseInt($(this).find('[name="amount"]').html());
-                //alert(amount);
-                amounts.push(amount);//得到要结算的多个商品的数量
-            });
-            $.ajax({
-                data:{"address_id":address_id,"goods_ids[]":goods_ids,"amounts[]":amounts},
-                dataType:"text",
-                type:"POST",
-                url:"../../portal/orders/submitOrder",//购物车购买
-                success:function (data) {
-                    if(data>0){
-                        location.href="../../portal/pages/orders/submitOrder";
-                    }else{
-                        location.href="../../portal/404";
-                    }
-                }
-            });
-        }
-    }
-
-});
+// $("#checkoutToPay").on("click",function(){
+//     var b=$("#checkoutAddrList").find(".selected").length;
+//     /*if(0>=b){
+//         alert("请选择地址");
+//     }*/
+//     if(0<b){
+//         var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
+//         //var orderMoney=parseFloat($('.totalPrice').html()-0);
+//         var flag=$('.flag').html();
+//         if(flag=='1'){//直接购买
+//             var $item_row=$('.item-row');
+//             var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
+//             var amount=parseInt($item_row.find('[name="amount"]').html());
+//             $.ajax({
+//                 data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
+//                 dataType:"text",
+//                 type:"POST",
+//                 url:"../../portal/orders/addOrder",//直接购买
+//                 success:function (data) {
+//                     if(data>0){
+//                         location.href="../../portal/pages/orders/submitOrder";
+//                     }else{
+//                         location.href="../../portal/404";
+//                     }
+//                 }
+//             });
+//         }else{//购物车购买
+//             var $item_row=$('.item-row');
+//             var goods_ids=[],
+//                 amounts=[];
+//             //alert($item_row.length);
+//             $item_row.each(function () {
+//                 var goods_id=parseInt($(this).find('[name="goods_id"]').val());
+//                 //alert(goods_id);
+//                 goods_ids.push(goods_id);//得到要结算的多个商品id
+//                 var amount=parseInt($(this).find('[name="amount"]').html());
+//                 //alert(amount);
+//                 amounts.push(amount);//得到要结算的多个商品的数量
+//             });
+//             $.ajax({
+//                 data:{"address_id":address_id,"goods_ids[]":goods_ids,"amounts[]":amounts},
+//                 dataType:"text",
+//                 type:"POST",
+//                 url:"../../portal/orders/submitOrder",//购物车购买
+//                 success:function (data) {
+//                     if(data>0){
+//                         location.href="../../portal/pages/orders/submitOrder";
+//                     }else{
+//                         location.href="../../portal/404";
+//                     }
+//                 }
+//             });
+//         }
+//     }
+//
+// });
 function SetShortCutEffect(){
     $('.shortcut_v2013').find(".menu").hover(function(){
         $(this).addClass('hover');
@@ -136,7 +199,7 @@ function SetCategory(){
     );
 }
 
-function SetScrollAdvBig(){
+/*function SetScrollAdvBig(){
     var $slidey = $("#slide-scroll-adv").unslider({
         delay: 3000,//轮播间隔，单位：毫秒
         dots: true
@@ -148,7 +211,7 @@ function SetScrollAdvBig(){
     $(".scroll_adv_right").click(function(){
         data.next();
     });
-};
+};*/
 
 function SetFixedButtonsAction(){
     $("#imgBtn-to-top").on("click", function(){
@@ -197,7 +260,7 @@ function SetFloorLunBo(){
 function SetFixedSearch(){
     var _top = 200,
         $bg = $(".fixed-bar-bg"),
-        $bar = $(".fixed-bar");;
+        $bar = $(".fixed-bar");
     $(window).scroll(function(){
        if($(window).scrollTop() >= 200){
            if(!$bg.hasClass("show")){

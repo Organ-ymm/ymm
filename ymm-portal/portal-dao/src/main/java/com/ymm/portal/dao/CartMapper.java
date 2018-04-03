@@ -23,5 +23,5 @@ public interface CartMapper {
 
     int addCart(Cart cart);
 
-    int cartNum(int user_id);
+    Integer cartNum(int user_id);
 }

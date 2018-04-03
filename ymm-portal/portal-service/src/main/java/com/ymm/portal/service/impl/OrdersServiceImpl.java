@@ -37,5 +37,11 @@ public class OrdersServiceImpl implements OrdersService {
         return order;
     }
 
+    @Override
+    public int updateOrderByOid(long order_id) {
+        int i=ordersMapper.updateOrderByOid(order_id);
+        return i;
+    }
+
 
 }

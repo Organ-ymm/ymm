@@ -11,7 +11,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>订单提交 - ymm商城</title>
+    <title>交易失败 - ymm商城</title>
     <!-- ======================= favicon ========================== -->
     <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/logo_icon.png">
 
@@ -26,27 +26,31 @@
 
         window.onload = function(){
             new tab('test4-input-input_tab1-input_tab2', '-');
-            $.ajax({//订单提交页的地址显示
+            /*$.ajax({//订单提交页的地址显示
                 //data:"",
-                dataType:"json",
+                dataType:"text",
                 type:"POST",
                 url:"${pageContext.request.contextPath}/orders/getOrderByUserId",
                 success:function (data) {//返回的是Orders对象
                     //console.log(data);
                     if(data!=null){
-                        $("[name='order_id']").val(data.order_id);
-                        $("[name='order_money']").val(data.order_money);
-                        $(".order_id").html(data.order_id);
-                        $(".receiver_name").html(data.receiver_name);
-                        $(".receiver_address").html(data.receiver_address);
-                        $(".receiver_phone").html(data.receiver_phone);
-                        $(".order_money").html(data.order_money);
+                        var order=eval("("+data+")");//将json类型字符串转化成json对象
+//                        alert(order.order_id);
+//                        alert(order.receiver_name);
+//                        alert(order.receiver_address);
+//                        alert(order.receiver_phone);
+//                        alert(order.order_money);
+                        $("#order_id").val(order.order_id);
+                        $("#order_money").val(order.order_money);
+                        $(".order_id").html(order.order_id);
+                        $(".receiver_name").html(order.receiver_name);
+                        $(".receiver_address").html(order.receiver_address);
+                        $(".receiver_phone").html(order.receiver_phone);
+                        $(".order_money").html(order.order_money);
 
-                    }else{
-                        location.href="${pageContext.request.contextPath}/loginTip";
                     }
                 }
-            });
+            });*/
             handleCart();
         };
         function handleCart() {
@@ -94,84 +98,6 @@
 </head>
 
 <body>
-<script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
-
-<script>
-    layui.use(['jquery','layer'], function () {
-        var $ = layui.jquery,
-            layer = layui.layer;
-
-        /*window.addCart = function (goods_id) {
-            $.ajax({
-                data: {"goods_id": goods_id, "amount": 1},
-                dataType: "text",
-                type: "get",
-                url: "${pageContext.request.contextPath}/cart/addCart",
-                success: function (res) {
-                    if (res > 0) {
-                        layer.msg("加入成功!");
-                    }
-                }
-            });
-        }*/
-        $("#checkoutToPay").on("click",function(){
-            var b=$("#checkoutAddrList").find(".selected").length;
-            if(0>=b){
-                layer.msg("请选择地址");
-            }
-            if(0<b){
-                var address_id=$("#checkoutAddrList").find(".selected").find("#addressNo").val();
-                //var orderMoney=parseFloat($('.totalPrice').html()-0);
-                var flag=$('.flag').html();
-                if(flag=='1'){//直接购买
-                    var $item_row=$('.item-row');
-                    var goods_id=parseInt($item_row.find('[name="goods_id"]').val());
-                    var amount=parseInt($item_row.find('[name="amount"]').html());
-                    $.ajax({
-                        data:{"address_id":address_id,"goods_id":goods_id,"amount":amount},
-                        dataType:"text",
-                        type:"POST",
-                        url:"../../portal/orders/addOrder",//直接购买
-                        success:function (data) {
-                            if(data>0){
-                                location.href="../../portal/pages/orders/submitOrder";
-                            }else{
-                                location.href="../../portal/404";
-                            }
-                        }
-                    });
-                }else{//购物车购买
-                    var $item_row=$('.item-row');
-                    var goods_ids=[],
-                        amounts=[];
-                    //alert($item_row.length);
-                    $item_row.each(function () {
-                        var goods_id=parseInt($(this).find('[name="goods_id"]').val());
-                        //alert(goods_id);
-                        goods_ids.push(goods_id);//得到要结算的多个商品id
-                        var amount=parseInt($(this).find('[name="amount"]').html());
-                        //alert(amount);
-                        amounts.push(amount);//得到要结算的多个商品的数量
-                    });
-                    $.ajax({
-                        data:{"address_id":address_id,"goods_ids[]":goods_ids,"amounts[]":amounts},
-                        dataType:"text",
-                        type:"POST",
-                        url:"../../portal/orders/submitOrder",//购物车购买
-                        success:function (data) {
-                            if(data>0){
-                                location.href="../../portal/pages/orders/submitOrder";
-                            }else{
-                                location.href="../../portal/404";
-                            }
-                        }
-                    });
-                }
-            }
-
-        });
-    });
-</script>
 <%--==================================通用头部导航条导入========================================--%>
 <jsp:include page="../../top.jsp"/>
 
@@ -179,15 +105,18 @@
 <div class="border_top_cart">
 
     <div class="container payment-con">
-        <form action="${pageContext.request.contextPath}/orders/payOrder" id="pay-form" method="post">
             <div class="order-info">
                 <div class="msg">
-                    <h3>您的订单已提交成功！付款咯～</h3>
+                    <h3>已支付失败！</h3>
                     <p></p>
-
                     <p class="post-date">成功付款后，48小时内发货</p>
+                    <p>立即查看<a href="" target="_blank">订单详情 &gt;</a></p>
                 </div>
-                <div class="info">
+            <%--<div class="success">
+                <h4>支付成功了</h4>
+                <p>立即查看<a href="#" target="_blank">订单详情 &gt;</a></p>
+            </div>--%>
+                <%--<div class="info">
                     <p>
                         <input type="hidden" name="order_id"/>
                         <input type="hidden" name="order_money"/>
@@ -198,78 +127,14 @@
                     <p>
                         配送：<span class="receiver_name"></span>       <span class="line">/</span>
                         <span class="receiver_phone"></span>             <span class="line">/</span>
-                        <span class="receiver_address"></span>           <span class="line">/</span><%--
+                        <span class="receiver_address"></span>           <span class="line">/</span>&lt;%&ndash;
                         不限送货时间                                      <span class="line">/</span>
-                        个人电子发票--%>                                                    </p>
-                </div>
+                        个人电子发票&ndash;%&gt;                                                    </p>
+                </div>--%>
                 <div class="icon-box">
                     <i class="iconfont"><img src="${pageContext.request.contextPath}/orderStatic/images/yes_ok.png"></i>
                 </div>
             </div>
-
-            <div class="xm-plain-box">
-                <!-- 选择支付方式 -->
-                <div class="box-hd bank-title clearfix">
-                    <div id="titleWrap" class="title-wrap">
-                        <h2 class="title">选择支付方式</h2>
-                        <%--<h2 class="title hide " >你还需要继续支付 <em>49.00</em> 元</h2>--%>
-                        <span class="tip-tag"></span>
-                    </div>
-                </div>
-                <div class="box-bd" id="bankList">
-                    <div class="payment-bd">
-                        <form name="ck">
-                            <dl class="clearfix payment-box" >
-                                <dt>
-                                    <strong>支付平台</strong>
-                                    <p>手机等大额支付推荐使用预存款支付</p>
-                                </dt>
-                                <dd>
-                                    <fieldset id="test4-input-input_tab1-input_tab2" style=" border:none;">
-                                        <ul class="payment-list clearfix" >
-                                            <li> <input class="input_tab1" name="myradio" id="r1" type="radio" checked="checked"/><label for="r1" ><img src="${pageContext.request.contextPath}/orderStatic/images/yck.png" alt=""/></label></li>
-                                            <li><input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="${pageContext.request.contextPath}/orderStatic/images/zfb.png" alt=""/></label></li>
-                                            <%--<li> <input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="${pageContext.request.contextPath}/orderStatic/images/yck.png" alt=""/></label></li>--%>
-                                            <li>  <input class="input_tab2" name="myradio" id="r3" type="radio" /><label for="r2" ><img src="${pageContext.request.contextPath}/orderStatic/images/zxzf.png" alt=""/></label></li>
-                                        </ul>
-                                        <%--<div >
-                                            <div id="test4_1">
-                                                <ul class="payment-list clearfix"  style="background-color:#f3f3f3;   ">
-                                                    <div class="xhw">
-                                                        <div class="whx_banner">
-                                                            <div style="clear:both"><p class="p1">请选择锡货卡：</p><p class="p2">对不起，没有可用的锡货卡！</p><a class="a3" href="#">立即去充值</a></div>
-                                                            <div style="clear:both"><p class="p1">已绑定手机号：</p><p class="a3">15961726437</p></div>
-                                                            <div style="clear:both"> <p class="p1">短信效验码</p><input id="mobileCode" name="mobileCode" type="text" value=""><input id="send" type="button" style="cursor:hand" value="点击获取手机验证码" onclick="sendMobileCode()"></div>
-                                                        </div>
-                                                    </div>
-                                                </ul>
-                                            </div>
-                                            <div  id="test4_2" style="display:none;">
-
-                                            </div>
-                                            <div  id="test4_3" style="display:none;">
-
-                                            </div>
-                                            <div  id="test4_4" style="display:none;">
-
-                                            </div>
-
-
-
-                                        </div>--%>
-                                    </fieldset>
-                                </dd>
-                            </dl>
-                        </form>
-                    </div>
-                </div>
-                <div class="box-ft clearfix">
-                    <input type="submit" class="btn btn-primary" value="去支付" id="payBtn">
-                    <%--<a href="#" class="btn btn-lineDakeLight">修改订单</a>--%>
-                    <span class="tip"></span>
-                </div>
-            </div>
-        </form>
     </div>
     <!-- 支付弹框 -->
     <div class="modal hide to-pay-tip" id="toPayTip">
@@ -292,19 +157,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- 余额支付弹框 -->
-    <div class="modal hide  balance-pay" id="balancePay">
-        <div class="modal-body">
-            <h3>账户余额支付：<span class="num"><em id="useCashAccountPayLeft">0.00</em>元</span></h3>
-            <p id="checkCodeTip">短信验证码已下发至您的手机<span class="num"></span></p>
-            <input type="text" name="verifycode" id="verifycode" class="input" placeholder="请输入验证码"> <span class="send-again" id="sendAgain">重新发送<em></em></span>
-            <p><input type="button" value="确认支付" class="btn btn-primary" id="toPay">
-                <div class="select-other">
-            <p><span id="bankName"></span> <span class="num">49.00元</span></p>
-
-        </div>
-        <a href="javascript:;" id="chooseOther">选择其他方式支付&gt;</a>
     </div>
 
 </div>

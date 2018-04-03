@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/orderStatic/css/base.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/orderStatic/js/jquery_cart.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/orderStatic/css/checkOut.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui/css/layui.css" media="all">
 </head>
 
 <body>
@@ -163,7 +164,7 @@
 </div>--%>
 
 <%--==================================通用头部导航条导入========================================--%>
-<%--<jsp:include page="../../top.jsp"/>--%>
+<jsp:include page="../../top.jsp"/>
 <!--收货地址body部分开始-->
 <div class="border_top_cart">
     <script type="text/javascript">
@@ -205,54 +206,35 @@
                         </div>
                         <div class="box-bd">
                             <div class="clearfix xm-address-list" id="checkoutAddrList">
-                                <c:forEach items="${addressList}" var="address" varStatus="vs">
-                                    <dl class="item">
-                                        <div class="addressItem" >
-                                            <dt>
-                                                <input type="hidden" id="addressNo" value=${address.address_id} />
-                                                <strong class="itemConsignee">${address.consignee}</strong>
-                                                <span class="itemTag tag">${address.tag}</span>
-                                            </dt>
-                                            <dd>
-                                                <p class="tel itemTel">${address.phone}</p>
-                                                <p class="itemRegion">${address.province} ${address.city} ${address.county}</p>
-                                                <p class="itemStreet">${address.street}(${address.zipcode})</p>
-                                                <span class="edit-btn J_editAddr">编辑</span>
-                                            </dd>
-                                            <dd style="display:none">
-                                                <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                </c:forEach>
-                                <%--<input type="hidden" name="receiver_address"
-                                       value="${addressList[0].province}${addressList[0].city}${addressList[0].county}${addressList[0].street}(${addressList[0].zipcode})"/>
-                                <input type="hidden" name="receiver_name" value="${addressList[0].consignee}" />
-                                <input type="hidden" name="receiver_phone" value="${addressList[0].phone}" />
-                                <input type="hidden"  name="order_money" />--%>
-
-                                <%--<c:forEach items="${orderItem}" var="good" begin="1" end="${orderItem }">
-                                    <div class="col col-4" id="subTotal" name="subTotal">${good.subTotal}</div>
-                                </c:forEach>--%>
-                                <%--<dl class="item" >
-                                    <dt>
-                                        <strong class="itemConsignee">潘骏杰</strong>
-                                        <span class="itemTag tag">家</span>
-                                    </dt>
-                                    <dd>
-                                        <p class="tel itemTel">15961726437</p>
-                                        <p class="itemRegion">江苏 无锡市 北塘区</p>
-                                        <p class="itemStreet">民丰西苑82号202室(214045)</p>
-                                        <span class="edit-btn J_editAddr">编辑</span>
-                                    </dd>
-                                    <dd style="display:none">
-                                        <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
-                                    </dd>
-                                </dl>--%>
-                                <div class="item use-new-addr"  id="J_useNewAddr" data-state="off">
+                                <c:if test="${!empty addressList}">
+                                    <c:forEach items="${addressList}" var="address" varStatus="vs">
+                                        <dl class="item">
+                                            <div class="addressItem" >
+                                                <dt>
+                                                    <input type="hidden" id="addressNo" value=${address.address_id} />
+                                                    <strong class="itemConsignee">${address.consignee}</strong>
+                                                    <span class="itemTag tag">${address.tag}</span>
+                                                </dt>
+                                                <dd>
+                                                    <p class="tel itemTel">${address.phone}</p>
+                                                    <p class="itemRegion">${address.province} ${address.city} ${address.county}</p>
+                                                    <p class="itemStreet">${address.street}(${address.zipcode})</p>
+                                                        <%--<span class="edit-btn J_editAddr">编辑</span>--%>
+                                                </dd>
+                                                <dd style="display:none">
+                                                    <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
+                                                </dd>
+                                            </div>
+                                        </dl>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${empty addressList}">
+                                    您还没有任何收货地址，请前往<a href="" style="color: red">添加地址 >>></a>
+                                </c:if>
+                                <%--<div class="item use-new-addr"  id="J_useNewAddr" data-state="off">
                                     <span class="iconfont icon-add"><img src="${pageContext.request.contextPath}/orderStatic/images/add_cart.png" /></span>
-                                    使用新地址
-                                </div>
+                                    新地址
+                                </div>--%>
                             </div>
                             <input type="hidden" name="newAddress[type]" id="newType" value="common">
                             <input type="hidden" name="newAddress[consignee]" id="newConsignee">
@@ -265,51 +247,51 @@
                             <input type="hidden" name="newAddress[tag_name]" id="newTag">
                             <%----------------------------------------------收货地址的添加--------------------------------------------------------%>
                             <!--点击弹出新增/收货地址界面start-->
-                            <div class="xm-edit-addr-box" id="J_editAddrBox">
+                            <%--<div class="xm-edit-addr-box" id="J_editAddrBox">
                                 <div class="bd">
                                     <div class="item">
-                                        <label>收货人姓名<span>*</span></label><%--todo--%>
-                                        <%--<input type="text" name="userAddress[consignee]" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>--%>
+                                        <label>收货人姓名<span>*</span></label>
                                         <input type="text" name="consignee" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
                                         <p class="tip-msg tipMsg"></p>
                                     </div>
                                     <div class="item">
                                         <label>联系电话<span>*</span></label>
-                                        <input type="text" name="userAddress[tel]" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
+                                        <input type="text" name="phone" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
                                         <p class="tel-modify-tip" id="telModifyTip"></p>
                                         <p class="tip-msg tipMsg"></p>
                                     </div>
                                     <div class="item">
                                         <label>地址<span>*</span></label>
-                                        <select name="userAddress[province]" id="Provinces" class="select-1">
+                                        <select name="province" id="Provinces" class="select-1">
                                             <option>省份/自治区</option>
                                         </select>
-                                        <select name="userAddress[city]"  id="Citys" class="select-2" disabled>
+                                        <select name="city"  id="Citys" class="select-2" disabled>
                                             <option>城市/地区/自治州</option>
                                         </select>
-                                        <select name="userAddress[county]"  id="Countys" class="select-3" disabled>
+                                        <select name="county"  id="Countys" class="select-3" disabled>
                                             <option>区/县</option>
                                         </select>
-                                        <textarea   name="userAddress[street]" class="input-area" id="Street" placeholder="路名或街道地址，门牌号"></textarea>
+                                        <textarea   name="street" class="input-area" id="Street" placeholder="路名或街道地址，门牌号"></textarea>
                                         <p class="tip-msg tipMsg"></p>
                                     </div>
                                     <div class="item">
                                         <label>邮政编码<span>*</span></label>
-                                        <input type="text" name="userAddress[zipcode]" id="Zipcode" class="input" placeholder="邮政编码"  autocomplete='off'>
+                                        <input type="text" name="zipcode" id="Zipcode" class="input" placeholder="邮政编码"  autocomplete='off'>
                                         <p class="zipcode-tip" id="zipcodeTip"></p>
                                         <p class="tip-msg tipMsg"></p>
                                     </div>
                                     <div class="item">
                                         <label>地址标签<span>*</span></label>
-                                        <input type="text" name="userAddress[tag]" id="Tag" class="input" placeholder='地址标签：如"家"、"公司"。限5个字内'  >
+                                        <input type="text" name="tag" id="Tag" class="input" placeholder='地址标签：如"家"、"公司"。限5个字内'  >
                                         <p class="tip-msg tipMsg"></p>
                                     </div>
                                 </div>
                                 <div class="ft clearfix">
                                     <button  type="button"  class="btn btn-lineDake btn-small " id="J_editAddrCancel">取消</button>
+                                    &lt;%&ndash;<button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>&ndash;%&gt;
                                     <button type="button" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>
                                 </div>
-                            </div>
+                            </div>--%>
                             <!--点击弹出新增/收货地址界面end-->
                             <div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
                         </div>
@@ -660,8 +642,7 @@
     <!-- 保险弹窗 -->
     <!-- 保险弹窗 -->
 
-
-
+    <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
 
     <script src="${pageContext.request.contextPath}/orderStatic/js/base.min.js"></script>
 

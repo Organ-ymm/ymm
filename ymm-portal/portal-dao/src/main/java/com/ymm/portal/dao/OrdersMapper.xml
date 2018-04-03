@@ -32,4 +32,10 @@
         user_id=#{user_id}
         )
     </select>
+
+    <update id="updateOrderByOid" parameterType="long">
+        update orders
+        set pay_status=1
+        where order_id=#{order_id}
+    </update>
 </mapper>

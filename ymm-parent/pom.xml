@@ -28,7 +28,7 @@
         <slf4j.version>1.7.21</slf4j.version>
         <logback.core.version>1.1.1</logback.core.version>
         <logback.classic.version>1.1.1</logback.classic.version>
-        <jackson.version>2.7.3</jackson.version>
+        <jackson.version>2.9.3</jackson.version>
         <json.version>20160212</json.version>
         <druid.version>1.0.29</druid.version>
         <httpclient.version>4.3.5</httpclient.version>
@@ -54,8 +54,8 @@
         <quartz.version>2.2.2</quartz.version>
         <lucene.version>4.10.3</lucene.version>
         <IKAnalyzer.version>2012FF_u1</IKAnalyzer.version>
+        <!--<fastjson.version>1.2.47</fastjson.version>-->
     </properties>
-
     <!--依赖的统一管理声明-->
     <dependencyManagement>
         <dependencies>
@@ -65,6 +65,11 @@
                 <artifactId>classloader-leak-prevention-servlet</artifactId>
                 <version>${classloader-leak-prevention-servlet}</version>
             </dependency>
+            <!--<dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>-->
             <!--JSP相关jar-->
             <dependency>
                 <groupId>javax.servlet</groupId>
