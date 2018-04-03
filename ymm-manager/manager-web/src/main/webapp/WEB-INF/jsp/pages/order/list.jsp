@@ -80,7 +80,7 @@
 </script>
 
 <script type="text/html" id="deliver_statusTpl">
-    <input type="checkbox" name="deliver_status" value="{{d.user_id}}" lay-filter="deliver_status" lay-skin="switch" lay-text="待发货|待收货"
+    <input type="checkbox" name="deliver_status" value="{{d.order_id}}" lay-filter="deliver_status" lay-skin="switch" lay-text="待发货|待收货"
            {{1==d.deliver_status?'checked':''}}>
 </script>
 
