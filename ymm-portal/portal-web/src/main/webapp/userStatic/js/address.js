@@ -13,7 +13,6 @@ layui.use(['form', 'table', 'jquery', 'layer'], function () {
             title: "新增收货地址",
             content: "pages/user/addAddress",
             error: function (layero, index) {
-                alert("aaa");
             }
         });
     });

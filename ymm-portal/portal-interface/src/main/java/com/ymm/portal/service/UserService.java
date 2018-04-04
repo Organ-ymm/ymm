@@ -1,6 +1,7 @@
 package com.ymm.portal.service;
 
 
+import com.ymm.commons.pojo.po.Address;
 import com.ymm.commons.pojo.po.Orders;
 import com.ymm.commons.pojo.po.Users;
 import org.springframework.core.annotation.Order;
@@ -23,4 +24,14 @@ public interface UserService {
     List<Orders> selectOrdersAndGoods(Users user);
 
     int countOrder(Users user);
+
+    List<Address> addressList(Users user);
+
+    void addAddress(Address address);
+
+    void updateAddress(Address address);
+
+    Address getAddress(Address address);
+
+    void delAddress(Address address);
 }

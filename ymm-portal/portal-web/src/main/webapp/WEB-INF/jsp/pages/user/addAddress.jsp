@@ -86,7 +86,6 @@
             ,layer = layui.layer
         //监听提交
         form.on('submit(demo1)', function(data){
-            alert(data.field.city);
             $.ajax({
                 type: 'post',
                 url: '../../addAddress',
@@ -104,7 +103,6 @@
             });
             return false;
         });
-
 
     });
 </script>

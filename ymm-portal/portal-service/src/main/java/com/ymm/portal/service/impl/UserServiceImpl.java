@@ -1,5 +1,6 @@
 package com.ymm.portal.service.impl;
 
+import com.ymm.commons.pojo.po.Address;
 import com.ymm.commons.pojo.po.Orders;
 import com.ymm.commons.pojo.po.Users;
 import com.ymm.portal.dao.UserMapper;
@@ -67,5 +68,35 @@ public class UserServiceImpl implements UserService {
     public int countOrder(Users user) {
         int i = userMapper.countOrder(user);
         return i;
+    }
+
+    @Override
+    public List<Address> addressList(Users user) {
+        List<Address> addresses = userMapper.addressList(user);
+        return addresses;
+    }
+
+    @Override
+    public void addAddress(Address address) {
+        userMapper.addAddress(address);
+
+    }
+
+    @Override
+    public void updateAddress(Address address) {
+        userMapper.updateAddress(address);
+
+    }
+
+    @Override
+    public Address getAddress(Address address) {
+        Address address1 = userMapper.getAddress(address);
+        return address1;
+    }
+
+    @Override
+    public void delAddress(Address address) {
+        userMapper.delAddress(address);
+
     }
 }
