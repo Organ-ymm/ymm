@@ -99,4 +99,60 @@
         SELECT COUNT(1) FROM orders o
         WHERE o.user_id = user_id
     </select>
+    <!--获取用户地址列表-->
+    <select id="addressList" resultType="com.ymm.commons.pojo.po.Address" parameterType="com.ymm.commons.pojo.po.Users">
+        SELECT address_id,zipcode,user_id,consignee,province,city,county,street,phone,tag
+        FROM  address
+        WHERE address.user_id = user_id
+    </select>
+
+    <insert id="addAddress" parameterType="com.ymm.commons.pojo.po.Address" >
+        INSERT INTO address(address_id,zipcode,user_id,consignee,province,city,county,street,phone,tag)
+        VALUES (#{address_id},#{zipcode},#{user_id},#{consignee},#{province},#{city},#{county},#{street},#{phone},#{tag})
+
+    </insert>
+
+    <update id="updateAddress" parameterType="com.ymm.commons.pojo.po.Address" >
+        UPDATE address
+        <set>
+        <if test="zipcode != null and zipcode != ''">
+            zipcode = #{zipcode},
+        </if>
+
+        <if test="consignee != null and consignee != ''">
+            consignee = #{consignee},
+        </if>
+        <if test="province != null and province != ''">
+            province = #{province},
+        </if>
+        <if test="city != null and city != ''">
+            city = #{city},
+        </if>
+        <if test="county != null and county != ''">
+            county = #{county},
+        </if>
+        <if test="street != null and street != ''">
+            street = #{street},
+        </if>
+        <if test="phone != null and phone != ''">
+            phone = #{phone},
+        </if>
+        <if test="tag != null and tag != ''">
+            tag = #{tag},
+        </if>
+        </set>
+        WHERE address_id = #{address_id}
+
+    </update>
+
+    <select id="getAddress" parameterType="com.ymm.commons.pojo.po.Address" resultType="com.ymm.commons.pojo.po.Address">
+        SELECT address_id,zipcode,user_id,consignee,province,city,county,street,phone,tag
+        FROM address
+        WHERE address_id = #{address_id}
+
+    </select>
+
+    <delete id="delAddress" parameterType="com.ymm.commons.pojo.po.Address">
+        DELETE FROM address WHERE address_id = #{address_id}
+    </delete>
 </mapper>

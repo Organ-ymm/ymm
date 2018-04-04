@@ -28,14 +28,14 @@
             <a href="${pageContext.request.contextPath}/index"><img src="${pageContext.request.contextPath}/images/logo2.png"></a><span class="sep">|</span>
         </div>
         <div class="topbar-cart" id="J_miniCartTrigger">
-            <a class="cart-mini" id="J_miniCartBtn" href="//static.mi.com/cart/"><i class="iconfont">&#xe60c;</i>购物车<span class="cart-mini-num J_cartNum"></span></a>
+            <a class="cart-mini" id="J_miniCartBtn" href="${pageContext.request.contextPath}/cart/listCustomCart"><i class="iconfont">&#xe60c;</i>购物车<span class="cart-mini-num J_cartNum"></span></a>
             <div class="cart-menu" id="J_miniCartMenu">
                 <div class="loading"><div class="loader"></div></div>
             </div>
         </div>
         <div class="topbar-info" id="J_userInfo">
-            <a class="link" href="${pageContext.request.contextPath}/pages/user/login" data-needlogin="true">登录</a>
-            <span class="sep">|</span><a class="link" href="${pageContext.request.contextPath}/pages/user/login" >注册</a>        </div>
+            <a class="link" href="#" data-needlogin="true">${user.username}</a>
+            <span class="sep">|</span><a class="link" href="${pageContext.request.contextPath}/loginOut" >注销</a>        </div>
     </div>
 </div>
 <div class="breadcrumbs">
@@ -69,7 +69,7 @@
                             <ul class="uc-nav-list">
                                 <li class="active"><a href="${pageContext.request.contextPath}/pages/user/personalCenter">我的个人中心</a></li>
                                 <li><a href="#">消息通知<i class="J_miMessageTotal"></i></a></li>
-                                <li><a href="#">收货地址</a></li>
+                                <li><a href="${pageContext.request.contextPath}/addressList">收货地址</a></li>
                             </ul>
                         </div>
                     </div>
@@ -124,22 +124,22 @@
                                 <ul class="info-list clearfix">
                                     <li>
                                         <h3>待支付的订单：<span class="num">${payOrders.size()}</span></h3>
-                                        <a href="${pageContext.request.contextPath}/pages/orders/unpayOrder">查看待支付订单<i class="iconfont">&#xe623;</i></a>
+                                        <a href="${pageContext.request.contextPath}/pages/orders/myOrder">查看待支付订单<i class="iconfont">&#xe623;</i></a>
                                         <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-1.png" alt="" />
                                     </li>
                                     <li>
                                         <h3>待收货的订单：<span class="num">${deliverOrders.size()}</span></h3>
-                                        <a href="//static.mi.com/order/?type=8">查看待收货订单<i class="iconfont">&#xe623;</i></a>
+                                        <a href="${pageContext.request.contextPath}/pages/orders/myOrder">查看待收货订单<i class="iconfont">&#xe623;</i></a>
                                         <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-2.png" alt="" />
                                     </li>
                                     <li>
                                         <h3>待评价商品数：<span class="num">2</span></h3>
-                                        <a href="https://order.mi.com/user/comment?filter=1&r=61115.1522138533">查看待评价商品<i class="iconfont">&#xe623;</i></a>
+                                        <a href="#">查看待评价商品<i class="iconfont">&#xe623;</i></a>
                                         <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-3.png" alt="" />
                                     </li>
                                     <li>
                                         <h3>喜欢的商品：<span class="num">1</span></h3>
-                                        <a href="https://order.mi.com/user/favorite?r=61115.1522138533">查看喜欢的商品<i class="iconfont">&#xe623;</i></a>
+                                        <a href="#">查看喜欢的商品<i class="iconfont">&#xe623;</i></a>
                                         <img src="${pageContext.request.contextPath}/cartStatic/images/portal-icon-4.png" alt="" />
                                     </li>
                                 </ul>
