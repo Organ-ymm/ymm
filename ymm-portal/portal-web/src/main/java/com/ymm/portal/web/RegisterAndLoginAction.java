@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Controller
-public class RegisterAndLogin {
+public class RegisterAndLoginAction {
     @Autowired
     UserService userService;
 

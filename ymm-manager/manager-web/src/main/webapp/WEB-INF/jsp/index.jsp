@@ -59,7 +59,7 @@
             </dl>
         </li>
         <li class="layui-nav-item to-index">
-            <a href="/">前台首页</a>
+            <a href="javascript:;" onclick="toPortal()">前台首页</a>
         </li>
     </ul>
 
@@ -333,6 +333,9 @@
         });
     });
 
+    function toPortal() {
+        location.href="http://localhost:8081/ymm/portal/index";
+    }
 </script>
 </body>
 <!--Tab菜单右键弹出菜单-->
