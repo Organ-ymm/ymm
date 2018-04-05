@@ -12,10 +12,16 @@
       <module fileurl="file://$PROJECT_DIR$/ymm-portal/portal-pojo/portal-pojo.iml" filepath="$PROJECT_DIR$/ymm-portal/portal-pojo/portal-pojo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-portal/portal-service/portal-service.iml" filepath="$PROJECT_DIR$/ymm-portal/portal-service/portal-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-portal/portal-web/portal-web.iml" filepath="$PROJECT_DIR$/ymm-portal/portal-web/portal-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-search/search-dao/search-dao.iml" filepath="$PROJECT_DIR$/ymm-search/search-dao/search-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-search/search-interface/search-interface.iml" filepath="$PROJECT_DIR$/ymm-search/search-interface/search-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-search/search-pojo/search-pojo.iml" filepath="$PROJECT_DIR$/ymm-search/search-pojo/search-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-search/search-service/search-service.iml" filepath="$PROJECT_DIR$/ymm-search/search-service/search-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-search/search-web/search-web.iml" filepath="$PROJECT_DIR$/ymm-search/search-web/search-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-commons/ymm-commons.iml" filepath="$PROJECT_DIR$/ymm-commons/ymm-commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-manager/ymm-manager.iml" filepath="$PROJECT_DIR$/ymm-manager/ymm-manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-parent/ymm-parent.iml" filepath="$PROJECT_DIR$/ymm-parent/ymm-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/ymm-portal/ymm-portal.iml" filepath="$PROJECT_DIR$/ymm-portal/ymm-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ymm-search/ymm-search.iml" filepath="$PROJECT_DIR$/ymm-search/ymm-search.iml" />
     </modules>
   </component>
 </project>

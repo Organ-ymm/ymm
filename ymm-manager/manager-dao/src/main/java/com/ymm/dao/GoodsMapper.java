@@ -5,6 +5,7 @@ import com.ymm.pojo.dto.SwitchCheck;
 import com.ymm.commons.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.pojo.vo.GoodsQuery;
+import com.ymm.pojo.vo.SearchGoodsCustom;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface GoodsMapper {
     int updateGoodsStatus(SwitchCheck switchCheck);
 
     int updateGoods(Goods goods);
+
+    List<SearchGoodsCustom> getSearchGoodList();
 }

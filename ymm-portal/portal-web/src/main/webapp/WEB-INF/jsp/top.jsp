@@ -207,12 +207,23 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-2 col-sm-6 col-xs-12">
-                    <div class="search-box">
+                    <%--原版--%>
+                    <%--<div class="search-box">
                         <form action="#">
                             <input type="text" placeholder="Search">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
-                    </div>
+                    </div>--%>
+                        <%-- todo zy改版--%>
+                        <div class="search-box">
+                            <form method="get">
+                                <%--<input type="text" placeholder="Search">--%>
+                                <label for="search" class="hide">站内搜索</label>
+                                <input class="search-text" placeholder=" Search" type="search" id="search" name="keyword">
+                                <%--<input type="button" id="btnSubmit"><i class="fa fa-search"></i></input>--%>
+                                    <button id="btnSubmit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
                 </div>
             </div>
         </div>
@@ -337,6 +348,20 @@
             success:function (data) {
                 $('.cartNum').html(data);
             }
+        });
+    });
+    $(function(){   /*todo*/
+        $("#btnSubmit").on("click",function(){
+            $.get(
+                //url
+                "${pageContext.request.contextPath}/search/search",
+                //data
+                {"keyword":$.trim($("#search").val())},
+                //success
+                function(data){
+                    console.log(data);
+                }
+            );
         });
     });
 </script>

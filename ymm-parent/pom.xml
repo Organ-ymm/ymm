@@ -11,6 +11,8 @@
         <module>../ymm-commons</module>
         <module>../ymm-manager</module>
         <module>../ymm-portal</module>
+        <module>../search</module>
+        <module>../ymm-search</module>
     </modules>
 
     <packaging>pom</packaging>

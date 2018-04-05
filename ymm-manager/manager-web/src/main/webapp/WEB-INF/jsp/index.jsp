@@ -145,6 +145,29 @@
             </li>
             <li>
                 <a href="javascript:;">
+                    <i class="iconfont">&#xe756;</i>
+                    <cite>索引库管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="./pages/indexlib/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>索引库列表</cite>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="http://47.100.2.34:8180/solr/">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>索引库维护</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
                     <cite>订单管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>

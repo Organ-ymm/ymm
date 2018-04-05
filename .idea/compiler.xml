@@ -16,6 +16,11 @@
         <module name="portal-pojo" />
         <module name="portal-service" />
         <module name="portal-web" />
+        <module name="search-dao" />
+        <module name="search-interface" />
+        <module name="search-pojo" />
+        <module name="search-service" />
+        <module name="search-web" />
         <module name="ymm-commons" />
       </profile>
     </annotationProcessing>
@@ -30,10 +35,17 @@
       <module name="portal-pojo" target="1.8" />
       <module name="portal-service" target="1.8" />
       <module name="portal-web" target="1.8" />
+      <module name="search" target="1.8" />
+      <module name="search-dao" target="1.8" />
+      <module name="search-interface" target="1.8" />
+      <module name="search-pojo" target="1.8" />
+      <module name="search-service" target="1.8" />
+      <module name="search-web" target="1.8" />
       <module name="ymm-commons" target="1.8" />
       <module name="ymm-manager" target="1.8" />
       <module name="ymm-parent" target="1.8" />
       <module name="ymm-portal" target="1.8" />
+      <module name="ymm-search" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

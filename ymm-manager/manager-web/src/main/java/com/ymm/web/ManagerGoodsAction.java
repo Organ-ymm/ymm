@@ -1,5 +1,6 @@
 package com.ymm.web;
 
+import com.ymm.commons.pojo.dto.ResultObject;
 import com.ymm.pojo.dto.MessageResult;
 import com.ymm.pojo.dto.Page;
 import com.ymm.pojo.dto.SwitchCheck;
@@ -7,6 +8,7 @@ import com.ymm.commons.pojo.po.Goods;
 import com.ymm.pojo.vo.GoodsCustom;
 import com.ymm.pojo.vo.GoodsQuery;
 import com.ymm.service.GoodsService;
+import com.ymm.service.SearchGoodCustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ import java.util.List;
 public class ManagerGoodsAction {
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private SearchGoodCustomService searchGoodCustomService;
 
     @RequestMapping("/goodslist")
     @ResponseBody
@@ -159,5 +163,15 @@ public class ManagerGoodsAction {
             e.printStackTrace();
         }
         return i;
+    }
+
+    /**
+     * 一键导入solr索引
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/import",method = RequestMethod.POST)
+    public ResultObject importIndex(){
+        return searchGoodCustomService.importIndex();
     }
 }

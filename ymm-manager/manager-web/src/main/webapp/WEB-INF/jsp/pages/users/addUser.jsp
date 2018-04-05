@@ -142,7 +142,7 @@
             //console.log(username);
             //console.log(f.sex);
             var sex = $('input:radio[name="sex"]:checked').val();
-            console.log(sex);//性别只有“女”能够提交上
+            //console.log(sex);//性别只有“女”能够提交上
 
             //提交数据
             $.ajax({

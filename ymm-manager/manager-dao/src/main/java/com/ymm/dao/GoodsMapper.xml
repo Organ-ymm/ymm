@@ -280,4 +280,20 @@
     from goods g
     <include refid="Where_Clause"/>
   </select>
+
+    <select id="getSearchGoodList" resultType="com.ymm.pojo.vo.SearchGoodsCustom">
+         SELECT
+    i.goods_id,
+    i.goods_name,
+    i.goods_brief,
+    i.shop_price,
+    i.goods_thumb,
+    c.cat_name
+    FROM
+    goods i
+    LEFT JOIN category c ON i.cat_id = c.cat_id
+    WHERE
+    i.status = 1
+    ORDER BY i.goods_id desc
+    </select>
 </mapper>
