@@ -21,9 +21,9 @@
     <sql id="GoodsIDNameImg_Column_List">
         g.goods_id,g.goods_name,g.market_price,g.goods_img
     </sql>
-    <!--Goods sql块(只有id,name,price,img,is_hot,is_new)-->
+    <!--Goods sql块(只有id,name,price,img,thumb,is_hot,is_new)-->
     <sql id="GoodsList_Column_List">
-        g.goods_id,g.goods_name,g.market_price,g.goods_img,is_hot,is_new
+        g.goods_id,g.goods_name,g.shop_price,g.goods_img,g.goods_thumb,is_hot,is_new
     </sql>
 
     <!--Goods sql块(只有id,name,price,img,is_hot,is_new,cat_name)-->

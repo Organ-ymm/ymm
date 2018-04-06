@@ -61,7 +61,7 @@ public class PersonalCenterAction {
     }
 
     //收货地址列表列表
-    @RequestMapping("addressList")
+   /* @RequestMapping("addressList")
     public String addressList(HttpSession session, Model model){
         Users user = (Users)session.getAttribute("user");
         if(user!=null){
@@ -72,9 +72,9 @@ public class PersonalCenterAction {
             }
         }
         return "pages/user/address";
-    }
+    }*/
     //新增地址
-    @ResponseBody
+    /*@ResponseBody
     @RequestMapping("addAddress")
     public int addAddress(HttpSession session,Address address){
         Users user = (Users)session.getAttribute("user");
@@ -89,9 +89,9 @@ public class PersonalCenterAction {
 
         }
         return 0;
-    }
+    }*/
     //更新地址
-    @ResponseBody
+    /*@ResponseBody
     @RequestMapping("editAddress")
     public int updateAddress(HttpSession session, Address address){
         Users user = (Users)session.getAttribute("user");
@@ -105,9 +105,9 @@ public class PersonalCenterAction {
             }
         }
         return 0;
-    }
+    }*/
     //获取地址
-    @ResponseBody
+    /*@ResponseBody
     @RequestMapping("getAddress")
     public Address getAddress(HttpSession session, Address address){
         Users user = (Users)session.getAttribute("user");
@@ -121,9 +121,9 @@ public class PersonalCenterAction {
             }
         }
         return null;
-    }
+    }*/
     //获取地址
-    @ResponseBody
+   /* @ResponseBody
     @RequestMapping("delAddress")
     public int delAddress(HttpSession session, Address address){
         Users user = (Users)session.getAttribute("user");
@@ -137,6 +137,6 @@ public class PersonalCenterAction {
             }
         }
         return 0;
-    }
+    }*/
 
 }

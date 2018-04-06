@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: SmallJIE
+  Date: 2018/4/5
+  Time: 23:50
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!doctype html>
@@ -83,7 +90,7 @@
             <div class="col-md-12 text-left">
                 <ul class="breadcrumb">
                     <li><a href="${pageContext.request.contextPath}/index">首页</a><span> - </span></li>
-                    <li><a href="#">${goodsCustom.cat_name}</a></li>
+                    <li><a href="#">${goodsCustom.keyword}</a></li>
                 </ul>
             </div>
         </div>
@@ -187,10 +194,10 @@
             <div class="col-xs-12">
                 <div class="shop-item-filter bottom">
                     <div style="text-align:center;	">
-                    <div class="select-filter">
-                        <div id="testpage"></div>
+                        <div class="select-filter">
+                            <div id="testpage"></div>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -331,10 +338,10 @@
         laypage.render({
             elem: 'testpage' //注意，这里的 test1 是 ID，不用加 # 号
             , count: "${goodsCustom.totalCount}" //数据总数，从服务端得到
-            , limit: 16
+            , limit: ${goodsCustom.pageSize}
             , first:"首页"
             , last :"尾页"
-            ,curr: "${goodsCustom.offSet+1}" //获取起始页
+            ,curr: "${goodsCustom.offSet}" //获取起始页
             , jump: function (obj, first) {
                 //obj包含了当前分页的所有参数，比如：
                 //console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
@@ -345,7 +352,7 @@
                 //首次不执行
                 if (!first) {
                     //do something
-                    location.href="${pageContext.request.contextPath}/goods/listGoods?cat_id=${goodsCustom.cat_id}"+"&brand_id=${goodsCustom.brand_id}"+"&offSet="+offSet+"&pageSize="+pageSize;
+                    location.href="${pageContext.request.contextPath}/search/doSearch?keyword=${goodsCustom.keyword}"+"&offSet="+offSet+"&pageSize="+pageSize;
                 }
             }
         });

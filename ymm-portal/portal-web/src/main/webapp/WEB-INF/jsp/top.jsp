@@ -208,22 +208,22 @@
                 </div>
                 <div class="col-lg-3 col-md-2 col-sm-6 col-xs-12">
                     <%--原版--%>
-                    <%--<div class="search-box">
-                        <form action="#">
-                            <input type="text" placeholder="Search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                    <div class="search-box">
+                        <form action="${pageContext.request.contextPath}/search/doSearch" method="get">
+                            <input type="text" placeholder="Search" id="search" name="keyword">
+                            <button id="btnSubmit" ><i class="fa fa-search"></i></button>
                         </form>
-                    </div>--%>
+                    </div>
                         <%-- todo zy改版--%>
-                        <div class="search-box">
+                        <%--<div class="search-box">
                             <form method="get">
-                                <%--<input type="text" placeholder="Search">--%>
+                                &lt;%&ndash;<input type="text" placeholder="Search">&ndash;%&gt;
                                 <label for="search" class="hide">站内搜索</label>
-                                <input class="search-text" placeholder=" Search" type="search" id="search" name="keyword">
-                                <%--<input type="button" id="btnSubmit"><i class="fa fa-search"></i></input>--%>
+                                <input class="search-text" placeholder="Search" type="search" id="search" name="keyword">
+                                &lt;%&ndash;<input type="button" id="btnSubmit"><i class="fa fa-search"></i></input>&ndash;%&gt;
                                     <button id="btnSubmit"><i class="fa fa-search"></i></button>
                             </form>
-                        </div>
+                        </div>--%>
                 </div>
             </div>
         </div>
@@ -350,19 +350,16 @@
             }
         });
     });
-    $(function(){   /*todo*/
-        $("#btnSubmit").on("click",function(){
+    $(function(){
+        /*$("#btnSubmit").on("click",function(){
             $.get(
                 //url
-                "${pageContext.request.contextPath}/search/search",
+                "${pageContext.request.contextPath}/search/doSearch",
                 //data
-                {"keyword":$.trim($("#search").val())},
-                //success
-                function(data){
-                    console.log(data);
-                }
+                {"keyword":$.trim($("#search").val())}
+
             );
-        });
+        });*/
     });
 </script>
 </html>

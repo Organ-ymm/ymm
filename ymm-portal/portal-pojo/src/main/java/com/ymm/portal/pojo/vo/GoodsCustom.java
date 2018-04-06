@@ -21,6 +21,19 @@ public class GoodsCustom implements Serializable {
     private int totalCount;
     private int totalPage;
     private List<Goods> goodsList;
+    private String keyword;
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
 
     public String getCat_name() {
         return cat_name;
